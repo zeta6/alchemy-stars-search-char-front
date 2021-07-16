@@ -1,48 +1,110 @@
+
 import { object } from 'prop-types';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import OptionButtons from './SearchChar/OptionButtons';
 import { InputGroup, FormControl } from 'react-bootstrap';
 
+const _testData = [
+  {
+    id: "1",
+    name: "6migard",
+    rarity: "6",
+    main_attribute: "forest",
+    sub_attribute: "forest",
+    class: "sniper",
+  },
+  {
+    id: "2",
+    name: "5migard",
+    rarity: "5",
+    main_attribute: "forest",
+    sub_attribute: "forest",
+    class: "sniper",
+  },
+  {
+    id: "3",
+    name: "4migard",
+    rarity: "4",
+    main_attribute: "forest",
+    sub_attribute: "forest",
+    class: "sniper",
+  },
+  {
+    id: "4",
+    name: "6karen",
+    rarity: "6",
+    main_attribute: "water",
+    sub_attribute: "water",
+    class: "converter",
+  },
+  {
+    id: "5",
+    name: "6karen",
+    rarity: "6",
+    main_attribute: "water",
+    sub_attribute: "water",
+    class: "converter", 
+  },
+  {
+    id: "6",
+    name: "6karen",
+    rarity: "6",
+    main_attribute: "water",
+    sub_attribute: "water",
+    class: "converter",
+  }
+]
+
+/////////
+
 const SearchChar = () => {
-  const [ options, setOptions] = React.useState(
+  const [ options, setOptions] = useState(
     {
-      name: "migard",
-      rarity: "6",
-      main_attribute: "main attr",
-      sub_attribute: "sub attr",
-      class: "",
+      name: "",
+      rarity: [],
+      main_attribute: [],
+      sub_attribute: [],
+      class:[]
     }
   )
-  // React.useEffect(() => options, []);
-  const [ character, setCharacter ] = React.useState(
-    {
-      main_attributes:{
-        main: "",
-        sub: "",
-      },
-      states: {
-        atk: "",
-        hp: "",
-        def: "",
-      },
-      acive_skll:{ 
-      },
-      chain_combo:{
-      },
-      equipment_skill:{
-      },
+  const [ testData, setTestData ] = useState([]);
+
+  useEffect(() => {setTestData(_testData)},
+    []);
+
+  const characterFilter = (character) => {
+    console.log('name',options.name.length);
+    console.log(character.name.indexOf(options.name))
+    if(character.name.indexOf(options.name) !== -1 || options.name.length == 0){
+      if(options.rarity.includes(character.rarity) || options.rarity.length == 0){
+        if(options.main_attribute.includes(character.main_attribute) || options.main_attribute.length == 0){
+          if(options.sub_attribute.includes(character.sub_attribute) || options.sub_attribute.length == 0){
+            if(options.class.includes(character.class) || options.class.length == 0){
+              return character;
+            }
+          }
+        }
+      }
     }
-  )
+  }
 
-  console.log(options);
-
-  const setOption = (value, option, checked, _options=options) => {
-    // const optionValue = value;
-    console.log(checked);
-    const options = { ..._options, [option]: value };
-    // _options[option] = value;
-    setOptions(options);
-    console.log(options);
+  let filteredCharacter = [];
+  
+  filteredCharacter = (testData.filter(characterFilter));
+  
+  const RenderKeyValue = (datas) => {  
+    const keys = Object.keys(datas);
+    return keys.map((key, index) => {
+      return (
+        <div key={index}>
+          <span>
+          {key}: &nbsp; 
+          {datas[key]}
+          </span>
+          <br></br>
+        </div>
+      )
+    })
   }
 
   const handleChange = (e) => {
@@ -51,25 +113,12 @@ const SearchChar = () => {
     const _options = { ...options, name: value };
 
     setOptions(_options);
-  };
-  
+    console.log(options);
+  }
 
-const RenderKeyValue = (datas) => {  
-  const keys = Object.keys(datas);
-  return keys.map((key, index) => {
-    return (
-      <div key={index}>
-        <span>
-        {key}: &nbsp; 
-        {datas[key]}
-        </span>
-        <br></br>
-      </div>
-    )
-  })
-}
+  console.log("filtered",filteredCharacter); 
 
-return(
+return (
   <div>
     <InputGroup className="mb-3">
       <InputGroup.Text id="basic-addon1">Charactername</InputGroup.Text>
@@ -80,7 +129,19 @@ return(
         onChange={(e)=>handleChange(e)}
       />
     </InputGroup>
-    <OptionButtons options={options} setOption={setOption}></OptionButtons>
+    <OptionButtons options={options} setOptions={setOptions}></OptionButtons>
+    <div>
+      {filteredCharacter.map((cha) => (
+        <div key={cha.id}>
+          {cha.name}
+          <br></br>
+          {cha.main_attribute}
+          <br></br>
+          {cha.rarity}
+          <br></br>
+        </div>
+      ))}
+    </div>
     <div>
       <span>{options.main_attribute}</span>
       <br></br>
@@ -94,4 +155,4 @@ return(
   )
 }
 
-export default SearchChar
+export default SearchChar;
