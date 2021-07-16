@@ -2,7 +2,8 @@
 import { object } from 'prop-types';
 import React, {useEffect, useState} from 'react';
 import OptionButtons from './SearchChar/OptionButtons';
-import { InputGroup, FormControl } from 'react-bootstrap';
+import CharacterList from './SearchChar/CharacterList';
+import { InputGroup, FormControl, Pagination } from 'react-bootstrap';
 
 const _testData = [
   {
@@ -39,16 +40,64 @@ const _testData = [
   },
   {
     id: "5",
-    name: "6karen",
-    rarity: "6",
+    name: "3karen",
+    rarity: "3",
     main_attribute: "water",
     sub_attribute: "water",
     class: "converter", 
   },
   {
     id: "6",
+    name: "4karen",
+    rarity: "4",
+    main_attribute: "water",
+    sub_attribute: "water",
+    class: "converter",
+  },
+  {
+    id: "12",
+    name: "6migard",
+    rarity: "6",
+    main_attribute: "forest",
+    sub_attribute: "forest",
+    class: "sniper",
+  },
+  {
+    id: "7",
+    name: "5migard",
+    rarity: "5",
+    main_attribute: "forest",
+    sub_attribute: "forest",
+    class: "sniper",
+  },
+  {
+    id: "8",
+    name: "4migard",
+    rarity: "4",
+    main_attribute: "forest",
+    sub_attribute: "forest",
+    class: "sniper",
+  },
+  {
+    id: "9",
     name: "6karen",
     rarity: "6",
+    main_attribute: "water",
+    sub_attribute: "water",
+    class: "converter",
+  },
+  {
+    id: "10",
+    name: "3karen",
+    rarity: "3",
+    main_attribute: "water",
+    sub_attribute: "water",
+    class: "converter", 
+  },
+  {
+    id: "11",
+    name: "4karen",
+    rarity: "4",
     main_attribute: "water",
     sub_attribute: "water",
     class: "converter",
@@ -118,6 +167,16 @@ const SearchChar = () => {
 
   console.log("filtered",filteredCharacter); 
 
+  // let active = 2;
+  // let items = [];
+  // for (let number = 1; number <= 5; number++) {
+  //   items.push(
+  //     <Pagination.Item key={number} active={number === active}>
+  //       {number}
+  //     </Pagination.Item>,
+  //   );
+// }
+
 return (
   <div>
     <InputGroup className="mb-3">
@@ -129,8 +188,10 @@ return (
         onChange={(e)=>handleChange(e)}
       />
     </InputGroup>
+    {/* <Pagination>{items}</Pagination> */}
     <OptionButtons options={options} setOptions={setOptions}></OptionButtons>
-    <div>
+    <CharacterList filteredCharacter={filteredCharacter}></CharacterList>
+    {/* <div>
       {filteredCharacter.map((cha) => (
         <div key={cha.id}>
           {cha.name}
@@ -141,7 +202,7 @@ return (
           <br></br>
         </div>
       ))}
-    </div>
+    </div> */}
     <div>
       <span>{options.main_attribute}</span>
       <br></br>
