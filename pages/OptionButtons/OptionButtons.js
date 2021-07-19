@@ -13,7 +13,7 @@ const OptionButton = ({object, options, setOptions, optionKey}) => {
       if(!(valueArray.includes(value))) {
         valueArray = options[optionKey].concat(value);
         const _options = { ...options, [optionKey]: valueArray };
-        console.log(valueArray);
+        console.log(options);
         setOptions(_options);
         setChecked(true); 
         setButtonVariant('dark');
