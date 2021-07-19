@@ -122,8 +122,8 @@ const SearchChar = () => {
     []);
 
   const characterFilter = (character) => {
-    console.log('name',options.name.length);
-    console.log(character.name.indexOf(options.name))
+    // console.log('name',options.name.length);
+    // console.log(character.name.indexOf(options.name))
     if(character.name.indexOf(options.name) !== -1 || options.name.length == 0){
       if(options.rarity.includes(character.rarity) || options.rarity.length == 0){
         if(options.main_attribute.includes(character.main_attribute) || options.main_attribute.length == 0){
@@ -165,7 +165,7 @@ const SearchChar = () => {
     console.log(options);
   }
 
-  console.log("filtered",filteredCharacter); 
+  // console.log("filtered",filteredCharacter); 
 
   // let active = 2;
   // let items = [];
