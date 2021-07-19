@@ -36,7 +36,7 @@ const _testData = [
     rarity: "6",
     main_attribute: "water",
     sub_attribute: "water",
-    class: "converter",
+    class: "changer",
   },
   {
     id: "5",
@@ -44,7 +44,7 @@ const _testData = [
     rarity: "3",
     main_attribute: "water",
     sub_attribute: "water",
-    class: "converter", 
+    class: "changer", 
   },
   {
     id: "6",
@@ -52,7 +52,7 @@ const _testData = [
     rarity: "4",
     main_attribute: "water",
     sub_attribute: "water",
-    class: "converter",
+    class: "changer",
   },
   {
     id: "12",
@@ -84,7 +84,7 @@ const _testData = [
     rarity: "6",
     main_attribute: "water",
     sub_attribute: "water",
-    class: "converter",
+    class: "changer",
   },
   {
     id: "10",
@@ -92,7 +92,7 @@ const _testData = [
     rarity: "3",
     main_attribute: "water",
     sub_attribute: "water",
-    class: "converter", 
+    class: "changer", 
   },
   {
     id: "11",
@@ -100,7 +100,7 @@ const _testData = [
     rarity: "4",
     main_attribute: "water",
     sub_attribute: "water",
-    class: "converter",
+    class: "changer",
   }
 ]
 

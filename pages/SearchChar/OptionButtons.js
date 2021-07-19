@@ -89,10 +89,10 @@ const OptionButtons = ({options, setOptions, setOption}) => {
       </ButtonToolbar>
       <ButtonToolbar> 
         <ButtonGroup className="mb-2">
-          <OptionButton object={classOptions.detonator} options={options} setOptions={setOptions} optionKey={"class"}></OptionButton>
+          <OptionButton object={classOptions.burster} options={options} setOptions={setOptions} optionKey={"class"}></OptionButton>
           <OptionButton object={classOptions.sniper} options={options} setOptions={setOptions} optionKey={"class"}></OptionButton>
-          <OptionButton object={classOptions.converter} options={options} setOptions={setOptions} optionKey={"class"}></OptionButton>
-          <OptionButton object={classOptions.support} options={options} setOptions={setOptions} optionKey={"class"}></OptionButton>
+          <OptionButton object={classOptions.changer} options={options} setOptions={setOptions} optionKey={"class"}></OptionButton>
+          <OptionButton object={classOptions.supporter} options={options} setOptions={setOptions} optionKey={"class"}></OptionButton>
         </ButtonGroup>
         <ButtonGroup className="mb-2">
           <RarityOptionButton object={rarityOptions.three} options={options} setOptions={setOptions} optionKey={"rarity"}></RarityOptionButton>
