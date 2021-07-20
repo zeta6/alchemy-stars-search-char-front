@@ -15,64 +15,6 @@ const SearchChar = () => {
       class:[]
     }
   )
-  const [ loading, setLoading] = useState(true);
-  // const [ testData, setTestData ] = useState([_testData]);
-  // const [ filteredCharacter, setFilteredCharacter] = useState([
-  //   {
-  //     id: "1",
-  //     name: "6migard",
-  //     rarity: "6",
-  //     main_attribute: "forest",
-  //     sub_attribute: "forest",
-  //     class: "sniper",
-  //   },
-  //   {
-  //     id: "2",
-  //     name: "5migard",
-  //     rarity: "5",
-  //     main_attribute: "forest",
-  //     sub_attribute: "forest",
-  //     class: "sniper",
-  //   }
-  // ]);
-
-  // useEffect(() => {
-  //   setFilteredCharacter(_testData.filter(characterFilter));
-  //   console.log("filttered",filteredCharacter);
-  //   console.log("options",options);
-    // setFilteredCharacter(filteredCharacter.filter(characterFilter));
-  // },
-  //   []);
-
-  // const characterFilter = (character) => {
-  //   if(character.name.indexOf(options.name) !== -1 || options.name.length == 0){
-  //     if(options.rarity.includes(character.rarity) || options.rarity.length == 0){
-  //       if(options.main_attribute.includes(character.main_attribute) || options.main_attribute.length == 0){
-  //         if(options.sub_attribute.includes(character.sub_attribute) || options.sub_attribute.length == 0){
-  //           if(options.class.includes(character.class) || options.class.length == 0){
-  //             return character;
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
-
-
-  const RenderKeyValue = (datas) => {  
-    const keys = Object.keys(datas);
-    return keys.map((key, index) => {
-      return (
-        <div key={index}>
-          <span>
-          {key}: &nbsp; 
-          {datas[key]}
-          </span>
-          <br></br>
-        </div>
-      )
-    })
-  }
 
   const handleChange = (e) => {
     let value = e.target.value;

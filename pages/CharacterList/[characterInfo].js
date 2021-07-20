@@ -1,7 +1,7 @@
   import React, {useState, useEffect} from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
-import CharacterState from "./CharacterState"
+import CharacterState from "../../components/CharacterState"
 import { ContactSupportOutlined } from "@material-ui/icons";
 
 export default function CharacterInfo(){
@@ -11,7 +11,8 @@ export default function CharacterInfo(){
   const [character, setCharacter] = useState(CharacterState)
  
 
-  useEffect( async () => {
+  useEffect(() => {
+    async function fetchData(){
     if(character_id){
       try {
         setLoading(false);
@@ -21,7 +22,9 @@ export default function CharacterInfo(){
         console.error(error);
       }
     }
-  },[character_id]
+  }
+  fetchData();
+},[character_id]
   );
 
 
