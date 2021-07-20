@@ -2,49 +2,73 @@ import { FilterCenterFocus } from '@material-ui/icons';
 import React, {useEffect, useState} from 'react';
 import { Table, Accordion, Button} from 'react-bootstrap';
 import CharacterInList from './CharacterInList';
-import TestData from './TestData'
+// import TestData from './TestData'
+import axios from 'axios';
 
 const CharacterList = ({options}) => {
 
-  const [characterList, setCharacterList] = useState(TestData);  
+  const [characterList, setCharacterList] = useState([{
+    id: "9999",
+    name: "loading",
+    rarity: "1",
+    main_attribute: "loading",
+    sub_attribute: "loading",
+    class: "loading",
+  },]);  
 	const [loading, setLoading] = useState(true);
-	const [currentPage, setCurrentPage] = useState(1); 
+	// const [currentPage, setCurrentPage] = useState(1); 
   const [currentList, setCurrentList] = useState([{
-    id: "11",
-    name: "4karen",
-    rarity: "4",
-    main_attribute: "water",
-    sub_attribute: "water",
-    class: "changer",
+    id: "9998",
+    name: "loading",
+    rarity: "1",
+    main_attribute: "loading",
+    sub_attribute: "loading",
+    class: "loading",
   }]);
+
+  const [pages, setPages] = useState(1);
+  const [characterPerPage, setCharacterPerPage] = useState(5);
+
+
   
-  useEffect(() => {
-    console.log("chL",characterList);
-    setCurrentList(characterList.slice(0,5))
-    setLoading(false);
+  useEffect( async () => {
+    try {
+      const response = await axios.get("/api/characters/");
+      setCharacterList(response.data);
+      setCurrentList(characterList.slice(0,5));
+
+      setPages(Array((parseInt(characterList.length / characterPerPage) + 1))
+      .fill(1).map((x,y) => x + y ));
+
+      setLoading(false);
+    } catch (error){
+      console.error(error);
+    }
   },[loading]
   );
 
+  // useEffect(() => {
+  //   setPages(Array((parseInt(characterList.length / characterPerPage) + 1))
+  //   .fill(1).map((x,y) => x + y ));
+  //   console.log('pages',pages)
+  // },[characterList])
+
+
   useEffect(() => {
     console.log(options);
-    const data = TestData;
-    setCharacterList(data.filter(characterFilter));
-    setCurrentList(data.filter(characterFilter).slice(0,5))
+    axios.get("api/characters")
+    .then(res => setCharacterList(res.data))
+    .catch((err) => console.log(err));
+    setCharacterList(characterList.filter(characterFilter));
+    setCurrentList(characterList.filter(characterFilter).slice(0,5))
+
+    setPages(Array((parseInt(characterList.filter(characterFilter).length / characterPerPage) + 1))
+    .fill(1).map((x,y) => x + y ));
+    
+    console.log('pages',pages)
   }, [options]
   );
 
-const getList = async() => {
-  const list = setCurrentList(characterList.filter(characterFilter));
-  return list;
-}
-
-
-  const charactersTotal = characterList.length;
-  const characterPerPage = 5;
-  const endPage = parseInt(charactersTotal / characterPerPage) +1;
-  
-
-  const pages = Array(endPage).fill(1).map((x,y) => x + y)
 
   const handlePage = (page) => {
     console.log(page);
@@ -52,8 +76,7 @@ const getList = async() => {
     const sliceEnd = (page-1) * 5 + 5;
     console.log(sliceStart);
     console.log(sliceEnd);
-    setCurrentList(characterList.slice(sliceStart,sliceEnd))
-    setCurrentPage(page);
+    setCurrentList(characterList.filter(characterFilter).slice(sliceStart,sliceEnd))
   }
  
   const characterFilter = (character) => {
@@ -70,26 +93,28 @@ const getList = async() => {
     }
   }
 
-  const a_test = () => {
-    console.log(getList);
-  }
+  // const a_test = () => {
+  //   data = axios.get("api/characters")
+  //   .then(res => { return(res.data)})
+  //   console.log(data);
+  // }
   if (loading) {
     return "loading"
   }
-  if (currentPage != 0) {
+  else{
   return(
     <div>
-      <button onClick={() => a_test()}>test!</button>
+      {/* <button onClick={() => a_test()}>test!</button> */}
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
             <th>open</th>
-            <th>#</th>
             <th>Name</th>
             <th>Rarity</th>
             <th>M_Attr</th>
             <th>S_Attr</th>
             <th>Class</th>
+            <th>detail</th>
           </tr>
         </thead>
         {currentList.map((cha)=> ( 

@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { Table, Accordion, Button} from 'react-bootstrap';
+import Link from "next/link";
+
 
 const CharacterInList = ({cha}) => {
   const [open, setOpen] = useState(false);
@@ -10,9 +12,12 @@ const CharacterInList = ({cha}) => {
       return(
         <tr>
           <td colSpan="7">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-            terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
-            labore wes anderson cred nesciunt sapiente ea proident.
+            {cha.chain_skill.name} <br></br>
+            {cha.chain_skill.first.tiles} <br></br>
+            {cha.chain_skill.first.damage} <br></br>
+            {cha.chain_skill.first.area} <br></br>
+            {cha.chain_skill.first.area_type} <br></br>
+            {cha.chain_skill.first.text} <br></br>
           </td>
         </tr>
       )
@@ -23,19 +28,22 @@ const CharacterInList = ({cha}) => {
         <tr>
         <td>
         <Button
+          variant="dark"
           onClick={() => setOpen(!open)}
-          // aria-controls="example-collapse-text"
-          // aria-expanded={open}
         >
-          click
+          ▽
         </Button>
         </td>
-        <td>444</td>
         <td>{cha.name}</td>
         <td>{cha.rarity}</td>
         <td>{cha.main_attribute}</td>
         <td>{cha.sub_attribute}</td>
         <td>{cha.class}</td>
+        <td>
+          <Link href={'/CharacterList/[characterInfo]/'} as={`/CharacterList/${cha.id}/`}>
+          detail
+          </Link>
+        </td>
         </tr>
      <Collapse open={open}></Collapse>
       </tbody>

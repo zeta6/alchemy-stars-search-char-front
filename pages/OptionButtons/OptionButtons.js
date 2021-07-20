@@ -70,7 +70,7 @@ const RarityOptionButton = ({object, options, setOptions, optionKey}) => {
 }
 
 
-const OptionButtons = ({options, setOptions, setOption}) => {
+const OptionButtons = ({options, setOptions}) => {
   return(
     <div>
       <ButtonToolbar>
