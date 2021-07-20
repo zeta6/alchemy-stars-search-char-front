@@ -1,8 +1,8 @@
-import { FilterCenterFocus } from '@material-ui/icons';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useReducer} from 'react';
 import { Table, Accordion, Button} from 'react-bootstrap';
 import CharacterInList from './CharacterInList';
 // import TestData from './TestData'
+// import CharacterState from "../components/CharacterState"
 import axios from 'axios';
 
 const CharacterList = ({options}) => {
@@ -27,24 +27,26 @@ const CharacterList = ({options}) => {
   }]);
 
   const [pages, setPages] = useState(1);
-  const [characterPerPage, setCharacterPerPage] = useState(5);
+  const characterPerPage = 5;
 
 
-  
-  useEffect( async () => {
-    try {
+
+  useEffect( () => {
+    async function fetchData(){
+      try {
       const response = await axios.get("/api/characters/");
       setCharacterList(response.data);
-      setCurrentList(characterList.slice(0,5));
+      setCurrentList(response.data.slice(0,5));
 
-      setPages(Array((parseInt(characterList.length / characterPerPage) + 1))
+      setPages(Array((parseInt(response.data.length / characterPerPage) + 1))
       .fill(1).map((x,y) => x + y ));
 
       setLoading(false);
     } catch (error){
       console.error(error);
     }
-  },[loading]
+  }fetchData();
+},[loading]
   );
 
   // useEffect(() => {
@@ -55,18 +57,17 @@ const CharacterList = ({options}) => {
 
 
   useEffect(() => {
-    console.log(options);
-    axios.get("api/characters")
-    .then(res => setCharacterList(res.data))
-    .catch((err) => console.log(err));
-    setCharacterList(characterList.filter(characterFilter));
-    setCurrentList(characterList.filter(characterFilter).slice(0,5))
-
-    setPages(Array((parseInt(characterList.filter(characterFilter).length / characterPerPage) + 1))
+    async function fetchData(){
+    const response = await axios.get("api/characters");
+    setCharacterList(response.data.filter(characterFilter));
+    setCurrentList(response.data.filter(characterFilter).slice(0,5))
+    setPages(Array((parseInt(response.data.filter(characterFilter).length / characterPerPage) + 1))
     .fill(1).map((x,y) => x + y ));
     
     console.log('pages',pages)
-  }, [options]
+  }
+  fetchData();
+},[options]
   );
 
 

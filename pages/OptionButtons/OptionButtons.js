@@ -1,7 +1,8 @@
 
 import { Button, ButtonToolbar, ButtonGroup } from 'react-bootstrap';
 import { useState, useRef } from 'react';
-import { attrOptions, classOptions, rarityOptions} from './ButtonOptions'
+import { attrOptions, classOptions, rarityOptions} from '../../components/ButtonOptions'
+import Image from 'next/image';
 
 const OptionButton = ({object, options, setOptions, optionKey}) => {
   const [checked, setChecked] = useState(false);
@@ -32,7 +33,12 @@ const OptionButton = ({object, options, setOptions, optionKey}) => {
       }
   }
   return (
-    <Button type="checkbox" variant={buttonVariant} value={object.value} onClick={() => setOption(object.value, optionKey, options)}><img src={object.icon}></img></Button>
+    <Button type="checkbox" variant={buttonVariant} value={object.value} onClick={() => setOption(object.value, optionKey, options)}>
+    <div style={{position:'relative', paddingTop:'10%'}}>
+    <Image width='34' height='34' src={object.icon}>
+    </Image>
+    </div>
+    </Button>
   )
 }
 

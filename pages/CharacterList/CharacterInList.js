@@ -23,6 +23,9 @@ const CharacterInList = ({cha}) => {
       )
     }
   } 
+  if(!cha){
+    return "loading"
+  }else{
     return (
         <tbody>
         <tr>
@@ -48,6 +51,7 @@ const CharacterInList = ({cha}) => {
      <Collapse open={open}></Collapse>
       </tbody>
     )
+  }
   };
 
 export default CharacterInList;
