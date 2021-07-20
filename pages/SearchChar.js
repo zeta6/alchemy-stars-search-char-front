@@ -1,110 +1,9 @@
 
 import { object } from 'prop-types';
 import React, {useEffect, useState} from 'react';
-import OptionButtons from './SearchChar/OptionButtons';
-import CharacterList from './SearchChar/CharacterList';
+import OptionButtons from './OptionButtons/OptionButtons';
+import CharacterList from './CharacterList/CharacterList';
 import { InputGroup, FormControl, Pagination } from 'react-bootstrap';
-
-const _testData = [
-  {
-    id: "1",
-    name: "6migard",
-    rarity: "6",
-    main_attribute: "forest",
-    sub_attribute: "forest",
-    class: "sniper",
-  },
-  {
-    id: "2",
-    name: "5migard",
-    rarity: "5",
-    main_attribute: "forest",
-    sub_attribute: "forest",
-    class: "sniper",
-  },
-  {
-    id: "3",
-    name: "4migard",
-    rarity: "4",
-    main_attribute: "forest",
-    sub_attribute: "forest",
-    class: "sniper",
-  },
-  {
-    id: "4",
-    name: "6karen",
-    rarity: "6",
-    main_attribute: "water",
-    sub_attribute: "water",
-    class: "converter",
-  },
-  {
-    id: "5",
-    name: "3karen",
-    rarity: "3",
-    main_attribute: "water",
-    sub_attribute: "water",
-    class: "converter", 
-  },
-  {
-    id: "6",
-    name: "4karen",
-    rarity: "4",
-    main_attribute: "water",
-    sub_attribute: "water",
-    class: "converter",
-  },
-  {
-    id: "12",
-    name: "6migard",
-    rarity: "6",
-    main_attribute: "forest",
-    sub_attribute: "forest",
-    class: "sniper",
-  },
-  {
-    id: "7",
-    name: "5migard",
-    rarity: "5",
-    main_attribute: "forest",
-    sub_attribute: "forest",
-    class: "sniper",
-  },
-  {
-    id: "8",
-    name: "4migard",
-    rarity: "4",
-    main_attribute: "forest",
-    sub_attribute: "forest",
-    class: "sniper",
-  },
-  {
-    id: "9",
-    name: "6karen",
-    rarity: "6",
-    main_attribute: "water",
-    sub_attribute: "water",
-    class: "converter",
-  },
-  {
-    id: "10",
-    name: "3karen",
-    rarity: "3",
-    main_attribute: "water",
-    sub_attribute: "water",
-    class: "converter", 
-  },
-  {
-    id: "11",
-    name: "4karen",
-    rarity: "4",
-    main_attribute: "water",
-    sub_attribute: "water",
-    class: "converter",
-  }
-]
-
-/////////
 
 const SearchChar = () => {
   const [ options, setOptions] = useState(
@@ -116,31 +15,50 @@ const SearchChar = () => {
       class:[]
     }
   )
-  const [ testData, setTestData ] = useState([]);
+  const [ loading, setLoading] = useState(true);
+  // const [ testData, setTestData ] = useState([_testData]);
+  // const [ filteredCharacter, setFilteredCharacter] = useState([
+  //   {
+  //     id: "1",
+  //     name: "6migard",
+  //     rarity: "6",
+  //     main_attribute: "forest",
+  //     sub_attribute: "forest",
+  //     class: "sniper",
+  //   },
+  //   {
+  //     id: "2",
+  //     name: "5migard",
+  //     rarity: "5",
+  //     main_attribute: "forest",
+  //     sub_attribute: "forest",
+  //     class: "sniper",
+  //   }
+  // ]);
 
-  useEffect(() => {setTestData(_testData)},
-    []);
+  // useEffect(() => {
+  //   setFilteredCharacter(_testData.filter(characterFilter));
+  //   console.log("filttered",filteredCharacter);
+  //   console.log("options",options);
+    // setFilteredCharacter(filteredCharacter.filter(characterFilter));
+  // },
+  //   []);
 
-  const characterFilter = (character) => {
-    console.log('name',options.name.length);
-    console.log(character.name.indexOf(options.name))
-    if(character.name.indexOf(options.name) !== -1 || options.name.length == 0){
-      if(options.rarity.includes(character.rarity) || options.rarity.length == 0){
-        if(options.main_attribute.includes(character.main_attribute) || options.main_attribute.length == 0){
-          if(options.sub_attribute.includes(character.sub_attribute) || options.sub_attribute.length == 0){
-            if(options.class.includes(character.class) || options.class.length == 0){
-              return character;
-            }
-          }
-        }
-      }
-    }
-  }
+  // const characterFilter = (character) => {
+  //   if(character.name.indexOf(options.name) !== -1 || options.name.length == 0){
+  //     if(options.rarity.includes(character.rarity) || options.rarity.length == 0){
+  //       if(options.main_attribute.includes(character.main_attribute) || options.main_attribute.length == 0){
+  //         if(options.sub_attribute.includes(character.sub_attribute) || options.sub_attribute.length == 0){
+  //           if(options.class.includes(character.class) || options.class.length == 0){
+  //             return character;
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 
-  let filteredCharacter = [];
-  
-  filteredCharacter = (testData.filter(characterFilter));
-  
+
   const RenderKeyValue = (datas) => {  
     const keys = Object.keys(datas);
     return keys.map((key, index) => {
@@ -165,18 +83,6 @@ const SearchChar = () => {
     console.log(options);
   }
 
-  console.log("filtered",filteredCharacter); 
-
-  // let active = 2;
-  // let items = [];
-  // for (let number = 1; number <= 5; number++) {
-  //   items.push(
-  //     <Pagination.Item key={number} active={number === active}>
-  //       {number}
-  //     </Pagination.Item>,
-  //   );
-// }
-
 return (
   <div>
     <InputGroup className="mb-3">
@@ -188,30 +94,17 @@ return (
         onChange={(e)=>handleChange(e)}
       />
     </InputGroup>
-    {/* <Pagination>{items}</Pagination> */}
     <OptionButtons options={options} setOptions={setOptions}></OptionButtons>
-    <CharacterList filteredCharacter={filteredCharacter}></CharacterList>
-    {/* <div>
-      {filteredCharacter.map((cha) => (
-        <div key={cha.id}>
-          {cha.name}
-          <br></br>
-          {cha.main_attribute}
-          <br></br>
-          {cha.rarity}
-          <br></br>
-        </div>
-      ))}
-    </div> */}
+    <CharacterList options={options}></CharacterList>
     <div>
       <span>{options.main_attribute}</span>
       <br></br>
       <span>{options.sub_attribute}</span>
     </div>
     <br/>
-    <div>
+    {/* <div>
     {RenderKeyValue(options)}
-    </div>
+    </div> */}
   </div>
   )
 }

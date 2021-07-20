@@ -45,24 +45,24 @@ export const rarityOptions = {
 };
 
 export const classOptions = {
-  detonator: {
-    value: 'detonator',
-    name: 'detonator',
-    icon: 'SearchChar/ButtonIcons/detonator-sm.jpg',
+  burster: {
+    value: 'burster',
+    name: 'burster',
+    icon: 'SearchChar/ButtonIcons/burster-sm.jpg',
   },
   sniper: {
     value: 'sniper',
     name: 'sniper',
     icon: 'SearchChar/ButtonIcons/sniper-sm.jpg',
   },
-  converter: {
-    value: 'converter',
-    name: 'converter',
-    icon: 'SearchChar/ButtonIcons/converter-sm.jpg',
+  changer: {
+    value: 'changer',
+    name: 'changer',
+    icon: 'SearchChar/ButtonIcons/changer-sm.jpg',
   },
-  support: {
-    value: 'support',
-    name: 'support',
-    icon: 'SearchChar/ButtonIcons/support-sm.jpg',
+  supporter: {
+    value: 'supporter',
+    name: 'supporter',
+    icon: 'SearchChar/ButtonIcons/supporter-sm.jpg',
   }
 }

@@ -13,7 +13,7 @@ const OptionButton = ({object, options, setOptions, optionKey}) => {
       if(!(valueArray.includes(value))) {
         valueArray = options[optionKey].concat(value);
         const _options = { ...options, [optionKey]: valueArray };
-        console.log(valueArray);
+        console.log(options);
         setOptions(_options);
         setChecked(true); 
         setButtonVariant('dark');
@@ -70,7 +70,7 @@ const RarityOptionButton = ({object, options, setOptions, optionKey}) => {
 }
 
 
-const OptionButtons = ({options, setOptions, setOption}) => {
+const OptionButtons = ({options, setOptions}) => {
   return(
     <div>
       <ButtonToolbar>
@@ -89,10 +89,10 @@ const OptionButtons = ({options, setOptions, setOption}) => {
       </ButtonToolbar>
       <ButtonToolbar> 
         <ButtonGroup className="mb-2">
-          <OptionButton object={classOptions.detonator} options={options} setOptions={setOptions} optionKey={"class"}></OptionButton>
+          <OptionButton object={classOptions.burster} options={options} setOptions={setOptions} optionKey={"class"}></OptionButton>
           <OptionButton object={classOptions.sniper} options={options} setOptions={setOptions} optionKey={"class"}></OptionButton>
-          <OptionButton object={classOptions.converter} options={options} setOptions={setOptions} optionKey={"class"}></OptionButton>
-          <OptionButton object={classOptions.support} options={options} setOptions={setOptions} optionKey={"class"}></OptionButton>
+          <OptionButton object={classOptions.changer} options={options} setOptions={setOptions} optionKey={"class"}></OptionButton>
+          <OptionButton object={classOptions.supporter} options={options} setOptions={setOptions} optionKey={"class"}></OptionButton>
         </ButtonGroup>
         <ButtonGroup className="mb-2">
           <RarityOptionButton object={rarityOptions.three} options={options} setOptions={setOptions} optionKey={"rarity"}></RarityOptionButton>
