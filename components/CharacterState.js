@@ -57,6 +57,7 @@ export const CharacterState = {
   birthday: "",
   sex: "",
   height:"",
+  singularity:"",
 }
 
 export default CharacterState;

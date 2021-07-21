@@ -1,12 +1,21 @@
-import React, {useEffect, useState, useReducer} from 'react';
-import { Table, Accordion, Button} from 'react-bootstrap';
+import React, {useEffect, useState, useRef, useReducer} from 'react';
+import { Table, ButtonGroup, Button, Row, Col, ButtonToolbar} from 'react-bootstrap';
 import CharacterInList from './CharacterInList';
-// import TestData from './TestData'
-// import CharacterState from "../components/CharacterState"
 import axios from 'axios';
 
-const CharacterList = ({options}) => {
+const PageButton = ({page, handlePage, currentPage}) => {
+  if(page == currentPage){ 
+  return(
+    <Button variant="dark" onClick={() => handlePage(page)}>{page}</Button>  
+  )} else{
+    return(
+    <Button variant="secondary" onClick={() => handlePage(page)}>{page}</Button>
+  )}
+};
 
+const CharacterList = ({options}) => {
+  
+  const [currentPage, setCurrentPage] = useState(1);
   const [characterList, setCharacterList] = useState([{
     id: "9999",
     name: "loading",
@@ -27,6 +36,7 @@ const CharacterList = ({options}) => {
   }]);
 
   const [pages, setPages] = useState(1);
+  // const [pageButtonVariant, setPageButtonVariant ] = useState("secondary")
   const characterPerPage = 5;
 
 
@@ -49,22 +59,15 @@ const CharacterList = ({options}) => {
 },[loading]
   );
 
-  // useEffect(() => {
-  //   setPages(Array((parseInt(characterList.length / characterPerPage) + 1))
-  //   .fill(1).map((x,y) => x + y ));
-  //   console.log('pages',pages)
-  // },[characterList])
-
-
   useEffect(() => {
     async function fetchData(){
+    const filter = characterFilter;
     const response = await axios.get("api/characters");
-    setCharacterList(response.data.filter(characterFilter));
-    setCurrentList(response.data.filter(characterFilter).slice(0,5))
-    setPages(Array((parseInt(response.data.filter(characterFilter).length / characterPerPage) + 1))
+    setCharacterList(response.data.filter(filter));
+    setCurrentList(response.data.filter(filter).slice(0,5))
+    setPages(Array((parseInt(response.data.filter(filter).length / characterPerPage) + 1))
     .fill(1).map((x,y) => x + y ));
-    
-    console.log('pages',pages)
+    setCurrentPage(1)
   }
   fetchData();
 },[options]
@@ -72,12 +75,12 @@ const CharacterList = ({options}) => {
 
 
   const handlePage = (page) => {
-    console.log(page);
     const sliceStart = (page-1) * 5;
     const sliceEnd = (page-1) * 5 + 5;
     console.log(sliceStart);
     console.log(sliceEnd);
     setCurrentList(characterList.filter(characterFilter).slice(sliceStart,sliceEnd))
+    setCurrentPage(page)
   }
  
   const characterFilter = (character) => {
@@ -105,17 +108,20 @@ const CharacterList = ({options}) => {
   else{
   return(
     <div>
+    <Row className="character-list">
       {/* <button onClick={() => a_test()}>test!</button> */}
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
-            <th>open</th>
-            <th>Name</th>
-            <th>Rarity</th>
-            <th>M_Attr</th>
-            <th>S_Attr</th>
-            <th>Class</th>
-            <th>detail</th>
+            <th></th>
+            <th>아이콘</th>
+            <th>이름</th>
+            <th>성급</th>
+            <th>주속성</th>
+            <th>부속성</th>
+            <th>클래스</th>
+            <th>세력</th>
+            <th>캐릭터페이지</th>
           </tr>
         </thead>
         {currentList.map((cha)=> ( 
@@ -125,13 +131,18 @@ const CharacterList = ({options}) => {
           </React.Fragment>
         ))}
       </Table>
-      <div>
-        pages : {pages.map((page) => (
+    </Row>
+    <Row className="page-button-tool-bar-row">
+    <ButtonToolbar>
+      <ButtonGroup className="page-button-group">
+        {pages.map((page) => (
           <React.Fragment key={page}>
-            <button onClick={() => handlePage(page)}>{page}</button>
+            <PageButton page={page} handlePage={handlePage} currentPage={currentPage}></PageButton>
           </React.Fragment>
-        ))}
-      </div>
+       ))}
+      </ButtonGroup>
+    </ButtonToolbar>
+    </Row>
     </div>
   )
         }

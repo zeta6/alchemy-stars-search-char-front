@@ -3,9 +3,10 @@ import { object } from 'prop-types';
 import React, {useEffect, useState} from 'react';
 import OptionButtons from './OptionButtons/OptionButtons';
 import CharacterList from './CharacterList/CharacterList';
-import { InputGroup, FormControl, Pagination } from 'react-bootstrap';
+import { Container, Row, Col, InputGroup, FormControl} from 'react-bootstrap';
+import Layout from '../components/Layout';
 
-const SearchChar = () => {
+const SearchAurorian = () => {
   const [ options, setOptions] = useState(
     {
       name: "",
@@ -27,15 +28,19 @@ const SearchChar = () => {
 
 return (
   <div>
-    <InputGroup className="mb-3">
-      <InputGroup.Text id="basic-addon1">Charactername</InputGroup.Text>
-      <FormControl
-        placeholder=""
-        aria-label="Charactername"
-        aria-describedby="basic-addon1"
-        onChange={(e)=>handleChange(e)}
-      />
-    </InputGroup>
+  <Layout></Layout>
+  <Container className="bg-color-darknavy">
+    <Row className="search-character-input-row">
+      <InputGroup className="mb-3">
+        <InputGroup.Text id="basic-addon1">Charactername</InputGroup.Text>
+        <FormControl
+          placeholder=""
+          aria-label="Charactername"
+          aria-describedby="basic-addon1"
+          onChange={(e)=>handleChange(e)}
+        />
+      </InputGroup>
+    </Row>
     <OptionButtons options={options} setOptions={setOptions}></OptionButtons>
     <CharacterList options={options}></CharacterList>
     <div>
@@ -47,8 +52,9 @@ return (
     {/* <div>
     {RenderKeyValue(options)}
     </div> */}
+  </Container>
   </div>
   )
 }
 
-export default SearchChar;
+export default SearchAurorian;

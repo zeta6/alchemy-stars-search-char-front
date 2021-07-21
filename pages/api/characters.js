@@ -34,13 +34,21 @@ export default function handler(req, res) {
         },
       },
       active_skill: {
-        name: "",
-        text: "",
-        type: {},
+        name: "스파인 소울",
+        text: "주변 3서클 내 임의의 위치로 순간이동해 주변 1서클 내의 적에게 250%의 피해를 입히며, 범위 내에 적이 1명만 있을 경우, 피해가 2배 증가한다.",
+        type: {
+          damage : "true",
+          heal : "false",
+          tile_change: "false",
+          teleport: "true",
+        },
       },
       equip_skill: {
-        name: "",
-        text: "",
+        name: "뼈 관통",
+        lv1_text: "연쇄 스킬 또는 액티브 스킬 시전 후 대상의 HP가 20% 미만일 시 대상에게 공격력의 60%에 해당하는 피해를 추가로 1회 입힌다.",
+        lv3_text: "연쇄 스킬 또는 액티브 스킬 시전 후 대상의 HP가 20% 미만일 시 대상에게 공격력의 80%에 해당하는 피해를 추가로 1회 입힌다.",
+        lv6_text: "연쇄 스킬 또는 액티브 스킬 시전 후 대상의 HP가 25% 미만일 시 대상에게 공격력의 80%에 해당하는 피해를 추가로 1회 입힌다.",
+        lv10_text: "연쇄 스킬 또는 액티브 스킬 시전 후 대상의 HP가 30% 미만일 시 대상에게 공격력의 100%에 해당하는 피해를 추가로 1회 입힌다.",
         type: {},
       },
       breakthrough: {

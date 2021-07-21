@@ -1,0 +1,60 @@
+body {
+  background-color: #111426;
+}
+
+.bg-color-darknavy{
+  background-color: #111426;
+}
+
+
+.bg-color-darkslateblue{
+  background-color: darkslateblue
+  ;
+}
+
+.search-character-input-row {
+  padding-top: 20px;
+  width:50%;
+  min-width: 500px;
+  float: none;
+  margin:0 auto;
+}
+
+.character-table-td-index{
+  width: 8%;
+}
+
+.option-buttons-second-group{
+  padding-top: 6px;
+  padding-bottom: 10px;
+}
+
+.character-list{
+  width:85%;
+  min-width: 500px;
+  float: none;
+  margin:0 auto;
+}
+
+.page-button-tool-bar-row{
+  padding-top: 10px;
+}
+
+.page-button-group{
+  float: none;
+  margin:0 auto;
+}
+
+.align-center{
+  float: none;
+  margin:0 auto;
+}
+
+.nav-item-float-right{
+  float:right;
+  margin:0 auto;
+}
+
+.character-list-collapse{
+  height: 200px;
+}
