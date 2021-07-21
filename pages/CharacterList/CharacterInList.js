@@ -58,7 +58,7 @@ const CharacterInList = ({cha}) => {
             </ButtonGroup>
         </ButtonToolbar>
         <div>
-          {skill.second.text}
+          {skill.third.text}
         </div>
         </Col>
       )
