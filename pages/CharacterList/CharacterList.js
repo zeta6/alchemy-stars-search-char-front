@@ -1,12 +1,21 @@
-import React, {useEffect, useState, useReducer} from 'react';
-import { Table, Accordion, Button} from 'react-bootstrap';
+import React, {useEffect, useState, useRef, useReducer} from 'react';
+import { Table, ButtonGroup, Button} from 'react-bootstrap';
 import CharacterInList from './CharacterInList';
-// import TestData from './TestData'
-// import CharacterState from "../components/CharacterState"
 import axios from 'axios';
 
-const CharacterList = ({options}) => {
+const PageButton = ({page, handlePage, currentPage}) => {
+  if(page == currentPage){ 
+  return(
+    <Button variant="dark" onClick={() => handlePage(page)}>{page}</Button>  
+  )} else{
+    return(
+    <Button variant="secondary" onClick={() => handlePage(page)}>{page}</Button>
+  )}
+};
 
+const CharacterList = ({options}) => {
+  
+  const [currentPage, setCurrentPage] = useState(1);
   const [characterList, setCharacterList] = useState([{
     id: "9999",
     name: "loading",
@@ -27,6 +36,7 @@ const CharacterList = ({options}) => {
   }]);
 
   const [pages, setPages] = useState(1);
+  // const [pageButtonVariant, setPageButtonVariant ] = useState("secondary")
   const characterPerPage = 5;
 
 
@@ -49,13 +59,6 @@ const CharacterList = ({options}) => {
 },[loading]
   );
 
-  // useEffect(() => {
-  //   setPages(Array((parseInt(characterList.length / characterPerPage) + 1))
-  //   .fill(1).map((x,y) => x + y ));
-  //   console.log('pages',pages)
-  // },[characterList])
-
-
   useEffect(() => {
     async function fetchData(){
     const response = await axios.get("api/characters");
@@ -63,6 +66,7 @@ const CharacterList = ({options}) => {
     setCurrentList(response.data.filter(characterFilter).slice(0,5))
     setPages(Array((parseInt(response.data.filter(characterFilter).length / characterPerPage) + 1))
     .fill(1).map((x,y) => x + y ));
+    setCurrentPage(1)
     
     console.log('pages',pages)
   }
@@ -72,12 +76,12 @@ const CharacterList = ({options}) => {
 
 
   const handlePage = (page) => {
-    console.log(page);
     const sliceStart = (page-1) * 5;
     const sliceEnd = (page-1) * 5 + 5;
     console.log(sliceStart);
     console.log(sliceEnd);
     setCurrentList(characterList.filter(characterFilter).slice(sliceStart,sliceEnd))
+    setCurrentPage(page)
   }
  
   const characterFilter = (character) => {
@@ -126,11 +130,13 @@ const CharacterList = ({options}) => {
         ))}
       </Table>
       <div>
+        <ButtonGroup>
         pages : {pages.map((page) => (
           <React.Fragment key={page}>
-            <button onClick={() => handlePage(page)}>{page}</button>
+            <PageButton page={page} handlePage={handlePage} currentPage={currentPage}></PageButton>
           </React.Fragment>
         ))}
+        </ButtonGroup>
       </div>
     </div>
   )

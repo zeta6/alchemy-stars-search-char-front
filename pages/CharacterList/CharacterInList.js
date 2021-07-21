@@ -2,9 +2,19 @@ import React, {useEffect, useState} from 'react';
 import { Table, Accordion, Button} from 'react-bootstrap';
 import Link from "next/link";
 
-
 const CharacterInList = ({cha}) => {
-  const [open, setOpen] = useState(false);
+  const [ open, setOpen] = useState(false);
+  const [ openButton, setOpenButton ] = useState("▼")
+
+  const toggleButton = () => {
+    setOpen(!open)
+    if (openButton == "▼"){
+    setOpenButton("▲")
+    }else{
+      setOpenButton("▼")
+    }
+  }
+  
   const Collapse = ({open}) => {
     if(!open){
       return null
@@ -29,20 +39,20 @@ const CharacterInList = ({cha}) => {
     return (
         <tbody>
         <tr>
-        <td>
+        <td style={{width:'3%'}}>
         <Button
           variant="dark"
-          onClick={() => setOpen(!open)}
+          onClick={() => toggleButton()}
         >
-          ▽
+          {openButton}
         </Button>
         </td>
-        <td>{cha.name}</td>
-        <td>{cha.rarity}</td>
-        <td>{cha.main_attribute}</td>
-        <td>{cha.sub_attribute}</td>
-        <td>{cha.class}</td>
-        <td>
+        <td className="character-table-td-index">{cha.name}</td>
+        <td className="character-table-td-index">{cha.rarity}</td>
+        <td className="character-table-td-index">{cha.main_attribute}</td>
+        <td className="character-table-td-index">{cha.sub_attribute}</td>
+        <td className="character-table-td-index">{cha.class}</td>
+        <td >
           <Link href={'/CharacterList/[characterInfo]/'} as={`/CharacterList/${cha.id}/`}>
           detail
           </Link>
