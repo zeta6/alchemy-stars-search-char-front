@@ -1,8 +1,9 @@
-  import React, {useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import CharacterState from "../../components/CharacterState"
-import { ContactSupportOutlined } from "@material-ui/icons";
+import Layout from '../../components/Layout';
+import { Container } from "react-bootstrap";
 
 export default function CharacterInfo(){
   const router = useRouter();
@@ -38,7 +39,8 @@ export default function CharacterInfo(){
     )
   }else{
     return(
-      <div>
+      <Container className="bg-color-darknavy">
+      <Layout></Layout>
         {/* <button onClick={()=>b_test()}>click</button> */}
         이름 :{character.name} <br></br>
         레어도 :{character.rarity} <br></br>
@@ -67,7 +69,7 @@ export default function CharacterInfo(){
         장비 스킬3레벨:{character.equip_skill.lv3_text} <br></br>
         장비 스킬6레벨:{character.equip_skill.lv6_text} <br></br>
         장비 스킬10레벨:{character.equip_skill.lv10_text} <br></br>
-      </div>
+      </Container>
     )
 
   }
