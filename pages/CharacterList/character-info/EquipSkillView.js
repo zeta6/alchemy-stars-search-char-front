@@ -65,7 +65,7 @@ const ChainSkillView = ({skill}) => {
       </Col>
       <Col lg={4}>
         <ButtonToolbar>
-          <ButtonGroupg className="chain-skill-veiw-button">
+          <ButtonGroup className="chain-skill-veiw-button">
             <Button onClick={() => setEquipSkill("lv1")}>lv1</Button>
             <Button onClick={() => setEquipSkill("lv3")}>lv3</Button>
             <Button onClick={() => setEquipSkill("lv6")} variant="info">lv6</Button>
