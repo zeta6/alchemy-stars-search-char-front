@@ -3,14 +3,13 @@ import { Table, ButtonToolbar, Button, Row, Col, ButtonGroup} from 'react-bootst
 import Link from "next/link";
 import ChainSkillView from "./character-info/ChainSkillView";
 import EquipSkillView from "./character-info/EquipSkillView";
-import ActiveSkillView from "./character-Info/ActiveSkillView";
+import ActiveSkillView from "./character-info/ActiveSkillView";
 import Image from "next/image";
 
 
 const CharacterInList = ({cha}) => {
   const [ open, setOpen] = useState(false);
   const [ openButton, setOpenButton ] = useState("▼")
-
   const toggle = () => {
     setOpen(!open)
     if (openButton == "▼"){
@@ -19,7 +18,7 @@ const CharacterInList = ({cha}) => {
       setOpenButton("▼")
     }
   }
-  
+
   const Collapse = ({open}) => {
     if(!open){
       return null
@@ -39,13 +38,6 @@ const CharacterInList = ({cha}) => {
               <EquipSkillView skill={cha.equip_skill}>
               </EquipSkillView>
             </Col>
-
-            {/* {cha.chain_skill.name} <br></br>
-            {cha.chain_skill.first.tiles} <br></br>
-            {cha.chain_skill.first.damage} <br></br>
-            {cha.chain_skill.first.area} <br></br>
-            {cha.chain_skill.first.area_type} <br></br>
-            {cha.chain_skill.first.text} <br></br> */}
           </Row>
           </td>
         </tr>
@@ -54,7 +46,7 @@ const CharacterInList = ({cha}) => {
   } 
   if(!cha){
     return "loading"
-  }else{
+  }else if(cha){
     return (
         <tbody>
         <tr className="character-table-td-index" onClick={() => toggle()}>
