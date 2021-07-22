@@ -112,11 +112,11 @@ const CharacterList = ({options}) => {
       {/* <button onClick={() => a_test()}>test!</button> */}
       <Table striped bordered hover variant="dark">
         <thead>
-          <tr>
-            <th></th>
+          <tr className="character-table-td-index">
+            <th>-</th>
             <th>아이콘</th>
             <th>이름</th>
-            <th>성급</th>
+            <th>레어도</th>
             <th>주속성</th>
             <th>부속성</th>
             <th>클래스</th>

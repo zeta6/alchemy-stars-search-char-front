@@ -13,13 +13,13 @@ const ChainSkillView = ({skill}) => {
   if(chainSkill == "first"){
     return(
       <Row className="chain-skill-veiw-row">
-      <Col lg={12}>
+      <Col xs={12} lg={12}>
         체인 스킬: {skill.name}
       </Col>
       <Col lg={3}>
       <Image width="60" height="60" src={skill.icon} alt="skill.icon"></Image>
       </Col>
-      <Col lg={4}>
+      <Col xs={4} lg={4}>
         <ButtonToolbar>
           <ButtonGroup size="lg" className="chain-skill-veiw-button">
             <Button onClick={() => setChainSkill("first")} variant="info">{skill.first.tiles}</Button>

@@ -68,7 +68,7 @@ export default function CharacterInfo(){
          <Row>
           <Col>
             <a name="quickView"></a>
-            <div>이름: {character.name} / {character.name_alphabet}</div>
+            <div>이름: {character.name} / {character.name_alphabet} / CV: {character.voice}</div> 
             <div className="character-info-attr-class-div">
               레어도: ☆{character.rarity} / <span>세력: {character.faction}</span>
               <Image width="30" height="30" src={character.faction_icon} alt={character.faction}></Image> </div>
@@ -81,7 +81,7 @@ export default function CharacterInfo(){
         </Row>
         <Row className="skills-veiw-row">
           <Col lg={12}>
-            액티브스킬: {character.active_skill.name}
+            액티브스킬: {character.active_skill.name} / 쿨타임: {character.active_skill.cooltime}턴
           </Col>
           <Col lg={3}>
           <Image width="60" height="60" src={character.active_skill.icon} alt="active_skill.icon"></Image>
