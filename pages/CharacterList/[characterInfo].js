@@ -8,6 +8,7 @@ import Head from "next/head";
 import CharacterImage from  "./character-info/CharacterImage";
 import ChainSkillView from "./character-info/ChainSkillView";
 import EquipSkillView from "./character-info/EquipSkillView";
+import ActiveSkillView from "./character-info/ActiveSkillView";
 import Image from "next/image"
 
 export default function CharacterInfo(){
@@ -81,13 +82,7 @@ export default function CharacterInfo(){
         </Row>
         <Row className="skills-veiw-row">
           <Col lg={12}>
-            액티브스킬: {character.active_skill.name} / 쿨타임: {character.active_skill.cooltime}턴
-          </Col>
-          <Col lg={3}>
-          <Image width="60" height="60" src={character.active_skill.icon} alt="active_skill.icon"></Image>
-          </Col>
-          <Col>
-          {character.active_skill.text}
+            <ActiveSkillView skill={character.active_skill}></ActiveSkillView>
           </Col>
           <Col lg={12} className="chain-skill-view-top">
             <ChainSkillView skill={character.chain_skill} chainSkill={chainSkill} setChainSkill={setChainSkill}>

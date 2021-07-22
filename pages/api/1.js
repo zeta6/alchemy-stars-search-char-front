@@ -47,7 +47,7 @@ export default function handler(req, res) {
   active_skill: {
     name: "스파인 소울",
     cooltime : "2",
-    primptive : "X",
+    preemptive : "X",
     icon: "/SearchChar/CharacterImages/migard_active_icon.png",
     text: "주변 3서클 내 임의의 위치로 순간이동해 주변 1서클 내의 적에게 250%의 피해를 입히며, 범위 내에 적이 1명만 있을 경우, 피해가 2배 증가한다.",
     type: {
