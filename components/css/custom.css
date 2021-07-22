@@ -1,6 +1,11 @@
+/* 바디 */
+
 body {
   background-color: #111426;
 }
+
+
+/* 속성(기능)별 */
 
 .bg-color-darknavy{
   background-color: #111426;
@@ -12,6 +17,26 @@ body {
   ;
 }
 
+.bg-color-yellow{
+  background-color: rgb(235, 172, 0)
+  ;
+}
+
+.align-center{
+  float: none;
+  margin:0 auto;
+}
+
+
+/* 사용위치 */
+
+/* 네비바 */
+.nav-item-float-right{
+  float:right;
+  margin:0 auto;
+}
+/* searAurorian and CharacterList */
+
 .search-character-input-row {
   padding-top: 20px;
   width:50%;
@@ -21,7 +46,8 @@ body {
 }
 
 .character-table-td-index{
-  width: 8%;
+  width: 12%;
+  
 }
 
 .option-buttons-second-group{
@@ -45,16 +71,95 @@ body {
   margin:0 auto;
 }
 
-.align-center{
-  float: none;
-  margin:0 auto;
-}
-
-.nav-item-float-right{
-  float:right;
-  margin:0 auto;
-}
-
 .character-list-collapse{
   height: 200px;
+}
+
+/* [characterInfo] */
+
+.character-info-container{
+  padding-top: 20px;
+  background-color: #111426;
+}
+
+.character-info-first-row-index-col{
+  margin-left: 20px;
+  padding-bottom: 10px;
+  color:rgb(255, 255, 255)
+}
+
+.character-info-first-row-col{
+  color:rgb(255, 255, 255)
+}
+
+.character-info-detail-col{
+  background-color: #0f1640;
+  color: aliceblue;
+}
+
+.character-info-character-row{
+  min-height: 500px;
+}
+
+.character-info-character-image-wrapper{
+  position: relative;
+  width: 100%;
+} 
+
+.character-info-character-image-wrapper::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+} 
+
+.character-info-character-image{ 
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: off
+}
+
+/* .character-info-character-image{
+  position: relative;;
+  width:95vh;
+  height:95vh;
+} */
+
+.character-info-character-image-button{
+  float: none;
+  margin:0 auto;
+  width:50%;
+}
+
+.character-info-attr-class-div{
+  display: flex;
+  align-items: center;
+}
+
+.character-info-attr-class-span{
+  padding-right: 11px;
+
+}
+
+.character-info-attr-class-span-2{
+  padding-left: 11px;
+  padding-right: 11px;
+}
+
+.skills-veiw-row{
+  margin-top: 10px;
+}
+.chain-skill-veiw-row{
+  padding-top: 10px;
+}
+
+.chain-skill-veiw-button{
+  margin-top: 5px;
+  height:50px;
+}
+
+.chain-skill-view-top{
+  background-color: rgb(24, 24, 66);
 }
