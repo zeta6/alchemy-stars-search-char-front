@@ -5,6 +5,7 @@ import OptionButtons from './OptionButtons/OptionButtons';
 import CharacterList from './CharacterList/CharacterList';
 import { Container, Row, Col, InputGroup, FormControl} from 'react-bootstrap';
 import Layout from '../components/Layout';
+import Head from 'next/head';
 
 const SearchAurorian = () => {
   const [ options, setOptions] = useState(
@@ -28,6 +29,9 @@ const SearchAurorian = () => {
 
 return (
   <div>
+  <Head>
+  <title>백야극광 오로리안 검색기</title>
+  </Head>
   <Layout></Layout>
   <Container className="bg-color-darknavy">
     <Row className="search-character-input-row">

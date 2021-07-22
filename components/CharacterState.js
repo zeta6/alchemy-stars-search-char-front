@@ -2,13 +2,20 @@
 export const CharacterState = {
   id: "3333",
   name: "",
-  icon: "",
+  name_alphabet: "",
+  icon: "/none",
   rarity: "",
   main_attribute: "",
+  main_attribute_icon:"/none",
   sub_attribute: "",
+  sub_attribute_icon:"/none",
   class: "",
+  class_icon:"/none",
+  faction: "",
+  faction_icon: "/none",
   chain_skill: {
     name: "",
+    icon: "/none",
     first: {
       tiles : "",
       damage : "",
@@ -34,12 +41,13 @@ export const CharacterState = {
   active_skill: {
     name: "",
     text: "",
-    type: {},
+    icon: "/none",
   },
   equip_skill: {
     name: "",
     text: "",
     type: {},
+    icon: "/none",
   },
   breakthrough: {
     first:{},

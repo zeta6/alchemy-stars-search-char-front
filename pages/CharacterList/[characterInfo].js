@@ -3,13 +3,20 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import CharacterState from "../../components/CharacterState"
 import Layout from '../../components/Layout';
-import { Container } from "react-bootstrap";
+import { Container, Row, Col} from "react-bootstrap";
+import Head from "next/head";
+import CharacterImage from  "./character-info/CharacterImage";
+import ChainSkillView from "./character-info/ChainSkillView";
+import EquipSkillView from "./character-info/EquipSkillView";
+import Image from "next/image"
 
 export default function CharacterInfo(){
   const router = useRouter();
   const character_id = router.query.characterInfo;
-  const [loading , setLoading] = useState(true)
-  const [character, setCharacter] = useState(CharacterState)
+  const [ loading , setLoading ] = useState(true)
+  const [ character, setCharacter ] = useState(CharacterState)
+  const [ chainSkill, setChainSkill ] = useState("first")
+  const [ equipSkill, setEquipSkill ] = useState("lv1")
  
 
   useEffect(() => {
@@ -28,10 +35,9 @@ export default function CharacterInfo(){
 },[character_id]
   );
 
-
-  // const b_test = () => {
-  //   console.log(character);
-  // }
+  const b_test = () => {
+    console.log(character.image);
+  }
 
   if(loading){
     return(
@@ -39,37 +45,63 @@ export default function CharacterInfo(){
     )
   }else{
     return(
-      <Container className="bg-color-darknavy">
+      <div>
+      <Head>
+        <title>{character.name}</title>
+       </Head>
       <Layout></Layout>
-        {/* <button onClick={()=>b_test()}>click</button> */}
-        이름 :{character.name} <br></br>
-        레어도 :{character.rarity} <br></br>
-        주속성 :{character.main_attribute} <br></br>
-        보조속성 :{character.sub_attribute} <br></br>
-        체인스킬: {character.chain_skill.name} <br></br><br></br>
-        1체인 발동타일: {character.chain_skill.first.tiles} <br></br>
-        1체인 데미지: {character.chain_skill.first.damage} <br></br>
-        1체인 범위: {character.chain_skill.first.area} <br></br>
-        1체인 범위타입:{character.chain_skill.first.area_type} <br></br>
-        1체인 설명:{character.chain_skill.first.text} <br></br><br></br>
-        2체인 발동타일: {character.chain_skill.second.tiles} <br></br>
-        2체인 데미지: {character.chain_skill.second.damage} <br></br>
-        2체인 범위: {character.chain_skill.second.area} <br></br>
-        2체인 범위타입:{character.chain_skill.second.area_type} <br></br>
-        2체인 설명:{character.chain_skill.second.text} <br></br><br></br>
-        3체인 발동타일: {character.chain_skill.third.tiles} <br></br>
-        3체인 데미지: {character.chain_skill.third.damage} <br></br>
-        3체인 범위: {character.chain_skill.third.area} <br></br>
-        3체인 범위타입:{character.chain_skill.third.area_type} <br></br>
-        3체인 설명:{character.chain_skill.third.text} <br></br><br></br>
-        액티브 스킬 :{character.active_skill.name} <br></br>
-        액티브 스킬 효과:{character.active_skill.text} <br></br><br></br>
-        장비 스킬 : {character.equip_skill.name} <br></br>
-        장비 스킬1레벨:{character.equip_skill.lv1_text} <br></br>
-        장비 스킬3레벨:{character.equip_skill.lv3_text} <br></br>
-        장비 스킬6레벨:{character.equip_skill.lv6_text} <br></br>
-        장비 스킬10레벨:{character.equip_skill.lv10_text} <br></br>
+      <Container className="character-info-container">
+        <Row>
+          <Col className="character-info-first-row-index-col">
+            바로가기 : <a href="#quickView">퀵뷰</a> / <a href="#equipSkill">장비스킬</a> / <a href="#breakthrough">한계돌파</a> / <a href="#Ascension">각성</a> / <a href="#preferredGifts">선호선물</a> / <a href="#CharacterFile">캐릭터파일</a>
+          </Col>
+        </Row>
+        <Row>
+      
+         {/* <Col sg ={3}xl={5} className="character-info-index-col">
+          index
+         </Col> */}
+         <Col xl={8} className="character-info-detail-col">
+           <CharacterImage image={character.image}></CharacterImage>
+         </Col>
+         <Col className="character-info-first-row-col">
+         <Row>
+          <Col>
+            <a name="quickView"></a>
+            <div>이름: {character.name} / {character.name_alphabet}</div>
+            <div className="character-info-attr-class-div">
+              레어도: ☆{character.rarity} / <span>세력: {character.faction}</span>
+              <Image width="30" height="30" src={character.faction_icon} alt={character.faction}></Image> </div>
+            <div className="character-info-attr-class-div">
+              <span className="character-info-attr-class-span">주속성:</span><Image width="30" height="30" src={character.main_attribute_icon} alt={character.main_attribute}></Image>
+              <span className="character-info-attr-class-span-2">보조속성: </span><Image width="30" height="30" src={character.sub_attribute_icon} alt={character.sub_attribute}></Image><br></br>
+              <span className="character-info-attr-class-span-2">클래스: </span><Image width="30" height="30" src={character.class_icon} alt={character.class}></Image><br></br>
+            </div>
+          </Col>
+        </Row>
+        <Row className="skills-veiw-row">
+          <Col lg={12}>
+            액티브스킬: {character.active_skill.name}
+          </Col>
+          <Col lg={3}>
+          <Image width="60" height="60" src={character.active_skill.icon} alt="active_skill.icon"></Image>
+          </Col>
+          <Col>
+          {character.active_skill.text}
+          </Col>
+          <Col lg={12} className="chain-skill-view-top">
+            <ChainSkillView skill={character.chain_skill} chainSkill={chainSkill} setChainSkill={setChainSkill}>
+            </ChainSkillView>
+          </Col>
+          <Col lg={12}>
+            <EquipSkillView skill={character.equip_skill} equipSkill={equipSkill} setEquipSkill={setEquipSkill}>
+            </EquipSkillView>
+          </Col>
+        </Row>
+        </Col>
+        </Row>
       </Container>
+    </div>
     )
 
   }

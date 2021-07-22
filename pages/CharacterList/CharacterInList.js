@@ -1,6 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import { Table, ButtonToolbar, Button, Row, Col, ButtonGroup} from 'react-bootstrap';
 import Link from "next/link";
+import ChainSkillView from "./character-info/ChainSkillView";
+import EquipSkillView from "./character-info/EquipSkillView";
+import Image from "next/image";
+
 
 const CharacterInList = ({cha}) => {
   const [ chainSkill, setChainSkill ] = useState("first")
@@ -15,59 +19,8 @@ const CharacterInList = ({cha}) => {
       setOpenButton("▼")
     }
   }
+   
  
-  const ChainSkillView = ({chainSkill, skill, setChainSkill}) => {
-    if(chainSkill == "first"){
-      return(
-        <Col>
-          <ButtonToolbar>
-            <ButtonGroup>
-              <Button onClick={() => setChainSkill("first")} variant="info">{skill.first.tiles}</Button>
-              <Button onClick={() => setChainSkill("second")}>{skill.second.tiles}</Button>
-              <Button onClick={() => setChainSkill("third")}>{skill.third.tiles}</Button>
-            </ButtonGroup>
-        </ButtonToolbar>
-        <div>
-          {skill.first.text}
-        </div>
-        </Col>
-      )
-    }else if(chainSkill == "second"){
-      return(
-        <Col>
-          <ButtonToolbar>
-            <ButtonGroup>
-              <Button onClick={() => setChainSkill("first")}>{skill.first.tiles}</Button>
-              <Button onClick={() => setChainSkill("second")}  variant="info">{skill.second.tiles}</Button>
-              <Button onClick={() => setChainSkill("third")}>{skill.third.tiles}</Button>
-            </ButtonGroup>
-        </ButtonToolbar>
-        <div>
-          {skill.second.text}
-        </div>
-        </Col>
-      )
-    }else if(chainSkill == "third"){
-      return(
-        <Col>
-          <ButtonToolbar>
-            <ButtonGroup>
-              <Button onClick={() => setChainSkill("first")}>{skill.first.tiles}</Button>
-              <Button onClick={() => setChainSkill("second")}>{skill.second.tiles}</Button>
-              <Button onClick={() => setChainSkill("third")} variant="info">{skill.third.tiles}</Button>
-            </ButtonGroup>
-        </ButtonToolbar>
-        <div>
-          {skill.third.text}
-        </div>
-        </Col>
-      )
-    }else{
-      return null
-    }
-  }
-  
-  
   const Collapse = ({open}) => {
     if(!open){
       return null
@@ -76,14 +29,16 @@ const CharacterInList = ({cha}) => {
         <tr>
           <td colSpan="9">
           <Row className="character-list-collapse">
-            <ChainSkillView skill={cha.chain_skill} chainSkill={chainSkill} setChainSkill={setChainSkill}>
-            </ChainSkillView>
+            <Col lg={4}>
+              <ChainSkillView skill={cha.chain_skill}>
+              </ChainSkillView>
+            </Col>
             <Col>액티브스킬 {cha.active_skill.name} <br></br>
             {cha.active_skill.text}
             </Col>
-            <Col>장비스킬 {cha.equip_skill.name} <br></br>
-            1렙:{cha.equip_skill.lv1_text} <br></br>
-            10렙:{cha.equip_skill.lv10_text}
+            <Col lg={4}>
+              <EquipSkillView skill={cha.equip_skill}>
+              </EquipSkillView>
             </Col>
 
             {/* {cha.chain_skill.name} <br></br>
@@ -111,13 +66,13 @@ const CharacterInList = ({cha}) => {
           {openButton}
         </Button>
         </td>
-        <td className="character-table-td-index">{cha.icon}</td>
+        <td className="character-table-td-index"><Image width="90" height="90" alt="cha.icon" src={cha.icon}></Image></td>
         <td className="character-table-td-index">{cha.name}</td>
-        <td className="character-table-td-index">{cha.rarity}</td>
-        <td className="character-table-td-index">{cha.main_attribute}</td>
-        <td className="character-table-td-index">{cha.sub_attribute}</td>
-        <td className="character-table-td-index">{cha.class}</td>
-        <td className="character-table-td-index">{cha.faction}</td>
+        <td className="character-table-td-index">☆{cha.rarity}</td>
+        <td className="character-table-td-index"><Image width="40" height="40" alt="mattr_icon" src={cha.main_attribute_icon}></Image></td>
+        <td className="character-table-td-index"><Image width="40" height="40" alt="sub_icon" src={cha.sub_attribute_icon}></Image></td>
+        <td className="character-table-td-index"><Image width="40" height="40" alt="class_icon" src={cha.class_icon}></Image></td>
+        <td className="character-table-td-index"><Image width="40" height="40" alt="faction_icon" src={cha.faction_icon}></Image></td>
         <td >
           <Link href={'/CharacterList/[characterInfo]/'} as={`/CharacterList/${cha.id}/`}>
             <Button>view character infomation</Button>
