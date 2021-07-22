@@ -7,7 +7,6 @@ import Image from "next/image";
 
 
 const CharacterInList = ({cha}) => {
-  const [ chainSkill, setChainSkill ] = useState("first")
   const [ open, setOpen] = useState(false);
   const [ openButton, setOpenButton ] = useState("▼")
 
