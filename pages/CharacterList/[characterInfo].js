@@ -3,11 +3,12 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import CharacterState from "../../components/CharacterState"
 import Layout from '../../components/Layout';
-import { Container, Row, Col} from "react-bootstrap";
+import { Container, Row, Col, Button, ButtonGroup, ButtonToolbar} from "react-bootstrap";
 import Head from "next/head";
 import CharacterImage from  "./character-info/CharacterImage";
 import ChainSkillView from "./character-info/ChainSkillView";
 import EquipSkillView from "./character-info/EquipSkillView";
+import InfoActiveSkillView from "./character-info/InfoActiveSkillView";
 import ActiveSkillView from "./character-info/ActiveSkillView";
 import Image from "next/image"
 
@@ -18,15 +19,17 @@ export default function CharacterInfo(){
   const [ character, setCharacter ] = useState(CharacterState)
   const [ chainSkill, setChainSkill ] = useState("first")
   const [ equipSkill, setEquipSkill ] = useState("lv1")
+  const [ ascension, setAscension ] = useState("asc_0");
+  const [ breakthrough, setBreakthrough ] = useState("br_0");
  
 
   useEffect(() => {
     async function fetchData(){
     if(character_id){
       try {
-        setLoading(false);
         const response = await axios.get(`/api/${character_id}/`);
         setCharacter(response.data);
+        setLoading(false);
       } catch (error){
         console.error(error);
       }
@@ -82,15 +85,36 @@ export default function CharacterInfo(){
         </Row>
         <Row className="skills-veiw-row">
           <Col lg={12}>
-            <ActiveSkillView skill={character.active_skill}></ActiveSkillView>
+            <InfoActiveSkillView skill={character.active_skill} ascension={ascension} breakthrough={breakthrough}></InfoActiveSkillView>
           </Col>
           <Col lg={12} className="chain-skill-view-top">
             <ChainSkillView skill={character.chain_skill} chainSkill={chainSkill} setChainSkill={setChainSkill}>
             </ChainSkillView>
           </Col>
           <Col lg={12}>
-            <EquipSkillView skill={character.equip_skill} equipSkill={equipSkill} setEquipSkill={setEquipSkill}>
+            <EquipSkillView skill={character.equip_skill} equipSkill={equipSkill} setEquipSkill={setEquipSkill} ascension={ascension}>
             </EquipSkillView>
+          </Col>
+          <Col lg={12}>
+            각성 : 
+          <ButtonGroup>
+            <Button onClick={() => setAscension("asc_0")}>0</Button>
+            <Button onClick={() => setAscension("asc_1")}>1</Button>
+            <Button onClick={() => setAscension("asc_2")}>2</Button>
+            <Button onClick={() => setAscension("asc_3")}>3</Button>
+          </ButtonGroup>
+          </Col>
+          <Col lg={12}>
+            돌파:
+            <ButtonGroup>
+              <Button onClick={() => setBreakthrough("br_0")}>0</Button>
+              <Button onClick={() => setBreakthrough("br_1")}>1</Button>
+              <Button onClick={() => setBreakthrough("br_2")}>2</Button>
+              <Button onClick={() => setBreakthrough("br_3")}>3</Button>
+              <Button onClick={() => setBreakthrough("br_4")}>4</Button>
+              <Button onClick={() => setBreakthrough("br_5")}>5</Button>
+              <Button onClick={() => setBreakthrough("br_6")}>6</Button>
+            </ButtonGroup>
           </Col>
         </Row>
         </Col>
