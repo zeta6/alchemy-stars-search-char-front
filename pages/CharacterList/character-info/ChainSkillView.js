@@ -7,6 +7,9 @@ import Image from "next/image";
 const ChainSkillView = ({skill}) => {
   const [ chainSkill, setChainSkill ] = useState("first");
   console.log(skill);
+  if(!skill){
+    return null;
+  }
   if(chainSkill == "first"){
     return(
       <Row className="chain-skill-veiw-row">

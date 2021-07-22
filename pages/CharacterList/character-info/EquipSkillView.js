@@ -4,8 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 
 // ### skill = json데이터 chainSkill = react state
-const ChainSkillView = ({skill}) => {
+const EquipSkillView = ({skill}) => {
   const [ equipSkill, setEquipSkill ] = useState("lv1");
+  if(!skill){
+    return null;
+  }
   if(equipSkill == "lv1"){
     return(
       <Row className="chain-skill-veiw-row">
@@ -107,4 +110,4 @@ const ChainSkillView = ({skill}) => {
   }
 }
 
-export default ChainSkillView;
+export default EquipSkillView
