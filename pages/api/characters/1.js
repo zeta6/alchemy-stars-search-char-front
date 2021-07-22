@@ -52,9 +52,7 @@ export default function handler(req, res) {
   },
   faction: "",
   porsonality: "",    
-  voice: {
-    japan : ""
-  },
+  voice: "우에사카 스미레",
   birthday: "",
   sex: "",
   height:"",

@@ -3,6 +3,7 @@ import { Table, ButtonToolbar, Button, Row, Col, ButtonGroup} from 'react-bootst
 import Link from "next/link";
 import ChainSkillView from "./character-info/ChainSkillView";
 import EquipSkillView from "./character-info/EquipSkillView";
+import ActiveSkillView from "./character-Info/ActiveSkillView";
 import Image from "next/image";
 
 
@@ -18,8 +19,7 @@ const CharacterInList = ({cha}) => {
       setOpenButton("▼")
     }
   }
-   
- 
+  
   const Collapse = ({open}) => {
     if(!open){
       return null
@@ -27,15 +27,15 @@ const CharacterInList = ({cha}) => {
       return(
         <tr>
           <td colSpan="9">
-          <Row className="character-list-collapse">
-            <Col lg={4}>
+          <Row>
+            <Col xs={4} lg={4}>
               <ChainSkillView skill={cha.chain_skill}>
               </ChainSkillView>
             </Col>
-            <Col>액티브스킬 {cha.active_skill.name} <br></br>
-            {cha.active_skill.text}
+            <Col xs={4} lg={4}>
+              <ActiveSkillView skill={cha.active_skill}></ActiveSkillView>
             </Col>
-            <Col lg={4}>
+            <Col xs={4} lg={4}>
               <EquipSkillView skill={cha.equip_skill}>
               </EquipSkillView>
             </Col>
@@ -57,24 +57,24 @@ const CharacterInList = ({cha}) => {
   }else{
     return (
         <tbody>
-        <tr onClick={() => toggle()}>
-        <td style={{width:'3%'}}>
-        <Button
+        <tr className="character-table-td-index" onClick={() => toggle()}>
+        <td className="character-list-open-td">
+        <Button size="sm"
           variant="dark"
         >
           {openButton}
         </Button>
         </td>
-        <td className="character-table-td-index"><Image width="90" height="90" alt="cha.icon" src={cha.icon}></Image></td>
-        <td className="character-table-td-index">{cha.name}</td>
-        <td className="character-table-td-index">☆{cha.rarity}</td>
-        <td className="character-table-td-index"><Image width="40" height="40" alt="mattr_icon" src={cha.main_attribute_icon}></Image></td>
-        <td className="character-table-td-index"><Image width="40" height="40" alt="sub_icon" src={cha.sub_attribute_icon}></Image></td>
-        <td className="character-table-td-index"><Image width="40" height="40" alt="class_icon" src={cha.class_icon}></Image></td>
-        <td className="character-table-td-index"><Image width="40" height="40" alt="faction_icon" src={cha.faction_icon}></Image></td>
-        <td >
+        <td className="character-table-td-index-icon"><Image width="100" height="100" alt="cha.icon" src={cha.icon}></Image></td>
+        <td>{cha.name}</td>
+        <td>☆{cha.rarity}</td>
+        <td><Image width="40" height="40" alt="mattr_icon" src={cha.main_attribute_icon}></Image></td>
+        <td><Image width="40" height="40" alt="sub_icon" src={cha.sub_attribute_icon}></Image></td>
+        <td><Image width="40" height="40" alt="class_icon" src={cha.class_icon}></Image></td>
+        <td><Image width="40" height="40" alt="faction_icon" src={cha.faction_icon}></Image></td>
+        <td>
           <Link href={'/CharacterList/[characterInfo]/'} as={`/CharacterList/${cha.id}/`}>
-            <Button>view character infomation</Button>
+            <Button>View Aurorian Page</Button>
           </Link>
         </td>
         </tr>

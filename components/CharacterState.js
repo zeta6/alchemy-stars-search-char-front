@@ -59,9 +59,7 @@ export const CharacterState = {
   },
   faction: "",
   porsonality: "",    
-  voice: {
-    japan : ""
-  },
+  voice: "",
   birthday: "",
   sex: "",
   height:"",
