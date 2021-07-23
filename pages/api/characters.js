@@ -20,7 +20,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -164,7 +164,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드",
           nickname: "성큰 스파인",
           gender: "여",
@@ -197,7 +197,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -341,7 +341,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드1",
           nickname: "성큰 스파인",
           gender: "여",
@@ -373,7 +373,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -517,7 +517,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드2",
           nickname: "성큰 스파인",
           gender: "여",
@@ -549,7 +549,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -693,7 +693,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드3",
           nickname: "성큰 스파인",
           gender: "여",
@@ -725,7 +725,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -869,7 +869,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드4",
           nickname: "성큰 스파인",
           gender: "여",
@@ -901,7 +901,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -1045,7 +1045,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드5",
           nickname: "성큰 스파인",
           gender: "여",
@@ -1077,7 +1077,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -1221,7 +1221,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드6",
           nickname: "성큰 스파인",
           gender: "여",
@@ -1253,7 +1253,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -1397,7 +1397,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드7",
           nickname: "성큰 스파인",
           gender: "여",
@@ -1429,7 +1429,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -1573,7 +1573,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드8",
           nickname: "성큰 스파인",
           gender: "여",
@@ -1605,7 +1605,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -1749,7 +1749,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드9",
           nickname: "성큰 스파인",
           gender: "여",
@@ -1781,7 +1781,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -1925,7 +1925,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드10",
           nickname: "성큰 스파인",
           gender: "여",
@@ -1957,7 +1957,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -2101,7 +2101,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드11",
           nickname: "성큰 스파인",
           gender: "여",
@@ -2133,7 +2133,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -2277,7 +2277,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드12",
           nickname: "성큰 스파인",
           gender: "여",
@@ -2309,7 +2309,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -2453,7 +2453,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드13",
           nickname: "성큰 스파인",
           gender: "여",
@@ -2485,7 +2485,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -2629,7 +2629,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드14",
           nickname: "성큰 스파인",
           gender: "여",
@@ -2661,7 +2661,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -2805,7 +2805,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드15",
           nickname: "성큰 스파인",
           gender: "여",
@@ -2837,7 +2837,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -2981,7 +2981,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드16",
           nickname: "성큰 스파인",
           gender: "여",
@@ -3013,7 +3013,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -3157,7 +3157,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드17",
           nickname: "성큰 스파인",
           gender: "여",
@@ -3189,7 +3189,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -3333,7 +3333,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드18",
           nickname: "성큰 스파인",
           gender: "여",
@@ -3365,7 +3365,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -3509,7 +3509,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드19",
           nickname: "성큰 스파인",
           gender: "여",
@@ -3541,7 +3541,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -3685,7 +3685,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드20",
           nickname: "성큰 스파인",
           gender: "여",
@@ -3717,7 +3717,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -3861,7 +3861,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드21",
           nickname: "성큰 스파인",
           gender: "여",
@@ -3893,7 +3893,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -4037,7 +4037,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드22",
           nickname: "성큰 스파인",
           gender: "여",
@@ -4069,7 +4069,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -4213,7 +4213,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드23",
           nickname: "성큰 스파인",
           gender: "여",
@@ -4245,7 +4245,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -4389,7 +4389,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드24",
           nickname: "성큰 스파인",
           gender: "여",
@@ -4421,7 +4421,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -4565,7 +4565,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드25",
           nickname: "성큰 스파인",
           gender: "여",
@@ -4597,7 +4597,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -4741,7 +4741,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드26",
           nickname: "성큰 스파인",
           gender: "여",
@@ -4773,7 +4773,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -4917,7 +4917,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드27",
           nickname: "성큰 스파인",
           gender: "여",
@@ -4949,7 +4949,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -5093,7 +5093,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드28",
           nickname: "성큰 스파인",
           gender: "여",
@@ -5125,7 +5125,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -5269,7 +5269,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드29",
           nickname: "성큰 스파인",
           gender: "여",
@@ -5301,7 +5301,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "burster",
           icon: "/SearchChar/ButtonIcons/burster-sm.jpg",
         },
@@ -5445,7 +5445,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드20",
           nickname: "성큰 스파인",
           gender: "여",
@@ -5477,7 +5477,7 @@ export default function handler(req, res) {
           name: "fire",
           icon: "/SearchChar/ButtonIcons/fire-sm.png",
         },
-        class: {
+        char_class: {
           name: "sniper",
           icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
         },
@@ -5621,7 +5621,7 @@ export default function handler(req, res) {
           big_gift: "Crystal Spine +50",
           small_gift: "Guide to Applied Science +5"
         },
-        file:{
+        char_file:{
           name: "미자드30",
           nickname: "성큰 스파인",
           gender: "여",

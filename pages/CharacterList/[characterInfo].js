@@ -87,7 +87,7 @@ export default function CharacterInfo(){
                 <div className="character-info-attr-class-div">
                   <span className="character-info-attr-class-span">주속성:</span><Image width="30" height="30" src={character.main_attribute.icon} alt={character.main_attribute}></Image>
                   <span className="character-info-attr-class-span-2">보조속성: </span><Image width="30" height="30" src={character.sub_attribute.icon} alt={character.sub_attribute}></Image><br></br>
-                  <span className="character-info-attr-class-span-2">클래스: </span><Image width="30" height="30" src={character.class.icon} alt={character.class}></Image><br></br>
+                  <span className="character-info-attr-class-span-2">클래스: </span><Image width="30" height="30" src={character.char_class.icon} alt={character.char_class}></Image><br></br>
                 </div>
                 <div>공격력: {character.state.atk} / 방어력: {character.state.def} / 체력: {character.state.hp}</div>
               </Col>
@@ -225,39 +225,39 @@ export default function CharacterInfo(){
             <tbody>
               <tr>
                 <td className="character-info-file-table-name">이름</td>
-                <td className="character-info-preferred-talbe-text">{character.file.name}</td>
+                <td className="character-info-preferred-talbe-text">{character.char_file.name}</td>
               </tr> 
               <tr>
                 <td className="character-info-file-table-name">별명</td>
-                <td className="character-info-preferred-talbe-text">{character.file.nickname}</td>
+                <td className="character-info-preferred-talbe-text">{character.char_file.nickname}</td>
               </tr> 
               <tr>
                 <td className="character-info-file-table-name">성별</td>
-                <td className="character-info-preferred-talbe-text">{character.file.gender}</td>
+                <td className="character-info-preferred-talbe-text">{character.char_file.gender}</td>
               </tr>
               <tr>
                 <td className="character-info-file-table-name">키</td>
-                <td className="character-info-preferred-talbe-text">{character.file.height}</td>
+                <td className="character-info-preferred-talbe-text">{character.char_file.height}</td>
               </tr>
               <tr>
                 <td className="character-info-file-table-name">생일</td>
-                <td className="character-info-preferred-talbe-text">{character.file.birthday}</td>
+                <td className="character-info-preferred-talbe-text">{character.char_file.birthday}</td>
               </tr> 
               <tr>
                 <td className="character-info-file-table-name">출생지</td>
-                <td className="character-info-preferred-talbe-text">{character.file.birthplace}</td>
+                <td className="character-info-preferred-talbe-text">{character.char_file.birthplace}</td>
               </tr> 
               <tr>
                 <td className="character-info-file-table-name">속성</td>
-                <td className="character-info-preferred-talbe-text">{character.file.element}</td>
+                <td className="character-info-preferred-talbe-text">{character.char_file.element}</td>
               </tr>
               <tr>
                 <td className="character-info-file-table-name">소속 조직</td>
-                <td className="character-info-preferred-talbe-text">{character.file.affilition}</td>
+                <td className="character-info-preferred-talbe-text">{character.char_file.affilition}</td>
               </tr>
               <tr>
                 <td className="character-info-file-table-name">전투 방식</td>
-                <td className="character-info-preferred-talbe-text">{character.file.fighting_style}</td>
+                <td className="character-info-preferred-talbe-text">{character.char_file.fighting_style}</td>
               </tr>
             </tbody>
           </Table>

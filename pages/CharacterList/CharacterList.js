@@ -22,7 +22,7 @@ const CharacterList = ({options}) => {
     rarity: "1",
     main_attribute: "loading",
     sub_attribute: "loading",
-    class: "loading",
+    char_class: "loading",
   },]);  
 	const [loading, setLoading] = useState(true);
   const [currentList, setCurrentList] = useState([{
@@ -31,25 +31,11 @@ const CharacterList = ({options}) => {
     rarity: "1",
     main_attribute: "loading",
     sub_attribute: "loading",
-    class: "loading",
+    char_class: "loading",
   }]);
   const [pages, setPages] = useState(1);
   const [sort, setSort] = useState(null);
   const characterPerPage = 10;
-
-  const characterFilter = (character) => {
-    if(character.name.indexOf(options.name) !== -1 || options.name.length == 0){
-      if(options.rarity.includes(character.rarity) || options.rarity.length == 0){
-        if(options.main_attribute.includes(character.main_attribute) || options.main_attribute.length == 0){
-          if(options.sub_attribute.includes(character.sub_attribute) || options.sub_attribute.length == 0){
-            if(options.class.includes(character.class) || options.class.length == 0){
-              return character;
-            }
-          }
-        }
-      }
-    }
-  }
 
   useEffect( () => {
     const setData = (data) => {
@@ -71,7 +57,7 @@ const CharacterList = ({options}) => {
         if(options.rarity.includes(character.rarity) || options.rarity.length == 0){
           if(options.main_attribute.includes(character.main_attribute.name) || options.main_attribute.length == 0){
             if(options.sub_attribute.includes(character.sub_attribute.name) || options.sub_attribute.length == 0){
-              if(options.class.includes(character.class.name) || options.class.length == 0){
+              if(options.class.includes(character.char_class.name) || options.class.length == 0){
                 return character;
               }
             }
@@ -239,14 +225,14 @@ const CharacterList = ({options}) => {
 
   const Class = ({sort, setSort}) => {
     const sortByClass = () => {
-      setCharacterList(characterList.sort(getSortOrderProp("class", "name")));
-      setCurrentList((characterList.sort(getSortOrderProp("class", "name"))).slice(0,10));
+      setCharacterList(characterList.sort(getSortOrderProp("char_class", "name")));
+      setCurrentList((characterList.sort(getSortOrderProp("char_class", "name"))).slice(0,10));
       setCurrentPage(1)
       setSort("sort_by_class")
     }
     const sortByClassReverse = () => {
-      setCharacterList(characterList.sort(getSortOrderPropReverse("class", "name")));
-      setCurrentList((characterList.sort(getSortOrderPropReverse("class", "name"))).slice(0,10));
+      setCharacterList(characterList.sort(getSortOrderPropReverse("char_class", "name")));
+      setCurrentList((characterList.sort(getSortOrderPropReverse("char_class", "name"))).slice(0,10));
       setCurrentPage(1)
       setSort("sort_by_class_reverse")
     }
