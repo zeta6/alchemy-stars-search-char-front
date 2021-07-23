@@ -167,8 +167,24 @@ body {
   padding-right: 11px;
 }
 
+.character-info-quick-view-ascension-col{
+  padding-top : 12px;   
+}
+
+.character-info-quick-view-ascension-col-button{
+  padding-left : 12px;
+}
+
+.character-info-quick-view-breakthrough-col{
+  padding-top : 15px;   
+}
+
+.character-info-quick-view-breakthrough-col-button{
+  padding-left : 12px;   
+}
+
 .skills-veiw-row{
-  margin-top: 10px;
+  margin-top: 2px;
 }
 
 .active-skills-cooltime-preemptive-div{
@@ -206,4 +222,52 @@ body {
 
 .chain-skill-view-top{
   background-color: rgb(10, 8, 59)
+}
+
+.character-info-equip-row{
+  padding-top: 25px;
+}
+
+.character-info-equip-span{
+  color: antiquewhite;
+  font-size: 0.6cm;
+}
+
+.character-info-equip-name-span{
+  color: antiquewhite;
+  font-size: 1.0cm;
+}
+
+.character-info-equip-text-span{
+  color: antiquewhite;
+  font-size: 0.4cm;
+}
+
+.character-info-equip-talbe-lv{
+  width:100%;
+  min-width: 200px;
+}
+
+.character-info-breakthrough-row{
+  padding-top: 25px;
+}
+
+.character-info-breakthrough-table{
+  text-align: left;
+}
+
+.character-info-breakthrough-table-count{
+  min-width: 50px;
+  text-align:center;
+}
+
+.character-info-berakthrough-talbe-text{
+  text-indent: 15px;
+  width:100%;
+  min-width: 200px;
+}
+
+.character-info-preferred-gift-card{
+  background-color: #0f1640;
+  color:antiquewhite;
 }
