@@ -15,13 +15,38 @@ import Image from "next/image"
 export default function CharacterInfo(){
   const router = useRouter();
   const character_id = router.query.characterInfo;
+  
   const [ loading , setLoading ] = useState(true)
   const [ character, setCharacter ] = useState(CharacterState)
   const [ chainSkill, setChainSkill ] = useState("first")
   const [ equipSkill, setEquipSkill ] = useState("lv1")
   const [ ascension, setAscension ] = useState("asc_0");
   const [ breakthrough, setBreakthrough ] = useState("br_0");
- 
+
+  const AscensionButton = ({number, this_ascension, ascension, setAscension}) => {
+    if(this_ascension == ascension){
+      return(
+        <Button variant="info" onClick={() => setAscension(this_ascension)}>{number}</Button>
+      )
+    }else{
+      return(
+        <Button onClick={() => setAscension(this_ascension)}>{number}</Button>
+      )
+    }
+  }
+
+  const BreakthroughButton = ({number, this_brth, breakthrough, setBreakthrough}) => {
+    if(this_brth == breakthrough){
+      return(
+        <Button variant="info" onClick={() => setBreakthrough(this_brth)}>{number}</Button>
+      )
+    }else{
+      return(
+        <Button onClick={() => setBreakthrough(this_brth)}>{number}</Button>
+      )
+    }
+  }
+
 
   useEffect(() => {
     async function fetchData(){
@@ -51,7 +76,7 @@ export default function CharacterInfo(){
     return(
       <div>
       <Head>
-        <title>{character.name}</title>
+        <title>{character.name} - 백야극광 오로리안 검색기 </title>
        </Head>
       <Layout></Layout>
       <Container className="character-info-container">
@@ -65,7 +90,7 @@ export default function CharacterInfo(){
          {/* <Col sg ={3}xl={5} className="character-info-index-col">
           index
          </Col> */}
-         <Col xl={8} className="character-info-detail-col">
+         <Col lg={8} xl={8} className="character-info-detail-col">
            <CharacterImage image={character.image}></CharacterImage>
          </Col>
          <Col className="character-info-first-row-col">
@@ -97,23 +122,24 @@ export default function CharacterInfo(){
           </Col>
           <Col lg={12}>
             각성 : 
+          
           <ButtonGroup>
-            <Button onClick={() => setAscension("asc_0")}>0</Button>
-            <Button onClick={() => setAscension("asc_1")}>1</Button>
-            <Button onClick={() => setAscension("asc_2")}>2</Button>
-            <Button onClick={() => setAscension("asc_3")}>3</Button>
+            <AscensionButton number={"0"} this_ascension={"asc_0"} ascension={ascension} setAscension={setAscension}></AscensionButton>
+            <AscensionButton number={"1"} this_ascension={"asc_1"} ascension={ascension} setAscension={setAscension}></AscensionButton>
+            <AscensionButton number={"2"} this_ascension={"asc_2"} ascension={ascension} setAscension={setAscension}></AscensionButton>
+            <AscensionButton number={"3"} this_ascension={"asc_3"} ascension={ascension} setAscension={setAscension}></AscensionButton>
           </ButtonGroup>
           </Col>
           <Col lg={12}>
             돌파:
             <ButtonGroup>
-              <Button onClick={() => setBreakthrough("br_0")}>0</Button>
-              <Button onClick={() => setBreakthrough("br_1")}>1</Button>
-              <Button onClick={() => setBreakthrough("br_2")}>2</Button>
-              <Button onClick={() => setBreakthrough("br_3")}>3</Button>
-              <Button onClick={() => setBreakthrough("br_4")}>4</Button>
-              <Button onClick={() => setBreakthrough("br_5")}>5</Button>
-              <Button onClick={() => setBreakthrough("br_6")}>6</Button>
+              <BreakthroughButton number={"0"} this_brth={"br_0"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
+              <BreakthroughButton number={"1"} this_brth={"br_1"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
+              <BreakthroughButton number={"2"} this_brth={"br_2"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
+              <BreakthroughButton number={"3"} this_brth={"br_3"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
+              <BreakthroughButton number={"4"} this_brth={"br_4"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
+              <BreakthroughButton number={"5"} this_brth={"br_5"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
+              <BreakthroughButton number={"6"} this_brth={"br_6"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
             </ButtonGroup>
           </Col>
         </Row>

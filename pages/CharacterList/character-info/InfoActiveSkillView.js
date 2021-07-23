@@ -35,13 +35,15 @@ const InfoActiveSkillView = ({skill, ascension, breakthrough}) => {
       }
     }
 
-    // console.log('assss', _ascension);
-    // console.log('skill', _skill);
-
-    return(
-      <ActiveSkillView skill={_skill}></ActiveSkillView>
-    )
-
+    if(_skill == null){
+      return(
+        <ActiveSkillView skill={skill}></ActiveSkillView>
+      )
+    }else{
+      return(
+        <ActiveSkillView skill={_skill}></ActiveSkillView>
+      )
+    }
   } 
 }
 export default InfoActiveSkillView;

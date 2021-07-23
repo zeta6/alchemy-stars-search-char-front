@@ -18,7 +18,7 @@ const EquipSkillView = ({skill}) => {
       <Col lg={3}>
       <Image width="60" height="60" src={skill.icon} alt="skill.icon"></Image>
       </Col>
-      <Col lg={4}>
+      <Col xs={3} sm={3} lg={4}>
         <ButtonToolbar>
           <ButtonGroup className="chain-skill-veiw-button">
             <Button onClick={() => setEquipSkill("lv1")} variant="info">lv1</Button>
