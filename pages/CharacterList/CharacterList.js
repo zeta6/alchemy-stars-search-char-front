@@ -25,7 +25,6 @@ const CharacterList = ({options}) => {
     class: "loading",
   },]);  
 	const [loading, setLoading] = useState(true);
-	// const [currentPage, setCurrentPage] = useState(1); 
   const [currentList, setCurrentList] = useState([{
     id: "9998",
     name: "loading",
@@ -36,7 +35,6 @@ const CharacterList = ({options}) => {
   }]);
 
   const [pages, setPages] = useState(1);
-  // const [pageButtonVariant, setPageButtonVariant ] = useState("secondary")
   const characterPerPage = 5;
 
   const characterFilter = (character) => {
@@ -105,12 +103,6 @@ const CharacterList = ({options}) => {
     setCurrentPage(page)
   }
  
-
-  // const a_test = () => {
-  //   data = axios.get("api/characters")
-  //   .then(res => { return(res.data)})
-  //   console.log(data);
-  // }
   if (loading) {
     return "loading"
   }
@@ -118,7 +110,6 @@ const CharacterList = ({options}) => {
   return(
     <div>
     <Row className="character-list">
-      {/* <button onClick={() => a_test()}>test!</button> */}
       <Table striped bordered hover variant="dark">
         <thead>
           <tr className="character-table-td-index">
