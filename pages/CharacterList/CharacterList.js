@@ -39,50 +39,6 @@ const CharacterList = ({options}) => {
   // const [pageButtonVariant, setPageButtonVariant ] = useState("secondary")
   const characterPerPage = 5;
 
-
-
-  useEffect( () => {
-    async function fetchData(){
-      try {
-      const response = await axios.get("/api/characters/");
-      setCharacterList(response.data);
-      setCurrentList(response.data.slice(0,5));
-
-      setPages(Array((parseInt(response.data.length / characterPerPage) + 1))
-      .fill(1).map((x,y) => x + y ));
-
-      setLoading(false);
-    } catch (error){
-      console.error(error);
-    }
-  }fetchData();
-},[loading]
-  );
-
-  useEffect(() => {
-    async function fetchData(){
-    const filter = characterFilter;
-    const response = await axios.get("api/characters");
-    setCharacterList(response.data.filter(filter));
-    setCurrentList(response.data.filter(filter).slice(0,5))
-    setPages(Array((parseInt(response.data.filter(filter).length / characterPerPage) + 1))
-    .fill(1).map((x,y) => x + y ));
-    setCurrentPage(1)
-  }
-  fetchData();
-},[options]
-  );
-
-
-  const handlePage = (page) => {
-    const sliceStart = (page-1) * 5;
-    const sliceEnd = (page-1) * 5 + 5;
-    console.log(sliceStart);
-    console.log(sliceEnd);
-    setCurrentList(characterList.filter(characterFilter).slice(sliceStart,sliceEnd))
-    setCurrentPage(page)
-  }
- 
   const characterFilter = (character) => {
     if(character.name.indexOf(options.name) !== -1 || options.name.length == 0){
       if(options.rarity.includes(character.rarity) || options.rarity.length == 0){
@@ -96,6 +52,59 @@ const CharacterList = ({options}) => {
       }
     }
   }
+
+  useEffect( () => {
+    const setData = (data) => {
+      setCharacterList(data);
+      setCurrentList(data.slice(0,5));
+      setPages(Array((parseInt(data.length / characterPerPage) + 1))
+      .fill(1).map((x,y) => x + y ));
+      setLoading(false);
+    }
+    axios.get("/api/characters/")
+      .then(response => setData(response.data)) 
+      .catch(error => console.log(error));
+},[loading]
+  );
+
+  useEffect(() => {
+    const characterFilter = (character) => {
+      if(character.name.indexOf(options.name) !== -1 || options.name.length == 0){
+        if(options.rarity.includes(character.rarity) || options.rarity.length == 0){
+          if(options.main_attribute.includes(character.main_attribute) || options.main_attribute.length == 0){
+            if(options.sub_attribute.includes(character.sub_attribute) || options.sub_attribute.length == 0){
+              if(options.class.includes(character.class) || options.class.length == 0){
+                return character;
+              }
+            }
+          }
+        }
+      }
+    }
+    const setData = (data) => {
+      const filter = characterFilter;
+      setCharacterList(data.filter(filter));
+      setCurrentList(data.filter(filter).slice(0,5));
+      setPages(Array((parseInt(data.filter(filter).length / characterPerPage) + 1))
+    .fill(1).map((x,y) => x + y ));
+      setCurrentPage(1)
+    }
+    axios.get("api/characters")
+      .then(response => setData(response.data))
+      .catch(error => console.log(error));
+},[options]
+  );
+
+
+  const handlePage = (page) => {
+    const sliceStart = (page-1) * 5;
+    const sliceEnd = (page-1) * 5 + 5;
+    console.log(sliceStart);
+    console.log(sliceEnd);
+    setCurrentList(characterList.filter(characterFilter).slice(sliceStart,sliceEnd))
+    setCurrentPage(page)
+  }
+ 
 
   // const a_test = () => {
   //   data = axios.get("api/characters")
