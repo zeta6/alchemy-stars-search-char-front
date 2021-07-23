@@ -3,7 +3,6 @@ import { Table, ButtonToolbar, Button, Row, Col, ButtonGroup} from 'react-bootst
 import Link from "next/link";
 import Image from "next/image";
 
-// ### skill = json데이터 chainSkill = react state
 const EquipSkillView = ({skill}) => {
   const [ equipSkill, setEquipSkill ] = useState("lv1");
   if(!skill){

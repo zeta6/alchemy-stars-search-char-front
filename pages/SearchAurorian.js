@@ -53,9 +53,6 @@ return (
       <span>{options.sub_attribute}</span>
     </div>
     <br/>
-    {/* <div>
-    {RenderKeyValue(options)}
-    </div> */}
   </Container>
   </div>
   )
