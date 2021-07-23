@@ -17,7 +17,7 @@ const OptionButton = ({object, options, setOptions, optionKey}) => {
         console.log(options);
         setOptions(_options);
         setChecked(true); 
-        setButtonVariant('dark');
+        setButtonVariant("dark");
         return;
       }
     }

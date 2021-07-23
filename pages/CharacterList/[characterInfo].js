@@ -3,30 +3,58 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import CharacterState from "../../components/CharacterState"
 import Layout from '../../components/Layout';
-import { Container, Row, Col} from "react-bootstrap";
+import { Container, Row, Col, Button, ButtonGroup, ButtonToolbar} from "react-bootstrap";
 import Head from "next/head";
 import CharacterImage from  "./character-info/CharacterImage";
 import ChainSkillView from "./character-info/ChainSkillView";
 import EquipSkillView from "./character-info/EquipSkillView";
+import InfoActiveSkillView from "./character-info/InfoActiveSkillView";
 import ActiveSkillView from "./character-info/ActiveSkillView";
 import Image from "next/image"
 
 export default function CharacterInfo(){
   const router = useRouter();
   const character_id = router.query.characterInfo;
+  
   const [ loading , setLoading ] = useState(true)
   const [ character, setCharacter ] = useState(CharacterState)
   const [ chainSkill, setChainSkill ] = useState("first")
   const [ equipSkill, setEquipSkill ] = useState("lv1")
- 
+  const [ ascension, setAscension ] = useState("asc_0");
+  const [ breakthrough, setBreakthrough ] = useState("br_0");
+
+  const AscensionButton = ({number, this_ascension, ascension, setAscension}) => {
+    if(this_ascension == ascension){
+      return(
+        <Button variant="info" onClick={() => setAscension(this_ascension)}>{number}</Button>
+      )
+    }else{
+      return(
+        <Button onClick={() => setAscension(this_ascension)}>{number}</Button>
+      )
+    }
+  }
+
+  const BreakthroughButton = ({number, this_brth, breakthrough, setBreakthrough}) => {
+    if(this_brth == breakthrough){
+      return(
+        <Button variant="info" onClick={() => setBreakthrough(this_brth)}>{number}</Button>
+      )
+    }else{
+      return(
+        <Button onClick={() => setBreakthrough(this_brth)}>{number}</Button>
+      )
+    }
+  }
+
 
   useEffect(() => {
     async function fetchData(){
     if(character_id){
       try {
-        setLoading(false);
         const response = await axios.get(`/api/${character_id}/`);
         setCharacter(response.data);
+        setLoading(false);
       } catch (error){
         console.error(error);
       }
@@ -48,7 +76,7 @@ export default function CharacterInfo(){
     return(
       <div>
       <Head>
-        <title>{character.name}</title>
+        <title>{character.name} - 백야극광 오로리안 검색기 </title>
        </Head>
       <Layout></Layout>
       <Container className="character-info-container">
@@ -62,7 +90,7 @@ export default function CharacterInfo(){
          {/* <Col sg ={3}xl={5} className="character-info-index-col">
           index
          </Col> */}
-         <Col xl={8} className="character-info-detail-col">
+         <Col lg={8} xl={8} className="character-info-detail-col">
            <CharacterImage image={character.image}></CharacterImage>
          </Col>
          <Col className="character-info-first-row-col">
@@ -82,15 +110,37 @@ export default function CharacterInfo(){
         </Row>
         <Row className="skills-veiw-row">
           <Col lg={12}>
-            <ActiveSkillView skill={character.active_skill}></ActiveSkillView>
+            <InfoActiveSkillView skill={character.active_skill} ascension={ascension} breakthrough={breakthrough}></InfoActiveSkillView>
           </Col>
           <Col lg={12} className="chain-skill-view-top">
             <ChainSkillView skill={character.chain_skill} chainSkill={chainSkill} setChainSkill={setChainSkill}>
             </ChainSkillView>
           </Col>
           <Col lg={12}>
-            <EquipSkillView skill={character.equip_skill} equipSkill={equipSkill} setEquipSkill={setEquipSkill}>
+            <EquipSkillView skill={character.equip_skill} equipSkill={equipSkill} setEquipSkill={setEquipSkill} ascension={ascension}>
             </EquipSkillView>
+          </Col>
+          <Col lg={12}>
+            각성 : 
+          
+          <ButtonGroup>
+            <AscensionButton number={"0"} this_ascension={"asc_0"} ascension={ascension} setAscension={setAscension}></AscensionButton>
+            <AscensionButton number={"1"} this_ascension={"asc_1"} ascension={ascension} setAscension={setAscension}></AscensionButton>
+            <AscensionButton number={"2"} this_ascension={"asc_2"} ascension={ascension} setAscension={setAscension}></AscensionButton>
+            <AscensionButton number={"3"} this_ascension={"asc_3"} ascension={ascension} setAscension={setAscension}></AscensionButton>
+          </ButtonGroup>
+          </Col>
+          <Col lg={12}>
+            돌파:
+            <ButtonGroup>
+              <BreakthroughButton number={"0"} this_brth={"br_0"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
+              <BreakthroughButton number={"1"} this_brth={"br_1"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
+              <BreakthroughButton number={"2"} this_brth={"br_2"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
+              <BreakthroughButton number={"3"} this_brth={"br_3"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
+              <BreakthroughButton number={"4"} this_brth={"br_4"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
+              <BreakthroughButton number={"5"} this_brth={"br_5"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
+              <BreakthroughButton number={"6"} this_brth={"br_6"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
+            </ButtonGroup>
           </Col>
         </Row>
         </Col>
