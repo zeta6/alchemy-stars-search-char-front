@@ -20,11 +20,11 @@ const ChainSkillView = ({skill}) => {
       <Image width="60" height="60" src={skill.icon} alt="skill.icon"></Image>
       </Col>
       <Col xs={4} lg={4}>
-        <ButtonToolbar>
-          <ButtonGroup size="lg" className="chain-skill-veiw-button">
-            <Button onClick={() => setChainSkill("first")} variant="info">{skill.first.tiles}</Button>
-            <Button onClick={() => setChainSkill("second")}>{skill.second.tiles}</Button>
-            <Button onClick={() => setChainSkill("third")}>{skill.third.tiles}</Button>
+        <ButtonToolbar className="active-skill-card-wrap">
+          <ButtonGroup>
+            <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("first")} variant="info">{skill.first.tiles}</Button>
+            <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("second")}>{skill.second.tiles}</Button>
+            <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("third")}>{skill.third.tiles}</Button>
           </ButtonGroup>
       </ButtonToolbar>
       </Col>
@@ -43,11 +43,11 @@ const ChainSkillView = ({skill}) => {
           <Image width="60" height="60" src={skill.icon} alt="skill.icon"></Image>
         </Col>
         <Col lg={4}>
-          <ButtonToolbar>
-            <ButtonGroup size="lg" className="chain-skill-veiw-button">
-              <Button onClick={() => setChainSkill("first")}>{skill.first.tiles}</Button>
-              <Button onClick={() => setChainSkill("second")} variant="info">{skill.second.tiles}</Button>
-              <Button onClick={() => setChainSkill("third")}>{skill.third.tiles}</Button>
+          <ButtonToolbar className="active-skill-card-wrap">
+            <ButtonGroup>
+              <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("first")}>{skill.first.tiles}</Button>
+              <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("second")} variant="info">{skill.second.tiles}</Button>
+              <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("third")}>{skill.third.tiles}</Button>
           </ButtonGroup>
         </ButtonToolbar>
         </Col>
@@ -65,12 +65,12 @@ const ChainSkillView = ({skill}) => {
         <Col lg={3}>
           <Image width="60" height="60" src={skill.icon} alt="skill.icon"></Image>
         </Col>
-        <Col lg={4}>
-          <ButtonToolbar>
-            <ButtonGroup size="lg" className="chain-skill-veiw-button">
-              <Button onClick={() => setChainSkill("first")}>{skill.first.tiles}</Button>
-              <Button onClick={() => setChainSkill("second")}>{skill.second.tiles}</Button>
-              <Button onClick={() => setChainSkill("third")} variant="info">{skill.third.tiles}</Button>
+        <Col sm={4} lg={4}>
+          <ButtonToolbar className="active-skill-card-wrap">
+            <ButtonGroup>
+              <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("first")}>{skill.first.tiles}</Button>
+              <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("second")}>{skill.second.tiles}</Button>
+              <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("third")} variant="info">{skill.third.tiles}</Button>
           </ButtonGroup>
         </ButtonToolbar>
         </Col>

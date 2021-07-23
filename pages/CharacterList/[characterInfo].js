@@ -83,7 +83,7 @@ export default function CharacterInfo(){
                 <div>이름: {character.name} / {character.name_alphabet} / CV: {character.voice}</div> 
                 <div className="character-info-attr-class-div">
                   레어도: ☆{character.rarity} / <span>세력: {character.faction.name}</span>
-                  <Image width="30" height="30" src={character.faction_icon} alt={character.faction}></Image> </div>
+                  <Image width="30" height="30" src={character.faction.icon} alt={character.faction}></Image> </div>
                 <div className="character-info-attr-class-div">
                   <span className="character-info-attr-class-span">주속성:</span><Image width="30" height="30" src={character.main_attribute_icon} alt={character.main_attribute}></Image>
                   <span className="character-info-attr-class-span-2">보조속성: </span><Image width="30" height="30" src={character.sub_attribute_icon} alt={character.sub_attribute}></Image><br></br>
@@ -132,6 +132,7 @@ export default function CharacterInfo(){
         <EquipmentView equipment={character.equipment}></EquipmentView>
         <Row className="character-info-breakthrough-row">
           <a name="breakthrough"></a>
+          <span className="character-info-equip-name-span">한계 돌파</span><br></br>
           <Table striped bordered hover variant="dark" className="character-info-breakthrough-table">
             <thead>
               <tr className="character-info-breakthrough-table">
@@ -169,6 +170,7 @@ export default function CharacterInfo(){
         </Row>
         <Row className="character-info-breakthrough-row">
           <a name="ascension"></a>
+          <span className="character-info-equip-name-span">각성</span><br></br>
           <Table striped bordered hover variant="dark" className="character-info-breakthrough-table">
             <thead>
               <tr className="character-info-breakthrough-table">

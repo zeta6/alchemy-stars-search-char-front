@@ -173,7 +173,7 @@ export default function handler(req, res) {
       },
 
       {
-        id: "1",
+        id: "0",
         name: "미자드",
         name_alphabet:"Migard",
         state: {

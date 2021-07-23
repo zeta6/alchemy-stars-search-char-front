@@ -1,11 +1,37 @@
 /* 바디 */
+@media only screen and (max-width: 600px){
+  html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+}
+}
+
 
 body {
   background-color: #111426;
+  
 }
 
 
 /* 속성(기능)별 */
+
+.vertical-align-center{
+  display: flex;
+}
+
+
+.option-btn-wrapper{
+  margin:0 auto;
+}
 
 .bg-color-darknavy{
   background-color: #111426;
@@ -13,8 +39,8 @@ body {
 
 
 .bg-color-darkslateblue{
-  background-color: darkslateblue
-  ;
+  background-color: darkslateblue;
+  width:100%;  ;
 }
 
 .bg-color-yellow{
@@ -46,7 +72,7 @@ body {
 }
 
 .character-list-open-td{
-  width: 1px;
+  width: 0px;
   text-align:center;
   vertical-align: middle;
   
@@ -187,41 +213,39 @@ body {
   margin-top: 2px;
 }
 
-.active-skills-cooltime-preemptive-div{
-  appearance: auto;
-  text-rendering: auto;
-  color: -internal-light-dark(black, white);
-  letter-spacing: normal;
-  word-spacing: normal;
-  text-transform: none;
-  text-indent: 0px;
-  text-shadow: none;
-  display: inline-block;
-  text-align: center;
-  align-items: flex-start;
-  cursor: default;
-  background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
-  box-sizing: border-box;
-  margin: 0em;
-  font: 400 13.3333px Arial;
-  padding: 1px 6px;
-  border-width: 2px;
-  border-style: outset;
-  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
-  border-image: initial;
-}
-
 .chain-skill-veiw-row{
   padding-top: 10px;
 }
 
+.chain-skill-veiw-button-toolbar{
+  padding-top: 5px;
+
+}
+
 .chain-skill-veiw-button{
-  margin-top: 5px;
-  height:50px;
+  height:44px;
+  width:44px;
+  font-size: 0.33cm;
+  margin:0 auto;
 }
 
 .chain-skill-view-top{
   background-color: rgb(10, 8, 59)
+}
+
+.active-skill-card-wrap{
+  margin-left: -6px;
+  padding-top: 5px;
+}
+
+.active-skill-card{
+  padding-top: 11px;
+  text-align: center;
+  height:44px;
+  width:44px;
+  background-color: #0D6EFD;
+  color: white;
+  font-size: 0.33cm;
 }
 
 .character-info-equip-row{

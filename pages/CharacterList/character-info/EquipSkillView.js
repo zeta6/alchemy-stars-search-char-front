@@ -3,6 +3,7 @@ import { Table, ButtonToolbar, Button, Row, Col, ButtonGroup} from 'react-bootst
 import Link from "next/link";
 import Image from "next/image";
 
+// ### skill = json데이터 chainSkill = react state
 const EquipSkillView = ({skill}) => {
   const [ equipSkill, setEquipSkill ] = useState("lv1");
   if(!skill){
@@ -18,14 +19,14 @@ const EquipSkillView = ({skill}) => {
       <Image width="60" height="60" src={skill.icon} alt="skill.icon"></Image>
       </Col>
       <Col xs={3} sm={3} lg={4}>
-        <ButtonToolbar>
-          <ButtonGroup className="chain-skill-veiw-button">
-            <Button onClick={() => setEquipSkill("lv1")} variant="info">lv1</Button>
-            <Button onClick={() => setEquipSkill("lv3")}>lv3</Button>
-            <Button onClick={() => setEquipSkill("lv6")}>lv6</Button>
-            <Button onClick={() => setEquipSkill("lv10")}>lv10</Button>
+        <ButtonToolbar className="active-skill-card-wrap">
+          <ButtonGroup>
+            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv1")} variant="info">lv1</Button>
+            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv3")}>lv3</Button>
+            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv6")}>lv6</Button>
+            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv10")}>lv10</Button>
           </ButtonGroup>
-      </ButtonToolbar>
+        </ButtonToolbar>
       </Col>
       <div>
         {skill.lv1_text}
@@ -41,13 +42,13 @@ const EquipSkillView = ({skill}) => {
       <Col lg={3}>
       <Image width="60" height="60" src={skill.icon} alt="skill.icon"></Image>
       </Col>
-      <Col lg={4}>
-        <ButtonToolbar>
-          <ButtonGroup className="chain-skill-veiw-button">
-            <Button onClick={() => setEquipSkill("lv1")}>lv1</Button>
-            <Button onClick={() => setEquipSkill("lv3")} variant="info">lv3</Button>
-            <Button onClick={() => setEquipSkill("lv6")}>lv6</Button>
-            <Button onClick={() => setEquipSkill("lv10")}>lv10</Button>
+      <Col xs={3} sm={3} lg={4}>
+        <ButtonToolbar className="active-skill-card-wrap">
+          <ButtonGroup>
+            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv1")}>lv1</Button>
+            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv3")} variant="info">lv3</Button>
+            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv6")}>lv6</Button>
+            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv10")}>lv10</Button>
           </ButtonGroup>
       </ButtonToolbar>
       </Col>
@@ -65,13 +66,13 @@ const EquipSkillView = ({skill}) => {
       <Col lg={3}>
       <Image width="60" height="60" src={skill.icon} alt="skill.icon"></Image>
       </Col>
-      <Col lg={4}>
-        <ButtonToolbar>
-          <ButtonGroup className="chain-skill-veiw-button">
-            <Button onClick={() => setEquipSkill("lv1")}>lv1</Button>
-            <Button onClick={() => setEquipSkill("lv3")}>lv3</Button>
-            <Button onClick={() => setEquipSkill("lv6")} variant="info">lv6</Button>
-            <Button onClick={() => setEquipSkill("lv10")}>lv10</Button>
+      <Col xs={3} sm={3} lg={4}>
+        <ButtonToolbar className="active-skill-card-wrap">
+          <ButtonGroup>
+            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv1")}>lv1</Button>
+            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv3")}>lv3</Button>
+            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv6")} variant="info">lv6</Button>
+            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv10")}>lv10</Button>
           </ButtonGroup>
       </ButtonToolbar>
       </Col>
@@ -89,13 +90,13 @@ const EquipSkillView = ({skill}) => {
       <Col lg={3}>
       <Image width="60" height="60" src={skill.icon} alt="skill.icon"></Image>
       </Col>
-      <Col lg={4}>
-        <ButtonToolbar>
-          <ButtonGroup className="chain-skill-veiw-button">
-            <Button onClick={() => setEquipSkill("lv1")}>lv1</Button>
-            <Button onClick={() => setEquipSkill("lv3")}>lv3</Button>
-            <Button onClick={() => setEquipSkill("lv6")}>lv6</Button>
-            <Button onClick={() => setEquipSkill("lv10")} variant="info">lv10</Button>
+      <Col xs={3} sm={3} lg={4}>
+        <ButtonToolbar className="active-skill-card-wrap">
+          <ButtonGroup>
+            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv1")}>lv1</Button>
+            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv3")}>lv3</Button>
+            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv6")}>lv6</Button>
+            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv10")} variant="info">lv10</Button>
           </ButtonGroup>
       </ButtonToolbar>
       </Col>

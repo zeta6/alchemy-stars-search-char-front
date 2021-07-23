@@ -21,8 +21,8 @@ export default function handler(req, res) {
     name: "일루미나 연방",
     big_gift: "Mounted Spikepede +50",
     small_gift: "Pictorial Guide to Nature +5",
-  },    
-  faction_icon: "/SearchChar/CharacterImages/migard_faction.png",
+    icon: "/SearchChar/CharacterImages/migard_faction.png"
+  },
   image: {
     ascension_0: "/SearchChar/CharacterImages/migard_asc0.png",
     ascension_3: "/SearchChar/CharacterImages/migard_asc3.png",
@@ -169,9 +169,6 @@ export default function handler(req, res) {
     fighting_style: "스파인 블레이드, 성큰 스파인"
   },
   voice: "우에사카 스미레",
-  birthday: "",
-  sex: "",
-  height:"",
   }
   )
 }
