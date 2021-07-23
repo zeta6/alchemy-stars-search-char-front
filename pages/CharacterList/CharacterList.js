@@ -97,8 +97,6 @@ const CharacterList = ({options}) => {
   const handlePage = (page) => {
     const sliceStart = (page-1) * 10;
     const sliceEnd = (page-1) * 10 + 10;
-    console.log(sliceStart);
-    console.log(sliceEnd);
     setCurrentList(characterList.slice(sliceStart,sliceEnd))
     setCurrentPage(page)
   }
