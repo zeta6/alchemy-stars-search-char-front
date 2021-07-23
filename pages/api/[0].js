@@ -18,7 +18,7 @@ const character =
     name: "fire",
     icon: "/SearchChar/ButtonIcons/fire-sm.png",
   },
-  class: {
+  char_class: {
     name: "sniper",
     icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
   },
@@ -162,7 +162,7 @@ const character =
     big_gift: "Crystal Spine +50",
     small_gift: "Guide to Applied Science +5"
   },
-  file:{
+  char_file:{
     name: "미자드",
     nickname: "성큰 스파인",
     gender: "여",

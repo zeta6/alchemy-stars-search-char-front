@@ -62,7 +62,7 @@ const CharacterInList = ({cha}) => {
         <td>☆{cha.rarity}</td>
         <td><Image width="40" height="40" alt="mattr_icon" src={cha.main_attribute.icon}></Image></td>
         <td><Image width="40" height="40" alt="sub_icon" src={cha.sub_attribute.icon}></Image></td>
-        <td><Image width="40" height="40" alt="class_icon" src={cha.class.icon}></Image></td>
+        <td><Image width="40" height="40" alt="class_icon" src={cha.char_class.icon}></Image></td>
         <td><Image width="40" height="40" alt="faction_icon" src={cha.faction.icon}></Image></td>
         <td>
           <Link href={'/CharacterList/[characterInfo]/'} as={`/CharacterList/${cha.id}/`} passHref>

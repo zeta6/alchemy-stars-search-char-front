@@ -18,7 +18,7 @@ export const CharacterState = {
     name: "fire",
     icon: "/n",
   },
-  class: {
+  char_class: {
     name: "sniper",
     icon: "/n",
   },
@@ -104,7 +104,7 @@ export const CharacterState = {
   sex: "",
   height:"",
   singularity:"",
-  file:{
+  char_file:{
     name: "미자드",
     nickname: "성큰 스파인",
     gender: "여",
