@@ -14,7 +14,6 @@ const OptionButton = ({object, options, setOptions, optionKey}) => {
       if(!(valueArray.includes(value))) {
         valueArray = options[optionKey].concat(value);
         const _options = { ...options, [optionKey]: valueArray };
-        console.log(options);
         setOptions(_options);
         setChecked(true); 
         setButtonVariant("dark");
@@ -25,7 +24,6 @@ const OptionButton = ({object, options, setOptions, optionKey}) => {
         let valueArray = options[optionKey]
         valueArray = options[optionKey].filter(val => val !== value);
         const _options = { ...options, [optionKey]: valueArray };
-        console.log(valueArray);
         setOptions(_options);
         setChecked(false);
         setButtonVariant("secondary");
@@ -52,7 +50,6 @@ const RarityOptionButton = ({object, options, setOptions, optionKey}) => {
       if(!(valueArray.includes(value))) {
         valueArray = options[optionKey].concat(value);
         const _options = { ...options, [optionKey]: valueArray };
-        console.log(valueArray);
         setOptions(_options);
         setChecked(true); 
         setButtonVariant('dark');
@@ -63,7 +60,6 @@ const RarityOptionButton = ({object, options, setOptions, optionKey}) => {
         let valueArray = options[optionKey]
         valueArray = options[optionKey].filter(val => val !== value);
         const _options = { ...options, [optionKey]: valueArray };
-        console.log(valueArray);
         setOptions(_options);
         setChecked(false);
         setButtonVariant("secondary");
@@ -81,16 +77,17 @@ const RarityOptionButton = ({object, options, setOptions, optionKey}) => {
 
 const OptionButtons = ({options, setOptions}) => {
   return(
-    <div>
-    <Row>
+    <div className="vertical-align-center">
+    <div className="option-btn-wrapper">
+    <Row className="vertical-align-center">
       <ButtonToolbar className="justify-content-md-center">
-        <ButtonGroup className="me-3">
+        <ButtonGroup className="me-2">
           <OptionButton object={attrOptions.fire} options={options} setOptions={setOptions} optionKey={"main_attribute"}></OptionButton>
           <OptionButton object={attrOptions.water} options={options} setOptions={setOptions} optionKey={"main_attribute"}></OptionButton>
           <OptionButton object={attrOptions.forest} options={options} setOptions={setOptions} optionKey={"main_attribute"}></OptionButton>
           <OptionButton object={attrOptions.thunder} options={options} setOptions={setOptions} optionKey={"main_attribute"}></OptionButton>
         </ButtonGroup>
-        <ButtonGroup className="me-3">
+        <ButtonGroup className="me-2">
           <OptionButton object={attrOptions.fire} options={options} setOptions={setOptions} optionKey={"sub_attribute"}></OptionButton>
           <OptionButton object={attrOptions.water} options={options} setOptions={setOptions} optionKey={"sub_attribute"}> </OptionButton>
           <OptionButton object={attrOptions.forest} options={options} setOptions={setOptions} optionKey={"sub_attribute"}></OptionButton>
@@ -100,13 +97,13 @@ const OptionButtons = ({options, setOptions}) => {
     </Row>
     <Row className="option-buttons-second-group">
       <ButtonToolbar className="justify-content-md-center">
-        <ButtonGroup className="me-3">
+        <ButtonGroup className="me-2">
           <OptionButton object={classOptions.burster} options={options} setOptions={setOptions} optionKey={"class"}></OptionButton>
           <OptionButton object={classOptions.sniper} options={options} setOptions={setOptions} optionKey={"class"}></OptionButton>
           <OptionButton object={classOptions.changer} options={options} setOptions={setOptions} optionKey={"class"}></OptionButton>
           <OptionButton object={classOptions.supporter} options={options} setOptions={setOptions} optionKey={"class"}></OptionButton>
         </ButtonGroup>
-        <ButtonGroup className="me-3">
+        <ButtonGroup className="me-2">
           <RarityOptionButton object={rarityOptions.three} options={options} setOptions={setOptions} optionKey={"rarity"}></RarityOptionButton>
           <RarityOptionButton object={rarityOptions.four} options={options} setOptions={setOptions} optionKey={"rarity"}></RarityOptionButton>
           <RarityOptionButton object={rarityOptions.five} options={options} setOptions={setOptions} optionKey={"rarity"}></RarityOptionButton>
@@ -114,6 +111,7 @@ const OptionButtons = ({options, setOptions}) => {
         </ButtonGroup>
       </ButtonToolbar>
     </Row>
+    </div>
     </div>
   )
 }

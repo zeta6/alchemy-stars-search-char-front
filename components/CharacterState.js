@@ -10,14 +10,24 @@ export const CharacterState = {
   },
   icon: "/none",
   rarity: "",
-  main_attribute: "",
-  main_attribute_icon:"/none",
-  sub_attribute: "",
-  sub_attribute_icon:"/none",
-  class: "",
-  class_icon:"/none",
-  faction: "",
-  faction_icon: "/none",
+  main_attribute: {
+    name:"forest",
+    icon: "/n",
+  },
+  sub_attribute: {
+    name: "fire",
+    icon: "/n",
+  },
+  class: {
+    name: "sniper",
+    icon: "/n",
+  },
+  faction: {
+    name: "일루미나 연방",
+    big_gift: "Mounted Spikepede +50",
+    small_gift: "Pictorial Guide to Nature +5",
+    icon: "/SearchChar/CharacterImages/migard_faction.png"
+  },
   chain_skill: {
     name: "",
     icon: "/none",
@@ -83,11 +93,6 @@ export const CharacterState = {
     lv1: "",
     lv2: "",
     lv3: "",
-  },
-  faction: {
-    name: "",
-    big_gift: "",
-    small_gift: "",
   },
   porsonality: {
     name: "",

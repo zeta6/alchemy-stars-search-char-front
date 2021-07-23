@@ -1,7 +1,6 @@
-export default function handler(req, res) {
-  res.status(200).json(
-  {
-  id: "1",
+const character =
+{
+  id: "0",
   name: "미자드",
   name_alphabet:"Migard",
   state: {
@@ -11,18 +10,24 @@ export default function handler(req, res) {
   },
   icon: "/SearchChar/CharacterImages/migard_icon.png",
   rarity: "6",
-  main_attribute: "forest",
-  main_attribute_icon: "/SearchChar/ButtonIcons/forest-sm.png",
-  sub_attribute: "fire",
-  sub_attribute_icon: "/SearchChar/ButtonIcons/fire-sm.png",
-  class: "sniper",
-  class_icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
+  main_attribute: {
+    name:"forest",
+    icon: "/SearchChar/ButtonIcons/forest-sm.png",
+  },
+  sub_attribute: {
+    name: "fire",
+    icon: "/SearchChar/ButtonIcons/fire-sm.png",
+  },
+  class: {
+    name: "sniper",
+    icon: "/SearchChar/ButtonIcons/sniper-sm.jpg",
+  },
   faction: {
     name: "일루미나 연방",
     big_gift: "Mounted Spikepede +50",
     small_gift: "Pictorial Guide to Nature +5",
-  },    
-  faction_icon: "/SearchChar/CharacterImages/migard_faction.png",
+    icon: "/SearchChar/CharacterImages/migard_faction.png"
+  },
   image: {
     ascension_0: "/SearchChar/CharacterImages/migard_asc0.png",
     ascension_3: "/SearchChar/CharacterImages/migard_asc3.png",
@@ -169,9 +174,7 @@ export default function handler(req, res) {
     fighting_style: "스파인 블레이드, 성큰 스파인"
   },
   voice: "우에사카 스미레",
-  birthday: "",
-  sex: "",
-  height:"",
-  }
-  )
+}
+export default function handler(req, res,) {
+  res.status(200).json(character)
 }

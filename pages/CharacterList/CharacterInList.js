@@ -49,7 +49,7 @@ const CharacterInList = ({cha}) => {
   }else if(cha){
     return (
         <tbody>
-        <tr className="character-table-td-index" onClick={() => toggle()}>
+        <tr className="character-table-tbody-td-index" onClick={() => toggle()}>
         <td className="character-list-open-td">
         <Button size="sm"
           variant="dark"
@@ -60,10 +60,10 @@ const CharacterInList = ({cha}) => {
         <td className="character-table-td-index-icon"><Image width="100" height="100" alt="cha.icon" src={cha.icon}></Image></td>
         <td>{cha.name}</td>
         <td>☆{cha.rarity}</td>
-        <td><Image width="40" height="40" alt="mattr_icon" src={cha.main_attribute_icon}></Image></td>
-        <td><Image width="40" height="40" alt="sub_icon" src={cha.sub_attribute_icon}></Image></td>
-        <td><Image width="40" height="40" alt="class_icon" src={cha.class_icon}></Image></td>
-        <td><Image width="40" height="40" alt="faction_icon" src={cha.faction_icon}></Image></td>
+        <td><Image width="40" height="40" alt="mattr_icon" src={cha.main_attribute.icon}></Image></td>
+        <td><Image width="40" height="40" alt="sub_icon" src={cha.sub_attribute.icon}></Image></td>
+        <td><Image width="40" height="40" alt="class_icon" src={cha.class.icon}></Image></td>
+        <td><Image width="40" height="40" alt="faction_icon" src={cha.faction.icon}></Image></td>
         <td>
           <Link href={'/CharacterList/[characterInfo]/'} as={`/CharacterList/${cha.id}/`} passHref>
             <Button>View Aurorian Page</Button>

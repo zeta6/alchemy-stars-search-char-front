@@ -24,7 +24,6 @@ const SearchAurorian = () => {
     const _options = { ...options, name: value };
 
     setOptions(_options);
-    console.log(options);
   }
 
 return (
@@ -47,12 +46,6 @@ return (
     </Row>
     <OptionButtons options={options} setOptions={setOptions}></OptionButtons>
     <CharacterList options={options}></CharacterList>
-    <div>
-      <span>{options.main_attribute}</span>
-      <br></br>
-      <span>{options.sub_attribute}</span>
-    </div>
-    <br/>
   </Container>
   </div>
   )
