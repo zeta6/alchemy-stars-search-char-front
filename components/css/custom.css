@@ -24,6 +24,10 @@ body {
 
 /* 속성(기능)별 */
 
+.curser_to_point{
+  cursor: pointer;
+}
+
 .vertical-align-center{
   display: flex;
 }
@@ -82,7 +86,13 @@ body {
   /* width: 17%; */
   text-align:center;
   vertical-align: middle;
-  
+}
+
+.character-table-tbody-td-index{
+  /* width: 17%; */
+  text-align:center;
+  vertical-align: middle;
+  cursor: pointer;
 }
 .character-table-td-index-icon{
   width: 15%;
@@ -288,10 +298,24 @@ body {
 .character-info-berakthrough-talbe-text{
   text-indent: 15px;
   width:100%;
-  min-width: 200px;
+}
+
+.character-info-preferred-table-name{
+  min-width: 130px; 
+  text-align:center;
+}
+
+.character-info-preferred-talbe-text{
+  text-indent: 15px;
+  width:100%;
 }
 
 .character-info-preferred-gift-card{
   background-color: #0f1640;
   color:antiquewhite;
+}
+
+.character-info-file-table-name{
+  min-width: 100px; 
+  text-align:center;
 }

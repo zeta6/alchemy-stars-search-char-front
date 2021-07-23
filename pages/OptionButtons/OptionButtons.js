@@ -14,10 +14,10 @@ const OptionButton = ({object, options, setOptions, optionKey}) => {
       if(!(valueArray.includes(value))) {
         valueArray = options[optionKey].concat(value);
         const _options = { ...options, [optionKey]: valueArray };
-        console.log(options);
         setOptions(_options);
         setChecked(true); 
         setButtonVariant("dark");
+        console.log(options)
         return;
       }
     }
@@ -25,7 +25,6 @@ const OptionButton = ({object, options, setOptions, optionKey}) => {
         let valueArray = options[optionKey]
         valueArray = options[optionKey].filter(val => val !== value);
         const _options = { ...options, [optionKey]: valueArray };
-        console.log(valueArray);
         setOptions(_options);
         setChecked(false);
         setButtonVariant("secondary");
@@ -52,7 +51,6 @@ const RarityOptionButton = ({object, options, setOptions, optionKey}) => {
       if(!(valueArray.includes(value))) {
         valueArray = options[optionKey].concat(value);
         const _options = { ...options, [optionKey]: valueArray };
-        console.log(valueArray);
         setOptions(_options);
         setChecked(true); 
         setButtonVariant('dark');
@@ -63,7 +61,6 @@ const RarityOptionButton = ({object, options, setOptions, optionKey}) => {
         let valueArray = options[optionKey]
         valueArray = options[optionKey].filter(val => val !== value);
         const _options = { ...options, [optionKey]: valueArray };
-        console.log(valueArray);
         setOptions(_options);
         setChecked(false);
         setButtonVariant("secondary");

@@ -11,7 +11,7 @@ const character =
   icon: "/SearchChar/CharacterImages/migard_icon.png",
   rarity: "6",
   main_attribute: {
-    name: "forest",
+    name:"forest",
     icon: "/SearchChar/ButtonIcons/forest-sm.png",
   },
   sub_attribute: {

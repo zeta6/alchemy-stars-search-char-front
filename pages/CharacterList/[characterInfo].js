@@ -85,9 +85,9 @@ export default function CharacterInfo(){
                   레어도: ☆{character.rarity} / <span>세력: {character.faction.name}</span>
                   <Image width="30" height="30" src={character.faction.icon} alt={character.faction}></Image> </div>
                 <div className="character-info-attr-class-div">
-                  <span className="character-info-attr-class-span">주속성:</span><Image width="30" height="30" src={character.main_attribute_icon} alt={character.main_attribute}></Image>
-                  <span className="character-info-attr-class-span-2">보조속성: </span><Image width="30" height="30" src={character.sub_attribute_icon} alt={character.sub_attribute}></Image><br></br>
-                  <span className="character-info-attr-class-span-2">클래스: </span><Image width="30" height="30" src={character.class_icon} alt={character.class}></Image><br></br>
+                  <span className="character-info-attr-class-span">주속성:</span><Image width="30" height="30" src={character.main_attribute.icon} alt={character.main_attribute}></Image>
+                  <span className="character-info-attr-class-span-2">보조속성: </span><Image width="30" height="30" src={character.sub_attribute.icon} alt={character.sub_attribute}></Image><br></br>
+                  <span className="character-info-attr-class-span-2">클래스: </span><Image width="30" height="30" src={character.class.icon} alt={character.class}></Image><br></br>
                 </div>
                 <div>공격력: {character.state.atk} / 방어력: {character.state.def} / 체력: {character.state.hp}</div>
               </Col>
@@ -195,27 +195,72 @@ export default function CharacterInfo(){
           </Table>
         </Row>
         <Row className="character-info-breakthrough-row">
-          <Card className="character-info-preferred-gift-card">  
           <a name="preferredGifts"></a>
           <span className="character-info-equip-name-span">선호 선물</span><br></br>
-            {character.faction.name}: {character.faction.big_gift}, {character.faction.small_gift} <br></br>
-            {character.porsonality.name}: {character.porsonality.big_gift}, {character.porsonality.small_gift}
-          </Card>
+          <Table striped bordered hover variant="dark">
+            <tbody>
+              <tr>
+                <td className="character-info-preferred-table-name">{character.faction.name}</td>
+                <td className="character-info-preferred-talbe-text">{character.faction.small_gift}</td>
+              </tr> 
+              <tr>
+                <td className="character-info-preferred-table-name"></td>
+                <td className="character-info-preferred-talbe-text">{character.faction.big_gift}</td>
+              </tr> 
+              <tr>
+                <td className="character-info-preferred-table-name">{character.porsonality.name}</td>
+                <td className="character-info-preferred-talbe-text">{character.faction.small_gift}</td>
+              </tr>
+              <tr>
+                <td className="character-info-preferred-table-name"></td>
+                <td className="character-info-preferred-talbe-text">{character.faction.big_gift}</td>
+              </tr>
+            </tbody>
+          </Table>
         </Row>
         <Row className="character-info-breakthrough-row">
-          <Card className="character-info-preferred-gift-card">  
           <a name="characterFile"></a>
           <span className="character-info-equip-name-span">캐릭터 파일</span>
-            이름: {character.file.name} <br></br>
-            별명: {character.file.nickname} <br></br>
-            성별: {character.file.gender} <br></br>
-            키: {character.file.height} <br></br>
-            생일: {character.file.birthday} <br></br>
-            출생지: {character.file.birthplace} <br></br>
-            속성: {character.file.element} <br></br>
-            소속 조직: {character.file.affilition} <br></br>
-            전투 방식: {character.file.fighting_style}
-          </Card>
+          <Table striped bordered hover variant="dark">
+            <tbody>
+              <tr>
+                <td className="character-info-file-table-name">이름</td>
+                <td className="character-info-preferred-talbe-text">{character.file.name}</td>
+              </tr> 
+              <tr>
+                <td className="character-info-file-table-name">별명</td>
+                <td className="character-info-preferred-talbe-text">{character.file.nickname}</td>
+              </tr> 
+              <tr>
+                <td className="character-info-file-table-name">성별</td>
+                <td className="character-info-preferred-talbe-text">{character.file.gender}</td>
+              </tr>
+              <tr>
+                <td className="character-info-file-table-name">키</td>
+                <td className="character-info-preferred-talbe-text">{character.file.height}</td>
+              </tr>
+              <tr>
+                <td className="character-info-file-table-name">생일</td>
+                <td className="character-info-preferred-talbe-text">{character.file.birthday}</td>
+              </tr> 
+              <tr>
+                <td className="character-info-file-table-name">출생지</td>
+                <td className="character-info-preferred-talbe-text">{character.file.birthplace}</td>
+              </tr> 
+              <tr>
+                <td className="character-info-file-table-name">속성</td>
+                <td className="character-info-preferred-talbe-text">{character.file.element}</td>
+              </tr>
+              <tr>
+                <td className="character-info-file-table-name">소속 조직</td>
+                <td className="character-info-preferred-talbe-text">{character.file.affilition}</td>
+              </tr>
+              <tr>
+                <td className="character-info-file-table-name">전투 방식</td>
+                <td className="character-info-preferred-talbe-text">{character.file.fighting_style}</td>
+              </tr>
+            </tbody>
+          </Table>
         </Row>
       </Container>
     </div>
