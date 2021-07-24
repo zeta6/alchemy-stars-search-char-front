@@ -35,35 +35,14 @@ const character =
   chain_skill: {
     name: "성큰 스파인",
     icon: "/SearchChar/CharacterImages/migard_chain_icon.png",
-    first: {
-      tiles : "4",
-      damage : "165%",
-      area : "2 circle",
-      area_type : "circle",
-      area_image : "/none",
-      text : "주변 2서클 내의 적 3체에 165 %의 데미지를 준다",
-    },
-    second: {
-      tiles : "8",
-      damage : "170%",
-      area : "3 circle",
-      area_type : "circle",
-      text : "주변 3서클 내의 적 3체에 170 %의 데미지를 준다",
-    },
-    third: {
-      tiles : "13",
-      damage : "180%",
-      area : "3 circle",
-      area_type : "circle",
-      text : "주변 3서클 내의 적 3체에 180 %의 데미지를 준다",
-    },
+    lv1_tiles : "4",
+    lv1_text : "주변 2서클 내의 적 3체에 165 %의 데미지를 준다",
+    lv2_tiles : "8",
+    lv2_text : "주변 3서클 내의 적 3체에 170 %의 데미지를 준다",
+    lv3_tiles : "13",
+    lv3_text : "주변 3서클 내의 적 3체에 180 %의 데미지를 준다",
   },
   active_skill: {
-    name: "스파인 소울",
-    cooltime : "2",
-    preemptive : "X",
-    icon: "/SearchChar/CharacterImages/migard_active_icon.png",
-    text: "주변 3서클 내 임의의 위치로 순간이동해 주변 1서클 내의 적에게 250%의 피해를 입히며, 범위 내에 적이 1명만 있을 경우, 피해가 2배 증가한다.",
     asc_0: {
       br_0: {
         name: "스파인 소울",
@@ -157,7 +136,7 @@ const character =
     lv2: "액티브스킬 강화:  적 1명을 처치할때마다 최종 피해가 15% 증가하며, 10회까지 누적 될 수 있다.",
     lv3: "장비스킬 강화:  추가 공격 후 대상의 HP가 미자드의 공격보다 낮을 경우 대상을 즉시 처치한다",
   },
-  porsonality: {
+  personality: {
     name: "Into Esoterica",
     big_gift: "Crystal Spine +50",
     small_gift: "Guide to Applied Science +5"

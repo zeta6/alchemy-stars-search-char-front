@@ -94,7 +94,7 @@ export const CharacterState = {
     lv2: "",
     lv3: "",
   },
-  porsonality: {
+  personality: {
     name: "",
     big_gift: "",
     small_gift: "",

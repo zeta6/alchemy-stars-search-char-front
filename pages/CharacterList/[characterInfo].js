@@ -208,12 +208,12 @@ export default function CharacterInfo(){
                 <td className="character-info-preferred-talbe-text">{character.faction.big_gift}</td>
               </tr> 
               <tr>
-                <td className="character-info-preferred-table-name">{character.porsonality.name}</td>
-                <td className="character-info-preferred-talbe-text">{character.faction.small_gift}</td>
+                <td className="character-info-preferred-table-name">{character.personality.name}</td>
+                <td className="character-info-preferred-talbe-text">{character.personality.small_gift}</td>
               </tr>
               <tr>
                 <td className="character-info-preferred-table-name"></td>
-                <td className="character-info-preferred-talbe-text">{character.faction.big_gift}</td>
+                <td className="character-info-preferred-talbe-text">{character.personality.big_gift}</td>
               </tr>
             </tbody>
           </Table>
