@@ -1,9 +1,9 @@
+import React, {useEffect, useState} from 'react';
 import { Container, Table, Row, Col, Button, ButtonGroup, ButtonToolbar} from "react-bootstrap";
 import Image from "next/image"
 
 const EquipmentView = ({equipment}) => {
-
-  if (!equipment){
+  if(!equipment.name){
     return null;
   }else{
     return(

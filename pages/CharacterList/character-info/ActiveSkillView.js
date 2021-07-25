@@ -4,10 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 
 const ActiveSkillView = ({skill}) => {
-  if(!skill){
+  if(!skill.name){
     return null;
   }
-  if(skill){
+  if(skill.name){
     return(
       <Row className="chain-skill-veiw-row">
       <Col lg={12}>
