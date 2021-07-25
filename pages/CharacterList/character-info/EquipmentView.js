@@ -3,7 +3,7 @@ import { Container, Table, Row, Col, Button, ButtonGroup, ButtonToolbar} from "r
 import Image from "next/image"
 
 const EquipmentView = ({equipment}) => {
-  if(!equipment.name){
+  if(!equipment){
     return null;
   }else{
     return(
