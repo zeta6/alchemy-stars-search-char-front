@@ -2,10 +2,10 @@ import React, {useEffect, useState} from 'react';
 import EquipSkillView from "./EquipSkillView";
 
 const InfoEquipSkillView = ({skill, ascension}) => {
-  if((!skill) || (!ascension)){
+  if((!skill.name) || (!ascension)){
     return null;
   }
-  if((skill) && (ascension)){
+  if((skill.name) && (ascension)){
     
     const asc_count = parseInt(ascension[4]);
     
