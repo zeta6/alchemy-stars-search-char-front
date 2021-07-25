@@ -5,11 +5,8 @@ import { Container, Row, Col, Button, ButtonGroup, ButtonToolbar} from "react-bo
 const CharacterImage = ({image}) => {
   const [ Ascension, setAscension ] = useState(0)
   const [ isLoading, setLoading] = useState(true)
-  if(isLoading){
-    if(image.ascension_0 != "/SearchChar/loading/loading.jpg"){
-      setLoading(false);
-    }
-    return "loading"
+  if(!image){
+    return null;
   }
   if(Ascension == 0){
     return(

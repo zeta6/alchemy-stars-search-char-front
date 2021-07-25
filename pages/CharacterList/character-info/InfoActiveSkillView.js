@@ -2,10 +2,10 @@ import React, {useEffect, useState} from 'react';
 import ActiveSkillView from "./ActiveSkillView";
 
 const InfoActiveSkillView = ({skill, ascension, breakthrough}) => {
-  if((!skill.name) || (!ascension) || (!breakthrough)){
+  if((!skill) || (!ascension) || (!breakthrough)){
     return null;
   }
-  if((skill.name) && (ascension) && (breakthrough)){
+  if((skill) && (ascension) && (breakthrough)){
     
     let asc_count = parseInt(ascension[4]);
     const brth_count = parseInt(breakthrough[3]);
