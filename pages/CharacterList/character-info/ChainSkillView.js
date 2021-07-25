@@ -6,7 +6,6 @@ import Image from "next/image";
 // ### skill = json데이터 chainSkill = react state
 const ChainSkillView = ({skill}) => {
   const [ chainSkill, setChainSkill ] = useState("lv1");
-  console.log(skill);
   if(!skill){
     return null;
   }
