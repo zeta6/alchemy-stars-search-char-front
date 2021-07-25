@@ -6,10 +6,9 @@ import Image from "next/image";
 // ### skill = json데이터 chainSkill = react state
 const EquipSkillView = ({skill}) => {
   const [ equipSkill, setEquipSkill ] = useState("lv1");
-  if(!skill){
+  if(!skill.name){
     return null;
-  }
-  if(equipSkill == "lv1"){
+  }else if(equipSkill == "lv1"){
     return(
       <Row className="chain-skill-veiw-row">
       <Col lg={12}>
@@ -105,8 +104,6 @@ const EquipSkillView = ({skill}) => {
       </div>
       </Row>
     )
-  }else{
-    return null
   }
 }
 

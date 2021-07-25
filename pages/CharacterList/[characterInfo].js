@@ -86,7 +86,7 @@ export default function CharacterInfo(){
                   <Image width="30" height="30" src={character.faction.icon} alt={character.faction}></Image>
                    </div>
                 <div className="character-info-attr-class-div">
-                  <span className="character-info-attr-class-span">주속성:</span><Image width="30" height="30" src={character.main_attribute.icon} alt={character.main_attribute}></Image>
+                  <span className="character-info-attr-class-span">주속성:</span><Image width="30" height="30" src={character.main_attribute.icon} alt={character.main_attribute}></Image><br></br>
                   <span className="character-info-attr-class-span-2">보조속성: </span><Image width="30" height="30" src={character.sub_attribute.icon} alt={character.sub_attribute}></Image><br></br>
                   <span className="character-info-attr-class-span-2">클래스: </span><Image width="30" height="30" src={character.char_class.icon} alt={character.char_class}></Image><br></br>
                 </div>

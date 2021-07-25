@@ -8,29 +8,32 @@ export const CharacterState = {
     def: "",
     hp: "",
   },
-  icon: "/none",
+  image: {
+    ascension_0: "/SearchChar/loading/loading.jpg"
+  },
+  icon:"/SearchChar/loading/loading.jpg",
   rarity: "",
   main_attribute: {
     name:"forest",
-    icon: "/n",
+    icon: "/SearchChar/loading/loading.jpg"
   },
   sub_attribute: {
     name: "fire",
-    icon: "/n",
+    icon: "/SearchChar/loading/loading.jpg",
   },
   char_class: {
     name: "sniper",
-    icon: "/n",
+    icon: "/SearchChar/loading/loading.jpg",
   },
   faction: {
-    name: "일루미나 연방",
-    big_gift: "Mounted Spikepede +50",
-    small_gift: "Pictorial Guide to Nature +5",
-    icon: "/SearchChar/CharacterImages/migard_faction.png"
+    name: "",
+    big_gift: "",
+    small_gift: "",
+    icon: "/SearchChar/loading/loading.jpg",
   },
   chain_skill: {
     name: "",
-    icon: "/none",
+    icon: "/SearchChar/loading/loading.jpg",
     first: {
       tiles : "",
       damage : "",
@@ -56,13 +59,13 @@ export const CharacterState = {
   active_skill: {
     name: "",
     text: "",
-    icon: "/none",
+    icon: "/SearchChar/loading/loading.jpg",
   },
   equip_skill: {
     name: "",
     text: "",
     type: {},
-    icon: "/none",
+    icon: "/SearchChar/loading/loading.jpg",
   },
   breakthrough: {
     first:{},
@@ -73,13 +76,13 @@ export const CharacterState = {
     sixth:{},
   },
 
-  equip:{
-    name: "스피널 블",
-    image: "/none",
-    lv1_text: "연쇄 추가로 1회 입힌다.",
-    lv3_text: "연쇄 가로 1회 입힌다.",
-    lv6_text: "연쇄 가로 1회 입힌다.",
-    lv10_text: "연쇄추가로 1회 입힌다.",
+  equipment:{
+    name: "",
+    image: "/SearchChar/loading/loading.jpg",
+    lv1_text: "",
+    lv3_text: "",
+    lv6_text: "",
+    lv10_text: "",
     lv1_state_text: "",
     lv2_state_text: "",
     lv4_state_text: "",
@@ -105,15 +108,15 @@ export const CharacterState = {
   height:"",
   singularity:"",
   char_file:{
-    name: "미자드",
-    nickname: "성큰 스파인",
-    gender: "여",
-    height: "183cm",
-    birthday: "1월 30일",
-    birthplace: "자난 성",
-    element: "숲",
-    affilition: "일루미나 연방",
-    fighting_style: "스파인 블레이드, 성큰 스파인"
+    name: "",
+    nickname: "",
+    gender: "",
+    height: "",
+    birthday: "",
+    birthplace: "",
+    element: "",
+    affilition: "",
+    fighting_style: ""
   },
 }
 
