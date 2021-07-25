@@ -9,7 +9,7 @@ export const CharacterState = {
     hp: "",
   },
   image: {
-    ascension_0: ""
+    ascension_0: "/SearchChar/loading/loading.jpg"
   },
   icon:"/SearchChar/loading/loading.jpg",
   rarity: "",

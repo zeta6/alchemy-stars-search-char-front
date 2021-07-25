@@ -12,7 +12,7 @@ const CharacterImage = ({image}) => {
     return(
       <Container>
         <Row className="character-info-character-row">
-          <Col>
+          <Col className="character-image-col">
           <div className="character-info-character-image-wrapper">
             <div className="character-info-character-image">
               <Image layout="fill" src={image.ascension_0} alt="migard_asc0"></Image>

@@ -156,6 +156,10 @@ body {
   min-height: 200px;
 }
 
+.character-image-col{
+  max-width: 800px; 
+}
+
 .character-info-character-image-wrapper{
   position: relative;
   width: 100%;
@@ -173,7 +177,7 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: off
+  background-color: off;
 }
 
 /* .character-info-character-image{

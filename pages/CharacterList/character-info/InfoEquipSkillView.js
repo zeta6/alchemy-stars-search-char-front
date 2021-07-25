@@ -14,8 +14,8 @@ const InfoEquipSkillView = ({skill, ascension}) => {
     search_skill :
     for(let i = asc_count; i > -1; i--) {
       const suffix = 'asc'+i+'_';
-      const check_use = suffix+"use"
-      if(skill[check_use] == "true"){
+      const check_enhance = suffix+"enhance"
+      if(skill[check_enhance] == true){
         const lv1_text = skill[suffix+"lv1_text"];
         const lv3_text = skill[suffix+"lv3_text"];
         const lv6_text = skill[suffix+"lv6_text"];

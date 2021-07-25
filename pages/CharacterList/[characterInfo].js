@@ -48,7 +48,7 @@ export default function CharacterInfo(){
 
 
   useEffect(() => {
-    axios.get(`/api/${character_id}/`)
+    axios.get(`http://127.0.0.1:8000/api/characters/${character_id}/`)
       .then(response => setCharacter(response.data))
       .catch(error => console.log(error));
       setLoading(false)
@@ -80,7 +80,7 @@ export default function CharacterInfo(){
             <Row>
               <Col>
                 <a name="quickView"></a>
-                <div>이름: {character.name} / {character.name_alphabet} / CV: {character.voice}</div> 
+                <div>이름: {character.name} / {character.name_alphabet} / CV: {character.voice.name}</div> 
                 <div className="character-info-attr-class-div">
                   레어도: ☆{character.rarity} / <span>세력: {character.faction.name}</span>
                   <Image width="30" height="30" src={character.faction.icon} alt={character.faction}></Image>
