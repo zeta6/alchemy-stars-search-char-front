@@ -5,12 +5,11 @@ import Image from "next/image";
 
 // ### skill = json데이터 chainSkill = react state
 const ChainSkillView = ({skill}) => {
-  const [ chainSkill, setChainSkill ] = useState("first");
-  console.log(skill);
+  const [ chainSkill, setChainSkill ] = useState("lv1");
   if(!skill){
     return null;
   }
-  if(chainSkill == "first"){
+  if(chainSkill == "lv1"){
     return(
       <Row className="chain-skill-veiw-row">
       <Col xs={12} lg={12}>
@@ -22,18 +21,18 @@ const ChainSkillView = ({skill}) => {
       <Col xs={4} lg={4}>
         <ButtonToolbar className="active-skill-card-wrap">
           <ButtonGroup>
-            <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("first")} variant="info">{skill.first.tiles}</Button>
-            <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("second")}>{skill.second.tiles}</Button>
-            <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("third")}>{skill.third.tiles}</Button>
+            <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("lv1")} variant="info">{skill.lv1_tiles}</Button>
+            <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("lv2")}>{skill.lv2_tiles}</Button>
+            <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("lv3")}>{skill.lv3_tiles}</Button>
           </ButtonGroup>
       </ButtonToolbar>
       </Col>
       <div>
-        {skill.first.text}
+        {skill.lv1_text}
       </div>
       </Row>
     )
-  }else if(chainSkill == "second"){
+  }else if(chainSkill == "lv2"){
     return(
       <Row className="chain-skill-veiw-row">
         <Col lg={12}>
@@ -45,18 +44,18 @@ const ChainSkillView = ({skill}) => {
         <Col lg={4}>
           <ButtonToolbar className="active-skill-card-wrap">
             <ButtonGroup>
-              <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("first")}>{skill.first.tiles}</Button>
-              <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("second")} variant="info">{skill.second.tiles}</Button>
-              <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("third")}>{skill.third.tiles}</Button>
+              <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("lv1")}>{skill.lv1_tiles}</Button>
+              <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("lv2")} variant="info">{skill.lv2_tiles}</Button>
+              <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("lv3")}>{skill.lv3_tiles}</Button>
           </ButtonGroup>
         </ButtonToolbar>
         </Col>
         <div>
-          {skill.second.text}
+          {skill.lv2_text}
         </div>
       </Row>
     )
-  }else if(chainSkill == "third"){
+  }else if(chainSkill == "lv3"){
     return(
       <Row className="chain-skill-veiw-row">
         <Col lg={12}>
@@ -68,14 +67,14 @@ const ChainSkillView = ({skill}) => {
         <Col sm={4} lg={4}>
           <ButtonToolbar className="active-skill-card-wrap">
             <ButtonGroup>
-              <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("first")}>{skill.first.tiles}</Button>
-              <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("second")}>{skill.second.tiles}</Button>
-              <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("third")} variant="info">{skill.third.tiles}</Button>
+              <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("lv1")}>{skill.lv1_tiles}</Button>
+              <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("lv2")}>{skill.lv2_tiles}</Button>
+              <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("lv3")} variant="info">{skill.lv3_tiles}</Button>
           </ButtonGroup>
         </ButtonToolbar>
         </Col>
         <div>
-          {skill.third.text}
+          {skill.lv3_text}
         </div>
       </Row>
     )

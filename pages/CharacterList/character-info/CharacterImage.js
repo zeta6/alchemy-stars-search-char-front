@@ -58,4 +58,4 @@ const CharacterImage = ({image}) => {
   }
 } 
 
-export default CharacterImage;1
+export default CharacterImage;

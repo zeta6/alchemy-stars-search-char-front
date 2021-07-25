@@ -83,7 +83,8 @@ export default function CharacterInfo(){
                 <div>이름: {character.name} / {character.name_alphabet} / CV: {character.voice}</div> 
                 <div className="character-info-attr-class-div">
                   레어도: ☆{character.rarity} / <span>세력: {character.faction.name}</span>
-                  <Image width="30" height="30" src={character.faction.icon} alt={character.faction}></Image> </div>
+                  <Image width="30" height="30" src={character.faction.icon} alt={character.faction}></Image>
+                   </div>
                 <div className="character-info-attr-class-div">
                   <span className="character-info-attr-class-span">주속성:</span><Image width="30" height="30" src={character.main_attribute.icon} alt={character.main_attribute}></Image>
                   <span className="character-info-attr-class-span-2">보조속성: </span><Image width="30" height="30" src={character.sub_attribute.icon} alt={character.sub_attribute}></Image><br></br>
@@ -208,12 +209,12 @@ export default function CharacterInfo(){
                 <td className="character-info-preferred-talbe-text">{character.faction.big_gift}</td>
               </tr> 
               <tr>
-                <td className="character-info-preferred-table-name">{character.porsonality.name}</td>
-                <td className="character-info-preferred-talbe-text">{character.faction.small_gift}</td>
+                <td className="character-info-preferred-table-name">{character.personality.name}</td>
+                <td className="character-info-preferred-talbe-text">{character.personality.small_gift}</td>
               </tr>
               <tr>
                 <td className="character-info-preferred-table-name"></td>
-                <td className="character-info-preferred-talbe-text">{character.faction.big_gift}</td>
+                <td className="character-info-preferred-talbe-text">{character.personality.big_gift}</td>
               </tr>
             </tbody>
           </Table>
