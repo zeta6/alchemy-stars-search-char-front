@@ -10,23 +10,19 @@ const InfoActiveSkillView = ({skill, ascension, breakthrough}) => {
     const asc_count = parseInt(ascension[4]);
     const brth_count = parseInt(breakthrough[3]);
 
-    let _ascension = null;
     let _skill = null;
-
+  
+    search_skill :
     for(let i = asc_count; i > -1; i--) {
-      const asc = "asc_" + i;
-      if(skill[asc]){
-        _ascension = skill[asc]; 
-        break
-      }
-    }
-
-    if (_ascension){
-      for(let i = brth_count; i > -1; i--){
-        const brth = "br_" + i;
-        if(_ascension[brth]){
-          _skill = _ascension[brth]
-          break
+      for(let y = brth_count; y > -1; y--){
+        const suffix = 'asc'+i+'_br'+y+'_';
+        const check_use = suffix+"use";
+        if(skill[check_use] == "true"){
+          const cooltime = skill[suffix+"cooltime"];
+          const preemptive = skill[suffix+"preemptive"];
+          const text = skill[suffix+"text"];
+          _skill = {...skill, "cooltime" : cooltime, "preemptive" : preemptive, "text": text}
+          break search_skill
         }
       }
     }

@@ -32,7 +32,7 @@ const CharacterInList = ({cha}) => {
               </ChainSkillView>
             </Col>
             <Col xs={4} lg={4}>
-              <ActiveSkillView skill={cha.active_skill.asc_0.br_0}></ActiveSkillView>
+              <ActiveSkillView skill={cha.active_skill}></ActiveSkillView>
             </Col>
             <Col xs={4} lg={4}>
               <EquipSkillView skill={cha.equip_skill}>

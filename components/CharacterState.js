@@ -75,7 +75,7 @@ export const CharacterState = {
 
   equip:{
     name: "스피널 블",
-    image: "/SearchC",
+    image: "/none",
     lv1_text: "연쇄 추가로 1회 입힌다.",
     lv3_text: "연쇄 가로 1회 입힌다.",
     lv6_text: "연쇄 가로 1회 입힌다.",
