@@ -23,15 +23,17 @@ const CharacterList = ({options}) => {
     main_attribute: "loading",
     sub_attribute: "loading",
     char_class: "loading",
+    icon: "/SearchChar/loading/loading.jpg"
   },]);  
 	const [loading, setLoading] = useState(true);
   const [currentList, setCurrentList] = useState([{
-    id: "9998",
+    id: "9999",
     name: "loading",
     rarity: "1",
     main_attribute: "loading",
     sub_attribute: "loading",
     char_class: "loading",
+    icon: "/SearchChar/loading/loading.jpg"
   }]);
   const [pages, setPages] = useState(1);
   const [sort, setSort] = useState(null);
@@ -45,7 +47,7 @@ const CharacterList = ({options}) => {
       .fill(1).map((x,y) => x + y ));
       setLoading(false);
     }
-    axios.get("/api/characters/")
+    axios.get("http://127.0.0.1:8000/api/characters/")
       .then(response => setData(response.data)) 
       .catch(error => console.log(error));
 },[loading]
@@ -74,7 +76,7 @@ const CharacterList = ({options}) => {
       setCurrentPage(1);
       setSort(null);
     }
-    axios.get("api/characters")
+    axios.get("http://127.0.0.1:8000/api/characters/")
       .then(response => setData(response.data))
       .catch(error => console.log(error));
 },[options]
