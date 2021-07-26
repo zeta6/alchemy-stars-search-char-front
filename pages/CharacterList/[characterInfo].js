@@ -48,7 +48,7 @@ export default function CharacterInfo(){
 
 
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/api/characters/${character_id}/`)
+    axios.get(`/api/${character_id}/`)
       .then(response => setCharacter(response.data))
       .catch(error => console.log(error));
       setLoading(false)
