@@ -35,7 +35,7 @@ return (
   <Container className="bg-color-darknavy">
     <Row className="search-character-input-row">
       <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon1">Charactername</InputGroup.Text>
+        <InputGroup.Text id="basic-addon1">캐릭터 이름</InputGroup.Text>
         <FormControl
           placeholder=""
           aria-label="Charactername"
