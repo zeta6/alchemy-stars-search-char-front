@@ -14,7 +14,6 @@ const PageButton = ({page, setSliceStart, currentPage, charPerPage}) => {
 };
 
 const CharacterList = ({options, setOptions}) => {
-  console.log("render")
   const [characterList, setCharacterList] = useState([]);  
 	const [loading, setLoading] = useState(true);
   const [sliceStart, setSliceStart] = useState(0);
@@ -24,9 +23,7 @@ const CharacterList = ({options, setOptions}) => {
 
   useEffect(() => {
     const setData = (data) => {
-      // setCharacterList(data);
-      // setCurrentList(data.slice(0,10));
-      setPages(Array((parseInt(data.length / charPerPage) + 1))
+      setPages(Array((parseInt(data.length / 20) + 1))
       .fill(1).map((x,y) => x + y ));
       setLoading(false);
     }
@@ -57,7 +54,6 @@ const CharacterList = ({options, setOptions}) => {
     .fill(1).map((x,y) => x + y ));
       setSliceStart(0);
       setSort(null);
-      console.log("optionchange")
     }
     axios.get("/api/characters/")
       .then(response => setData(response.data))
