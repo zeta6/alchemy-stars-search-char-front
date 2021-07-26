@@ -13,7 +13,7 @@ COPY yarn.lock /usr/src/app
 
 RUN yarn install --production
 
-COPY . /usr/src/app
+COPY . /usr/src/appd0c
 
 RUN yarn add --dev eslint eslint-config-next
 RUN yarn build
