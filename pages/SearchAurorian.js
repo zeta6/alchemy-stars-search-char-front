@@ -1,9 +1,9 @@
 
 import { object } from 'prop-types';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import OptionButtons from './OptionButtons/OptionButtons';
 import CharacterList from './CharacterList/CharacterList';
-import { Container, Row, Col, InputGroup, FormControl} from 'react-bootstrap';
+import { Container, Row, InputGroup, FormControl} from 'react-bootstrap';
 import Layout from '../components/Layout';
 import Head from 'next/head';
 
@@ -45,7 +45,7 @@ return (
       </InputGroup>
     </Row>
     <OptionButtons options={options} setOptions={setOptions}></OptionButtons>
-    <CharacterList options={options}></CharacterList>
+    <CharacterList options={options} setOptions={setOptions}></CharacterList>
   </Container>
   </div>
   )

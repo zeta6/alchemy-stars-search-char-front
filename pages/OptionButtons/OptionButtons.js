@@ -1,6 +1,6 @@
 
-import { Button, ButtonToolbar, ButtonGroup, Row, Col } from 'react-bootstrap';
-import { useState, useRef } from 'react';
+import { Button, ButtonToolbar, ButtonGroup, Row } from 'react-bootstrap';
+import { useState } from 'react';
 import { attrOptions, classOptions, rarityOptions} from '../../components/ButtonOptions'
 import Image from 'next/image';
 
@@ -76,6 +76,10 @@ const RarityOptionButton = ({object, options, setOptions, optionKey}) => {
 
 
 const OptionButtons = ({options, setOptions}) => {
+  const [ isLoading, setLoading ] = useState(false);
+  if(isLoading){
+    return null
+  }
   return(
     <div className="vertical-align-center">
     <div className="option-btn-wrapper">

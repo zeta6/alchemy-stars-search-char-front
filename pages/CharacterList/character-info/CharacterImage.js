@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Image from 'next/image';
 import { Container, Row, Col, Button, ButtonGroup, ButtonToolbar} from "react-bootstrap";
 
 const CharacterImage = ({image}) => {
   const [ Ascension, setAscension ] = useState(0)
-  const [ isLoading, setLoading] = useState(true)
   if(!image){
     return null;
   }

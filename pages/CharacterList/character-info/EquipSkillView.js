@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import { Table, ButtonToolbar, Button, Row, Col, ButtonGroup} from 'react-bootstrap';
-import Link from "next/link";
+import React, { useState } from 'react';
+import {ButtonToolbar, Button, Row, Col, ButtonGroup} from 'react-bootstrap';
 import Image from "next/image";
 
 // ### skill = json데이터 chainSkill = react state

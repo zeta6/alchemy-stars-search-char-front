@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import CharacterState from "../../components/CharacterState"
 import Layout from '../../components/Layout';
-import { Container, Row, Col, Table, Button, ButtonGroup, ButtonToolbar, Card} from "react-bootstrap";
+import { Container, Row, Col, Table, Button, ButtonGroup} from "react-bootstrap";
 import Head from "next/head";
 import CharacterImage from  "./character-info/CharacterImage";
 import ChainSkillView from "./character-info/ChainSkillView";
@@ -13,11 +13,22 @@ import EquipmentView from "./character-info/EquipmentView";
 import Image from "next/image"
 
 export default function CharacterInfo(){
+
+  console.log("render")
   const router = useRouter();
   const character_id = router.query.characterInfo;
-  
-  const [ loading , setLoading ] = useState(true)
+
   const [ character, setCharacter ] = useState(CharacterState)
+  
+  useEffect(() => {
+    axios.get(`/api/${character_id}/`)
+      .then(response => setCharacter(response.data))
+      .catch(error => console.log(error));
+      setLoading(false)
+    },[]
+  );
+
+  const [ loading , setLoading ] = useState(true)
   const [ chainSkill, setChainSkill ] = useState("first")
   const [ ascension, setAscension ] = useState("asc_0");
   const [ breakthrough, setBreakthrough ] = useState("br_0");
@@ -45,15 +56,6 @@ export default function CharacterInfo(){
       )
     }
   }
-
-
-  useEffect(() => {
-    axios.get(`/api/${character_id}/`)
-      .then(response => setCharacter(response.data))
-      .catch(error => console.log(error));
-      setLoading(false)
-    },[character_id]
-  );
 
   if(loading){
     return(

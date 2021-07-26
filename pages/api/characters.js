@@ -4742,7 +4742,7 @@ export default function handler(req, res) {
         voice: "우에사카 스미레",
       },
       {
-        id: "26",
+        id: "262",
         name: "미자드27",
         name_alphabet:"Migard",
         state: {

@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import { Table, ButtonToolbar, Button, Row, Col, ButtonGroup, Card} from 'react-bootstrap';
-import Link from "next/link";
+import React from 'react';
+import {Row, Col, Card} from 'react-bootstrap';
 import Image from "next/image";
 
 const ActiveSkillView = ({skill}) => {

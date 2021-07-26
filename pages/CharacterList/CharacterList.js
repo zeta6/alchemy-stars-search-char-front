@@ -1,56 +1,39 @@
-import React, {useEffect, useState, useRef, useReducer} from 'react';
-import { Table, ButtonGroup, Button, Row, Col, ButtonToolbar} from 'react-bootstrap';
+import React, {useEffect, useState} from 'react';
+import { Table, ButtonGroup, Button, Row, ButtonToolbar, DropdownButton, Dropdown} from 'react-bootstrap';
 import CharacterInList from './CharacterInList';
 import axios from 'axios';
 
-const PageButton = ({page, handlePage, currentPage}) => {
+const PageButton = ({page, setSliceStart, currentPage, charPerPage}) => {
   if(page == currentPage){ 
   return(
-    <Button variant="dark" onClick={() => handlePage(page)}>{page}</Button>  
+    <Button variant="dark" onClick={() => setSliceStart((page-1) * charPerPage)}>{page}</Button>  
   )} else{
     return(
-    <Button variant="secondary" onClick={() => handlePage(page)}>{page}</Button>
+    <Button variant="secondary" onClick={() => setSliceStart((page-1) * charPerPage)}>{page}</Button>
   )}
 };
 
-const CharacterList = ({options}) => {
-  
-  const [currentPage, setCurrentPage] = useState(1);
-  const [characterList, setCharacterList] = useState([{
-    id: "9999",
-    name: "loading",
-    rarity: "1",
-    main_attribute: "loading",
-    sub_attribute: "loading",
-    char_class: "loading",
-    icon: "/SearchChar/loading/loading.jpg"
-  },]);  
+const CharacterList = ({options, setOptions}) => {
+  console.log("render")
+  const [characterList, setCharacterList] = useState([]);  
 	const [loading, setLoading] = useState(true);
-  const [currentList, setCurrentList] = useState([{
-    id: "9999",
-    name: "loading",
-    rarity: "1",
-    main_attribute: "loading",
-    sub_attribute: "loading",
-    char_class: "loading",
-    icon: "/SearchChar/loading/loading.jpg"
-  }]);
+  const [sliceStart, setSliceStart] = useState(0);
   const [pages, setPages] = useState(1);
   const [sort, setSort] = useState(null);
-  const characterPerPage = 10;
+  const [charPerPage, setCharPerPage] = useState(20);
 
-  useEffect( () => {
+  useEffect(() => {
     const setData = (data) => {
-      setCharacterList(data);
-      setCurrentList(data.slice(0,10));
-      setPages(Array((parseInt(data.length / characterPerPage) + 1))
+      // setCharacterList(data);
+      // setCurrentList(data.slice(0,10));
+      setPages(Array((parseInt(data.length / charPerPage) + 1))
       .fill(1).map((x,y) => x + y ));
       setLoading(false);
     }
     axios.get("/api/characters/")
       .then(response => setData(response.data)) 
       .catch(error => console.log(error));
-},[loading]
+},[]
   );
 
   useEffect(() => {
@@ -70,29 +53,18 @@ const CharacterList = ({options}) => {
     const setData = (data) => {
       const filter = characterFilter;
       setCharacterList(data.filter(filter));
-      setCurrentList(data.filter(filter).slice(0,10));
-      setPages(Array((parseInt(data.filter(filter).length / characterPerPage) + 1))
+      setPages(Array((parseInt(data.filter(filter).length / charPerPage) + 1))
     .fill(1).map((x,y) => x + y ));
-      setCurrentPage(1);
+      setSliceStart(0);
       setSort(null);
+      console.log("optionchange")
     }
     axios.get("/api/characters/")
       .then(response => setData(response.data))
       .catch(error => console.log(error));
-},[options]
+},[options, charPerPage]
   );
 
-  const handlePage = (page) => {
-    const sliceStart = (page-1) * 10;
-    const sliceEnd = (page-1) * 10 + 10;
-    setCurrentList(characterList.slice(sliceStart,sliceEnd))
-    setCurrentPage(page)
-  }
-
-  //useEffect line end
-
-
-  // getSortOrder
 
   const getSortOrder = (prop) => {
     return function(a, b) {    
@@ -140,14 +112,12 @@ const CharacterList = ({options}) => {
   const Name = ({sort, setSort}) => {
     const sortByName = () => {
       setCharacterList(characterList.sort(getSortOrder("name")));
-      setCurrentList((characterList.sort(getSortOrder("name"))).slice(0,10));
-      setCurrentPage(1)
+      setSliceStart(0)
       setSort("sort_by_name")
     }
     const sortByNameReverse = () => {
       setCharacterList(characterList.sort(getSortOrderReverse("name")));
-      setCurrentList((characterList.sort(getSortOrderReverse("name"))).slice(0,10));
-      setCurrentPage(1)
+      setSliceStart(0)
       setSort("sort_by_name_reverse")
     }
     if(sort == "sort_by_name"){
@@ -162,14 +132,13 @@ const CharacterList = ({options}) => {
   const Rarity = ({sort, setSort}) => {
     const sortByRarityReverse = () => {
       setCharacterList(characterList.sort(getSortOrder("rarity")));
-      setCurrentList((characterList.sort(getSortOrder("rarity"))).slice(0,10));
-      setCurrentPage(1)
+      setSliceStart(0)
+      console.log("@?????")
       setSort("sort_by_rarity_reverse")
     }
     const sortByRarity = () => {
       setCharacterList(characterList.sort(getSortOrderReverse("rarity")));
-      setCurrentList((characterList.sort(getSortOrderReverse("rarity"))).slice(0,10));
-      setCurrentPage(1)
+      setSliceStart(0)
       setSort("sort_by_rarity")
     }
     if(sort == "sort_by_rarity"){
@@ -184,14 +153,12 @@ const CharacterList = ({options}) => {
   const Mattr = ({sort, setSort}) => {
     const sortByMattr = () => {
       setCharacterList(characterList.sort(getSortOrderProp("main_attribute", "name")));
-      setCurrentList((characterList.sort(getSortOrderProp("main_attribute", "name"))).slice(0,10));
-      setCurrentPage(1)
+      setSliceStart(0)
       setSort("sort_by_main_attribute")
     }
     const sortByMattrReverse = () => {
-      setCharacterList(characterList.sort(getSortOrderPropReverse("main_attribute", "name")));
-      setCurrentList((characterList.sort(getSortOrderPropReverse("main_attribute", "name"))).slice(0,10));
-      setCurrentPage(1)
+      setCharacterList(characterList.sort(getSortOrderPropReverse("main_attribute", "name")))
+      setSliceStart(0)
       setSort("sort_by_main_attribute_reverse")
     }
     if(sort == "sort_by_main_attribute"){
@@ -206,14 +173,12 @@ const CharacterList = ({options}) => {
   const Sattr = ({sort, setSort}) => {
     const sortBySattr = () => {
       setCharacterList(characterList.sort(getSortOrderProp("sub_attribute", "name")));
-      setCurrentList((characterList.sort(getSortOrderProp("sub_attribute", "name"))).slice(0,10));
-      setCurrentPage(1)
+      setSliceStart(0)
       setSort("sort_by_sub_attribute")
     }
     const sortBySattrReverse = () => {
       setCharacterList(characterList.sort(getSortOrderPropReverse("sub_attribute", "name")));
-      setCurrentList((characterList.sort(getSortOrderPropReverse("sub_attribute", "name"))).slice(0,10));
-      setCurrentPage(1)
+      setSliceStart(0)
       setSort("sort_by_sub_attribute_reverse")
     }
     if(sort == "sort_by_sub_attribute"){
@@ -228,15 +193,14 @@ const CharacterList = ({options}) => {
   const Class = ({sort, setSort}) => {
     const sortByClass = () => {
       setCharacterList(characterList.sort(getSortOrderProp("char_class", "name")));
-      setCurrentList((characterList.sort(getSortOrderProp("char_class", "name"))).slice(0,10));
-      setCurrentPage(1)
+      setSliceStart(0)
       setSort("sort_by_class")
     }
     const sortByClassReverse = () => {
       setCharacterList(characterList.sort(getSortOrderPropReverse("char_class", "name")));
-      setCurrentList((characterList.sort(getSortOrderPropReverse("char_class", "name"))).slice(0,10));
-      setCurrentPage(1)
+      setSliceStart(0)
       setSort("sort_by_class_reverse")
+
     }
     if(sort == "sort_by_class"){
       return <span className="curser_to_point" onClick={()=>sortByClassReverse()}>클래스▼</span>
@@ -265,10 +229,16 @@ const CharacterList = ({options}) => {
               <th><Sattr sort={sort} setSort={setSort}></Sattr></th>
               <th><Class sort={sort} setSort={setSort}></Class></th>
               <th>세력</th>
-              <th>캐릭터페이지</th>
+              <th><DropdownButton id="dropdown-basic-button" title="페이지당 캐릭터">
+                    <Dropdown.Item onClick={() => setCharPerPage(10)}>10</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setCharPerPage(20)}>20</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setCharPerPage(30)}>30</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setCharPerPage(50)}>50</Dropdown.Item>
+                  </DropdownButton>
+              </th>
             </tr>
           </thead>
-        {currentList.map((cha)=> ( 
+        {characterList.slice(sliceStart, sliceStart+charPerPage).map((cha)=> ( 
           <React.Fragment key={cha.id}>
             <CharacterInList cha={cha} key={cha.id}>
             </CharacterInList>
@@ -281,7 +251,7 @@ const CharacterList = ({options}) => {
       <ButtonGroup className="page-button-group">
         {pages.map((page) => (
           <React.Fragment key={page}>
-            <PageButton page={page} handlePage={handlePage} currentPage={currentPage}></PageButton>
+            <PageButton page={page} charPerPage={charPerPage} setSliceStart={setSliceStart} currentPage={(parseInt(sliceStart/charPerPage))+1}></PageButton>
           </React.Fragment>
        ))}
       </ButtonGroup>
@@ -289,7 +259,7 @@ const CharacterList = ({options}) => {
     </Row>
     </div>
   )
-        }
+}
 }
 
 export default CharacterList;
