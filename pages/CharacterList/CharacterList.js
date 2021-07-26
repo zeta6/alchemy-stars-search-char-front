@@ -47,7 +47,7 @@ const CharacterList = ({options}) => {
       .fill(1).map((x,y) => x + y ));
       setLoading(false);
     }
-    axios.get("http://127.0.0.1:8000/api/characters/")
+    axios.get("/api/characters/")
       .then(response => setData(response.data)) 
       .catch(error => console.log(error));
 },[loading]
@@ -76,7 +76,7 @@ const CharacterList = ({options}) => {
       setCurrentPage(1);
       setSort(null);
     }
-    axios.get("http://127.0.0.1:8000/api/characters/")
+    axios.get("/api/characters/")
       .then(response => setData(response.data))
       .catch(error => console.log(error));
 },[options]
