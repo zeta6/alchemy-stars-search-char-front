@@ -13,21 +13,19 @@ import EquipmentView from "./character-info/EquipmentView";
 import Image from "next/image"
 
 export default function CharacterInfo(){
-
   const router = useRouter();
-
+  const character_id = router.query.characterInfo;
   const [ character, setCharacter ] = useState(CharacterState)
+  const [ loading , setLoading ] = useState(true)
   
   useEffect(() => {
-    const character_id = router.query.characterInfo;
     axios.get(`/api/${character_id}/`)
       .then(response => setCharacter(response.data))
       .catch(error => console.log(error));
       setLoading(false)
-    },[]
+    },[character_id]
   );
 
-  const [ loading , setLoading ] = useState(true)
   const [ chainSkill, setChainSkill ] = useState("first")
   const [ ascension, setAscension ] = useState("asc_0");
   const [ breakthrough, setBreakthrough ] = useState("br_0");
