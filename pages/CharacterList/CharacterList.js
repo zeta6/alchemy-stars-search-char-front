@@ -27,13 +27,13 @@ const CharacterList = ({options, setOptions}) => {
       .fill(1).map((x,y) => x + y ));
       setLoading(false);
     }
-    axios.get("http://13.124.59.83/api/characters/")
+    axios.get("http://13.124.59.83:8001/api/characters/")
       .then(response => setData(response.data)) 
       .catch(error => console.log(error));
 },[]
   );
 
-  useEffect(() => {
+  useEffect(() => { 
     const characterFilter = (character) => {
       if(character.name.indexOf(options.name) !== -1 || options.name.length == 0){
         if(options.rarity.includes(character.rarity) || options.rarity.length == 0){
