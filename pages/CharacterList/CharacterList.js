@@ -27,7 +27,7 @@ const CharacterList = ({options, setOptions}) => {
       .fill(1).map((x,y) => x + y ));
       setLoading(false);
     }
-    axios.get("http://54.180.126.198:8000/api/characters/")
+    axios.get("http://54.180.126.198:8715/api/characters/")
       .then(response => setData(response.data)) 
       .catch(error => console.log(error));
 },[]
@@ -55,7 +55,7 @@ const CharacterList = ({options, setOptions}) => {
       setSliceStart(0);
       setSort(null);
     }
-    axios.get("http://54.180.126.198:8000/api/characters/")
+    axios.get("http://54.180.126.198:8715/api/characters/")
       .then(response => setData(response.data))
       .catch(error => console.log(error));
 },[options, charPerPage]

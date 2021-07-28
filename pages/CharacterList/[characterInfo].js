@@ -19,7 +19,7 @@ export default function CharacterInfo(){
   const [ loading , setLoading ] = useState(true)
   
   useEffect(() => {
-    axios.get(`http://54.180.126.198:8000/api/characters/${character_id}/`)
+    axios.get(`http://54.180.126.198:8715/api/characters/${character_id}/`)
       .then(response => setCharacter(response.data))
       .catch(error => console.log(error));
       setLoading(false)
