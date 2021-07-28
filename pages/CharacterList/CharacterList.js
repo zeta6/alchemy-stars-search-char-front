@@ -27,7 +27,7 @@ const CharacterList = ({options, setOptions}) => {
       .fill(1).map((x,y) => x + y ));
       setLoading(false);
     }
-    axios.get("/api/characters/")
+    axios.get("http://localhost:8001/api/characters/")
       .then(response => setData(response.data)) 
       .catch(error => console.log(error));
 },[]
@@ -55,7 +55,7 @@ const CharacterList = ({options, setOptions}) => {
       setSliceStart(0);
       setSort(null);
     }
-    axios.get("/api/characters/")
+    axios.get("http://localhost:8001/api/characters/")
       .then(response => setData(response.data))
       .catch(error => console.log(error));
 },[options, charPerPage]
@@ -129,7 +129,6 @@ const CharacterList = ({options, setOptions}) => {
     const sortByRarityReverse = () => {
       setCharacterList(characterList.sort(getSortOrder("rarity")));
       setSliceStart(0)
-      console.log("@?????")
       setSort("sort_by_rarity_reverse")
     }
     const sortByRarity = () => {
