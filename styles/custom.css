@@ -323,3 +323,13 @@ body {
   min-width: 100px; 
   text-align:center;
 }
+
+.character-info-file-stories-text{
+  text-indent: 15px;
+  width:100%;
+  cursor: pointer;
+}
+
+
+
+

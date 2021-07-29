@@ -137,7 +137,12 @@ const character =
     birthplace: "자난 성",
     element: "숲",
     affilition: "일루미나 연방",
-    fighting_style: "스파인 블레이드, 성큰 스파인"
+    fighting_style: "스파인 블레이드, 성큰 스파인",
+    story_0: "000000gewagewaernbeanregwagwahwahwahhwhewawheahrewhreantrtneantramtrah",
+    story_1: "111111gewagewaernbeanregwagwahwahwahhwhewawheahrewhreantrtneantramtrah",
+    story_2: "222222gewagewaernbeanregwagwahwahwahhwhewawheahrewhreantrtneantramtrah",
+    story_3: "333333gewagewaernbeanregwagwahwahwahhwhewawheahrewhreantrtneantramtrah",
+    story_4: "444444gewagewaernbeanregwagwahwahwahhwhewawheahrewhreantrtneantramtrah",
   },
   voice: "우에사카 스미레",
 }
