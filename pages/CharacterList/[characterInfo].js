@@ -89,7 +89,7 @@ export default function CharacterInfo(){
                   <span className="character-info-attr-class-span-2">보조속성: </span><Image width="30" height="30" src={character.sub_attribute.icon} alt={character.sub_attribute}></Image><br></br>
                   <span className="character-info-attr-class-span-2">클래스: </span><Image width="30" height="30" src={character.char_class.icon} alt={character.char_class}></Image><br></br>
                 </div>
-                <div>공격력: {character.state.atk} / 방어력: {character.state.def} / 체력: {character.state.hp}</div>
+                <div>공격력: {character.state.attack} / 방어력: {character.state.defence} / 체력: {character.state.hit_point}</div>
               </Col>
             </Row>
             <Row className="skills-veiw-row">
