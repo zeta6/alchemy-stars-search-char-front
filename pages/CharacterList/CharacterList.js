@@ -216,7 +216,8 @@ const CharacterList = ({options, setOptions}) => {
           <Table striped bordered hover variant="dark">
            <thead>
             <tr className="character-table-td-index">
-              <th className="character-list-open-td">-</th>
+              <th className="character-list-open-td"><Button size="sm" variant="dark"
+                >ㅡ</Button></th>
               <th className="character-table-td-millde-index">아이콘</th>
               <th className="character-table-td-millde-index"><Name sort={sort} setSort={setSort}></Name></th>
               <th className="character-table-td-millde-index"><Rarity sort={sort} setSort={setSort}></Rarity></th>
