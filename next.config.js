@@ -9,6 +9,6 @@ module.exports = {
     ]
   },
   images: {
-    domains: ["13.124.105.35"],
+    domains: ["alchemystars.link"],
   },
 }
