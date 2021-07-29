@@ -27,13 +27,13 @@ const CharacterList = ({options, setOptions}) => {
       .fill(1).map((x,y) => x + y ));
       setLoading(false);
     }
-    axios.get("http://localhost:8001/api/characters/")
+    axios.get("https://alchemystars.link:8715/api/characters/")
       .then(response => setData(response.data)) 
       .catch(error => console.log(error));
 },[]
   );
 
-  useEffect(() => {
+  useEffect(() => { 
     const characterFilter = (character) => {
       if(character.name.indexOf(options.name) !== -1 || options.name.length == 0){
         if(options.rarity.includes(character.rarity) || options.rarity.length == 0){
@@ -55,7 +55,7 @@ const CharacterList = ({options, setOptions}) => {
       setSliceStart(0);
       setSort(null);
     }
-    axios.get("http://localhost:8001/api/characters/")
+    axios.get("https://alchemystars.link:8715/api/characters/")
       .then(response => setData(response.data))
       .catch(error => console.log(error));
 },[options, charPerPage]
@@ -129,7 +129,6 @@ const CharacterList = ({options, setOptions}) => {
     const sortByRarityReverse = () => {
       setCharacterList(characterList.sort(getSortOrder("rarity")));
       setSliceStart(0)
-      console.log("@?????")
       setSort("sort_by_rarity_reverse")
     }
     const sortByRarity = () => {

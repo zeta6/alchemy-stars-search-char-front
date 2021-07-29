@@ -1,5 +1,4 @@
 module.exports = {
-  reactStrictMode: true,
   async redirects() {
     return [
       {
@@ -10,6 +9,6 @@ module.exports = {
     ]
   },
   images: {
-    domains: ['127.0.0.1:8000', '127.0.0.1'],
+    domains: ["alchemystars.link"],
   },
 }
