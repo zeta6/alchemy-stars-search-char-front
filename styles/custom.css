@@ -330,6 +330,17 @@ body {
   cursor: pointer;
 }
 
+.character-info-story-table-name{
+  min-width: 140px; 
+  text-align:center;
+}
+
+.character-info-story-table-li{
+  list-style:none;
+  text-align:center;
+  padding-left: 0px;
+  padding-right: 60px;
+}
 
 
 

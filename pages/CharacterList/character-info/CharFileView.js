@@ -14,7 +14,7 @@ const CharFileView = ({char_file}) => {
     }
     return(
       <tr>
-        <td className="character-info-file-table-name">{gender}의 경력</td>
+        <td className="character-info-story-table-name">{gender}의 경력</td>
         <td className="character-info-preferred-talbe-text">{char_file.story_0}</td>
       </tr>
     )
@@ -44,7 +44,8 @@ const CharFileView = ({char_file}) => {
     return(
       <tr>
         <td className="character-info-file-table-name">{gender}의 이야기({storyNum})</td>
-        <td onClick={() => setOpen(!open)} className="character-info-file-stories-text"><span>[호감도 {storyNum * 2} 달성 시 잠금 해제]</span>
+        <td onClick={() => setOpen(!open)} className="character-info-file-stories-text">
+        <li className="character-info-story-table-li"> [ 호감도 {storyNum * 2} 달성 시 잠금 해제 ] </li>
         <Collapse open={open}></Collapse>
         </td>
       </tr>
