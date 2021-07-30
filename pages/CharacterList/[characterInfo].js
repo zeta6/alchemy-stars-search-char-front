@@ -55,6 +55,22 @@ export default function CharacterInfo(){
     }
   }
 
+  const BreakthroughButtonGroup = ({rarity}) => {
+    if(!rarity){
+      return null
+    }else{
+    const range = Array(parseInt(rarity)+1).fill(0).map((x,y) => x + y );
+    return (
+      <ButtonGroup className="character-info-quick-view-breakthrough-col-button">
+        {range.map((num) => (
+          <BreakthroughButton key={num} number={num} this_brth={'br_'+num} 
+          breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
+        ))}
+      </ButtonGroup>
+    )   
+        }
+  }
+
   if(loading){
     return(
       "loading"
@@ -116,15 +132,7 @@ export default function CharacterInfo(){
               </Col>
               <Col lg={12} className="character-info-quick-view-breakthrough-col">
                 돌파:
-                <ButtonGroup className="character-info-quick-view-breakthrough-col-button">
-                  <BreakthroughButton number={"0"} this_brth={"br_0"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
-                  <BreakthroughButton number={"1"} this_brth={"br_1"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
-                  <BreakthroughButton number={"2"} this_brth={"br_2"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
-                  <BreakthroughButton number={"3"} this_brth={"br_3"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
-                  <BreakthroughButton number={"4"} this_brth={"br_4"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
-                  <BreakthroughButton number={"5"} this_brth={"br_5"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
-                  <BreakthroughButton number={"6"} this_brth={"br_6"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
-                </ButtonGroup>
+                <BreakthroughButtonGroup rarity={character.rarity}></BreakthroughButtonGroup>
               </Col>
             </Row>
           </Col>
