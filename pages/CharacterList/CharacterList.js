@@ -13,7 +13,7 @@ const PageButton = ({page, setSliceStart, currentPage, charPerPage}) => {
   )}
 };
 
-const CharacterList = ({options}) => {
+const CharacterList = ({options, setOptions}) => {
   const [characterList, setCharacterList] = useState([]);  
 	const [loading, setLoading] = useState(true);
   const [sliceStart, setSliceStart] = useState(0);
