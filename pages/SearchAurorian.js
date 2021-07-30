@@ -1,6 +1,6 @@
 
 import { object } from 'prop-types';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import OptionButtons from './OptionButtons/OptionButtons';
 import CharacterList from './CharacterList/CharacterList';
 import { Container, Row, InputGroup, FormControl} from 'react-bootstrap';
@@ -17,12 +17,6 @@ const SearchAurorian = () => {
       class:[]
     }
   )
-  const [characterList, setCharacterList] = useState([]);
-  useEffect(() => {
-    axios.get("https://alchemystars.link:8715/api/characters/")
-      .then(response => setCharacterList(response.data)) 
-      .catch(error => console.log(error));
-},[]); 
 
   const handleChange = (e) => {
     let value = e.target.value;
@@ -51,7 +45,7 @@ return (
       </InputGroup>
     </Row>
     <OptionButtons options={options} setOptions={setOptions}></OptionButtons>
-    <CharacterList options={options} setOptions={setOptions} characterList={characterList} setCharacterList={setCharacterList}></CharacterList>
+    <CharacterList options={options} setOptions={setOptions}></CharacterList>
   </Container>
   </div>
   )

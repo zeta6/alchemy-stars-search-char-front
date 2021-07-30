@@ -13,7 +13,8 @@ const PageButton = ({page, setSliceStart, currentPage, charPerPage}) => {
   )}
 };
 
-const CharacterList = ({options, characterList, setCharacterList}) => {
+const CharacterList = ({options}) => {
+  const [characterList, setCharacterList] = useState([]);  
 	const [loading, setLoading] = useState(true);
   const [sliceStart, setSliceStart] = useState(0);
   const [pages, setPages] = useState(1);
@@ -26,11 +27,11 @@ const CharacterList = ({options, characterList, setCharacterList}) => {
       .fill(1).map((x,y) => x + y ));
       setLoading(false);
     }
-    setData(characterList)
-    // axios.get("https://alchemystars.link:8715/api/characters/")
-      // .then(response => setData(response.data)) 
-      // .catch(error => console.log(error));
-},[] );
+    axios.get("https://alchemystars.link:8715/api/characters/")
+      .then(response => setData(response.data)) 
+      .catch(error => console.log(error));
+},[]
+  );
 
   useEffect(() => { 
     const characterFilter = (character) => {
