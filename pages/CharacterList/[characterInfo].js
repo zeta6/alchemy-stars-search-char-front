@@ -15,15 +15,17 @@ import Image from "next/image"
 
 export default function CharacterInfo(){
   const router = useRouter();
+  const character_id = router.query.characterInfo;
   const [ character, setCharacter ] = useState(CharacterState)
   const [ loading , setLoading ] = useState(true)
   
   useEffect(() => {
-    axios.get(`https://alchemystars.link:8715/api/character/${router.query.characterInfo}/`)
+    if(character_id){
+    axios.get(`https://alchemystars.link:8715/api/character/${character_id}/`)
       .then(response => setCharacter(response.data))
       .catch(error => console.log(error));
       setLoading(false)
-    },[router.query.characterInfo]
+    }},[character_id]
   );
 
   const [ chainSkill, setChainSkill ] = useState("first")
