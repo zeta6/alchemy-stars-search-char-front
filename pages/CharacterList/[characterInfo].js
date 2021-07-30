@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import CharacterState from "../../components/CharacterState"
 import Layout from '../../components/Layout';
-import { Container, Row, Col, Table, Button, ButtonGroup, ButtonToolbar, Card} from "react-bootstrap";
+import { Container, Row, Col, Table, Button, ButtonGroup} from "react-bootstrap";
 import Head from "next/head";
 import CharacterImage from  "./character-info/CharacterImage";
 import InfoChainSkillView from "./character-info/InfoChainSkillView";
@@ -16,9 +16,7 @@ import Image from "next/image"
 export default function CharacterInfo(){
   const router = useRouter();
   const character_id = router.query.characterInfo;
-  const [ character, setCharacter ] = useState(CharacterState)
-  const [ loading , setLoading ] = useState(true)
-  
+
   useEffect(() => {
     if(character_id){
     axios.get(`https://alchemystars.link:8715/api/character/${character_id}/`)
@@ -28,6 +26,8 @@ export default function CharacterInfo(){
     }},[character_id]
   );
 
+  const [ character, setCharacter ] = useState(CharacterState)
+  const [ loading , setLoading ] = useState(true)
   const [ chainSkill, setChainSkill ] = useState("first")
   const [ ascension, setAscension ] = useState("asc_0");
   const [ breakthrough, setBreakthrough ] = useState("br_0");
