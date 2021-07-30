@@ -29,6 +29,7 @@ const SearchAurorian = () => {
 return (
   <div>
   <Head>
+  <script data-ad-client="ca-pub-2551455423822057" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <title>백야극광 오로리안 검색기</title>
   </Head>
   <Layout></Layout>
