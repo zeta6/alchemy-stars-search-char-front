@@ -15,26 +15,20 @@ const InfoChainSkillView = ({skill, ascension, breakthrough, char_brth, char_asc
     let upg_sklv_brth_2;
 
     if (rarity == '6'){
-      upg_sklv_brth_1 = '3' 
-      upg_sklv_brth_2 = '6'
-      console.log('rari',rarity);
+      upg_sklv_brth_1 = '3';
+      upg_sklv_brth_2 = '6';
     }else if (rarity == '5'){
-      upg_sklv_brth_1 = '2' 
-      upg_sklv_brth_2 = '5'
-      console.log('rari',rarity);
+      upg_sklv_brth_1 = '2';
+      upg_sklv_brth_2 = '5';
     }else if (rarity == '4'){
-      upg_skil_brth1 = '4'
+      upg_skil_brth1 = '4';
     }else if (rarity == '3'){
-      upg_skil_brth1 = '3'
+      upg_skil_brth1 = '3';
     }     
-
-    console.log("brth", brth_count);
-    console.log('upg1',upg_sklv_brth_1);
 
     if(brth_count >= upg_sklv_brth_1){
       if(skill.br1_up == true){
         _text += " / " + char_brth["count_"+upg_sklv_brth_1];
-        console.log('text',_text);
       }
     } 
     if(brth_count >= upg_sklv_brth_2){

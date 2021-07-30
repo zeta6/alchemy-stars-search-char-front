@@ -8,7 +8,7 @@ export default class MyDocument extends Document {
         <Head>
         <script data-ad-client="ca-pub-2551455423822057" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
-            <script
+            {/* <script
                     dangerouslySetInnerHTML={{
                     __html: `
                         (adsbygoogle = window.adsbygoogle || []).push({
@@ -16,8 +16,8 @@ export default class MyDocument extends Document {
                         enable_page_level_ads: true
                     });
                       `
-                }}
-            />
+                }} */}
+            {/* /> */}
         </Head>
         <body>
           <Main />
