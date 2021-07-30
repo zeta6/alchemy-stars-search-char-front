@@ -20,7 +20,7 @@ export default function CharacterInfo(){
   const [ loading , setLoading ] = useState(true)
   
   useEffect(() => {
-    axios.get(`https://alchemystars.link:8715/api/characters/${character_id}/`)
+    axios.get(`https://alchemystars.link:8715/api/character/${character_id}/`)
       .then(response => setCharacter(response.data))
       .catch(error => console.log(error));
       setLoading(false)
@@ -69,7 +69,7 @@ export default function CharacterInfo(){
       <Container className="character-info-container">
         <Row>
           <Col className="character-info-first-row-index-col">
-            바로가기 : <a href="#quickView">퀵뷰</a> / <a href="#equipinfo">장비정보</a> / <a href="#profile">프로필</a> / <a href="#breakthrough">한계돌파</a> / <a href="#ascension">각성</a> / <a href="#preferredGifts">선호선물</a> / <a href="#characterFile">캐릭터파일</a> / 
+            바로가기 : <a href="#quickView">퀵뷰</a> / <a href="#equipinfo">장비정보</a> / <a href="#profile">프로필</a> <a href="#breakthrough">한계돌파</a> / <a href="#ascension">각성</a> / <a href="#preferredGifts">선호선물</a> / <a href="#characterFile">캐릭터파일</a> / 
           </Col>
         </Row>
         <Row>
