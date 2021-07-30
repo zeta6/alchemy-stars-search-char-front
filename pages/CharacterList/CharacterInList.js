@@ -1,6 +1,6 @@
 import React, { useState} from 'react';
 import { Button, Row, Col } from 'react-bootstrap';
-import Link from "next/link";
+import { useRouter } from 'next/router'
 import ChainSkillView from "./character-info/ChainSkillView";
 import EquipSkillView from "./character-info/EquipSkillView";
 import ActiveSkillView from "./character-info/ActiveSkillView";
@@ -8,6 +8,7 @@ import Image from "next/image";
 
 
 const CharacterInList = ({cha}) => {
+  const router = useRouter()
   const [ open, setOpen] = useState(false);
   const [ openButton, setOpenButton ] = useState("▼")
   const toggle = () => {
@@ -65,9 +66,14 @@ const CharacterInList = ({cha}) => {
         <td><Image width="40" height="40" alt="class_icon" src={cha.char_class.icon}></Image></td>
         <td><Image width="40" height="40" alt="faction_icon" src={cha.faction.icon}></Image></td>
         <td>
-          <Link href={'/CharacterList/[characterInfo]/'} as={`/CharacterList/${cha.id}/`} passHref>
-            <Button>View Aurorian Page</Button>
-          </Link>
+          <Button onClick={() => {
+            router.push({
+              pathname: '/CharacterList/[characterInfo]',
+              query: { characterInfo: cha.id },
+              })
+            }}
+          >
+            View Aurorian Page</Button>
         </td>
         </tr>
      <Collapse open={open}></Collapse>
