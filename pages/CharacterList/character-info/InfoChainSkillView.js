@@ -1,14 +1,14 @@
 import React from 'react';
-import ActiveSkillView from "./ActiveSkillView";
+import ChainSkillView from "./ChainSkillView";
 
-const InfoActiveSkillView = ({skill, ascension, breakthrough, char_brth, char_asc, rarity}) => {
+const InfoChainSkillView = ({skill, ascension, breakthrough, char_brth, char_asc, rarity}) => {
   if((!skill) || (!ascension) || (!breakthrough)){
     return null;
   }
   if((skill) && (ascension) && (breakthrough)){
     const asc_count = parseInt(ascension[4]);
     const brth_count = parseInt(breakthrough[3]);
-
+    
     let _text = "";
     // 스킬강화한돌단계 brth=breakingthrough
     let upg_sklv_brth_1;
@@ -28,9 +28,13 @@ const InfoActiveSkillView = ({skill, ascension, breakthrough, char_brth, char_as
       upg_skil_brth1 = '3'
     }     
 
+    console.log("brth", brth_count);
+    console.log('upg1',upg_sklv_brth_1);
+
     if(brth_count >= upg_sklv_brth_1){
       if(skill.br1_up == true){
         _text += " / " + char_brth["count_"+upg_sklv_brth_1];
+        console.log('text',_text);
       }
     } 
     if(brth_count >= upg_sklv_brth_2){
@@ -48,12 +52,13 @@ const InfoActiveSkillView = ({skill, ascension, breakthrough, char_brth, char_as
         _text += " / " + char_asc.lv3;
       }
     }
-    _text = skill.text + _text;
-    const _skill = {...skill,"text": _text};
+    const _skill = {...skill, "lv1_text": skill.lv1_text + _text,
+    "lv2_text": skill.lv2_text + _text, "lv3_text": skill.lv3_text + _text
+    };
 
     return(
-      <ActiveSkillView skill={_skill}></ActiveSkillView>
+      <ChainSkillView skill={_skill}></ChainSkillView>
     )
-  }
-} 
-export default InfoActiveSkillView;
+  } 
+}
+export default InfoChainSkillView;

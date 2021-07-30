@@ -6,7 +6,7 @@ import Layout from '../../components/Layout';
 import { Container, Row, Col, Table, Button, ButtonGroup, ButtonToolbar, Card} from "react-bootstrap";
 import Head from "next/head";
 import CharacterImage from  "./character-info/CharacterImage";
-import ChainSkillView from "./character-info/ChainSkillView";
+import InfoChainSkillView from "./character-info/InfoChainSkillView";
 import InfoEquipSkillView from "./character-info/InfoEquipSkillView";
 import InfoActiveSkillView from "./character-info/InfoActiveSkillView";
 import EquipmentView from "./character-info/EquipmentView";
@@ -111,14 +111,17 @@ export default function CharacterInfo(){
             </Row>
             <Row className="skills-veiw-row">
               <Col lg={12}>
-                <InfoActiveSkillView skill={character.active_skill} ascension={ascension} breakthrough={breakthrough}></InfoActiveSkillView>
+                <InfoActiveSkillView skill={character.active_skill} ascension={ascension} breakthrough={breakthrough}
+                char_brth={character.breakthrough} char_asc={character.ascension} rarity={character.rarity}></InfoActiveSkillView>
               </Col>
               <Col lg={12} className="chain-skill-view-top">
-                <ChainSkillView skill={character.chain_skill} chainSkill={chainSkill} setChainSkill={setChainSkill}>
-                </ChainSkillView>
+                <InfoChainSkillView skill={character.chain_skill} ascension={ascension} breakthrough={breakthrough}
+                char_brth={character.breakthrough} char_asc={character.ascension} rarity={character.rarity}>
+                </InfoChainSkillView>
               </Col>
               <Col lg={12}>
-                <InfoEquipSkillView skill={character.equip_skill} ascension={ascension}>
+                <InfoEquipSkillView skill={character.equip_skill} ascension={ascension} breakthrough={breakthrough}
+                char_brth={character.breakthrough} char_asc={character.ascension} rarity={character.rarity}>
                 </InfoEquipSkillView>
               </Col>
               <Col lg={12} className="character-info-quick-view-ascension-col">
@@ -140,10 +143,10 @@ export default function CharacterInfo(){
         <a name="equipinfo"></a>
         <EquipmentView equipment={character.equipment}></EquipmentView>
         <Row className="character-info-breakthrough-row">
+          <a name="profile"></a>
           <span className="character-info-equip-name-span">오로리안 소개 프로필</span><br></br>
           <Table striped bordered hover variant="dark">
-            <tbody>
-              <a name="profile"></a>
+            <tbody> 
               <tr>
                 <td className="character-info-preferred-talbe-text">{character.profile}</td>
               </tr> 
