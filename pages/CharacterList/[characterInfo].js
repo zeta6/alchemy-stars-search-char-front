@@ -69,7 +69,7 @@ export default function CharacterInfo(){
       <Container className="character-info-container">
         <Row>
           <Col className="character-info-first-row-index-col">
-            바로가기 : <a href="#quickView">퀵뷰</a> / <a href="#equipinfo">장비정보</a> / <a href="#breakthrough">한계돌파</a> / <a href="#ascension">각성</a> / <a href="#preferredGifts">선호선물</a> / <a href="#characterFile">캐릭터파일</a>
+            바로가기 : <a href="#quickView">퀵뷰</a> / <a href="#equipinfo">장비정보</a> / <a href="#profile">프로필</a> / <a href="#breakthrough">한계돌파</a> / <a href="#ascension">각성</a> / <a href="#preferredGifts">선호선물</a> / <a href="#characterFile">캐릭터파일</a> / 
           </Col>
         </Row>
         <Row>
@@ -131,6 +131,17 @@ export default function CharacterInfo(){
         </Row>
         <a name="equipinfo"></a>
         <EquipmentView equipment={character.equipment}></EquipmentView>
+        <Row className="character-info-breakthrough-row">
+          <span className="character-info-equip-name-span">오로리안 소개 프로필</span><br></br>
+          <Table striped bordered hover variant="dark">
+            <tbody>
+              <a name="profile"></a>
+              <tr>
+                <td className="character-info-preferred-talbe-text">{character.profile}</td>
+              </tr> 
+            </tbody>
+          </Table>
+        </Row>
         <Row className="character-info-breakthrough-row">
           <a name="breakthrough"></a>
           <span className="character-info-equip-name-span">한계 돌파</span><br></br>
@@ -216,16 +227,6 @@ export default function CharacterInfo(){
                 <td className="character-info-preferred-table-name"></td>
                 <td className="character-info-preferred-talbe-text">{character.personality.big_gift}</td>
               </tr>
-            </tbody>
-          </Table>
-        </Row>
-        <Row className="character-info-breakthrough-row">
-          <Table striped bordered hover variant="dark">
-            <tbody>
-              <tr>
-                <td className="character-info-preferred-table-name">소개 프로필</td>
-                <td className="character-info-preferred-talbe-text">{character.profile}</td>
-              </tr> 
             </tbody>
           </Table>
         </Row>
