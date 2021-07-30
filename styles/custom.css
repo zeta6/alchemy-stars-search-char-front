@@ -21,7 +21,13 @@ body {
 }
 
 
+
 /* 속성(기능)별 */
+
+.index-loading{
+  color: aliceblue;
+  font-size: 3cm;
+}
 
 .curser_to_point{
   cursor: pointer;

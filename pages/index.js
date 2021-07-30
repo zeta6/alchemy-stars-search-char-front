@@ -3,12 +3,13 @@ import { useRouter } from 'next/router'
 
 const Index = () => {
   const router = useRouter()
+
   useEffect(() => {
-    router.push('/SearchAurorian')
-  }, [])
+    setTimeout(router.push, 1000 , '/SearchAurorian')
+  }, [router])
 
   return(
-    <div>loading</div>
+    <div className="index-loading">loading...</div>
   )
 }
 
