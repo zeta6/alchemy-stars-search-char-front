@@ -219,6 +219,16 @@ export default function CharacterInfo(){
             </tbody>
           </Table>
         </Row>
+        <Row className="character-info-breakthrough-row">
+          <Table striped bordered hover variant="dark">
+            <tbody>
+              <tr>
+                <td className="character-info-preferred-table-name">소개 프로필</td>
+                <td className="character-info-preferred-talbe-text">{character.profile}</td>
+              </tr> 
+            </tbody>
+          </Table>
+        </Row>
         <CharFileView char_file={character.char_file}></CharFileView>
       </Container>
     </div>

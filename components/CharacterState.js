@@ -31,6 +31,7 @@ export const CharacterState = {
     small_gift: "",
     icon: "/SearchChar/loading/loading.jpg",
   },
+  profile: "",
   chain_skill: {
     name: "",
     icon: "/SearchChar/loading/loading.jpg",
