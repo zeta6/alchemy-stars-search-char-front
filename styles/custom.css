@@ -21,7 +21,13 @@ body {
 }
 
 
+
 /* 속성(기능)별 */
+
+.index-loading{
+  color: aliceblue;
+  font-size: 3cm;
+}
 
 .curser_to_point{
   cursor: pointer;
@@ -286,6 +292,11 @@ body {
   min-width: 200px;
 }
 
+.character-info-equi-table-count{
+  min-width: 40px;
+  text-align:center;
+}
+
 .character-info-breakthrough-row{
   padding-top: 25px;
 }
@@ -305,7 +316,7 @@ body {
 }
 
 .character-info-preferred-table-name{
-  min-width: 130px; 
+  min-width: 133px; 
   text-align:center;
 }
 
@@ -323,3 +334,24 @@ body {
   min-width: 100px; 
   text-align:center;
 }
+
+.character-info-file-stories-text{
+  text-indent: 15px;
+  width:100%;
+  cursor: pointer;
+}
+
+.character-info-story-table-name{
+  min-width: 140px; 
+  text-align:center;
+}
+
+.character-info-story-table-li{
+  list-style:none;
+  text-align:center;
+  padding-left: 0px;
+  padding-right: 60px;
+}
+
+
+

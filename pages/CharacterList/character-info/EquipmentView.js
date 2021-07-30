@@ -22,49 +22,49 @@ const EquipmentView = ({equipment}) => {
         <Table striped bordered hover variant="dark" className="character-info-equip-talbe-lv">
           <thead>
             <tr className="character-table-td-index">
-              <th>lv</th>
+              <th className="character-info-equi-table-count">Lv</th>
               <th className="character-info-equip-talbe-lv">능력</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>lv1</td>
+              <td className="character-info-equi-table-count">Lv1</td>
               <td>{equipment.lv1_text}<br></br>{equipment.lv1_state_text}</td>
             </tr> 
             <tr>
-              <td>lv2</td>
+              <td className="character-info-equi-table-count">Lv2</td>
               <td>{equipment.lv2_state_text}</td>
             </tr> 
             <tr>
-              <td>lv3</td>
+              <td className="character-info-equi-table-count">Lv3</td>
               <td>{equipment.lv3_text}</td>
             </tr> 
             <tr>
-              <td>lv4</td>
+              <td className="character-info-equi-table-count">Lv4</td>
               <td>{equipment.lv4_state_text}</td>
             </tr> 
             <tr>
-              <td>lv5</td>
+              <td className="character-info-equi-table-count">Lv5</td>
               <td>{equipment.lv5_state_text}</td>
             </tr> 
             <tr>
-              <td>lv6</td>
+              <td className="character-info-equi-table-count">Lv6</td>
               <td>{equipment.lv6_text}</td>
             </tr> 
             <tr>
-              <td>lv7</td>
+              <td className="character-info-equi-table-count">Lv7</td>
               <td>{equipment.lv7_state_text}</td>
             </tr> 
             <tr>
-              <td>lv8</td>
+              <td className="character-info-equi-table-count">Lv8</td>
               <td>{equipment.lv8_state_text}</td>
             </tr> 
             <tr>
-              <td>lv9</td>
+              <td className="character-info-equi-table-count">Lv9</td>
               <td>{equipment.lv9_state_text}</td>
             </tr> 
             <tr>
-              <td>lv10</td>
+              <td className="character-info-equi-table-count">Lv10</td>
               <td>{equipment.lv10_text}</td>
             </tr> 
           </tbody>

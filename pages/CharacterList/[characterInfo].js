@@ -10,6 +10,7 @@ import ChainSkillView from "./character-info/ChainSkillView";
 import InfoEquipSkillView from "./character-info/InfoEquipSkillView";
 import InfoActiveSkillView from "./character-info/InfoActiveSkillView";
 import EquipmentView from "./character-info/EquipmentView";
+import CharFileView from "./character-info/CharFileView";
 import Image from "next/image"
 
 export default function CharacterInfo(){
@@ -19,7 +20,7 @@ export default function CharacterInfo(){
   const [ loading , setLoading ] = useState(true)
   
   useEffect(() => {
-    axios.get(`https://alchemystars.link:8715/api/characters/${character_id}/`)
+    axios.get(`https://alchemystars.link:8715/api/character/${character_id}/`)
       .then(response => setCharacter(response.data))
       .catch(error => console.log(error));
       setLoading(false)
@@ -54,6 +55,22 @@ export default function CharacterInfo(){
     }
   }
 
+  const BreakthroughButtonGroup = ({rarity}) => {
+    if(!rarity){
+      return null
+    }else{
+    const range = Array(parseInt(rarity)+1).fill(0).map((x,y) => x + y );
+    return (
+      <ButtonGroup className="character-info-quick-view-breakthrough-col-button">
+        {range.map((num) => (
+          <BreakthroughButton key={num} number={num} this_brth={'br_'+num} 
+          breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
+        ))}
+      </ButtonGroup>
+    )   
+        }
+  }
+
   if(loading){
     return(
       "loading"
@@ -68,7 +85,7 @@ export default function CharacterInfo(){
       <Container className="character-info-container">
         <Row>
           <Col className="character-info-first-row-index-col">
-            바로가기 : <a href="#quickView">퀵뷰</a> / <a href="#equipinfo">장비정보</a> / <a href="#breakthrough">한계돌파</a> / <a href="#ascension">각성</a> / <a href="#preferredGifts">선호선물</a> / <a href="#characterFile">캐릭터파일</a>
+            바로가기 : <a href="#quickView">퀵뷰</a> / <a href="#equipinfo">장비정보</a> / <a href="#profile">프로필</a> / <a href="#breakthrough">한계돌파</a> / <a href="#ascension">각성</a> / <a href="#preferredGifts">선호선물</a> / <a href="#characterFile">캐릭터파일</a> / 
           </Col>
         </Row>
         <Row>
@@ -115,21 +132,24 @@ export default function CharacterInfo(){
               </Col>
               <Col lg={12} className="character-info-quick-view-breakthrough-col">
                 돌파:
-                <ButtonGroup className="character-info-quick-view-breakthrough-col-button">
-                  <BreakthroughButton number={"0"} this_brth={"br_0"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
-                  <BreakthroughButton number={"1"} this_brth={"br_1"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
-                  <BreakthroughButton number={"2"} this_brth={"br_2"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
-                  <BreakthroughButton number={"3"} this_brth={"br_3"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
-                  <BreakthroughButton number={"4"} this_brth={"br_4"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
-                  <BreakthroughButton number={"5"} this_brth={"br_5"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
-                  <BreakthroughButton number={"6"} this_brth={"br_6"} breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
-                </ButtonGroup>
+                <BreakthroughButtonGroup rarity={character.rarity}></BreakthroughButtonGroup>
               </Col>
             </Row>
           </Col>
         </Row>
         <a name="equipinfo"></a>
         <EquipmentView equipment={character.equipment}></EquipmentView>
+        <Row className="character-info-breakthrough-row">
+          <span className="character-info-equip-name-span">오로리안 소개 프로필</span><br></br>
+          <Table striped bordered hover variant="dark">
+            <tbody>
+              <a name="profile"></a>
+              <tr>
+                <td className="character-info-preferred-talbe-text">{character.profile}</td>
+              </tr> 
+            </tbody>
+          </Table>
+        </Row>
         <Row className="character-info-breakthrough-row">
           <a name="breakthrough"></a>
           <span className="character-info-equip-name-span">한계 돌파</span><br></br>
@@ -218,50 +238,7 @@ export default function CharacterInfo(){
             </tbody>
           </Table>
         </Row>
-        <Row className="character-info-breakthrough-row">
-          <a name="characterFile"></a>
-          <span className="character-info-equip-name-span">캐릭터 파일</span>
-          <Table striped bordered hover variant="dark">
-            <tbody>
-              <tr>
-                <td className="character-info-file-table-name">이름</td>
-                <td className="character-info-preferred-talbe-text">{character.char_file.name}</td>
-              </tr> 
-              <tr>
-                <td className="character-info-file-table-name">별명</td>
-                <td className="character-info-preferred-talbe-text">{character.char_file.nickname}</td>
-              </tr> 
-              <tr>
-                <td className="character-info-file-table-name">성별</td>
-                <td className="character-info-preferred-talbe-text">{character.char_file.gender}</td>
-              </tr>
-              <tr>
-                <td className="character-info-file-table-name">키</td>
-                <td className="character-info-preferred-talbe-text">{character.char_file.height}</td>
-              </tr>
-              <tr>
-                <td className="character-info-file-table-name">생일</td>
-                <td className="character-info-preferred-talbe-text">{character.char_file.birthday}</td>
-              </tr> 
-              <tr>
-                <td className="character-info-file-table-name">출생지</td>
-                <td className="character-info-preferred-talbe-text">{character.char_file.birthplace}</td>
-              </tr> 
-              <tr>
-                <td className="character-info-file-table-name">속성</td>
-                <td className="character-info-preferred-talbe-text">{character.char_file.element}</td>
-              </tr>
-              <tr>
-                <td className="character-info-file-table-name">소속 조직</td>
-                <td className="character-info-preferred-talbe-text">{character.char_file.affilition}</td>
-              </tr>
-              <tr>
-                <td className="character-info-file-table-name">전투 방식</td>
-                <td className="character-info-preferred-talbe-text">{character.char_file.fighting_style}</td>
-              </tr>
-            </tbody>
-          </Table>
-        </Row>
+        <CharFileView char_file={character.char_file}></CharFileView>
       </Container>
     </div>
     )

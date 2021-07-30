@@ -31,6 +31,7 @@ export const CharacterState = {
     small_gift: "",
     icon: "/SearchChar/loading/loading.jpg",
   },
+  profile: "",
   chain_skill: {
     name: "",
     icon: "/SearchChar/loading/loading.jpg",
@@ -116,7 +117,12 @@ export const CharacterState = {
     birthplace: "",
     element: "",
     affilition: "",
-    fighting_style: ""
+    fighting_style: "",
+    story_0: "000000gewagewaernbeanregwagwahwahwahhwhewawheahrewhreantrtneantramtrah",
+    story_1: "111111gewagewaernbeanregwagwahwahwahhwhewawheahrewhreantrtneantramtrah",
+    story_2: "222222gewagewaernbeanregwagwahwahwahhwhewawheahrewhreantrtneantramtrah",
+    story_3: "333333gewagewaernbeanregwagwahwahwahhwhewawheahrewhreantrtneantramtrah",
+    story_4: "444444gewagewaernbeanregwagwahwahwahhwhewawheahrewhreantrtneantramtrah",
   },
 }
 
