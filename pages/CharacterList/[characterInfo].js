@@ -3,10 +3,10 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import CharacterState from "../../components/CharacterState"
 import Layout from '../../components/Layout';
-import { Container, Row, Col, Table, Button, ButtonGroup, ButtonToolbar, Card} from "react-bootstrap";
+import { Container, Row, Col, Table, Button, ButtonGroup} from "react-bootstrap";
 import Head from "next/head";
 import CharacterImage from  "./character-info/CharacterImage";
-import ChainSkillView from "./character-info/ChainSkillView";
+import InfoChainSkillView from "./character-info/InfoChainSkillView";
 import InfoEquipSkillView from "./character-info/InfoEquipSkillView";
 import InfoActiveSkillView from "./character-info/InfoActiveSkillView";
 import EquipmentView from "./character-info/EquipmentView";
@@ -16,17 +16,18 @@ import Image from "next/image"
 export default function CharacterInfo(){
   const router = useRouter();
   const character_id = router.query.characterInfo;
-  const [ character, setCharacter ] = useState(CharacterState)
-  const [ loading , setLoading ] = useState(true)
-  
+
   useEffect(() => {
-    axios.get(`https://alchemystars.link:8715/api/character/${character_id}/`)
+    if(character_id){
+      axios.get(`https://alchemystars.link:8715/api/character/${character_id}/`)
       .then(response => setCharacter(response.data))
       .catch(error => console.log(error));
       setLoading(false)
-    },[character_id]
+    }},[character_id]
   );
 
+  const [ character, setCharacter ] = useState(CharacterState)
+  const [ loading , setLoading ] = useState(true)
   const [ chainSkill, setChainSkill ] = useState("first")
   const [ ascension, setAscension ] = useState("asc_0");
   const [ breakthrough, setBreakthrough ] = useState("br_0");
@@ -68,7 +69,26 @@ export default function CharacterInfo(){
         ))}
       </ButtonGroup>
     )   
-        }
+    }
+  }
+
+  const BreakthrougtBody = ({rarity}) => {
+    if(!rarity){
+      return null
+    }else{
+    const range = Array(parseInt(rarity)).fill(1).map((x,y) => x + y );
+    return (
+      <tbody>
+        {range.map((brth)=> (
+          <React.Fragment key={brth}>
+            <tr>
+              <td className="character-info-breakthrough-table-count">{brth}</td>
+              <td className="character-info-berakthrough-talbe-text">{character.breakthrough["count_"+brth]}</td>
+            </tr> 
+          </React.Fragment>
+        ))}
+      </tbody>
+    )}
   }
 
   if(loading){
@@ -111,14 +131,17 @@ export default function CharacterInfo(){
             </Row>
             <Row className="skills-veiw-row">
               <Col lg={12}>
-                <InfoActiveSkillView skill={character.active_skill} ascension={ascension} breakthrough={breakthrough}></InfoActiveSkillView>
+                <InfoActiveSkillView skill={character.active_skill} ascension={ascension} breakthrough={breakthrough}
+                char_brth={character.breakthrough} char_asc={character.ascension} rarity={character.rarity}></InfoActiveSkillView>
               </Col>
               <Col lg={12} className="chain-skill-view-top">
-                <ChainSkillView skill={character.chain_skill} chainSkill={chainSkill} setChainSkill={setChainSkill}>
-                </ChainSkillView>
+                <InfoChainSkillView skill={character.chain_skill} ascension={ascension} breakthrough={breakthrough}
+                char_brth={character.breakthrough} char_asc={character.ascension} rarity={character.rarity}>
+                </InfoChainSkillView>
               </Col>
               <Col lg={12}>
-                <InfoEquipSkillView skill={character.equip_skill} ascension={ascension}>
+                <InfoEquipSkillView skill={character.equip_skill} ascension={ascension} breakthrough={breakthrough}
+                char_brth={character.breakthrough} char_asc={character.ascension} rarity={character.rarity}>
                 </InfoEquipSkillView>
               </Col>
               <Col lg={12} className="character-info-quick-view-ascension-col">
@@ -140,10 +163,10 @@ export default function CharacterInfo(){
         <a name="equipinfo"></a>
         <EquipmentView equipment={character.equipment}></EquipmentView>
         <Row className="character-info-breakthrough-row">
+          <a name="profile"></a>
           <span className="character-info-equip-name-span">오로리안 소개 프로필</span><br></br>
           <Table striped bordered hover variant="dark">
-            <tbody>
-              <a name="profile"></a>
+            <tbody> 
               <tr>
                 <td className="character-info-preferred-talbe-text">{character.profile}</td>
               </tr> 
@@ -160,32 +183,7 @@ export default function CharacterInfo(){
                 <th className="character-info-berakthrough-talbe-text">능력</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td className="character-info-breakthrough-table-count">1</td>
-                <td className="character-info-berakthrough-talbe-text">{character.breakthrough.count_1}</td>
-              </tr> 
-              <tr>
-                <td className="character-info-breakthrough-table-count">2</td>
-                <td className="character-info-berakthrough-talbe-text">{character.breakthrough.count_2}</td>
-              </tr> 
-              <tr>
-                <td className="character-info-breakthrough-table-count">3</td>
-                <td className="character-info-berakthrough-talbe-text">{character.breakthrough.count_3}</td>
-              </tr> 
-              <tr>
-                <td className="character-info-breakthrough-table-count">4</td>
-                <td className="character-info-berakthrough-talbe-text">{character.breakthrough.count_4}</td>
-              </tr> 
-              <tr>
-                <td className="character-info-breakthrough-table-count">5</td>
-                <td className="character-info-berakthrough-talbe-text">{character.breakthrough.count_5}</td>
-              </tr> 
-              <tr>
-                <td className="character-info-breakthrough-table-count">6</td>
-                <td className="character-info-berakthrough-talbe-text">{character.breakthrough.count_6}</td>
-              </tr> 
-            </tbody>  
+            <BreakthrougtBody rarity={character.rarity}></BreakthrougtBody>
           </Table>
         </Row>
         <Row className="character-info-breakthrough-row">

@@ -5,80 +5,80 @@ import Image from "next/image";
 // ### skill = json데이터 chainSkill = react state
 const ChainSkillView = ({skill}) => {
   const [ chainSkill, setChainSkill ] = useState("lv1");
+
+  const ChainButton = ({sklLv}) => {
+    const key = sklLv+"_tiles"
+    if(sklLv == chainSkill){
+      return (
+        <Button className="chain-skill-veiw-button" onClick={() => setChainSkill(sklLv)}
+        variant="info">
+          {skill[key]}
+        </Button>
+      )
+    }else if(sklLv != chainSkill){
+      return (
+        <Button className="chain-skill-veiw-button" onClick={() => setChainSkill(sklLv)}>
+          {skill[key]}
+        </Button>
+      )
+    }else{
+      return null
+    }
+  }
+
+  const ChainButtonGroup = () => {
+    if(skill.lv2_tiles == ""){
+      return(
+        <ChainButton sklLv={"lv1"}></ChainButton>
+      )
+    }else if(skill.lv3_tiles == ""){
+      return(
+        <ButtonGroup>
+          <ChainButton sklLv={"lv1"}></ChainButton>
+          <ChainButton sklLv={"lv2"}></ChainButton>
+        </ButtonGroup>
+      )
+    }else{
+      return(
+      <ButtonGroup>
+        <ChainButton sklLv={"lv1"}></ChainButton>
+        <ChainButton sklLv={"lv2"}></ChainButton>
+        <ChainButton sklLv={"lv3"}></ChainButton>
+      </ButtonGroup>
+      )
+    }
+  }
+
+  const ChainText = () => {
+    const key = chainSkill+"_text"
+    return (
+      <div>
+        {skill[key]}
+      </div>
+    )
+     
+  }
+
   if(!skill){
     return null;
   }
-  if(chainSkill == "lv1"){
+  if(skill){
     return(
       <Row className="chain-skill-veiw-row">
       <Col xs={12} lg={12}>
-        체인 스킬: {skill.name}
+        연쇄: {skill.name}
       </Col>
       <Col lg={3}>
       <Image width="60" height="60" src={skill.icon} alt="skill.icon"></Image>
       </Col>
       <Col xs={4} lg={4}>
         <ButtonToolbar className="active-skill-card-wrap">
-          <ButtonGroup>
-            <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("lv1")} variant="info">{skill.lv1_tiles}</Button>
-            <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("lv2")}>{skill.lv2_tiles}</Button>
-            <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("lv3")}>{skill.lv3_tiles}</Button>
-          </ButtonGroup>
-      </ButtonToolbar>
+          <ChainButtonGroup></ChainButtonGroup>
+        </ButtonToolbar>
       </Col>
-      <div>
-        {skill.lv1_text}
-      </div>
+      <ChainText></ChainText>
       </Row>
     )
-  }else if(chainSkill == "lv2"){
-    return(
-      <Row className="chain-skill-veiw-row">
-        <Col lg={12}>
-          체인 스킬: {skill.name}
-        </Col>
-        <Col lg={3}>
-          <Image width="60" height="60" src={skill.icon} alt="skill.icon"></Image>
-        </Col>
-        <Col lg={4}>
-          <ButtonToolbar className="active-skill-card-wrap">
-            <ButtonGroup>
-              <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("lv1")}>{skill.lv1_tiles}</Button>
-              <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("lv2")} variant="info">{skill.lv2_tiles}</Button>
-              <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("lv3")}>{skill.lv3_tiles}</Button>
-          </ButtonGroup>
-        </ButtonToolbar>
-        </Col>
-        <div>
-          {skill.lv2_text}
-        </div>
-      </Row>
-    )
-  }else if(chainSkill == "lv3"){
-    return(
-      <Row className="chain-skill-veiw-row">
-        <Col lg={12}>
-          체인 스킬: {skill.name}
-        </Col>
-        <Col lg={3}>
-          <Image width="60" height="60" src={skill.icon} alt="skill.icon"></Image>
-        </Col>
-        <Col sm={4} lg={4}>
-          <ButtonToolbar className="active-skill-card-wrap">
-            <ButtonGroup>
-              <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("lv1")}>{skill.lv1_tiles}</Button>
-              <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("lv2")}>{skill.lv2_tiles}</Button>
-              <Button className="chain-skill-veiw-button" onClick={() => setChainSkill("lv3")} variant="info">{skill.lv3_tiles}</Button>
-          </ButtonGroup>
-        </ButtonToolbar>
-        </Col>
-        <div>
-          {skill.lv3_text}
-        </div>
-      </Row>
-    )
-  }else{
-    return null
   }
 }
 

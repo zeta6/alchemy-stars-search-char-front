@@ -10,7 +10,7 @@ const ActiveSkillView = ({skill}) => {
     return(
       <Row className="chain-skill-veiw-row">
       <Col lg={12}>
-        액티브스킬: {skill.name}
+        액티브: {skill.name}
       </Col>
       <Col lg={4}>
         <Image width="60" height="60" src={skill.icon} alt="skill.icon"></Image>

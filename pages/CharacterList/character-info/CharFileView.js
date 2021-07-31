@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { Table, Row } from "react-bootstrap";
 
 const CharFileView = ({char_file}) => {
@@ -30,7 +30,6 @@ const CharFileView = ({char_file}) => {
     }
     const Collapse = ({open}) => {
       const key = "story_" +storyNum;
-      console.log(key)
       if(!open) {
         return null
       }else{

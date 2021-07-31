@@ -21,6 +21,7 @@ const CharacterList = ({options, setOptions}) => {
   const [sort, setSort] = useState(null);
   const [charPerPage, setCharPerPage] = useState(20);
 
+// useEffect start
   useEffect(() => {
     const setData = (data) => {
       setPages(Array((parseInt(data.length / 20) + 1))
@@ -34,6 +35,7 @@ const CharacterList = ({options, setOptions}) => {
   );
 
   useEffect(() => { 
+    // filter start
     const characterFilter = (character) => {
       if(character.name.indexOf(options.name) !== -1 || options.name.length == 0){
         if(options.rarity.includes(character.rarity) || options.rarity.length == 0){
@@ -47,21 +49,72 @@ const CharacterList = ({options, setOptions}) => {
         }
       }
     }
+
+    const specialRoleFilter = (characterList) => {
+      let _characterList = characterList;
+      const teleportFilter = (character) => {
+        if(character.special_role.teleport == true){
+          return character;
+        }
+      }
+      const healFilter = (character) => {
+        if(character.special_role.heal == true){
+          return character;
+        }
+      }
+      const tileChangeFilter = (character) => {
+        if(character.special_role.tile_change == true){
+          return character;
+        }
+      }
+      const tileResetFilter = (character) => {
+        if(character.special_role.tile_reset == true){
+          return character;
+        }
+      }
+      if(options.special_role.includes('teleport')){
+        _characterList = _characterList.filter(teleportFilter);
+      }      
+      if(options.special_role.includes('heal')){
+        _characterList = _characterList.filter(healFilter);  
+      }
+      if(options.special_role.includes('tile_change')){
+        _characterList = _characterList.filter(tileChangeFilter);
+      }
+      if(options.special_role.includes('tile_reset')){
+        _characterList = _characterList.filter(tileResetFilter);
+      }
+      return _characterList
+    }
+
+    const mixFilter = (list) => {
+      if (options.special_role.length == 0){
+        return list.filter(characterFilter)
+      }else{
+        return specialRoleFilter(list).filter(characterFilter)    
+      }
+    }
+
+    // filter end
+    
     const setData = (data) => {
-      const filter = characterFilter;
-      setCharacterList(data.filter(filter));
-      setPages(Array((parseInt(data.filter(filter).length / charPerPage) + 1))
+      setCharacterList(mixFilter(data));
+      setPages(Array((parseInt(mixFilter(data).length / charPerPage) + 1))
     .fill(1).map((x,y) => x + y ));
       setSliceStart(0);
       setSort(null);
     }
+
     axios.get("https://alchemystars.link:8715/api/characters/")
       .then(response => setData(response.data))
       .catch(error => console.log(error));
 },[options, charPerPage]
   );
 
+  // useEffect end
 
+
+  //sort start
   const getSortOrder = (prop) => {
     return function(a, b) {    
       if (a[prop] > b[prop]) {    
@@ -205,7 +258,9 @@ const CharacterList = ({options, setOptions}) => {
       return <span className="curser_to_point" onClick={()=>sortByClass()}>클래스</span>
     }
   } 
- 
+  //sort end
+
+
   if (loading) {
     return "loading"
   }

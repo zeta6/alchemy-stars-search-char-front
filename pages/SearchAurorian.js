@@ -3,26 +3,35 @@ import { object } from 'prop-types';
 import React, {useState} from 'react';
 import OptionButtons from './OptionButtons/OptionButtons';
 import CharacterList from './CharacterList/CharacterList';
-import { Container, Row, InputGroup, FormControl} from 'react-bootstrap';
+import { Container, Row, InputGroup, FormControl, Button} from 'react-bootstrap';
 import Layout from '../components/Layout';
 import Head from 'next/head';
 
 const SearchAurorian = () => {
+  const [ charName, setCharName ] = useState("")
   const [ options, setOptions] = useState(
     {
       name: "",
       rarity: [],
       main_attribute: [],
       sub_attribute: [],
-      class:[]
+      class:[],
+      special_role:[],
     }
   )
 
   const handleChange = (e) => {
-    let value = e.target.value;
+    setCharName(e.target.value);
+  }
+  
+  const handleInputName = (e) => {
+    if(e.key == "Enter"){
+      handleSearch();
+    }
+  }
 
-    const _options = { ...options, name: value };
-
+  const handleSearch = () => {
+    const _options = { ...options, "name": charName};
     setOptions(_options);
   }
 
@@ -41,7 +50,8 @@ return (
           aria-label="Charactername"
           aria-describedby="basic-addon1"
           onChange={(e)=>handleChange(e)}
-        />
+          onKeyPress={(e)=>handleInputName(e)}
+        /> <Button onClick={()=>handleSearch()}>이름 검색</Button>
       </InputGroup>
     </Row>
     <OptionButtons options={options} setOptions={setOptions}></OptionButtons>

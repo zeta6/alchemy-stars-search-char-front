@@ -1,7 +1,7 @@
 
 import { Button, ButtonToolbar, ButtonGroup, Row } from 'react-bootstrap';
 import { useState } from 'react';
-import { attrOptions, classOptions, rarityOptions} from '../../components/ButtonOptions'
+import { attrOptions, classOptions, rarityOptions, specialRoleOptions } from '../../components/ButtonOptions'
 import Image from 'next/image';
 
 const OptionButton = ({object, options, setOptions, optionKey}) => {
@@ -97,6 +97,10 @@ const OptionButtons = ({options, setOptions}) => {
           <OptionButton object={attrOptions.forest} options={options} setOptions={setOptions} optionKey={"sub_attribute"}></OptionButton>
           <OptionButton object={attrOptions.thunder} options={options} setOptions={setOptions} optionKey={"sub_attribute"}></OptionButton>
         </ButtonGroup>
+        <ButtonGroup className="me-2">
+          <OptionButton object={specialRoleOptions.tile_change} options={options} setOptions={setOptions} optionKey={"special_role"}></OptionButton>
+          <OptionButton object={specialRoleOptions.tile_reset} options={options} setOptions={setOptions} optionKey={"special_role"}></OptionButton>        
+        </ButtonGroup>
       </ButtonToolbar>
     </Row>
     <Row className="option-buttons-second-group">
@@ -112,6 +116,10 @@ const OptionButtons = ({options, setOptions}) => {
           <RarityOptionButton object={rarityOptions.four} options={options} setOptions={setOptions} optionKey={"rarity"}></RarityOptionButton>
           <RarityOptionButton object={rarityOptions.five} options={options} setOptions={setOptions} optionKey={"rarity"}></RarityOptionButton>
           <RarityOptionButton object={rarityOptions.six} options={options} setOptions={setOptions} optionKey={"rarity"}></RarityOptionButton>        
+        </ButtonGroup>
+        <ButtonGroup className="me-2">
+          <OptionButton object={specialRoleOptions.teleport} options={options} setOptions={setOptions} optionKey={"special_role"}></OptionButton>
+          <OptionButton object={specialRoleOptions.heal} options={options} setOptions={setOptions} optionKey={"special_role"}></OptionButton>        
         </ButtonGroup>
       </ButtonToolbar>
     </Row>

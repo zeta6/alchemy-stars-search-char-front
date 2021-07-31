@@ -11,7 +11,7 @@ const EquipSkillView = ({skill}) => {
     return(
       <Row className="chain-skill-veiw-row">
       <Col lg={12}>
-        장비 스킬: {skill.name}
+        장비: {skill.name}
       </Col>
       <Col lg={3}>
       <Image width="60" height="60" src={skill.icon} alt="skill.icon"></Image>

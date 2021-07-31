@@ -1,50 +1,57 @@
 import React from 'react';
 import ActiveSkillView from "./ActiveSkillView";
 
-const InfoActiveSkillView = ({skill, ascension, breakthrough}) => {
+const InfoActiveSkillView = ({skill, ascension, breakthrough, char_brth, char_asc, rarity}) => {
   if((!skill) || (!ascension) || (!breakthrough)){
     return null;
   }
   if((skill) && (ascension) && (breakthrough)){
-    
-    let asc_count = parseInt(ascension[4]);
+    const asc_count = parseInt(ascension[4]);
     const brth_count = parseInt(breakthrough[3]);
 
-    if(asc_count == 1){
-      asc_count = 0;
-    }
+    let _text = "";
+    // 스킬강화한돌단계 brth=breakingthrough
+    let upg_sklv_brth_1;
+    let upg_sklv_brth_2;
 
-    let _skill = null;
-    const suffix = "asc"+asc_count+"_";
-    if(brth_count >= skill["brth_skill_2_br"]){
-      const _suffix = suffix + "brth_skill_2_"
-      const cooltime = skill[_suffix+"cooltime"];
-      const preemptive = skill[_suffix+"preemptive"];
-      const text = skill[_suffix+"text"];
-      _skill = {...skill, "cooltime" : cooltime, "preemptive" : preemptive, "text": text};
-    }else if(brth_count >= skill["brth_skill_1_br"]){
-      const _suffix = suffix + "brth_skill_1_"
-      const cooltime = skill[_suffix+"cooltime"];
-      const preemptive = skill[_suffix+"preemptive"];
-      const text = skill[_suffix+"text"];
-      _skill = {...skill, "cooltime" : cooltime, "preemptive" : preemptive, "text": text};      
-    }else if(suffix != "asc0_"){
-      const _suffix = suffix + "brth_skill_0_";
-      const cooltime = skill[_suffix+"cooltime"];
-      const preemptive = skill[_suffix+"preemptive"];
-      const text = skill[_suffix+"text"];
-      _skill = {...skill, "cooltime" : cooltime, "preemptive" : preemptive, "text": text};
-    }
+    if (rarity == '6'){
+      upg_sklv_brth_1 = '3'; 
+      upg_sklv_brth_2 = '6';
+    }else if (rarity == '5'){
+      upg_sklv_brth_1 = '2';
+      upg_sklv_brth_2 = '5';
+    }else if (rarity == '4'){
+      upg_sklv_brth_1 = '4';
+    }else if (rarity == '3'){
+      upg_sklv_brth_1 = '3';
+    }     
 
-    if(_skill == null){
-      return(
-        <ActiveSkillView skill={skill}></ActiveSkillView>
-      )
-    }else{
-      return(
-        <ActiveSkillView skill={_skill}></ActiveSkillView>
-      )
+    if(brth_count >= upg_sklv_brth_1){
+      if(skill.br1_up == true){
+        _text += " / " + char_brth["count_"+upg_sklv_brth_1];
+      }
+    } 
+    if(brth_count >= upg_sklv_brth_2){
+      if(skill.br2_up == true){
+        _text += " / " + char_brth["count_"+upg_sklv_brth_2];
+      }
     }
-  } 
-}
+    if(asc_count >= 2){
+      if(skill.asc2_up == true){
+        _text += " / " + char_asc.lv2;
+      }
+    }      
+    if(asc_count == 3){
+      if(skill.asc3_up == true){
+        _text += " / " + char_asc.lv3;
+      }
+    }
+    _text = skill.text + _text;
+    const _skill = {...skill,"text": _text};
+
+    return(
+      <ActiveSkillView skill={_skill}></ActiveSkillView>
+    )
+  }
+} 
 export default InfoActiveSkillView;
