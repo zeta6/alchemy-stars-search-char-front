@@ -15,7 +15,8 @@ const SearchAurorian = () => {
       rarity: [],
       main_attribute: [],
       sub_attribute: [],
-      class:[]
+      class:[],
+      special_role:[],
     }
   )
 

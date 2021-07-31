@@ -66,3 +66,26 @@ export const classOptions = {
     icon: '/SearchChar/ButtonIcons/supporter-sm.jpg',
   }
 }
+
+export const specialRoleOptions = {
+  teleport: {
+    value: 'teleport',
+    name: 'teleport',
+    icon: '/SearchChar/ButtonIcons/teleport.png',
+  },
+  heal: {
+    value: 'heal',
+    name: 'heal',
+    icon: '/SearchChar/ButtonIcons/heal.png',
+  },
+  tile_change: {
+    value: 'tile_change',
+    name: 'tile_change',
+    icon: '/SearchChar/ButtonIcons/tile_change.png',
+  },
+  tile_reset: {
+    value: 'tile_reset',
+    name: 'tile_reset',
+    icon: '/SearchChar/ButtonIcons/tile_reset.png',
+  },
+}
