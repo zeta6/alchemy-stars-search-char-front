@@ -19,8 +19,7 @@ export default function CharacterInfo(){
 
   useEffect(() => {
     if(character_id){
-      axios.get("/api/0")
-    // axios.get(`https://alchemystars.link:8715/api/character/${character_id}/`)
+      axios.get(`https://alchemystars.link:8715/api/character/${character_id}/`)
       .then(response => setCharacter(response.data))
       .catch(error => console.log(error));
       setLoading(false)
