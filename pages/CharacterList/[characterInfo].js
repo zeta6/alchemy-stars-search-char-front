@@ -183,7 +183,7 @@ export default function CharacterInfo(){
                 <th className="character-info-berakthrough-talbe-text">능력</th>
               </tr>
             </thead>
-            <BreakthrougtBody rerity={character.rarity}></BreakthrougtBody>
+            <BreakthrougtBody rarity={character.rarity}></BreakthrougtBody>
           </Table>
         </Row>
         <Row className="character-info-breakthrough-row">
