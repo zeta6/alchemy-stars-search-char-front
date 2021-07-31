@@ -5,9 +5,49 @@ import Image from "next/image";
 // ### skill = json데이터 chainSkill = react state
 const EquipSkillView = ({skill}) => {
   const [ equipSkill, setEquipSkill ] = useState("lv1");
+
+  const EquipSkillButton = ({sklLv}) => {
+    if(sklLv == equipSkill){
+      return (
+        <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill(sklLv)}
+        variant="info">
+          {sklLv}
+        </Button>
+      )
+    }else if(sklLv != equipSkill){
+      return (
+        <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill(sklLv)}>
+          {sklLv}
+        </Button>
+      )
+    }else{
+      return null
+    }
+  }
+
+  const EquipSkillButtonGroup = () => {
+    return(
+      <ButtonGroup>
+        <EquipSkillButton sklLv={"lv1"}></EquipSkillButton>
+        <EquipSkillButton sklLv={"lv3"}></EquipSkillButton>
+        <EquipSkillButton sklLv={"lv6"}></EquipSkillButton>
+        <EquipSkillButton sklLv={"lv10"}></EquipSkillButton>
+      </ButtonGroup>
+    )
+  }
+
+  const EquipText = () => {
+    const key = equipSkill+"_text";
+    return (
+      <div>
+        {skill[key]}
+      </div>
+    )     
+  }
+
   if(!skill){
     return null;
-  }else if(equipSkill == "lv1"){
+  }else{
     return(
       <Row className="chain-skill-veiw-row">
       <Col lg={12}>
@@ -18,92 +58,12 @@ const EquipSkillView = ({skill}) => {
       </Col>
       <Col xs={3} sm={3} lg={4}>
         <ButtonToolbar className="active-skill-card-wrap">
-          <ButtonGroup>
-            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv1")} variant="info">lv1</Button>
-            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv3")}>lv3</Button>
-            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv6")}>lv6</Button>
-            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv10")}>lv10</Button>
-          </ButtonGroup>
+          <EquipSkillButtonGroup></EquipSkillButtonGroup>
         </ButtonToolbar>
       </Col>
-      <div>
-        {skill.lv1_text}
-      </div>
-      </Row>
-    )
-  }else if(equipSkill == "lv3"){
-    return(
-      <Row className="chain-skill-veiw-row">
-      <Col lg={12}>
-        장비 스킬: {skill.name}
-      </Col>
-      <Col lg={3}>
-      <Image width="60" height="60" src={skill.icon} alt="skill.icon"></Image>
-      </Col>
-      <Col xs={3} sm={3} lg={4}>
-        <ButtonToolbar className="active-skill-card-wrap">
-          <ButtonGroup>
-            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv1")}>lv1</Button>
-            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv3")} variant="info">lv3</Button>
-            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv6")}>lv6</Button>
-            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv10")}>lv10</Button>
-          </ButtonGroup>
-      </ButtonToolbar>
-      </Col>
-      <div>
-        {skill.lv3_text}
-      </div>
-      </Row>
-    )
-  }else if(equipSkill == "lv6"){
-    return(
-      <Row className="chain-skill-veiw-row">
-      <Col lg={12}>
-        장비 스킬: {skill.name}
-      </Col>
-      <Col lg={3}>
-      <Image width="60" height="60" src={skill.icon} alt="skill.icon"></Image>
-      </Col>
-      <Col xs={3} sm={3} lg={4}>
-        <ButtonToolbar className="active-skill-card-wrap">
-          <ButtonGroup>
-            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv1")}>lv1</Button>
-            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv3")}>lv3</Button>
-            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv6")} variant="info">lv6</Button>
-            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv10")}>lv10</Button>
-          </ButtonGroup>
-      </ButtonToolbar>
-      </Col>
-      <div>
-        {skill.lv6_text}
-      </div>
-      </Row>
-    )
-  }else if(equipSkill == "lv10"){
-    return(
-      <Row className="chain-skill-veiw-row">
-      <Col lg={12}>
-        장비 스킬: {skill.name}
-      </Col>
-      <Col lg={3}>
-      <Image width="60" height="60" src={skill.icon} alt="skill.icon"></Image>
-      </Col>
-      <Col xs={3} sm={3} lg={4}>
-        <ButtonToolbar className="active-skill-card-wrap">
-          <ButtonGroup>
-            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv1")}>lv1</Button>
-            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv3")}>lv3</Button>
-            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv6")}>lv6</Button>
-            <Button className="chain-skill-veiw-button" onClick={() => setEquipSkill("lv10")} variant="info">lv10</Button>
-          </ButtonGroup>
-      </ButtonToolbar>
-      </Col>
-      <div>
-        {skill.lv10_text}
-      </div>
+      <EquipText></EquipText>
       </Row>
     )
   }
 }
-
-export default EquipSkillView
+export default EquipSkillView;
