@@ -83,7 +83,7 @@ export default function CharacterInfo(){
           <React.Fragment key={brth}>
             <tr>
               <td className="character-info-breakthrough-table-count">{brth}</td>
-              <td className="character-info-berakthrough-talbe-text">{character.breakthrough.count_1}</td>
+              <td className="character-info-berakthrough-talbe-text">{character.breakthrough.count_+parseString(brth)}</td>
             </tr> 
           </React.Fragment>
         ))}
