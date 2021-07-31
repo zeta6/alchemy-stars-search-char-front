@@ -57,7 +57,7 @@ export default function CharacterInfo(){
   }
 
   //for breakthorouth map prop
-  const rarityRange = Array(parseInt(rarity)+1).fill(1).map((x,y) => x + y );
+  const rarityRange = Array(parseInt(character.rarity)+1).fill(1).map((x,y) => x + y );
 
   const BreakthroughButtonGroup = ({rarity}) => {
     if(!rarity){
@@ -72,7 +72,7 @@ export default function CharacterInfo(){
         ))}
       </ButtonGroup>
     )   
-        }
+    }
   }
 
   if(loading){
