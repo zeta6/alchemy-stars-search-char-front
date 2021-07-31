@@ -12,7 +12,7 @@ const ChainSkillView = ({skill}) => {
     return(
       <Row className="chain-skill-veiw-row">
       <Col xs={12} lg={12}>
-        체인 스킬: {skill.name}
+        연쇄: {skill.name}
       </Col>
       <Col lg={3}>
       <Image width="60" height="60" src={skill.icon} alt="skill.icon"></Image>
