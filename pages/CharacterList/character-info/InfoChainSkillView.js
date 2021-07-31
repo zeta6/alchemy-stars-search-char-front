@@ -21,9 +21,9 @@ const InfoChainSkillView = ({skill, ascension, breakthrough, char_brth, char_asc
       upg_sklv_brth_1 = '2';
       upg_sklv_brth_2 = '5';
     }else if (rarity == '4'){
-      upg_skil_brth1 = '4';
+      upg_sklv_brth_1 = '4';
     }else if (rarity == '3'){
-      upg_skil_brth1 = '3';
+      upg_sklv_brth_1 = '3';
     }     
 
     if(brth_count >= upg_sklv_brth_1){
