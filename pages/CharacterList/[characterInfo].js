@@ -19,7 +19,8 @@ export default function CharacterInfo(){
 
   useEffect(() => {
     if(character_id){
-    axios.get(`https://alchemystars.link:8715/api/character/${character_id}/`)
+      axios.get("/api/0")
+    // axios.get(`https://alchemystars.link:8715/api/character/${character_id}/`)
       .then(response => setCharacter(response.data))
       .catch(error => console.log(error));
       setLoading(false)
@@ -83,7 +84,7 @@ export default function CharacterInfo(){
           <React.Fragment key={brth}>
             <tr>
               <td className="character-info-breakthrough-table-count">{brth}</td>
-              <td className="character-info-berakthrough-talbe-text">{character.breakthrough[count_+""+brth]}</td>
+              <td className="character-info-berakthrough-talbe-text">{character.breakthrough["count_"+brth]}</td>
             </tr> 
           </React.Fragment>
         ))}
