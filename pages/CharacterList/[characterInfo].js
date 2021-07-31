@@ -56,9 +56,6 @@ export default function CharacterInfo(){
     }
   }
 
-  //for breakthorouth map prop
-  const rarityRange = Array(parseInt(character.rarity)+1).fill(1).map((x,y) => x + y );
-
   const BreakthroughButtonGroup = ({rarity}) => {
     if(!rarity){
       return null
@@ -73,6 +70,25 @@ export default function CharacterInfo(){
       </ButtonGroup>
     )   
     }
+  }
+
+  const BreakthrougtBody = ({rarity}) => {
+    if(!rarity){
+      return null
+    }else{
+    const range = Array(parseInt(rarity)).fill(1).map((x,y) => x + y );
+    return (
+      <tbody>
+        {range.map((brth)=> (
+          <React.Fragment key={brth}>
+            <tr>
+              <td className="character-info-breakthrough-table-count">{brth}</td>
+              <td className="character-info-berakthrough-talbe-text">{character.breakthrough.count_1}</td>
+            </tr> 
+          </React.Fragment>
+        ))}
+      </tbody>
+    )}
   }
 
   if(loading){
@@ -167,16 +183,7 @@ export default function CharacterInfo(){
                 <th className="character-info-berakthrough-talbe-text">능력</th>
               </tr>
             </thead>
-            <tbody>
-              {rarityRange.map((brth)=> (
-                <React.Fragment key={brth}>
-                  <tr>
-                    <td className="character-info-breakthrough-table-count">{brth}</td>
-                    <td className="character-info-berakthrough-talbe-text">{character.breakthrough[count_+brth]}</td>
-                  </tr> 
-                </React.Fragment>
-              ))}
-            </tbody>  
+            <BreakthrougtBody rerity={character.rarity}></BreakthrougtBody>
           </Table>
         </Row>
         <Row className="character-info-breakthrough-row">
