@@ -56,6 +56,9 @@ export default function CharacterInfo(){
     }
   }
 
+  //for breakthorouth map prop
+  const rarityRange = Array(parseInt(rarity)+1).fill(1).map((x,y) => x + y );
+
   const BreakthroughButtonGroup = ({rarity}) => {
     if(!rarity){
       return null
@@ -165,30 +168,14 @@ export default function CharacterInfo(){
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className="character-info-breakthrough-table-count">1</td>
-                <td className="character-info-berakthrough-talbe-text">{character.breakthrough.count_1}</td>
-              </tr> 
-              <tr>
-                <td className="character-info-breakthrough-table-count">2</td>
-                <td className="character-info-berakthrough-talbe-text">{character.breakthrough.count_2}</td>
-              </tr> 
-              <tr>
-                <td className="character-info-breakthrough-table-count">3</td>
-                <td className="character-info-berakthrough-talbe-text">{character.breakthrough.count_3}</td>
-              </tr> 
-              <tr>
-                <td className="character-info-breakthrough-table-count">4</td>
-                <td className="character-info-berakthrough-talbe-text">{character.breakthrough.count_4}</td>
-              </tr> 
-              <tr>
-                <td className="character-info-breakthrough-table-count">5</td>
-                <td className="character-info-berakthrough-talbe-text">{character.breakthrough.count_5}</td>
-              </tr> 
-              <tr>
-                <td className="character-info-breakthrough-table-count">6</td>
-                <td className="character-info-berakthrough-talbe-text">{character.breakthrough.count_6}</td>
-              </tr> 
+              {rarityRange.map((brth)=> (
+                <React.Fragment key={brth}>
+                  <tr>
+                    <td className="character-info-breakthrough-table-count">{brth}</td>
+                    <td className="character-info-berakthrough-talbe-text">{character.breakthrough[count_+brth]}</td>
+                  </tr> 
+                </React.Fragment>
+              ))}
             </tbody>  
           </Table>
         </Row>
