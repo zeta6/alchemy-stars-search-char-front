@@ -66,14 +66,14 @@ const CharacterInList = ({cha}) => {
         <td><Image unoptimized="true" width="40" height="40" alt="class_icon" src={cha.char_class.icon}></Image></td>
         <td><Image unoptimized="true" width="40" height="40" alt="faction_icon" src={cha.faction.icon}></Image></td>
         <td>
-          <Button onClick={() => {
-            router.push({
+          <Link
+            href={{
               pathname: '/CharacterList/[characterInfo]',
               query: { characterInfo: cha.id },
-              })
             }}
           >
-            View Aurorian Page</Button>
+            <Button>View Aurorian Page</Button>
+          </Link>
         </td>
         </tr>
      <Collapse open={open}></Collapse>
