@@ -61,10 +61,10 @@ const CharacterInList = ({cha}) => {
         <td className="character-table-td-index-icon"><Image unoptimized="true" width="100" height="100" alt="cha.icon" src={cha.icon}></Image></td>
         <td>{cha.name}</td>
         <td>☆{cha.rarity}</td>
-        <td><Image width="40" height="40" alt="mattr_icon" src={cha.main_attribute.icon}></Image></td>
-        <td><Image width="40" height="40" alt="sub_icon" src={cha.sub_attribute.icon}></Image></td>
-        <td><Image width="40" height="40" alt="class_icon" src={cha.char_class.icon}></Image></td>
-        <td><Image width="40" height="40" alt="faction_icon" src={cha.faction.icon}></Image></td>
+        <td><Image unoptimized="true" width="40" height="40" alt="mattr_icon" src={cha.main_attribute.icon}></Image></td>
+        <td><Image unoptimized="true" width="40" height="40" alt="sub_icon" src={cha.sub_attribute.icon}></Image></td>
+        <td><Image unoptimized="true" width="40" height="40" alt="class_icon" src={cha.char_class.icon}></Image></td>
+        <td><Image unoptimized="true" width="40" height="40" alt="faction_icon" src={cha.faction.icon}></Image></td>
         <td>
           <Button onClick={() => {
             router.push({

@@ -69,7 +69,7 @@ const ChainSkillView = ({skill}) => {
         연쇄: {skill.name}
       </Col>
       <Col lg={3}>
-      <Image width="60" height="60" src={skill.icon} alt="skill.icon"></Image>
+      <Image unoptimized="true" width="60" height="60" src={skill.icon} alt="skill.icon"></Image>
       </Col>
       <Col xs={4} lg={4}>
         <ButtonToolbar className="active-skill-card-wrap">
