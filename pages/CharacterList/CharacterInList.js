@@ -1,6 +1,6 @@
 import React, { useState} from 'react';
 import { Button, Row, Col } from 'react-bootstrap';
-import { useRouter } from 'next/router'
+import Link from 'next/link';
 import ChainSkillView from "./character-info/ChainSkillView";
 import EquipSkillView from "./character-info/EquipSkillView";
 import ActiveSkillView from "./character-info/ActiveSkillView";
@@ -8,7 +8,6 @@ import Image from "next/image";
 
 
 const CharacterInList = ({cha}) => {
-  const router = useRouter()
   const [ open, setOpen] = useState(false);
   const [ openButton, setOpenButton ] = useState("▼")
   const toggle = () => {
