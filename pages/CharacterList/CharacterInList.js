@@ -58,7 +58,7 @@ const CharacterInList = ({cha}) => {
           {openButton}
         </Button>
         </td>
-        <td className="character-table-td-index-icon"><Image width="100" height="100" alt="cha.icon" src={cha.icon}></Image></td>
+        <td className="character-table-td-index-icon"><Image unoptimized="true" width="100" height="100" alt="cha.icon" src={cha.icon}></Image></td>
         <td>{cha.name}</td>
         <td>☆{cha.rarity}</td>
         <td><Image width="40" height="40" alt="mattr_icon" src={cha.main_attribute.icon}></Image></td>
