@@ -93,10 +93,10 @@ export default function CharacterInfo(){
   }
 
   const AscensionButtonGroup = () => {
-    // if(!character){
-    //   return null
-    // }
-    if(character.rarity == 4){
+    if(!character){
+      return null
+    }
+    if(character.rarity == 3){
       return(
         <ButtonGroup className="character-info-quick-view-ascension-col-button">
           {['0', '1', '2'].map((num) =>
@@ -134,7 +134,7 @@ export default function CharacterInfo(){
         </Row>
         <Row>
           <Col lg={7} xl={7} className="character-info-detail-col">
-            <CharacterImage image={character.image}></CharacterImage>
+            <CharacterImage image={character.image} rarity={character.rarity}></CharacterImage>
           </Col>
           <Col className="character-info-first-row-col">
             <Row>
