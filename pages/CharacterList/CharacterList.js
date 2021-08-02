@@ -28,7 +28,7 @@ const CharacterList = ({options, setOptions}) => {
       .fill(1).map((x,y) => x + y ));
       setLoading(false);
     }
-    axios.get("https://alchemystars.link:8715/api/characters/")
+    axios.get("/api/characters/")
       .then(response => setData(response.data)) 
       .catch(error => console.log(error));
 },[]
@@ -105,7 +105,7 @@ const CharacterList = ({options, setOptions}) => {
       setSort(null);
     }
 
-    axios.get("https://alchemystars.link:8715/api/characters/")
+    axios.get("/api/characters/")
       .then(response => setData(response.data))
       .catch(error => console.log(error));
 },[options, charPerPage]
