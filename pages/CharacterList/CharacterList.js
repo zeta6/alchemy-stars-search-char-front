@@ -13,7 +13,7 @@ const PageButton = ({page, setSliceStart, currentPage, charPerPage}) => {
   )}
 };
 
-const CharacterList = ({options, setOptions}) => {
+const CharacterList = ({options}) => {
   const [characterList, setCharacterList] = useState([]);  
 	const [loading, setLoading] = useState(true);
   const [sliceStart, setSliceStart] = useState(0);
@@ -32,7 +32,7 @@ const CharacterList = ({options, setOptions}) => {
       .then(response => setData(response.data)) 
       .catch(error => console.log(error));
 },[]
-  );
+);
 
   useEffect(() => { 
     // filter start
@@ -49,7 +49,6 @@ const CharacterList = ({options, setOptions}) => {
         }
       }
     }
-
     const specialRoleFilter = (characterList) => {
       let _characterList = characterList;
       const teleportFilter = (character) => {
@@ -94,9 +93,7 @@ const CharacterList = ({options, setOptions}) => {
         return specialRoleFilter(list).filter(characterFilter)    
       }
     }
-
     // filter end
-    
     const setData = (data) => {
       setCharacterList(mixFilter(data));
       setPages(Array((parseInt(mixFilter(data).length / charPerPage) + 1))
@@ -104,12 +101,10 @@ const CharacterList = ({options, setOptions}) => {
       setSliceStart(0);
       setSort(null);
     }
-
     axios.get("/api/characters/")
       .then(response => setData(response.data))
       .catch(error => console.log(error));
-},[options, charPerPage]
-  );
+},[options, charPerPage]);
 
   // useEffect end
 
