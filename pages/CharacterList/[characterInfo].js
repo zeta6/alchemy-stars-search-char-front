@@ -32,19 +32,19 @@ export default function CharacterInfo(){
   const [ ascension, setAscension ] = useState("asc_0");
   const [ breakthrough, setBreakthrough ] = useState("br_0");
 
-  const AscensionButton = ({number, this_ascension, ascension, setAscension}) => {
-    if(this_ascension == ascension){
+  const AscensionButton = ({number, buttonAscension}) => {
+    if(buttonAscension == ascension){
       return(
-        <Button variant="info" onClick={() => setAscension(this_ascension)}>{number}</Button>
+        <Button variant="info" onClick={() => setAscension(buttonAscension)}>{number}</Button>
       )
     }else{
       return(
-        <Button onClick={() => setAscension(this_ascension)}>{number}</Button>
+        <Button onClick={() => setAscension(buttonAscension)}>{number}</Button>
       )
     }
   }
 
-  const BreakthroughButton = ({number, this_brth, breakthrough, setBreakthrough}) => {
+  const BreakthroughButton = ({number, this_brth}) => {
     if(this_brth == breakthrough){
       return(
         <Button variant="info" onClick={() => setBreakthrough(this_brth)}>{number}</Button>
@@ -147,10 +147,10 @@ export default function CharacterInfo(){
               <Col lg={12} className="character-info-quick-view-ascension-col">
                 각성 : 
                 <ButtonGroup className="character-info-quick-view-ascension-col-button">
-                  <AscensionButton number={"0"} this_ascension={"asc_0"} ascension={ascension} setAscension={setAscension}></AscensionButton>
-                  <AscensionButton number={"1"} this_ascension={"asc_1"} ascension={ascension} setAscension={setAscension}></AscensionButton>
-                  <AscensionButton number={"2"} this_ascension={"asc_2"} ascension={ascension} setAscension={setAscension}></AscensionButton>
-                  <AscensionButton number={"3"} this_ascension={"asc_3"} ascension={ascension} setAscension={setAscension}></AscensionButton>
+                  <AscensionButton number={"0"} buttonAscension={"asc_0"} ascension={ascension} setAscension={setAscension}></AscensionButton>
+                  <AscensionButton number={"1"} buttonAscension={"asc_1"} ascension={ascension} setAscension={setAscension}></AscensionButton>
+                  <AscensionButton number={"2"} buttonAscension={"asc_2"} ascension={ascension} setAscension={setAscension}></AscensionButton>
+                  <AscensionButton number={"3"} buttonAscension={"asc_3"} ascension={ascension} setAscension={setAscension}></AscensionButton>
                 </ButtonGroup>
               </Col>
               <Col lg={12} className="character-info-quick-view-breakthrough-col">
