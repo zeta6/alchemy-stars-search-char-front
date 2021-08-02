@@ -69,7 +69,7 @@ const CharacterInList = ({cha}) => {
             href={{
               pathname: '/CharacterList/[characterInfo]',
               query: { characterInfo: cha.id },
-            }} passHref
+            }}
           >
             <Button>View Aurorian Page</Button>
           </Link>
