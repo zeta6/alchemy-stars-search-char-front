@@ -32,17 +32,6 @@ export default function CharacterInfo(){
   const [ ascension, setAscension ] = useState("asc_0");
   const [ breakthrough, setBreakthrough ] = useState("br_0");
 
-  const AscensionButton = ({number, buttonAscension}) => {
-    if(buttonAscension == ascension){
-      return(
-        <Button variant="info" onClick={() => setAscension(buttonAscension)}>{number}</Button>
-      )
-    }else{
-      return(
-        <Button onClick={() => setAscension(buttonAscension)}>{number}</Button>
-      )
-    }
-  }
 
   const BreakthroughButton = ({number, buttonBrth}) => {
     if(buttonBrth == breakthrough){
@@ -71,7 +60,6 @@ export default function CharacterInfo(){
     )   
     }
   }
-
 
   const BreakthrougtBody = ({rarity}) => {
     if(!rarity){
@@ -120,7 +108,7 @@ export default function CharacterInfo(){
       return(
         <ButtonGroup className="character-info-quick-view-ascension-col-button">
           {['0', '1', '2', '3'].map((num) =>
-            <AscensionButtonGroup number={num} buttonAscension={"asc_"+num}></AscensionButtonGroup>
+            <AscensionButton number={num} buttonAscension={"asc_"+num}></AscensionButton>
           )}
         </ButtonGroup>
       )
