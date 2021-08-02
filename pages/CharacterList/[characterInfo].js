@@ -44,14 +44,14 @@ export default function CharacterInfo(){
     }
   }
 
-  const BreakthroughButton = ({number, this_brth}) => {
-    if(this_brth == breakthrough){
+  const BreakthroughButton = ({number, buttonBrth}) => {
+    if(buttonBrth == breakthrough){
       return(
-        <Button variant="info" onClick={() => setBreakthrough(this_brth)}>{number}</Button>
+        <Button variant="info" onClick={() => setBreakthrough(buttonBrth)}>{number}</Button>
       )
     }else{
       return(
-        <Button onClick={() => setBreakthrough(this_brth)}>{number}</Button>
+        <Button onClick={() => setBreakthrough(buttonBrth)}>{number}</Button>
       )
     }
   }
@@ -64,7 +64,7 @@ export default function CharacterInfo(){
     return (
       <ButtonGroup className="character-info-quick-view-breakthrough-col-button">
         {range.map((num) => (
-          <BreakthroughButton key={num} number={num} this_brth={'br_'+num} 
+          <BreakthroughButton key={num} number={num} buttonBrth={'br_'+num} 
           breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
         ))}
       </ButtonGroup>
