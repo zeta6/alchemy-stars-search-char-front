@@ -56,6 +56,7 @@ export default function CharacterInfo(){
     }
   }
 
+  //#####
   const BreakthroughButtonGroup = ({rarity}) => {
     if(!rarity){
       return null
