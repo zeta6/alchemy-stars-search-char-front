@@ -99,7 +99,7 @@ const CharacterList = ({options, setOptions}) => {
     
     const setData = (data) => {
       setCharacterList(mixFilter(data));
-      setPages(Array((parseInt(mixFilter(data).length / charPerPage) + 1))
+      setPages(Array((Math.ceil(mixFilter(data).length / charPerPage)))
     .fill(1).map((x,y) => x + y ));
       setSliceStart(0);
       setSort(null);
