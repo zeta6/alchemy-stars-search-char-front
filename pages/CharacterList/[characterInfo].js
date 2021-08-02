@@ -100,7 +100,7 @@ export default function CharacterInfo(){
       return(
         <ButtonGroup className="character-info-quick-view-ascension-col-button">
           {['0', '1', '2'].map((num) =>
-            <AscensionButton number={num} buttonAscension={"asc_"+num}></AscensionButton>
+            <AscensionButton key={num} number={num} buttonAscension={"asc_"+num}></AscensionButton>
           )}
         </ButtonGroup>
       )
@@ -108,7 +108,7 @@ export default function CharacterInfo(){
       return(
         <ButtonGroup className="character-info-quick-view-ascension-col-button">
           {['0', '1', '2', '3'].map((num) =>
-            <AscensionButton number={num} buttonAscension={"asc_"+num}></AscensionButton>
+            <AscensionButton key={num} number={num} buttonAscension={"asc_"+num}></AscensionButton>
           )}
         </ButtonGroup>
       )
