@@ -56,7 +56,6 @@ export default function CharacterInfo(){
     }
   }
 
-  //#####
   const BreakthroughButtonGroup = ({rarity}) => {
     if(!rarity){
       return null
@@ -72,6 +71,7 @@ export default function CharacterInfo(){
     )   
     }
   }
+
 
   const BreakthrougtBody = ({rarity}) => {
     if(!rarity){
@@ -90,6 +90,41 @@ export default function CharacterInfo(){
         ))}
       </tbody>
     )}
+  }
+
+  const AscensionButton = ({number, buttonAscension}) => {
+    if(buttonAscension == ascension){
+      return(
+        <Button variant="info" onClick={() => setAscension(buttonAscension)}>{number}</Button>
+      )
+    }else{
+      return(
+        <Button onClick={() => setAscension(buttonAscension)}>{number}</Button>
+      )
+    }
+  }
+
+  const AscensionButtonGroup = () => {
+    if(!character){
+      return null
+    }
+    if(character.rarity == 3){
+      return(
+        <ButtonGroup className="character-info-quick-view-ascension-col-button">
+          {['0', '1', '2'].map((num) =>
+            <AscensionButton number={num} buttonAscension={"asc_"+num}></AscensionButton>
+          )}
+        </ButtonGroup>
+      )
+    }else{
+      return(
+        <ButtonGroup className="character-info-quick-view-ascension-col-button">
+          {['0', '1', '2', '3'].map((num) =>
+            <AscensionButton number={num} buttonAscension={"asc_"+num}></AscensionButton>
+          )}
+        </ButtonGroup>
+      )
+    }
   }
 
   if(loading){
@@ -147,12 +182,7 @@ export default function CharacterInfo(){
               </Col>
               <Col lg={12} className="character-info-quick-view-ascension-col">
                 각성 : 
-                <ButtonGroup className="character-info-quick-view-ascension-col-button">
-                  <AscensionButton number={"0"} buttonAscension={"asc_0"} ascension={ascension} setAscension={setAscension}></AscensionButton>
-                  <AscensionButton number={"1"} buttonAscension={"asc_1"} ascension={ascension} setAscension={setAscension}></AscensionButton>
-                  <AscensionButton number={"2"} buttonAscension={"asc_2"} ascension={ascension} setAscension={setAscension}></AscensionButton>
-                  <AscensionButton number={"3"} buttonAscension={"asc_3"} ascension={ascension} setAscension={setAscension}></AscensionButton>
-                </ButtonGroup>
+                <AscensionButtonGroup></AscensionButtonGroup> 
               </Col>
               <Col lg={12} className="character-info-quick-view-breakthrough-col">
                 돌파:
