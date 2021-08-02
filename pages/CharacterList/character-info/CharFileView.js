@@ -9,8 +9,10 @@ const CharFileView = ({char_file}) => {
     let gender = "";
     if(char_file.gender == "여"){
       gender = "그녀";
-    }else{
+    }else if(char_file.gender == "남"){
       gender = "그";
+    }else{
+      gender = "그들";
     }
     return(
       <tr>
@@ -25,8 +27,10 @@ const CharFileView = ({char_file}) => {
     let gender = "";
     if(char_file.gender == "여"){
       gender = "그녀";
-    }else{
+    }else if(char_file.gender == "남"){
       gender = "그";
+    }else{
+      gender = "그들";
     }
     const Collapse = ({open}) => {
       const key = "story_" +storyNum;
