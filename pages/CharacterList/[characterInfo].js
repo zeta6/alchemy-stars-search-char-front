@@ -93,10 +93,10 @@ export default function CharacterInfo(){
   }
 
   const AscensionButtonGroup = () => {
-    if(!character){
-      return null
-    }
-    if(character.rarity == 3){
+    // if(!character){
+    //   return null
+    // }
+    if(character.rarity == 4){
       return(
         <ButtonGroup className="character-info-quick-view-ascension-col-button">
           {['0', '1', '2'].map((num) =>
