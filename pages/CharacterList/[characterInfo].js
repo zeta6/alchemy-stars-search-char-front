@@ -120,7 +120,7 @@ export default function CharacterInfo(){
       return(
         <ButtonGroup className="character-info-quick-view-ascension-col-button">
           {['0', '1', '2', '3'].map((num) =>
-            <AscensionButton number={num} buttonAscension={"asc_"+num}></AscensionButton>
+            <AscensionButtonGroup number={num} buttonAscension={"asc_"+num}></AscensionButtonGroup>
           )}
         </ButtonGroup>
       )
