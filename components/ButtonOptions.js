@@ -23,22 +23,22 @@ export const attrOptions = {
 
 export const rarityOptions = {
   three: {
-    value: '3',
+    value: 3,
     name: 'three',
     icon: '3☆'
   },
   four: {
-    value: '4',
+    value: 4,
     name: 'four',
     icon: '4☆',
   },
   five: {
-    value: '5',
+    value: 5,
     name: 'five',
     icon: '5☆',
   },
   six: {
-    value: '6',
+    value: 6,
     name: 'six',
     icon: '6☆',
   },

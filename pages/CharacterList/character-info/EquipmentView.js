@@ -11,7 +11,7 @@ const EquipmentView = ({equipment}) => {
       <Col lg={6} className="character-info-detail-col">
         <div className="character-info-character-image-wrapper">
           <div className="character-info-character-image">
-            <Image layout="fill" src={equipment.image} alt="equip_image"></Image>
+            <Image unoptimized="true" layout="fill" src={equipment.image} alt="equip_image"></Image>
           </div>
         </div>
       </Col>

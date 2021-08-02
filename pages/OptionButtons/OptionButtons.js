@@ -33,7 +33,7 @@ const OptionButton = ({object, options, setOptions, optionKey}) => {
   return (
     <Button size="sm" variant={buttonVariant} value={object.value} onClick={() => setOption(object.value, optionKey, options)}>
     <div style={{width:30, height:30, position:'relative', paddingTop:'10%'}}>
-    <Image layout='fill' src={object.icon} alt={object.value}>
+    <Image layout='fill' unoptimized="true" src={object.icon} alt={object.value}>
     </Image>
     </div>
     </Button>
