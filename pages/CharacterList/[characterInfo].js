@@ -114,6 +114,16 @@ export default function CharacterInfo(){
       )
     }
   }
+  // for brth text row
+  const getAscRowArray = () => {
+    if(character.rarity == 3){
+      return Array(2).fill(1).map((x,y) => x + y);
+    }else{
+      return Array(3).fill(1).map((x,y) => x + y);
+    } 
+  }
+
+  const ascRowArray = getAscRowArray(); 
 
   if(loading){
     return(
@@ -216,20 +226,15 @@ export default function CharacterInfo(){
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className="character-info-breakthrough-table-count">1</td>
-                <td className="character-info-berakthrough-talbe-text">{character.ascension.lv1}</td>
-              </tr> 
-              <tr>
-                <td className="character-info-breakthrough-table-count">2</td>
-                <td className="character-info-berakthrough-talbe-text">{character.ascension.lv2}</td>
-              </tr> 
-              <tr>
-                <td className="character-info-breakthrough-table-count">3</td>
-                <td className="character-info-berakthrough-talbe-text">{character.ascension.lv3}</td>
-              </tr>
+              {}
+                {ascRowArray.map((num) =>
+                  <tr key={num}>
+                    <td className="character-info-breakthrough-table-count">{num}</td>
+                    <td className="character-info-berakthrough-talbe-text">{character.ascension["lv"+num]}</td>
+                  </tr>
+              )}
             </tbody>
-          </Table>
+            </Table>
         </Row>
         <Row className="character-info-breakthrough-row">
           <a name="preferredGifts"></a>
@@ -255,7 +260,7 @@ export default function CharacterInfo(){
             </tbody>
           </Table>
         </Row>
-        <CharFileView char_file={character.char_file}></CharFileView>
+        <CharFileView char_file={character.char_file} rarity={character.rarity}></CharFileView>
       </Container>
     </div>
     )
