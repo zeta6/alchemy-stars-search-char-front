@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import { Table, Row } from "react-bootstrap";
 
-const CharFileView = ({char_file}) => {
+const CharFileView = ({char_file, rarity}) => {
   if(!char_file){
     return null
   }
+
+  // Story_0 copoment start
   const Story_0 = ({char_file}) => {
     let gender = "";
     if(char_file.gender == "여"){
@@ -21,7 +23,9 @@ const CharFileView = ({char_file}) => {
       </tr>
     )
   }
+  // Story_0 copoment end
   
+  // Stories copoment start
   const Stories = ({char_file, storyNum}) => {    
     const [ open, setOpen ] = useState(false);
     let gender = "";
@@ -54,6 +58,17 @@ const CharFileView = ({char_file}) => {
       </tr>
     )
   }
+  // Stories copoment end
+
+  const getStoriesArray = () => {
+    if(rarity == 3){
+      return Array(3).fill(1).map((x,y) => x + y);
+    }else{
+      return Array(4).fill(1).map((x,y) => x + y);
+    } 
+  }
+
+  const storiesNumArray = getStoriesArray();
 
     return (
     <div>
@@ -105,7 +120,7 @@ const CharFileView = ({char_file}) => {
       <Table striped bordered hover variant="dark">
         <tbody>
           <Story_0 char_file={char_file}></Story_0>
-          {['1', '2', '3', '4'].map((num) => 
+          {storiesNumArray.map((num) => 
             <Stories key={num} storyNum={num} char_file={char_file}></Stories>
           )}
         </tbody>
