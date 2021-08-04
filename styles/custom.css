@@ -177,7 +177,56 @@ body {
     padding-top: 100%;
 } 
 
+
+.img-align-center{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
 .character-info-character-image{ 
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: off;
+}
+.character-info-logo-image-wrapper{
+  position: relative;
+  width: 384px;
+  height: 192px;
+} 
+
+.character-info-logo-image-wrapper::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+} 
+
+.character-info-logo-image{ 
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: off;
+}
+
+.character-info-logo-equip-wrapper{
+  position: relative;
+  width: 100%;
+  justify-content: center;
+  vertical-align: middle;
+} 
+
+.character-info-logo-equip-wrapper::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+} 
+
+.character-info-logo-equip{ 
   position: absolute;
   top: 0;
   right: 0;
