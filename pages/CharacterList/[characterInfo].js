@@ -192,6 +192,16 @@ export default function CharacterInfo(){
         <a name="equipinfo"></a>
         <EquipmentView equipment={character.equipment}></EquipmentView>
         <Row className="character-info-breakthrough-row">
+          <Col lg={4}>
+            <div className="img-align-center">
+              <div className="character-info-logo-image-wrapper">
+                <div className="character-info-logo-image">
+                <Image unoptimized="true" layout="fill" src={character.logo} alt="logo"></Image>
+              </div>
+              </div>
+            </div>
+          </Col>
+          <Col lg={8}>
           <a name="profile"></a>
           <span className="character-info-equip-name-span">오로리안 소개 프로필</span><br></br>
           <Table striped bordered hover variant="dark">
@@ -201,6 +211,7 @@ export default function CharacterInfo(){
               </tr> 
             </tbody>
           </Table>
+          </Col>
         </Row>
         <Row className="character-info-breakthrough-row">
           <a name="breakthrough"></a>
