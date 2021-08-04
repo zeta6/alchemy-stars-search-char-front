@@ -12,6 +12,7 @@ export const CharacterState = {
     ascension_0: "/SearchChar/loading/loading.jpg"
   },
   icon:"/SearchChar/loading/loading.jpg",
+  logo:"/SearchChar/loading/loading.jpg",
   rarity: "",
   main_attribute: {
     name:"forest",

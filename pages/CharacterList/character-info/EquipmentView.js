@@ -9,9 +9,11 @@ const EquipmentView = ({equipment}) => {
     return(
     <Row className="character-info-equip-row">
       <Col lg={6} className="character-info-detail-col">
-        <div className="character-info-character-image-wrapper">
-          <div className="character-info-character-image">
-            <Image unoptimized="true" layout="fill" src={equipment.image} alt="equip_image"></Image>
+        <div className="img-align-center">
+          <div className="character-info-logo-equip-wrapper">
+            <div className="character-info-logo-equip">
+              <Image unoptimized="true" layout="fill" src={equipment.image} alt="equip_image"></Image>
+            </div>
           </div>
         </div>
       </Col>
