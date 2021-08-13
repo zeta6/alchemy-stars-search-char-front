@@ -13,13 +13,14 @@ const PageButton = ({page, setSliceStart, currentPage, charPerPage}) => {
   )}
 };
 
-const CharacterList = ({options, setOptions}) => {
+const CharacterList = ({options, user, setUser}) => {
   const [characterList, setCharacterList] = useState([]);  
 	const [loading, setLoading] = useState(true);
   const [sliceStart, setSliceStart] = useState(0);
   const [pages, setPages] = useState(1);
   const [sort, setSort] = useState(null);
   const [charPerPage, setCharPerPage] = useState(20);
+  const [sortFav, setSortFav] = useState(false);
 
 // useEffect start
   useEffect(() => {
@@ -28,7 +29,7 @@ const CharacterList = ({options, setOptions}) => {
       .fill(1).map((x,y) => x + y ));
       setLoading(false);
     }
-    axios.get("https://alchemystars.link:8715/api/characters/")
+    axios.get("http://127.0.0.1:8000/api/characters/")
       .then(response => setData(response.data)) 
       .catch(error => console.log(error));
 },[]
@@ -105,7 +106,7 @@ const CharacterList = ({options, setOptions}) => {
       setSort(null);
     }
 
-    axios.get("https://alchemystars.link:8715/api/characters/")
+    axios.get("http://127.0.0.1:8000/api/characters/")
       .then(response => setData(response.data))
       .catch(error => console.log(error));
 },[options, charPerPage]
@@ -260,57 +261,101 @@ const CharacterList = ({options, setOptions}) => {
   } 
   //sort end
 
+  const CharTableHead = () => {
+    const FavBtn = () => {
+      if(sortFav){
+        return(
+          <Button onClick={()=>setSortFav(!sortFav)} size="sm" variant="dark">★</Button>
+        )
+      }else{
+        return(
+          <Button onClick={()=>setSortFav(!sortFav)} size="sm" variant="dark">☆</Button>
+        )
+      }
+    }
+    if(!user){
+      return null
+    }else if(user.email == ""){
+      return(
+        <thead>
+          <tr className="character-table-td-index">
+            <th className="character-list-open-td"><Button size="sm" variant="dark"
+              >ㅡ</Button></th>
+            <th className="character-table-td-millde-index">아이콘</th>
+            <th className="character-table-td-millde-index"><Name sort={sort} setSort={setSort}></Name></th>
+            <th className="character-table-td-millde-index"><Rarity sort={sort} setSort={setSort}></Rarity></th>
+            <th className="character-table-td-millde-index"><Mattr sort={sort} setSort={setSort}></Mattr></th>
+            <th className="character-table-td-millde-index"><Sattr sort={sort} setSort={setSort}></Sattr></th>
+            <th className="character-table-td-millde-index"><Class sort={sort} setSort={setSort}></Class></th>
+            <th className="character-table-td-millde-index">세력</th>
+            <th className="character-table-td-millde-index"><DropdownButton id="dropdown-basic-button" title="페이지당 캐릭터">
+                  <Dropdown.Item onClick={() => setCharPerPage(10)}>10</Dropdown.Item>
+                  <Dropdown.Item onClick={() => setCharPerPage(20)}>20</Dropdown.Item>
+                  <Dropdown.Item onClick={() => setCharPerPage(30)}>30</Dropdown.Item>
+                  <Dropdown.Item onClick={() => setCharPerPage(50)}>50</Dropdown.Item>
+                </DropdownButton>
+            </th>
+          </tr>
+        </thead>
+      )
+    }else{
+      return(
+        <thead>
+          <tr className="character-table-td-index">
+            <th className="character-list-open-td"><FavBtn></FavBtn></th>
+            <th className="character-list-open-td"><Button size="sm" variant="dark"
+            >ㅡ</Button></th>
+            <th className="character-table-td-millde-index">아이콘</th>
+            <th className="character-table-td-millde-index"><Name sort={sort} setSort={setSort}></Name></th>
+            <th className="character-table-td-millde-index"><Rarity sort={sort} setSort={setSort}></Rarity></th>
+            <th className="character-table-td-millde-index"><Mattr sort={sort} setSort={setSort}></Mattr></th>
+            <th className="character-table-td-millde-index"><Sattr sort={sort} setSort={setSort}></Sattr></th>
+            <th className="character-table-td-millde-index"><Class sort={sort} setSort={setSort}></Class></th>
+            <th className="character-table-td-millde-index">세력</th>
+            <th className="character-table-td-millde-index"><DropdownButton id="dropdown-basic-button" title="페이지당 캐릭터">
+                  <Dropdown.Item onClick={() => setCharPerPage(10)}>10</Dropdown.Item>
+                  <Dropdown.Item onClick={() => setCharPerPage(20)}>20</Dropdown.Item>
+                  <Dropdown.Item onClick={() => setCharPerPage(30)}>30</Dropdown.Item>
+                  <Dropdown.Item onClick={() => setCharPerPage(50)}>50</Dropdown.Item>
+                </DropdownButton>
+            </th>
+          </tr>
+        </thead>
+      )
+    }
+  }
+
 
   if (loading) {
     return "loading"
-  }
-  else{
+  }else{
     return(
       <div>
         <Row className="character-list">
           <Table striped bordered hover variant="dark">
-           <thead>
-            <tr className="character-table-td-index">
-              <th className="character-list-open-td"><Button size="sm" variant="dark"
-                >ㅡ</Button></th>
-              <th className="character-table-td-millde-index">아이콘</th>
-              <th className="character-table-td-millde-index"><Name sort={sort} setSort={setSort}></Name></th>
-              <th className="character-table-td-millde-index"><Rarity sort={sort} setSort={setSort}></Rarity></th>
-              <th className="character-table-td-millde-index"><Mattr sort={sort} setSort={setSort}></Mattr></th>
-              <th className="character-table-td-millde-index"><Sattr sort={sort} setSort={setSort}></Sattr></th>
-              <th className="character-table-td-millde-index"><Class sort={sort} setSort={setSort}></Class></th>
-              <th className="character-table-td-millde-index">세력</th>
-              <th className="character-table-td-millde-index"><DropdownButton id="dropdown-basic-button" title="페이지당 캐릭터">
-                    <Dropdown.Item onClick={() => setCharPerPage(10)}>10</Dropdown.Item>
-                    <Dropdown.Item onClick={() => setCharPerPage(20)}>20</Dropdown.Item>
-                    <Dropdown.Item onClick={() => setCharPerPage(30)}>30</Dropdown.Item>
-                    <Dropdown.Item onClick={() => setCharPerPage(50)}>50</Dropdown.Item>
-                  </DropdownButton>
-              </th>
-            </tr>
-          </thead>
-        {characterList.slice(sliceStart, sliceStart+charPerPage).map((cha)=> ( 
-          <React.Fragment key={cha.id}>
-            <CharacterInList cha={cha} key={cha.id}>
-            </CharacterInList>
-          </React.Fragment>
-        ))}
-      </Table>
-    </Row>
-    <Row className="page-button-tool-bar-row">
-    <ButtonToolbar>
-      <ButtonGroup className="page-button-group">
-        {pages.map((page) => (
-          <React.Fragment key={page}>
-            <PageButton page={page} charPerPage={charPerPage} setSliceStart={setSliceStart} currentPage={(parseInt(sliceStart/charPerPage))+1}></PageButton>
-          </React.Fragment>
-       ))}
-      </ButtonGroup>
-    </ButtonToolbar>
-    </Row>
-    </div>
-  )
-}
+          <CharTableHead></CharTableHead>
+          {characterList.slice(sliceStart, sliceStart+charPerPage).map((cha)=> ( 
+            <React.Fragment key={cha.id}>
+              <CharacterInList sortFav={sortFav} user={user} setUser={setUser} cha={cha} key={cha.id}>
+              </CharacterInList>
+            </React.Fragment>
+          ))}
+          </Table>
+        </Row>
+        <Row className="page-button-tool-bar-row">
+        <ButtonToolbar>
+          <ButtonGroup className="page-button-group">
+            {pages.map((page) => (
+              <React.Fragment key={page}>
+                <PageButton page={page} charPerPage={charPerPage} setSliceStart={setSliceStart} currentPage={(parseInt(sliceStart/charPerPage))+1}></PageButton>
+              </React.Fragment>
+          ))}
+          </ButtonGroup>
+        </ButtonToolbar>
+        </Row>
+      </div>
+    )
+  }
 }
 
 export default CharacterList;
