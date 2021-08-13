@@ -1,19 +1,19 @@
 
 import { object } from 'prop-types';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import OptionButtons from './OptionButtons/OptionButtons';
 import CharacterList from './CharacterList/CharacterList';
 import { Container, Row, InputGroup, FormControl, Button} from 'react-bootstrap';
-import Layout from '../components/Layout';
+import Header from '../components/Header';
 import Head from 'next/head';
-import GoogleLogin from 'react-google-login';
+// import GoogleLogin from 'react-google-login';
 import axios from 'axios';
 
 const SearchAurorian = () => {
-
-  const googleClientID = '571135633127-mt9gkbshie9u75vg18thc0u4j3ktec5q.apps.googleusercontent.com';
+  
+  // useState
   const [ charName, setCharName ] = useState("")
-  const [ options, setOptions] = useState(
+  const [ options, setOptions ] = useState(
     {
       name: "",
       rarity: [],
@@ -23,7 +23,7 @@ const SearchAurorian = () => {
       special_role:[],
     }
   )
-  const [ user, setUser] = useState(
+  const [ user, setUser ] = useState(
     {
       id: "", 
       email: "",
@@ -32,6 +32,29 @@ const SearchAurorian = () => {
       fav_char: []
     }
   )
+
+  // useEffect
+  useEffect(() => { 
+    const user_email = window.sessionStorage.getItem('email')
+    if(user_email){
+      const access_token = window.sessionStorage.getItem('access_token')
+      const submitData = {
+        email: user_email,
+        access_token: access_token
+      }
+      axios.post('http://127.0.0.1:8000/accounts/fav_char/', submitData)
+        .then(res => setUser(
+          {
+            id: window.sessionStorage.getItem('id'),
+            email: user_email,
+            provider: window.sessionStorage.getItem('provider'),
+            access_token: access_token,
+            fav_char: JSON.parse(res.data.fav_char)
+          })) 
+    }
+  }, [])
+
+  // functions
   
   const handleChange = (e) => {
     setCharName(e.target.value);
@@ -84,26 +107,13 @@ return (
   <Head>
   <title>백야극광 오로리안 검색기</title>
   </Head>
-  <Layout></Layout>
+  <Header user={user} setUser={setUser}></Header>
   <Container className="bg-color-darknavy">
     <Row className="search-character-input-row">
-      <GoogleLogin  
-        clientId={googleClientID}
-        render={renderProps => (
-        <Button className="google-login-btn" onClick={renderProps.onClick} disabled={renderProps.disabled}>Google Login</Button>
-        )}
-        onSuccess={(res)=>{
-          handleGoogleLogin(res);
-        }}
-        onFailure={(err)=>{
-          console.log(err);
-        }}b
-        >
-      </GoogleLogin>
       <Button onClick={()=>console.log("checkuser",user)}> usercheck</Button>
       <Button onClick={()=>console.log("fav_cshr", user.fav_char)}> favchar check</Button>
-      <Button onClick={()=>console.log("jsonfav_cshr", JSON.parse(user.fav_char))}> favchar check</Button>
-      <Button onClick={()=>console.log("jsonfav_cshr", JSON.parse(user.fav_char).concat(2))}> favchar check</Button>
+      {/* <Button onClick={()=>console.log("jsonfav_cshr", JSON.parse(user.fav_char))}> favchar check</Button>
+      <Button onClick={()=>console.log("jsonfav_cshr", JSON.parse(user.fav_char).concat(2))}> favchar check</Button> */}
       <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1">캐릭터 이름</InputGroup.Text>
         <FormControl

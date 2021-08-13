@@ -90,6 +90,13 @@ body {
   
 }
 
+.character-list-open-fav:not.character-table-tbody-td-index{
+  width: 0px;
+  text-align:center;
+  vertical-align: middle;
+  
+}
+
 .character-table-td-millde-index{
   width: 13%;
   max-width: 200px;

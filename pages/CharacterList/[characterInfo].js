@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import CharacterState from "../../components/CharacterState"
-import Layout from '../../components/Layout';
+import Header from '../../components/Header';
 import { Container, Row, Col, Table, Button, ButtonGroup} from "react-bootstrap";
 import Head from "next/head";
 import CharacterImage from  "./character-info/CharacterImage";
@@ -12,6 +12,7 @@ import InfoActiveSkillView from "./character-info/InfoActiveSkillView";
 import EquipmentView from "./character-info/EquipmentView";
 import CharFileView from "./character-info/CharFileView";
 import Image from "next/image"
+import { BackendUrl } from '../../components/BackendUrl'
 
 export default function CharacterInfo(){
   const router = useRouter();
@@ -19,7 +20,7 @@ export default function CharacterInfo(){
 
   useEffect(() => {
     if(character_id){
-      axios.get(`http://127.0.0.1:8000/api/character/${character_id}/`)
+      axios.get(BackendUrl+`/api/character/${character_id}/`)
       .then(response => setCharacter(response.data))
       .catch(error => console.log(error));
       setLoading(false)
@@ -135,7 +136,7 @@ export default function CharacterInfo(){
       <Head>
         <title>{character.name} - 백야극광 오로리안 검색기 </title>
        </Head>
-      <Layout></Layout>
+      <Header></Header>
       <Container className="character-info-container">
         <Row>
           <Col className="character-info-first-row-index-col">

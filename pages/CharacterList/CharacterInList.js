@@ -6,6 +6,7 @@ import EquipSkillView from "./character-info/EquipSkillView";
 import ActiveSkillView from "./character-info/ActiveSkillView";
 import Image from "next/image";
 import axios from 'axios';
+import { BackendUrl } from '../../components/BackendUrl'
 import { read } from '@nodelib/fs.stat/out/providers/async';
 
 
@@ -22,34 +23,34 @@ const CharacterInList = ({cha, user, sortFav, setUser}) => {
   }
 
   const FavBtn = () => {
-    let fav_char = user.fav_char;
+    // let fav_char = user.fav_char;
     const SubmitAddFav = () => {
       // console.log("user.fav parsejson", JSON.parse(fav_char))
       const submitData = {
         email: user.email,
         access_token: user.access_token,
-        fav_char : fav_char.concat(cha.id)
+        fav_char : user.fav_char.concat(cha.id)
       }
-      axios.post('http://127.0.0.1:8000/accounts/fav_char_update/',
+      axios.post(BackendUrl+'/accounts/fav_char_update/',
         submitData)
         .then(res => setUser({...user, "fav_char" : res.data.fav_char}))
-        .catch(console.log("error"))
+        .catch(err => console.log(err))
       }
     
     const SubmitRemoveFav = () => {
       const submitData = {
         email: user.email,
         access_token: user.access_token,
-        fav_char : user.fav_char 
+        fav_char : user.fav_char.filter(id => id !== cha.id)
       }
-      axios.post('http://127.0.0.1:8000/accounts/fav_char_update/',
+      axios.post(BackendUrl+'/accounts/fav_char_update/',
         submitData) 
         .then(res => setUser({...user, "fav_char" : res.data.fav_char}))
       }
 
     if(user.fav_char.indexOf(cha.id) !== -1){
       return(
-        <Button size="sm" variant="dark">★</Button>
+        <Button onClick={() => SubmitRemoveFav()} size="sm" variant="dark">★</Button>
       )
     }else{
       return(
@@ -121,7 +122,7 @@ const CharacterInList = ({cha, user, sortFav, setUser}) => {
     return(
       <tbody>
         <tr className="character-table-tbody-td-index" onClick={() => toggle()}>
-        <th className="character-list-open-td"><FavBtn></FavBtn></th>
+        <th className="character-list-open-t" onClick={(e)=> e.stopPropagation()}><FavBtn></FavBtn></th>
           <td className="character-list-open-td">
             <Button size="sm"
               variant="dark"

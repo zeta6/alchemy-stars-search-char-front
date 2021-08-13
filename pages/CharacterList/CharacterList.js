@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { Table, ButtonGroup, Button, Row, ButtonToolbar, DropdownButton, Dropdown} from 'react-bootstrap';
 import CharacterInList from './CharacterInList';
 import axios from 'axios';
+import { BackendUrl } from '../../components/BackendUrl'
 
 const PageButton = ({page, setSliceStart, currentPage, charPerPage}) => {
   if(page == currentPage){ 
@@ -20,7 +21,7 @@ const CharacterList = ({options, user, setUser}) => {
   const [pages, setPages] = useState(1);
   const [sort, setSort] = useState(null);
   const [charPerPage, setCharPerPage] = useState(20);
-  const [sortFav, setSortFav] = useState(false);
+  const [filterByFav, setFilterByFav] = useState(false);
 
 // useEffect start
   useEffect(() => {
@@ -29,7 +30,7 @@ const CharacterList = ({options, user, setUser}) => {
       .fill(1).map((x,y) => x + y ));
       setLoading(false);
     }
-    axios.get("http://127.0.0.1:8000/api/characters/")
+    axios.get(BackendUrl+"/api/characters/")
       .then(response => setData(response.data)) 
       .catch(error => console.log(error));
 },[]
@@ -88,11 +89,27 @@ const CharacterList = ({options, user, setUser}) => {
       return _characterList
     }
 
+    const favFilter = (character) => {
+      console.log(user)
+      if(user.fav_char.includes(character.id)){
+        return character
+      }
+    }
+    
+
     const mixFilter = (list) => {
       if (options.special_role.length == 0){
-        return list.filter(characterFilter)
+        if(filterByFav){
+          return list.filter(characterFilter).filter(favFilter)
+        }else{
+          return list.filter(characterFilter)
+        }
       }else{
-        return specialRoleFilter(list).filter(characterFilter)    
+        if(filterByFav){
+          return specialRoleFilter(list).filter(characterFilter).filter(favFilter)
+        }else{
+          return specialRoleFilter(list).filter(characterFilter)
+        }
       }
     }
 
@@ -106,10 +123,10 @@ const CharacterList = ({options, user, setUser}) => {
       setSort(null);
     }
 
-    axios.get("http://127.0.0.1:8000/api/characters/")
+    axios.get(BackendUrl+"/api/characters/")
       .then(response => setData(response.data))
       .catch(error => console.log(error));
-},[options, charPerPage]
+    },[options, charPerPage, filterByFav]
   );
 
   // useEffect end
@@ -263,13 +280,13 @@ const CharacterList = ({options, user, setUser}) => {
 
   const CharTableHead = () => {
     const FavBtn = () => {
-      if(sortFav){
+      if(filterByFav){
         return(
-          <Button onClick={()=>setSortFav(!sortFav)} size="sm" variant="dark">★</Button>
+          <Button onClick={()=>setFilterByFav(!filterByFav)} size="sm" variant="dark">★</Button>
         )
       }else{
         return(
-          <Button onClick={()=>setSortFav(!sortFav)} size="sm" variant="dark">☆</Button>
+          <Button onClick={()=>setFilterByFav(!filterByFav)} size="sm" variant="dark">☆</Button>
         )
       }
     }
@@ -279,7 +296,7 @@ const CharacterList = ({options, user, setUser}) => {
       return(
         <thead>
           <tr className="character-table-td-index">
-            <th className="character-list-open-td"><Button size="sm" variant="dark"
+            <th className="character-list-open-td"><Button size="sm" variant="dark" onClick={()=>{console.log("fav", filterByFav)}}
               >ㅡ</Button></th>
             <th className="character-table-td-millde-index">아이콘</th>
             <th className="character-table-td-millde-index"><Name sort={sort} setSort={setSort}></Name></th>
@@ -303,7 +320,7 @@ const CharacterList = ({options, user, setUser}) => {
         <thead>
           <tr className="character-table-td-index">
             <th className="character-list-open-td"><FavBtn></FavBtn></th>
-            <th className="character-list-open-td"><Button size="sm" variant="dark"
+            <th className="character-list-open-td"><Button size="sm" variant="dark" onClick={()=>{console.log("fav", filterByFav)}}
             >ㅡ</Button></th>
             <th className="character-table-td-millde-index">아이콘</th>
             <th className="character-table-td-millde-index"><Name sort={sort} setSort={setSort}></Name></th>
@@ -336,7 +353,7 @@ const CharacterList = ({options, user, setUser}) => {
           <CharTableHead></CharTableHead>
           {characterList.slice(sliceStart, sliceStart+charPerPage).map((cha)=> ( 
             <React.Fragment key={cha.id}>
-              <CharacterInList sortFav={sortFav} user={user} setUser={setUser} cha={cha} key={cha.id}>
+              <CharacterInList filterByFav={filterByFav} user={user} setUser={setUser} cha={cha} key={cha.id}>
               </CharacterInList>
             </React.Fragment>
           ))}
