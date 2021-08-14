@@ -1,6 +1,7 @@
 import { Container, Navbar, Button} from 'react-bootstrap';
 import GoogleLogin from 'react-google-login';
 import axios from 'axios';
+import { BackendUrl } from './BackendUrl'
 
 const Header = ({user, setUser}) => {
   const googleClientID = '571135633127-mt9gkbshie9u75vg18thc0u4j3ktec5q.apps.googleusercontent.com';
@@ -35,7 +36,7 @@ const Header = ({user, setUser}) => {
       }
     }
   
-    axios.post('http://127.0.0.1:8000/accounts/google_login/',
+    axios.post(BackendUrl+'/accounts/google_login/',
       googleUser) 
       .then(res => checkLogin(res))
       .catch(err => console.log(err))

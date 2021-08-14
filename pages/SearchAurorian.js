@@ -7,6 +7,7 @@ import { Container, Row, InputGroup, FormControl, Button} from 'react-bootstrap'
 import Header from '../components/Header';
 import Head from 'next/head';
 import axios from 'axios';
+import { BackendUrl } from '../components/BackendUrl';
 
 
 const SearchAurorian = () => {
@@ -42,7 +43,7 @@ const SearchAurorian = () => {
         email: user_email,
         access_token: access_token
       }
-      axios.post('http://127.0.0.1:8000/accounts/fav_char/', submitData)
+      axios.post(BackendUrl+'/accounts/fav_char/', submitData)
         .then(res => setUser(
           {
             id: window.sessionStorage.getItem('id'),

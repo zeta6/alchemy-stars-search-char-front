@@ -29,6 +29,7 @@ body {
 
 .navbar-top{
   width:100%;
+  min-width: 705px;
 }
 
 .navbar-title-span{

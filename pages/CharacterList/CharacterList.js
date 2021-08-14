@@ -303,7 +303,7 @@ const CharacterList = ({options, user, setUser}) => {
             <th className="character-table-td-millde-index"><Sattr sort={sort} setSort={setSort}></Sattr></th>
             <th className="character-table-td-millde-index"><Class sort={sort} setSort={setSort}></Class></th>
             <th className="character-table-td-millde-index">세력</th>
-            <th className="character-table-td-millde-index"><DropdownButton variant="secondary" drop="start" title="PagePer">
+            <th className="character-table-td-millde-index"><DropdownButton variant="secondary" drop="left" title="PagePer">
                   <Dropdown.Item onClick={() => setCharPerPage(10)}>10</Dropdown.Item>
                   <Dropdown.Item onClick={() => setCharPerPage(20)}>20</Dropdown.Item>
                   <Dropdown.Item onClick={() => setCharPerPage(30)}>30</Dropdown.Item>
@@ -327,7 +327,7 @@ const CharacterList = ({options, user, setUser}) => {
             <th className="character-table-td-millde-index"><Sattr sort={sort} setSort={setSort}></Sattr></th>
             <th className="character-table-td-millde-index"><Class sort={sort} setSort={setSort}></Class></th>
             <th className="character-table-td-millde-index">세력</th>
-            <th className="character-table-td-millde-index"><DropdownButton variant="secondary" drop="start" title="PagePer">
+            <th className="character-table-td-millde-index"><DropdownButton variant="secondary" drop="left" title="PagePer">
                   <Dropdown.Item onClick={() => setCharPerPage(10)}>10</Dropdown.Item>
                   <Dropdown.Item onClick={() => setCharPerPage(20)}>20</Dropdown.Item>
                   <Dropdown.Item onClick={() => setCharPerPage(30)}>30</Dropdown.Item>
