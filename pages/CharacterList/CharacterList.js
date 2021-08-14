@@ -296,7 +296,7 @@ const CharacterList = ({options, user, setUser}) => {
             <th className="character-list-open-td">
               <Button size="sm" variant="dark">ㅡ</Button></th>
             <th className="character-table-td-millde-index">아이콘</th>
-            <th className="character-table-td-milldeg-index-name"><Name sort={sort} setSort={setSort}></Name></th>
+            <th className="character-table-td-millde-index-name"><Name sort={sort} setSort={setSort}></Name></th>
             <th className="character-table-td-millde-index"><Rarity sort={sort} setSort={setSort}></Rarity></th>
             <th className="character-table-td-millde-index"><Mattr sort={sort} setSort={setSort}></Mattr></th>
             <th className="character-table-td-millde-index"><Sattr sort={sort} setSort={setSort}></Sattr></th>
