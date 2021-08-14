@@ -23,9 +23,7 @@ const CharacterInList = ({cha, user, sortFav, setUser}) => {
   }
 
   const FavBtn = () => {
-    // let fav_char = user.fav_char;
     const SubmitAddFav = () => {
-      // console.log("user.fav parsejson", JSON.parse(fav_char))
       const submitData = {
         email: user.email,
         access_token: user.access_token,

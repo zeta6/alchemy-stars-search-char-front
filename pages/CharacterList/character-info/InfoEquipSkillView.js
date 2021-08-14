@@ -29,7 +29,6 @@ const InfoEquipSkillView = ({skill, ascension, breakthrough, char_brth, char_asc
     if(brth_count >= upg_sklv_brth_1){
       if(skill.br1_up == true){
         _text += " / " + char_brth["count_"+upg_sklv_brth_1];
-        console.log('text',_text);
       }
     } 
     if(brth_count >= upg_sklv_brth_2){

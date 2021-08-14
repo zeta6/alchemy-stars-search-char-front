@@ -80,10 +80,6 @@ return (
   <Header user={user} setUser={setUser}></Header>
   <Container className="bg-color-darknavy">
     <Row className="search-character-input-row">
-      {/* <Button onClick={()=>console.log("checkuser",user)}> usercheck</Button>
-      <Button onClick={()=>console.log("fav_cshr", user.fav_char)}> favchar check</Button> */}
-      {/* <Button onClick={()=>console.log("jsonfav_cshr", JSON.parse(user.fav_char))}> favchar check</Button>
-      <Button onClick={()=>console.log("jsonfav_cshr", JSON.parse(user.fav_char).concat(2))}> favchar check</Button> */}
       <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1">캐릭터 이름</InputGroup.Text>
         <FormControl

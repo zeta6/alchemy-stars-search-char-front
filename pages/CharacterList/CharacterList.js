@@ -90,7 +90,6 @@ const CharacterList = ({options, user, setUser}) => {
     }
 
     const favFilter = (character) => {
-      console.log(user)
       if(user.fav_char.includes(character.id)){
         return character
       }
@@ -294,8 +293,8 @@ const CharacterList = ({options, user, setUser}) => {
       return(
         <thead>
           <tr className="character-table-td-index">
-            <th className="character-list-open-td"><Button size="sm" variant="dark" onClick={()=>{console.log("fav", filterByFav)}}
-              >ㅡ</Button></th>
+            <th className="character-list-open-td">
+              <Button size="sm" variant="dark">ㅡ</Button></th>
             <th className="character-table-td-millde-index">아이콘</th>
             <th className="character-table-td-millde-index"><Name sort={sort} setSort={setSort}></Name></th>
             <th className="character-table-td-millde-index"><Rarity sort={sort} setSort={setSort}></Rarity></th>
@@ -318,8 +317,8 @@ const CharacterList = ({options, user, setUser}) => {
         <thead>
           <tr className="character-table-td-index">
             <th className="character-list-open-td"><FavBtn></FavBtn></th> 
-            <th className="character-list-open-td"><span onClick={()=>{console.log("fav", filterByFav)}}
-            >ㅡ</span></th>
+            <th className="character-list-open-td">
+              <Button size="sm" variant="dark">ㅡ</Button></th>
             <th className="character-table-td-millde-index">아이콘</th>
             <th className="character-table-td-millde-index"><Name sort={sort} setSort={setSort}></Name></th>
             <th className="character-table-td-millde-index"><Rarity sort={sort} setSort={setSort}></Rarity></th>

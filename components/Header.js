@@ -7,12 +7,12 @@ const Header = ({user, setUser}) => {
   const googleClientID = '571135633127-mt9gkbshie9u75vg18thc0u4j3ktec5q.apps.googleusercontent.com';
   
   const handleGoogleLogin = (loginResponse) => {
-    console.log(loginResponse);   
     const googleUser = {
       id: loginResponse.profileObj.googleId,
       email: loginResponse.profileObj.email,
       provider: "google",
       access_token: loginResponse.tokenObj.access_token,
+      fav_char: "[]"
     }
   
     const checkLogin = (reponse) => {
