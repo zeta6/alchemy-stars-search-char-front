@@ -5,7 +5,7 @@
 
 next.js로 제작되었고 yarn으로 설치할 수 있습니다.
 
-배포주소는 https://alchemystars.link/ 
+배포주소는 https://alchemystars.link
 
 백엔드 저장소는 https://github.com/zeta6/alchemy-stars-search-char-api
 
