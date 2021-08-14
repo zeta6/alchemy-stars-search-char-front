@@ -31,7 +31,7 @@ const OptionButton = ({object, options, setOptions, optionKey}) => {
       }
   }
   return (
-    <Button size="sm" variant={buttonVariant} value={object.value} onClick={() => setOption(object.value, optionKey, options)}>
+    <Button variant={buttonVariant} value={object.value} onClick={() => setOption(object.value, optionKey, options)}>
     <div style={{width:30, height:30, position:'relative', paddingTop:'10%'}}>
     <Image layout='fill' unoptimized="true" src={object.icon} alt={object.value}>
     </Image>
@@ -67,7 +67,7 @@ const RarityOptionButton = ({object, options, setOptions, optionKey}) => {
       }
   }
   return (
-    <Button size="sm" variant={buttonVariant} value={object.value}
+    <Button variant={buttonVariant} value={object.value}
      onClick={() => setOption(object.value, optionKey, options)}>
      <div style={{width:30, height:30, position:'relative', paddingTop:'10%'}}>{object.icon}</div>
      </Button>
@@ -83,41 +83,41 @@ const OptionButtons = ({options, setOptions}) => {
   return(
     <div className="vertical-align-center">
     <div className="option-btn-wrapper">
-    <Row className="vertical-align-center">
-      <ButtonToolbar className="justify-content-md-center">
-        <ButtonGroup className="me-2">
+    <Row className="option-buttons-first-group">
+      <ButtonToolbar className="option-button-toolbar option-button">
+        <ButtonGroup className="me-1">
           <OptionButton object={attrOptions.fire} options={options} setOptions={setOptions} optionKey={"main_attribute"}></OptionButton>
           <OptionButton object={attrOptions.water} options={options} setOptions={setOptions} optionKey={"main_attribute"}></OptionButton>
           <OptionButton object={attrOptions.forest} options={options} setOptions={setOptions} optionKey={"main_attribute"}></OptionButton>
           <OptionButton object={attrOptions.thunder} options={options} setOptions={setOptions} optionKey={"main_attribute"}></OptionButton>
         </ButtonGroup>
-        <ButtonGroup className="me-2">
+        <ButtonGroup className="me-1">
           <OptionButton object={attrOptions.fire} options={options} setOptions={setOptions} optionKey={"sub_attribute"}></OptionButton>
           <OptionButton object={attrOptions.water} options={options} setOptions={setOptions} optionKey={"sub_attribute"}> </OptionButton>
           <OptionButton object={attrOptions.forest} options={options} setOptions={setOptions} optionKey={"sub_attribute"}></OptionButton>
           <OptionButton object={attrOptions.thunder} options={options} setOptions={setOptions} optionKey={"sub_attribute"}></OptionButton>
         </ButtonGroup>
-        <ButtonGroup className="me-2">
+        <ButtonGroup className="me-1">
           <OptionButton object={specialRoleOptions.tile_change} options={options} setOptions={setOptions} optionKey={"special_role"}></OptionButton>
           <OptionButton object={specialRoleOptions.tile_reset} options={options} setOptions={setOptions} optionKey={"special_role"}></OptionButton>        
         </ButtonGroup>
       </ButtonToolbar>
     </Row>
     <Row className="option-buttons-second-group">
-      <ButtonToolbar className="justify-content-md-center">
-        <ButtonGroup className="me-2">
+      <ButtonToolbar className="option-button-toolbar option-button">
+        <ButtonGroup className="me-1">
           <OptionButton object={classOptions.burster} options={options} setOptions={setOptions} optionKey={"class"}></OptionButton>
           <OptionButton object={classOptions.sniper} options={options} setOptions={setOptions} optionKey={"class"}></OptionButton>
           <OptionButton object={classOptions.changer} options={options} setOptions={setOptions} optionKey={"class"}></OptionButton>
           <OptionButton object={classOptions.supporter} options={options} setOptions={setOptions} optionKey={"class"}></OptionButton>
         </ButtonGroup>
-        <ButtonGroup className="me-2">
+        <ButtonGroup className="me-1">
           <RarityOptionButton object={rarityOptions.three} options={options} setOptions={setOptions} optionKey={"rarity"}></RarityOptionButton>
           <RarityOptionButton object={rarityOptions.four} options={options} setOptions={setOptions} optionKey={"rarity"}></RarityOptionButton>
           <RarityOptionButton object={rarityOptions.five} options={options} setOptions={setOptions} optionKey={"rarity"}></RarityOptionButton>
           <RarityOptionButton object={rarityOptions.six} options={options} setOptions={setOptions} optionKey={"rarity"}></RarityOptionButton>        
         </ButtonGroup>
-        <ButtonGroup className="me-2">
+        <ButtonGroup className="me-1">
           <OptionButton object={specialRoleOptions.teleport} options={options} setOptions={setOptions} optionKey={"special_role"}></OptionButton>
           <OptionButton object={specialRoleOptions.heal} options={options} setOptions={setOptions} optionKey={"special_role"}></OptionButton>        
         </ButtonGroup>

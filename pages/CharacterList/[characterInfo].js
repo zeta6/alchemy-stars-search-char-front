@@ -18,6 +18,41 @@ export default function CharacterInfo(){
   const router = useRouter();
   const character_id = router.query.characterInfo;
 
+  const [ character, setCharacter ] = useState(CharacterState)
+  const [ loading , setLoading ] = useState(true)
+  const [ ascension, setAscension ] = useState("asc_0");
+  const [ breakthrough, setBreakthrough ] = useState("br_0");
+  const [ user, setUser ] = useState(
+    {
+      id: "", 
+      email: "",
+      provider: "",
+      access_token:"",
+      fav_char: []
+    }
+  )
+
+  // useEffect
+  useEffect(() => { 
+    const user_email = window.sessionStorage.getItem('email')
+    if(user_email){
+      const access_token = window.sessionStorage.getItem('access_token')
+      const submitData = {
+        email: user_email,
+        access_token: access_token
+      }
+      axios.post('http://127.0.0.1:8000/accounts/fav_char/', submitData)
+        .then(res => setUser(
+          {
+            id: window.sessionStorage.getItem('id'),
+            email: user_email,
+            provider: window.sessionStorage.getItem('provider'),
+            access_token: access_token,
+            fav_char: JSON.parse(res.data.fav_char)
+          })) 
+    }
+  }, [])
+
   useEffect(() => {
     if(character_id){
       axios.get(BackendUrl+`/api/character/${character_id}/`)
@@ -26,13 +61,6 @@ export default function CharacterInfo(){
       setLoading(false)
     }},[character_id]
   );
-
-  const [ character, setCharacter ] = useState(CharacterState)
-  const [ loading , setLoading ] = useState(true)
-  const [ chainSkill, setChainSkill ] = useState("first")
-  const [ ascension, setAscension ] = useState("asc_0");
-  const [ breakthrough, setBreakthrough ] = useState("br_0");
-
 
   const BreakthroughButton = ({number, buttonBrth}) => {
     if(buttonBrth == breakthrough){
@@ -136,7 +164,7 @@ export default function CharacterInfo(){
       <Head>
         <title>{character.name} - 백야극광 오로리안 검색기 </title>
        </Head>
-      <Header></Header>
+       <Header user={user} setUser={setUser}></Header>
       <Container className="character-info-container">
         <Row>
           <Col className="character-info-first-row-index-col">

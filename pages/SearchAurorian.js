@@ -6,8 +6,8 @@ import CharacterList from './CharacterList/CharacterList';
 import { Container, Row, InputGroup, FormControl, Button} from 'react-bootstrap';
 import Header from '../components/Header';
 import Head from 'next/head';
-// import GoogleLogin from 'react-google-login';
 import axios from 'axios';
+
 
 const SearchAurorian = () => {
   
@@ -71,47 +71,16 @@ const SearchAurorian = () => {
     setOptions(_options);
   }
 
-  const handleGoogleLogin = (loginResponse) => {
-    console.log(loginResponse);   
-    const googleUser = {
-      id: loginResponse.profileObj.googleId,
-      email: loginResponse.profileObj.email,
-      provider: "google",
-      access_token: loginResponse.tokenObj.access_token,
-    }
-
-    const checkLogin = (reponse) => {
-      if(reponse.data){
-        const userData = reponse.data;
-        setUser(
-          {
-            id: userData.id,
-            email: userData.email,
-            provider: userData.provider,
-            access_token: userData.access_token,
-            fav_char : JSON.parse(userData.fav_char)
-          }
-        )
-      }else{
-        return console.log("error")
-      }
-    }
-
-    axios.post('http://127.0.0.1:8000/accounts/google_login/',
-      googleUser) 
-      .then(res => checkLogin(res))
-  }
-
 return (
-  <div>
+  <div className="layout-div">
   <Head>
   <title>백야극광 오로리안 검색기</title>
   </Head>
   <Header user={user} setUser={setUser}></Header>
   <Container className="bg-color-darknavy">
     <Row className="search-character-input-row">
-      <Button onClick={()=>console.log("checkuser",user)}> usercheck</Button>
-      <Button onClick={()=>console.log("fav_cshr", user.fav_char)}> favchar check</Button>
+      {/* <Button onClick={()=>console.log("checkuser",user)}> usercheck</Button>
+      <Button onClick={()=>console.log("fav_cshr", user.fav_char)}> favchar check</Button> */}
       {/* <Button onClick={()=>console.log("jsonfav_cshr", JSON.parse(user.fav_char))}> favchar check</Button>
       <Button onClick={()=>console.log("jsonfav_cshr", JSON.parse(user.fav_char).concat(2))}> favchar check</Button> */}
       <InputGroup className="mb-3">

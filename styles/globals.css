@@ -6,6 +6,30 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+@media only screen and (max-width: 600px){
+  html, body {
+    width:100%;
+  }
+
+  html {
+    width:100%;
+    padding:0;
+    margin: auto;
+    /* display: block; */
+  }
+
+  body {
+    display: flex;
+  }
+}
+
+
+body {
+  background-color: #111426;
+  
+}
+
+
 a {
   color: inherit;
   text-decoration: none;

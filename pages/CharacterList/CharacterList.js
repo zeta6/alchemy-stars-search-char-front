@@ -7,10 +7,10 @@ import { BackendUrl } from '../../components/BackendUrl'
 const PageButton = ({page, setSliceStart, currentPage, charPerPage}) => {
   if(page == currentPage){ 
   return(
-    <Button variant="dark" onClick={() => setSliceStart((page-1) * charPerPage)}>{page}</Button>  
+    <Button size="lg" variant="dark" onClick={() => setSliceStart((page-1) * charPerPage)}>{page}</Button>  
   )} else{
     return(
-    <Button variant="secondary" onClick={() => setSliceStart((page-1) * charPerPage)}>{page}</Button>
+    <Button size="lg" variant="secondary" onClick={() => setSliceStart((page-1) * charPerPage)}>{page}</Button>
   )}
 };
 
@@ -290,9 +290,7 @@ const CharacterList = ({options, user, setUser}) => {
         )
       }
     }
-    if(!user){
-      return null
-    }else if(user.email == ""){
+    if(!user || user.email == ""){
       return(
         <thead>
           <tr className="character-table-td-index">
@@ -305,7 +303,7 @@ const CharacterList = ({options, user, setUser}) => {
             <th className="character-table-td-millde-index"><Sattr sort={sort} setSort={setSort}></Sattr></th>
             <th className="character-table-td-millde-index"><Class sort={sort} setSort={setSort}></Class></th>
             <th className="character-table-td-millde-index">세력</th>
-            <th className="character-table-td-millde-index"><DropdownButton id="dropdown-basic-button" title="페이지당 캐릭터">
+            <th className="character-table-td-millde-index"><DropdownButton variant="secondary" drop="start" title="PagePer">
                   <Dropdown.Item onClick={() => setCharPerPage(10)}>10</Dropdown.Item>
                   <Dropdown.Item onClick={() => setCharPerPage(20)}>20</Dropdown.Item>
                   <Dropdown.Item onClick={() => setCharPerPage(30)}>30</Dropdown.Item>
@@ -319,9 +317,9 @@ const CharacterList = ({options, user, setUser}) => {
       return(
         <thead>
           <tr className="character-table-td-index">
-            <th className="character-list-open-td"><FavBtn></FavBtn></th>
-            <th className="character-list-open-td"><Button size="sm" variant="dark" onClick={()=>{console.log("fav", filterByFav)}}
-            >ㅡ</Button></th>
+            <th className="character-list-open-td"><FavBtn></FavBtn></th> 
+            <th className="character-list-open-td"><span onClick={()=>{console.log("fav", filterByFav)}}
+            >ㅡ</span></th>
             <th className="character-table-td-millde-index">아이콘</th>
             <th className="character-table-td-millde-index"><Name sort={sort} setSort={setSort}></Name></th>
             <th className="character-table-td-millde-index"><Rarity sort={sort} setSort={setSort}></Rarity></th>
@@ -329,7 +327,7 @@ const CharacterList = ({options, user, setUser}) => {
             <th className="character-table-td-millde-index"><Sattr sort={sort} setSort={setSort}></Sattr></th>
             <th className="character-table-td-millde-index"><Class sort={sort} setSort={setSort}></Class></th>
             <th className="character-table-td-millde-index">세력</th>
-            <th className="character-table-td-millde-index"><DropdownButton id="dropdown-basic-button" title="페이지당 캐릭터">
+            <th className="character-table-td-millde-index"><DropdownButton variant="secondary" drop="start" title="PagePer">
                   <Dropdown.Item onClick={() => setCharPerPage(10)}>10</Dropdown.Item>
                   <Dropdown.Item onClick={() => setCharPerPage(20)}>20</Dropdown.Item>
                   <Dropdown.Item onClick={() => setCharPerPage(30)}>30</Dropdown.Item>
@@ -349,18 +347,20 @@ const CharacterList = ({options, user, setUser}) => {
     return(
       <div>
         <Row className="character-list">
-          <Table striped bordered hover variant="dark">
+          <Table striped bordered hover variant="dark" className="character-table">
           <CharTableHead></CharTableHead>
+          <tbody>
           {characterList.slice(sliceStart, sliceStart+charPerPage).map((cha)=> ( 
             <React.Fragment key={cha.id}>
               <CharacterInList filterByFav={filterByFav} user={user} setUser={setUser} cha={cha} key={cha.id}>
               </CharacterInList>
             </React.Fragment>
           ))}
+          </tbody>
           </Table>
         </Row>
         <Row className="page-button-tool-bar-row">
-        <ButtonToolbar>
+        <ButtonToolbar className="page-button-toolbar">
           <ButtonGroup className="page-button-group">
             {pages.map((page) => (
               <React.Fragment key={page}>

@@ -65,8 +65,8 @@ const CharacterInList = ({cha, user, sortFav, setUser}) => {
     }else if(open){
       return(
         <tr>
-          <td colSpan="9">
-          <Row>
+          <td colSpan="10">
+          <Row className="character-list-collapse-row">
             <Col xs={4} lg={4}>
               <ChainSkillView skill={cha.chain_skill}>
               </ChainSkillView>
@@ -88,7 +88,7 @@ const CharacterInList = ({cha, user, sortFav, setUser}) => {
     return "loading"
   }else if(user.email == ""){
     return (
-      <tbody>
+      <React.Fragment>
         <tr className="character-table-tbody-td-index" onClick={() => toggle()}>
           <td className="character-list-open-td">
             <Button size="sm"
@@ -111,18 +111,18 @@ const CharacterInList = ({cha, user, sortFav, setUser}) => {
                 query: { characterInfo: cha.id },
               }} passHref
             >
-              <Button>View Aurorian Page</Button>
+              <Button>More Info</Button>
             </Link>
           </td>
         </tr>
         <Collapse open={open}></Collapse>
-      </tbody>
+      </React.Fragment>
     )
   }else{
     return(
-      <tbody>
+      <React.Fragment>
         <tr className="character-table-tbody-td-index" onClick={() => toggle()}>
-        <th className="character-list-open-t" onClick={(e)=> e.stopPropagation()}><FavBtn></FavBtn></th>
+        <th className="character-list-open-td" onClick={(e)=> e.stopPropagation()}><FavBtn></FavBtn></th>
           <td className="character-list-open-td">
             <Button size="sm"
               variant="dark"
@@ -144,12 +144,12 @@ const CharacterInList = ({cha, user, sortFav, setUser}) => {
                 query: { characterInfo: cha.id },
               }} passHref
             >
-              <Button>View Aurorian Page</Button>
+              <Button>More Info</Button>
             </Link>
           </td>
         </tr>
         <Collapse open={open}></Collapse>
-      </tbody>
+      </React.Fragment>
     )
 
   }

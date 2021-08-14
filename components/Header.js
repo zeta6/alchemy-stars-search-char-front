@@ -1,16 +1,6 @@
 import { Container, Navbar, Button} from 'react-bootstrap';
-// import React, {useState} from 'react';
 import GoogleLogin from 'react-google-login';
 import axios from 'axios';
-
-// const handleLogin = () => {
-//   // console.log('fsfwfw')
-//   // axios.get("http://127.0.0.1:8000/accounts/google/login)")
-//     // .then(res => console(res.data))
-//   location.href = "http://127.0.0.1:8000/accounts/google/login"
-// }
-
-
 
 const Header = ({user, setUser}) => {
   const googleClientID = '571135633127-mt9gkbshie9u75vg18thc0u4j3ktec5q.apps.googleusercontent.com';
@@ -35,8 +25,6 @@ const Header = ({user, setUser}) => {
           fav_char : JSON.parse(userData.fav_char)
         }
         setUser(activeUser)
-        window.sessionStorage.setItem('logged', true);
-        window.sessionStorage.setItem('activeUser', activeUser);
         window.sessionStorage.setItem('id', userData.id);
         window.sessionStorage.setItem('email', userData.email);
         window.sessionStorage.setItem('provider', userData.provider);
@@ -50,31 +38,61 @@ const Header = ({user, setUser}) => {
     axios.post('http://127.0.0.1:8000/accounts/google_login/',
       googleUser) 
       .then(res => checkLogin(res))
+      .catch(err => console.log(err))
   }
-  return(
-    <div>
-      <Navbar className="bg-color-darkslateblue" variant="dark">
-        <Container>
-        <Navbar.Brand href="/">SearchAurorian</Navbar.Brand>
-        <Navbar.Brand>
-          <GoogleLogin  
-            clientId={googleClientID}
-            render={renderProps => (
-            <Button className="google-login-btn" onClick={renderProps.onClick} disabled={renderProps.disabled}>Google Login</Button>
-            )}
-            onSuccess={(res)=>{
-              handleGoogleLogin(res);
-            }}
-            onFailure={(err)=>{
-              console.log(err);
-            }}
-            // isSignedIn={true}
-            >
-          </GoogleLogin>
-        </Navbar.Brand>
-        </Container>
-      </Navbar>
-    </div>
-  )
+
+    const handleLogout = () => {
+      setUser({
+        id: "", 
+        email: "",
+        provider: "",
+        access_token:"",
+        fav_char: []
+        });
+        window.sessionStorage.clear();
+    }
+
+  if(!user || user.email == ""){ 
+    return(
+      <div className="navbar-top">
+        <Navbar variant="dark" className="bg-color-darkslateblue">
+          <Container className="navbar-container">
+          <Navbar.Brand href="/"><span className="navbar-title-span"
+          >SearchAurorian</span></Navbar.Brand>
+          <Navbar.Brand>
+            <GoogleLogin  
+              clientId={googleClientID}
+              render={renderProps => (
+              <Button className="google-login-btn" onClick={renderProps.onClick} disabled={renderProps.disabled}>Google Login</Button>
+              )}
+              onSuccess={(res)=>{
+                handleGoogleLogin(res);
+              }}
+              onFailure={(err)=>{
+                console.log(err);
+              }}
+              // isSignedIn={true}
+              >
+            </GoogleLogin>
+          </Navbar.Brand>
+          </Container>
+        </Navbar>
+      </div>
+    )
+  }else{
+    return(
+      <div>
+        <Navbar variant="dark" className="bg-color-darkslateblue">
+          <Container className="navbar-container">
+          <Navbar.Brand href="/"><span className="navbar-title-span"
+          >SearchAurorian</span></Navbar.Brand>
+          <Navbar.Brand>
+            <Button className="google-login-btn" onClick={()=>handleLogout()}>Log Out</Button>
+          </Navbar.Brand>
+          </Container>
+        </Navbar>
+      </div>
+    )
+  }
 }
 export default Header

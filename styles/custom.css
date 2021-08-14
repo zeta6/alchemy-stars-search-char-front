@@ -1,5 +1,5 @@
 /* 바디 */
-@media only screen and (max-width: 600px){
+/* @media only screen and (max-width: 600px){
   html, body {
     height: 100%;
 }
@@ -18,14 +18,26 @@ body {
 body {
   background-color: #111426;
   
-}
+} */
 
 
 .google-login-btn{
-  width:100px;
+  width:150px;
 }
 
 /* 속성(기능)별 */
+
+.navbar-top{
+  width:100%;
+}
+
+.navbar-title-span{
+  padding-left: 20px;
+}
+
+.navbar-container{
+  max-width:1140px;
+}
 
 .index-loading{
   color: aliceblue;
@@ -38,6 +50,9 @@ body {
 
 .vertical-align-center{
   display: flex;
+  width:100%;
+  padding: 0;
+  margin:0;
 }
 
 
@@ -46,13 +61,15 @@ body {
 }
 
 .bg-color-darknavy{
+  max-width: 1040px;
   background-color: #111426;
+  padding:0;
+  margin: auto;
 }
 
 
 .bg-color-darkslateblue{
   background-color: darkslateblue;
-  width:100%;  ;
 }
 
 .bg-color-yellow{
@@ -77,8 +94,8 @@ body {
 
 .search-character-input-row {
   padding-top: 20px;
-  width:50%;
-  min-width: 500px;
+  width:95%;
+  max-width: 550px;
   float: none;
   margin:0 auto;
 }
@@ -90,11 +107,10 @@ body {
   
 }
 
-.character-list-open-fav:not.character-table-tbody-td-index{
+.character-list-open-fav{
   width: 0px;
   text-align:center;
   vertical-align: middle;
-  
 }
 
 .character-table-td-millde-index{
@@ -110,23 +126,70 @@ body {
   vertical-align: middle;
   cursor: pointer;
 }
+.character-table{
+  margin:0 !important;
+  padding:0;
+  min-width: 705px;
+  width:100%;
+}
+
+/* table{
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+th{
+  padding: 2px !important;
+  margin: 0 !important;
+}
+
+tr td{
+  padding: 2px !important;
+  margin: 0 !important;
+} */
+
 .character-table-td-index-icon{
+  margin:0;
+  padding:0;
   width: 15%;
-  min-width: 90px;  
+  min-width: 80px;  
   text-align:center;
   vertical-align: middle;
 }
 
+.option-buttons-first-group{
+  width:100%;
+  padding:0px;
+  margin: auto;
+}
+
 .option-buttons-second-group{
+  margin: auto;
+  width:100%;
   padding-top: 6px;
   padding-bottom: 10px;
 }
 
+.option-button-toolbar{
+  padding:0;
+  padding-left: 4px;
+}
+
+.option-button{
+  height: 50px;
+}
+
+.character-list-collapse-row{
+  padding:0;
+  margin:0;
+}
+
 .character-list{
-  width:85%;
-  min-width: 500px;
+  width:100%;
+  min-width: 250px;
   float: none;
   margin:0 auto;
+  padding:0;
 }
 
 .character-list-open-button{
@@ -135,7 +198,11 @@ body {
 }
 
 .page-button-tool-bar-row{
+  width:90%;
   padding-top: 10px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .page-button-group{
@@ -301,6 +368,7 @@ body {
 
 }
 
+
 .chain-skill-veiw-button{
   height:43px;
   width:43px;
@@ -313,7 +381,7 @@ body {
 }
 
 .active-skill-card-wrap{
-  margin-left: -6px;
+  margin: auto;
   padding-top: 6px;
 }
 
@@ -412,5 +480,14 @@ body {
   padding-right: 60px;
 }
 
+.layout-div{
+  width:100%;
+  padding: 0;
+  margin: 0;
+}
 
 
+.page-button-toolbar{
+  width: 100%;
+  margin: auto;
+}
