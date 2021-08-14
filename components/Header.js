@@ -82,7 +82,7 @@ const Header = ({user, setUser}) => {
     )
   }else{
     return(
-      <div>
+      <div className="navbar-top">
         <Navbar variant="dark" className="bg-color-darkslateblue">
           <Container className="navbar-container">
           <Navbar.Brand href="/"><span className="navbar-title-span"
