@@ -42,18 +42,54 @@ const Header = ({user, setUser}) => {
       .catch(err => console.log(err))
   }
 
-    const handleLogout = () => {
-      setUser({
-        id: "", 
-        email: "",
-        provider: "",
-        access_token:"",
-        fav_char: []
-        });
-        window.sessionStorage.clear();
-    }
+  const handleLogout = () => {
+    setUser({
+      id: "", 
+      email: "",
+      provider: "",
+      access_token:"",
+      fav_char: []
+      });
+      window.sessionStorage.clear();
+  }
 
-  if(!user || user.email == ""){ 
+  const handleWithdrawal = () => {
+    if(window.confirm("탈퇴하시겠습니까? 탈퇴 시 회원데이터는 삭제되고 복구는 불가능합니다." )){
+      const checkDel = (res) => {
+        if(res.data["del"] == "success"){
+          handleLogout()
+          alert("탈퇴되었습니다.")
+        }
+        else{
+          alert("인증과정에 문제가 있어 탈퇴되지 않았습니다.")
+        }
+      }
+      const submitData = {
+        email: user.email,
+        access_token: user.access_token
+      }
+      axios.post(BackendUrl+'/accounts/google_withdrawal/',
+      submitData) 
+      .then(res => checkDel(res))
+      .catch(err => console.log(err))
+    } 
+  }
+
+  if(user === null){
+    return(
+      <div className="navbar-top">
+        <Navbar variant="dark" className="bg-color-darkslateblue">
+          <Container className="navbar-container">
+          <Navbar.Brand href="/"><span className="navbar-title-span"
+          >SearchAurorian</span></Navbar.Brand>
+          </Container>
+          <Navbar.Brand>
+          </Navbar.Brand>
+        </Navbar>
+      </div>
+    )
+  }
+  else if(!user || user.email == ""){ 
     return(
       <div className="navbar-top">
         <Navbar variant="dark" className="bg-color-darkslateblue">
@@ -88,6 +124,7 @@ const Header = ({user, setUser}) => {
           <Navbar.Brand href="/"><span className="navbar-title-span"
           >SearchAurorian</span></Navbar.Brand>
           <Navbar.Brand>
+            <Button className="withdrawal-btn" onClick={()=>handleWithdrawal()}>Withdrawal</Button>
             <Button className="google-login-btn" onClick={()=>handleLogout()}>Log Out</Button>
           </Navbar.Brand>
           </Container>

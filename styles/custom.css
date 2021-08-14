@@ -20,16 +20,20 @@ body {
   
 } */
 
+.withdrawal-btn{
+  width: 120px;
+  margin-right: 6px;
+}
 
 .google-login-btn{
-  width:150px;
+  width:120px;
 }
 
 /* 속성(기능)별 */
 
 .navbar-top{
   width:100%;
-  min-width: 705px;
+  min-width: 580px;
 }
 
 .navbar-title-span{
@@ -71,6 +75,7 @@ body {
 
 .bg-color-darkslateblue{
   background-color: darkslateblue;
+  height: 64px;
 }
 
 .bg-color-yellow{
@@ -121,6 +126,13 @@ body {
   vertical-align: middle;
 }
 
+.character-table-td-millde-index-name{
+  width: 13%;
+  max-width: 200px;
+  text-align:center;
+  vertical-align: middle;
+}
+
 .character-table-tbody-td-index{
   /* width: 17%; */
   text-align:center;
@@ -130,8 +142,41 @@ body {
 .character-table{
   margin:0 !important;
   padding:0;
-  min-width: 705px;
+  min-width: 580px;
   width:100%;
+}
+
+@media only screen and (max-width: 600px){
+  .character-table{
+    font-size: 15px;
+  }
+  .character-list-open-td{
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .character-table-td-millde-index{
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .character-table-td-millde-index-name{
+    min-width: 50px;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .curser_to_point{
+    padding: 0;
+    margin: 0;
+  }
+
+  .char-in-list-td{
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .char-in-list-name-span{
+    padding: 0;
+    margin: 0;
+  }
 }
 
 /* table{

@@ -22,15 +22,7 @@ export default function CharacterInfo(){
   const [ loading , setLoading ] = useState(true)
   const [ ascension, setAscension ] = useState("asc_0");
   const [ breakthrough, setBreakthrough ] = useState("br_0");
-  const [ user, setUser ] = useState(
-    {
-      id: "", 
-      email: "",
-      provider: "",
-      access_token:"",
-      fav_char: []
-    }
-  )
+  const [ user, setUser ] = useState(null)
 
   // useEffect
   useEffect(() => { 
@@ -50,6 +42,14 @@ export default function CharacterInfo(){
             access_token: access_token,
             fav_char: JSON.parse(res.data.fav_char)
           })) 
+    }else{
+      setUser({
+          id: "", 
+          email: "",
+          provider: "",
+          access_token:"",
+          fav_char: []
+        })
     }
   }, [])
 
@@ -168,7 +168,7 @@ export default function CharacterInfo(){
       <Container className="character-info-container">
         <Row>
           <Col className="character-info-first-row-index-col">
-            바로가기 : <a href="#quickView">퀵뷰</a> / <a href="#equipinfo">장비정보</a> / <a href="#profile">프로필</a> / <a href="#breakthrough">한계돌파</a> / <a href="#ascension">각성</a> / <a href="#preferredGifts">선호선물</a> / <a href="#characterFile">캐릭터파일</a> / 
+            Go to : <a href="#quickView">퀵뷰</a> / <a href="#equipinfo">장비정보</a> / <a href="#profile">프로필</a> / <a href="#breakthrough">한계돌파</a> / <a href="#ascension">각성</a> / <a href="#preferredGifts">선호선물</a> / <a href="#characterFile">캐릭터파일</a> 
           </Col>
         </Row>
         <Row>

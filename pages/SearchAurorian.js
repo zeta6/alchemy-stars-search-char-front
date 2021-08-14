@@ -11,6 +11,7 @@ import { BackendUrl } from '../components/BackendUrl';
 
 
 const SearchAurorian = () => {
+
   
   // useState
   const [ charName, setCharName ] = useState("")
@@ -24,15 +25,7 @@ const SearchAurorian = () => {
       special_role:[],
     }
   )
-  const [ user, setUser ] = useState(
-    {
-      id: "", 
-      email: "",
-      provider: "",
-      access_token:"",
-      fav_char: []
-    }
-  )
+  const [ user, setUser ] = useState(null)
 
   // useEffect
   useEffect(() => { 
@@ -52,6 +45,14 @@ const SearchAurorian = () => {
             access_token: access_token,
             fav_char: JSON.parse(res.data.fav_char)
           })) 
+    }else{
+      setUser({
+          id: "", 
+          email: "",
+          provider: "",
+          access_token:"",
+          fav_char: []
+        })
     }
   }, [])
 

@@ -296,13 +296,13 @@ const CharacterList = ({options, user, setUser}) => {
             <th className="character-list-open-td">
               <Button size="sm" variant="dark">ㅡ</Button></th>
             <th className="character-table-td-millde-index">아이콘</th>
-            <th className="character-table-td-millde-index"><Name sort={sort} setSort={setSort}></Name></th>
+            <th className="character-table-td-milldeg-index-name"><Name sort={sort} setSort={setSort}></Name></th>
             <th className="character-table-td-millde-index"><Rarity sort={sort} setSort={setSort}></Rarity></th>
             <th className="character-table-td-millde-index"><Mattr sort={sort} setSort={setSort}></Mattr></th>
             <th className="character-table-td-millde-index"><Sattr sort={sort} setSort={setSort}></Sattr></th>
             <th className="character-table-td-millde-index"><Class sort={sort} setSort={setSort}></Class></th>
             <th className="character-table-td-millde-index">세력</th>
-            <th className="character-table-td-millde-index"><DropdownButton variant="secondary" drop="left" title="PagePer">
+            <th className="character-table-td-millde-index"><DropdownButton className="char-list-dropdown" variant="secondary" drop="left" title="PagePer">
                   <Dropdown.Item onClick={() => setCharPerPage(10)}>10</Dropdown.Item>
                   <Dropdown.Item onClick={() => setCharPerPage(20)}>20</Dropdown.Item>
                   <Dropdown.Item onClick={() => setCharPerPage(30)}>30</Dropdown.Item>
@@ -320,13 +320,13 @@ const CharacterList = ({options, user, setUser}) => {
             <th className="character-list-open-td">
               <Button size="sm" variant="dark">ㅡ</Button></th>
             <th className="character-table-td-millde-index">아이콘</th>
-            <th className="character-table-td-millde-index"><Name sort={sort} setSort={setSort}></Name></th>
+            <th className="character-table-td-millde-index-name"><Name sort={sort} setSort={setSort}></Name></th>
             <th className="character-table-td-millde-index"><Rarity sort={sort} setSort={setSort}></Rarity></th>
             <th className="character-table-td-millde-index"><Mattr sort={sort} setSort={setSort}></Mattr></th>
             <th className="character-table-td-millde-index"><Sattr sort={sort} setSort={setSort}></Sattr></th>
             <th className="character-table-td-millde-index"><Class sort={sort} setSort={setSort}></Class></th>
             <th className="character-table-td-millde-index">세력</th>
-            <th className="character-table-td-millde-index"><DropdownButton variant="secondary" drop="left" title="PagePer">
+            <th className="character-table-td-millde-index"><DropdownButton className="char-list-dropdown" variant="secondary" drop="left" title="PagePer">
                   <Dropdown.Item onClick={() => setCharPerPage(10)}>10</Dropdown.Item>
                   <Dropdown.Item onClick={() => setCharPerPage(20)}>20</Dropdown.Item>
                   <Dropdown.Item onClick={() => setCharPerPage(30)}>30</Dropdown.Item>
