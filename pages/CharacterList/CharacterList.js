@@ -125,7 +125,7 @@ const CharacterList = ({options, user, setUser}) => {
     axios.get(BackendUrl+"/api/characters/")
       .then(response => setData(response.data))
       .catch(error => console.log(error));
-    },[options, charPerPage, filterByFav, user]
+    },[options, charPerPage, filterByFav]
   );
 
   // useEffect end
