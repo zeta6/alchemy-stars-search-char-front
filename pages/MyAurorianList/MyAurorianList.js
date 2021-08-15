@@ -1,17 +1,29 @@
 import React, {useEffect, useState} from 'react';
-import { Table, ButtonGroup, Button, Row, ButtonToolbar, DropdownButton, Dropdown} from 'react-bootstrap';
-import CharacterInList from './CharacterInList';
+import { Table, ButtonGroup, Button, Row, ButtonToolbar, DropdownButton, Dropdown, Container, Col} from 'react-bootstrap';
 import axios from 'axios';
 import { BackendUrl } from '../../components/BackendUrl'
+import Image from "next/image";
 
-const CharacterList = ({options, user, setUser}) => {
+const PageButton = ({page, setSliceStart, currentPage, charPerPage}) => {
+  if(page == currentPage){ 
+  return(
+    <Button size="lg" variant="dark" onClick={() => setSliceStart((page-1) * charPerPage)}>{page}</Button>  
+  )} else{
+    return(
+    <Button size="lg" variant="secondary" onClick={() => setSliceStart((page-1) * charPerPage)}>{page}</Button>
+  )}
+};
+
+const MyAurorianList = ({options, user, setUser}) => {
   const [characterList, setCharacterList] = useState([]);  
-	const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [sliceStart, setSliceStart] = useState(0);
   const [pages, setPages] = useState(1);
   const [sort, setSort] = useState(null);
   const [charPerPage, setCharPerPage] = useState(20);
   const [filterByFav, setFilterByFav] = useState(false);
+  const [selectedAurorian, setSelectedAurorian] = useState(null)
+  let s_aurorian;
 
 // useEffect start
   useEffect(() => {
@@ -83,8 +95,7 @@ const CharacterList = ({options, user, setUser}) => {
       if(user.fav_char.includes(character.id)){
         return character
       }
-    }
-    
+    }    
 
     const mixFilter = (list) => {
       if (options.special_role.length == 0){
@@ -119,17 +130,6 @@ const CharacterList = ({options, user, setUser}) => {
   );
 
   // useEffect end
-
-
-  const PageButton = ({page, setSliceStart, currentPage, charPerPage}) => {
-    if(page == currentPage){ 
-    return(
-      <Button size="lg" variant="dark" onClick={() => setSliceStart((page-1) * charPerPage)}>{page}</Button>  
-    )} else{
-      return(
-      <Button size="lg" variant="secondary" onClick={() => setSliceStart((page-1) * charPerPage)}>{page}</Button>
-    )}
-  };
 
 
   //sort start
@@ -340,40 +340,117 @@ const CharacterList = ({options, user, setUser}) => {
     }
   }
 
+  // const setSelect = () =>{
+  //   setSelectedAurorian(s_aurorian)
+  // }
 
-  if (loading) {
-    return "loading"
-  }else{
+  const handleSelectChange = (aurorian) => {
+    setSelectedAurorian(aurorian.id)
+  }
+
+
+  const rarity_6_Filter = (aurorian) => {
+    if(aurorian.rarity == 6){
+      return aurorian
+    }}
+
+  const rarity_5_Filter = (aurorian) => {
+    if(aurorian.rarity == 5){
+      return aurorian
+    }}
+
+  const rarity_4_Filter = (aurorian) => {
+    if(aurorian.rarity == 4){
+      return aurorian
+    }}
+
+  const rarity_3_Filter = (aurorian) => {
+    if(aurorian.rarity == 3){
+      return aurorian
+    }}
+      
+
+  const AurorianInfo = ({aurorian}) => {
+    if(!aurorian){
+      return null
+    }else{
+      return(
+        <Image width="80" height="80" unoptimized="true" src={aurorian.icon}></Image>
+      )
+    }
+  }
+
+  const MyAurorianIcon = ({aurorian}) => {
+    if(!aurorian){
+      console.log("null?")
+      return "agwegwgg"
+    }else if([1,3].includes(aurorian.id)){
+      return(
+        <Image width="80" height="80" unoptimized="true" src={aurorian.icon}></Image>
+      )
+    }else{
+      return(
+      <Image onClick={()=>handleSelectChange(aurorian)} className="myaurorian-icon" width="80" height="80" unoptimized="true" src={aurorian.icon}></Image>
+      )
+    }
+  }
+
+  const AurorianList = () => {
     return(
-      <div>
-        <Row className="character-list">
-          <Table striped bordered hover variant="dark" className="character-table">
-          <CharTableHead></CharTableHead>
-          <tbody>
-          {characterList.slice(sliceStart, sliceStart+charPerPage).map((cha)=> ( 
-            <React.Fragment key={cha.id}>
-              <CharacterInList filterByFav={filterByFav} user={user} setUser={setUser} cha={cha} key={cha.id}>
-              </CharacterInList>
-            </React.Fragment>
-          ))}
-          </tbody>
-          </Table>
-        </Row>
-        <Row className="page-button-tool-bar-row">
-        <ButtonToolbar className="page-button-toolbar">
-          <ButtonGroup className="page-button-group">
-            {pages.map((page) => (
-              <React.Fragment key={page}>
-                <PageButton page={page} charPerPage={charPerPage} setSliceStart={setSliceStart} currentPage={(parseInt(sliceStart/charPerPage))+1}></PageButton>
-              </React.Fragment>
-          ))}
-          </ButtonGroup>
-        </ButtonToolbar>
-        </Row>
-      </div>
+      <Col sm={6} lg={6}>
+        <div className="font-white">
+          <Button onClick={()=>console.log(s_aurorian)}>s_aurorian</Button>
+          <Button onClick={()=>console.log(selectedAurorian)}>sel_aurorian</Button>
+          <Button onClick={()=>console.log(characterList)}>characterList</Button>
+          <Button onClick={()=>console.log(characterList.filter(rarity_6_Filter)[0]['icon'])}>chListFilter</Button>
+          {/* <Image width="60" height="60" unoptimized="true" src={characterList.filter(rarity_6_Filter)[0]['icon']}></Image> */}
+          <span className="font-white">6☆</span> <br></br>
+            {characterList.filter(rarity_6_Filter).sort(getSortOrderProp("main_attribute", "name")).map(aurorian =>
+              <MyAurorianIcon key={aurorian.id} aurorian={aurorian}></MyAurorianIcon>
+            )} <br></br>
+          <span className="font-white">5☆</span> <br></br>
+            {characterList.filter(rarity_5_Filter).sort(getSortOrderProp("main_attribute", "name")).map(aurorian =>
+              <MyAurorianIcon key={aurorian.id} aurorian={aurorian}></MyAurorianIcon>
+          )} <br></br>
+          <span className="font-white">4☆</span> <br></br>
+            {characterList.filter(rarity_4_Filter).sort(getSortOrderProp("main_attribute", "name")).map(aurorian =>
+              <MyAurorianIcon key={aurorian.id} aurorian={aurorian}></MyAurorianIcon>
+          )} <br></br>
+          <span className="font-white">3☆</span> <br></br>
+            {characterList.filter(rarity_3_Filter).sort(getSortOrderProp("main_attribute", "name")).map(aurorian =>
+              <MyAurorianIcon key={aurorian.id} aurorian={aurorian}></MyAurorianIcon>
+          )} <br></br>
+        </div>
+      </Col>
+    )
+  }
+
+  // if (loading) {
+  //   return "loading"
+  // }else{
+    if(!characterList[0]){
+      return null
+    }else{
+    return(
+      <Container>
+        <Row><Button>보유 오로리안 편집</Button><Button>팀 편집</Button></Row>
+        <Row>
+          <AurorianList/>
+          <Col sm={6} lg={6}>
+            <span className="font-white">팀 1 /</span>
+            <span className="font-white">팀 2 /</span> 
+            <span className="font-white">팀 3 /</span> 
+            <span className="font-white">팀 4 /</span>
+            <div className="font-white">
+              1번 2번 3번 4번 5번
+            </div>
+            {/* <AurorianInfo aurorian={selectedAurorian}></AurorianInfo> */}
+          </Col>
+        </Row>  
+      </Container>
     )
   }
 }
 
-export default CharacterList;
+export default MyAurorianList;
 

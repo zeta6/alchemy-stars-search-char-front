@@ -2,6 +2,7 @@ import { Container, Navbar, Button} from 'react-bootstrap';
 import GoogleLogin from 'react-google-login';
 import axios from 'axios';
 import { BackendUrl } from './BackendUrl'
+import Link from 'next/link';
 
 const Header = ({user, setUser}) => {
   const googleClientID = '571135633127-mt9gkbshie9u75vg18thc0u4j3ktec5q.apps.googleusercontent.com';
@@ -124,8 +125,11 @@ const Header = ({user, setUser}) => {
           <Navbar.Brand href="/"><span className="navbar-title-span"
           >SearchAurorian</span></Navbar.Brand>
           <Navbar.Brand>
-            <Button className="withdrawal-btn" onClick={()=>handleWithdrawal()}>Withdrawal</Button>
-            <Button className="google-login-btn" onClick={()=>handleLogout()}>Log Out</Button>
+            <Link href='/MyAurorians' passHref>
+              <Button className="myaurorians-btn">My Aurorians</Button>
+            </Link>
+            <Button className="logout-btn" onClick={()=>handleLogout()}>Log Out</Button>
+            <Button className="google-login-btn" onClick={()=>handleWithdrawal()}>Withdrawal</Button>
           </Navbar.Brand>
           </Container>
         </Navbar>

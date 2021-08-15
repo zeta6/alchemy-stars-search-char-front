@@ -20,10 +20,16 @@ body {
   
 } */
 
-.withdrawal-btn{
+.myaurorians-btn{
   width: 120px;
   margin-right: 6px;
 }
+
+.logout-btn{
+  width: 120px;
+  margin-right: 6px;
+}
+
 
 .google-login-btn{
   width:120px;
