@@ -201,11 +201,11 @@ tr td{
 } */
 
 .character-table-td-index-icon{
-  margin:0;
-  padding:0;
+  line-height: 0;
+  padding: 4px !important;
   width: 15%;
   min-width: 80px;  
-  text-align:center;
+  text-align: center;
   vertical-align: middle;
 }
 
@@ -247,6 +247,10 @@ tr td{
 .character-list-open-button{
   float: none;
   margin: 30px auto;
+}
+
+.charlist-moreinfo-btn-td{
+  width:100%
 }
 
 .page-button-tool-bar-row{
