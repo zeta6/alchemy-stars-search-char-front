@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import { Table, ButtonGroup, Button, Row, ButtonToolbar, DropdownButton, Dropdown, Container, Col} from 'react-bootstrap';
+import React, {useState} from 'react';
+import { ButtonGroup, Button, Col } from 'react-bootstrap';
 import Image from "next/image";
 import InfoChainSkillView from "../CharacterList/character-info/InfoChainSkillView";
 import InfoEquipSkillView from "../CharacterList/character-info/InfoEquipSkillView";
