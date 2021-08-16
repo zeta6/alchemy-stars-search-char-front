@@ -4,6 +4,7 @@ import Image from "next/image";
 import InfoChainSkillView from "../CharacterList/character-info/InfoChainSkillView";
 import InfoEquipSkillView from "../CharacterList/character-info/InfoEquipSkillView";
 import InfoActiveSkillView from "../CharacterList/character-info/InfoActiveSkillView";
+import Link from 'next/link';
 
 const AurorianInfo = ({aurorian}) => {
     const [ ascension, setAscension ] = useState("asc_0");
@@ -109,6 +110,14 @@ const AurorianInfo = ({aurorian}) => {
             돌파: <br></br>
             <BreakthroughButtonGroup rarity={aurorian.rarity}></BreakthroughButtonGroup>
           </Col>
+          <Link
+              href={{
+                pathname: '/CharacterList/[characterInfo]',
+                query: { characterInfo: aurorian.id },
+              }} passHref
+            >
+              <Button className="myaurorian-moreinfo-btn">Go to aurorian page</Button>
+            </Link>
         </div>
       )
     }
