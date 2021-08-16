@@ -70,7 +70,7 @@ const CharacterInList = ({cha, user, sortFav, setUser}) => {
               </ChainSkillView>
             </Col>
             <Col xs={4} lg={4}>
-              <ActiveSkillView skill={cha.active_skill}></ActiveSkillView>
+              <ActiveSkillView skill={cha.active_skill} rarity={cha.rarity}></ActiveSkillView>
             </Col>
             <Col xs={4} lg={4}>
               <EquipSkillView skill={cha.equip_skill}>

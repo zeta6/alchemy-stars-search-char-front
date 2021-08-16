@@ -50,7 +50,7 @@ const InfoActiveSkillView = ({skill, ascension, breakthrough, char_brth, char_as
     const _skill = {...skill,"text": _text};
 
     return(
-      <ActiveSkillView skill={_skill}></ActiveSkillView>
+      <ActiveSkillView skill={_skill} rarity={rarity}></ActiveSkillView>
     )
   }
 } 

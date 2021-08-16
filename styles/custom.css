@@ -437,19 +437,45 @@ tr td{
 }
 
 .active-skill-card-wrap{
-  margin: auto;
+  /* margin: auto; */
   padding-top: 6px;
+  display: flex;
 }
 
 .active-skill-card{
   padding-top: 11px;
   text-align: center;
   height:44px;
-  width:44px;
+  width:52px;
   background-color: #0D6EFD;
   color: white;
-  font-size: 0.33cm;
+  font-size: 13.5px;
+  display:inline;
 }
+
+.active-skill-card-text{
+  padding-top: 11px;
+  text-align: center;
+  height:44px;
+  width:47px;
+  background-color: #0D6EFD;
+  color: white;
+  font-size: 13.5px;
+  display:inline;  
+}
+
+.active-skill-card-text-long{
+  padding-top: 11px;
+  text-align: center;
+  height:44px;
+  width:75px;
+  background-color: #0D6EFD;
+  color: white;
+  font-size: 13.5px;
+  display:inline;
+  
+}
+
 
 .character-info-equip-row{
   padding-top: 25px;
