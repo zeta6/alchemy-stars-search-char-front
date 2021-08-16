@@ -79,16 +79,16 @@ const AurorianInfo = ({aurorian}) => {
       return(
         <div className="font-white">
           <div className="vertical-align-center-auro-list">
-            <Image width="110" height="110" unoptimized="true" src={aurorian.icon}></Image>
+            <Image width="110" height="110" unoptimized="true" src={aurorian.icon} alt="아이콘"></Image>
             <span>이름: {aurorian.name} <br></br>
             <div className="vertical-align-center">
-            주속성: <span className="auro-list-small-icon"><Image unoptimized="true" width="25" height="25" src={aurorian.main_attribute.icon} alt={aurorian.main_attribute}></Image></span>
+            주속성: <span className="auro-list-small-icon"><Image unoptimized="true" width="25" height="25" src={aurorian.main_attribute.icon} alt="주속성"></Image></span>
             </div>
             <div className="vertical-align-center">
-            보조속성: <span className="auro-list-small-icon"><Image unoptimized="true" width="25" height="25" src={aurorian.sub_attribute.icon} alt={aurorian.sub_attribute}></Image></span>
+            보조속성: <span className="auro-list-small-icon"><Image unoptimized="true" width="25" height="25" src={aurorian.sub_attribute.icon} alt="부속성"></Image></span>
             </div>
             <div className="vertical-align-center">
-            클래스: <span className="auro-list-small-icon"><Image unoptimized="true" width="25" height="25" src={aurorian.char_class.icon} alt={aurorian.char_class}></Image></span>
+            클래스: <span className="auro-list-small-icon"><Image unoptimized="true" width="25" height="25" src={aurorian.char_class.icon} alt="클래스"></Image></span>
             </div>
             </span>    
           </div>
