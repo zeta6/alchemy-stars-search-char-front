@@ -13,6 +13,7 @@ const MyAurorianList = ({options, user, setUser}) => {
   const [filterByFav, setFilterByFav] = useState(false);
   const [selectedAurorian, setSelectedAurorian] = useState(null);
   const [ownEditing, setOwnEditing] = useState(false);
+  const [ownFiltering, setOwnFiltering] = useState(false);
 
 // useEffect start
   useEffect(() => {
@@ -78,22 +79,22 @@ const MyAurorianList = ({options, user, setUser}) => {
       return _characterList
     }
 
-    const favFilter = (character) => {
-      if(user.fav_char.includes(character.id)){
+    const ownFilter = (character) => {
+      if(user.owned_char.includes(character.id)){
         return character
       }
     }    
 
     const mixFilter = (list) => {
       if (options.special_role.length == 0){
-        if(filterByFav){
-          return list.filter(characterFilter).filter(favFilter)
+        if(ownFiltering){
+          return list.filter(characterFilter).filter(ownFilter)
         }else{
           return list.filter(characterFilter)
         }
       }else{
-        if(filterByFav){
-          return specialRoleFilter(list).filter(characterFilter).filter(favFilter)
+        if(ownFiltering){
+          return specialRoleFilter(list).filter(characterFilter).filter(ownFilter)
         }else{
           return specialRoleFilter(list).filter(characterFilter)
         }
@@ -109,7 +110,7 @@ const MyAurorianList = ({options, user, setUser}) => {
     axios.get(BackendUrl+"/api/characters/")
       .then(response => setData(response.data))
       .catch(error => console.log(error));
-    },[options, filterByFav]
+    },[options, filterByFav, ownFiltering]
   );
 
   // useEffect end
@@ -257,15 +258,27 @@ const MyAurorianList = ({options, user, setUser}) => {
     )
   }
 
+  const OwnFilteringBtn = () => {
+    if(!ownFiltering){
+      return(
+        <Button className="myaurorian-top-btn" onClick={()=>setOwnFiltering(!ownFiltering)}>보유 오로리안 보기</Button>
+      )
+    }else{
+      return(
+        <Button className="myaurorian-top-btn" onClick={()=>setOwnFiltering(!ownFiltering)}>전체 오로리안 보기</Button>
+      )
+    }
+  }
+
 
   const OwnEditingBtn = () => {
     if(!ownEditing){
       return(
-        <Button onClick={()=>setOwnEditing(!ownEditing)}>보유 오로리안 편집</Button>
+        <Button className="myaurorian-top-btn" onClick={()=>setOwnEditing(!ownEditing)}>보유 오로리안 편집</Button>
       )
     }else{
       return(
-        <Button onClick={()=>setOwnEditing(!ownEditing)}>보유 오로리안 편집 중</Button>
+        <Button className="myaurorian-top-btn" onClick={()=>setOwnEditing(!ownEditing)}>보유 오로리안 편집 중</Button>
       )
     }
   }
@@ -278,6 +291,7 @@ const MyAurorianList = ({options, user, setUser}) => {
     return(
       <Container>
         <Row>
+        <OwnFilteringBtn></OwnFilteringBtn>
         <OwnEditingBtn></OwnEditingBtn>
         {/* <Button>팀 편집</Button> */}
         </Row>
