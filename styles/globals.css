@@ -6,6 +6,11 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+::-webkit-scrollbar { display: none; }
+
+
+
+
 @media only screen and (max-width: 600px){
   html, body {
     width:100%;
@@ -38,3 +43,5 @@ a {
 * {
   box-sizing: border-box;
 }
+
+

@@ -4,16 +4,6 @@ import CharacterInList from './CharacterInList';
 import axios from 'axios';
 import { BackendUrl } from '../../components/BackendUrl'
 
-const PageButton = ({page, setSliceStart, currentPage, charPerPage}) => {
-  if(page == currentPage){ 
-  return(
-    <Button size="lg" variant="dark" onClick={() => setSliceStart((page-1) * charPerPage)}>{page}</Button>  
-  )} else{
-    return(
-    <Button size="lg" variant="secondary" onClick={() => setSliceStart((page-1) * charPerPage)}>{page}</Button>
-  )}
-};
-
 const CharacterList = ({options, user, setUser}) => {
   const [characterList, setCharacterList] = useState([]);  
 	const [loading, setLoading] = useState(true);
@@ -129,6 +119,17 @@ const CharacterList = ({options, user, setUser}) => {
   );
 
   // useEffect end
+
+
+  const PageButton = ({page, setSliceStart, currentPage, charPerPage}) => {
+    if(page == currentPage){ 
+    return(
+      <Button size="lg" variant="dark" onClick={() => setSliceStart((page-1) * charPerPage)}>{page}</Button>  
+    )} else{
+      return(
+      <Button size="lg" variant="secondary" onClick={() => setSliceStart((page-1) * charPerPage)}>{page}</Button>
+    )}
+  };
 
 
   //sort start
