@@ -38,7 +38,7 @@ const ActiveSkillView = ({skill, rarity}) => {
         setBrthPreempTive(upgSkillBrth[1])
       }
     }
-  },[upgSkillBrth])
+  },[upgSkillBrth, skill])
 
   if(!skill){
     return null;
