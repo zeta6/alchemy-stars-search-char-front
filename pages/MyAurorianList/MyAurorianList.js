@@ -203,24 +203,24 @@ const MyAurorianList = ({options, user, setUser}) => {
       }else if(user.owned_char.includes(aurorian.id)){
         if(ownEditing){
           return(
-            <Image onClick={()=>SubmitRemoveOwned()} width="80" height="80" unoptimized="true" src={aurorian.icon}></Image>
+            <Image onClick={()=>SubmitRemoveOwned()} width="80" height="80" unoptimized="true" src={aurorian.icon} alt="아이콘"></Image>
           )
         }else{
           return(
-            <Image onClick={()=>setSelectedAurorian(aurorian)} width="80" height="80" unoptimized="true" src={aurorian.icon}></Image>
+            <Image onClick={()=>setSelectedAurorian(aurorian)} width="80" height="80" unoptimized="true" src={aurorian.icon} alt="아이콘"></Image>
           )
         }
       }else{
         if(ownEditing){
           return(
             <span className="myaurorian-icon-opacity">
-              <Image onClick={()=>SubmitAddOwned()} width="80" height="80" unoptimized="true" src={aurorian.icon}></Image>
+              <Image onClick={()=>SubmitAddOwned()} width="80" height="80" unoptimized="true" src={aurorian.icon} alt="아이콘"></Image>
             </span>
           )
         }else{
           return(
             <span className="myaurorian-icon-opacity">
-              <Image onClick={()=>setSelectedAurorian(aurorian)} width="80" height="80" unoptimized="true" src={aurorian.icon}></Image>
+              <Image onClick={()=>setSelectedAurorian(aurorian)} width="80" height="80" unoptimized="true" src={aurorian.icon} alt="아이콘"></Image>
             </span>
           )
         }
@@ -258,30 +258,43 @@ const MyAurorianList = ({options, user, setUser}) => {
     )
   }
 
-  const OwnFilteringBtn = () => {
-    if(!ownFiltering){
-      return(
-        <Button className="myaurorian-top-btn" onClick={()=>setOwnFiltering(!ownFiltering)}>보유 오로리안 보기</Button>
-      )
+  const TopBtnGroup = () => {
+    const OwnFilteringBtn = () => {
+      if(!ownFiltering){
+        return(
+          <Button className="myaurorian-top-btn" onClick={()=>setOwnFiltering(!ownFiltering)}>보유 오로리안 보기</Button>
+        )
+      }else{
+        return(
+          <Button className="myaurorian-top-btn" onClick={()=>setOwnFiltering(!ownFiltering)}>전체 오로리안 보기</Button>
+        )
+      }
+    }
+  
+    const OwnEditingBtn = () => {
+      if(!ownEditing){
+        return(
+          <Button className="myaurorian-top-btn" onClick={()=>setOwnEditing(!ownEditing)}>보유 오로리안 편집</Button>
+        )
+      }else{
+        return(
+          <Button className="myaurorian-top-btn" onClick={()=>setOwnEditing(!ownEditing)}>보유 오로리안 편집 중</Button>
+        )
+      }
+    }
+
+    if(!user || user.email==""){
+      return null
     }else{
       return(
-        <Button className="myaurorian-top-btn" onClick={()=>setOwnFiltering(!ownFiltering)}>전체 오로리안 보기</Button>
+        <Row>
+          <OwnFilteringBtn></OwnFilteringBtn>
+          <OwnEditingBtn></OwnEditingBtn>
+        </Row>
       )
     }
   }
 
-
-  const OwnEditingBtn = () => {
-    if(!ownEditing){
-      return(
-        <Button className="myaurorian-top-btn" onClick={()=>setOwnEditing(!ownEditing)}>보유 오로리안 편집</Button>
-      )
-    }else{
-      return(
-        <Button className="myaurorian-top-btn" onClick={()=>setOwnEditing(!ownEditing)}>보유 오로리안 편집 중</Button>
-      )
-    }
-  }
   // if (loading) {
   //   return "loading"
   // }else{
@@ -291,8 +304,7 @@ const MyAurorianList = ({options, user, setUser}) => {
     return(
       <Container>
         <Row>
-        <OwnFilteringBtn></OwnFilteringBtn>
-        <OwnEditingBtn></OwnEditingBtn>
+        <TopBtnGroup></TopBtnGroup>
         {/* <Button>팀 편집</Button> */}
         </Row>
         <Row>

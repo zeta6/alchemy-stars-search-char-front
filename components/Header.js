@@ -102,6 +102,9 @@ const Header = ({user, setUser}) => {
           <Navbar.Brand href="/"><span className="navbar-title-span"
           >SearchAurorian</span></Navbar.Brand>
           <Navbar.Brand>
+            <Link href='/MyAurorians' passHref>
+              <Button className="myaurorians-btn">All aurorians</Button>
+            </Link>
             <GoogleLogin  
               clientId={googleClientID}
               render={renderProps => (
