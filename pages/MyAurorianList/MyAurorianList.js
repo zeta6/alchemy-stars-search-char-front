@@ -3,33 +3,20 @@ import { Table, ButtonGroup, Button, Row, ButtonToolbar, DropdownButton, Dropdow
 import axios from 'axios';
 import { BackendUrl } from '../../components/BackendUrl'
 import Image from "next/image";
+import AurorianInfo from "./AurorianInfo"
 
-const PageButton = ({page, setSliceStart, currentPage, charPerPage}) => {
-  if(page == currentPage){ 
-  return(
-    <Button size="lg" variant="dark" onClick={() => setSliceStart((page-1) * charPerPage)}>{page}</Button>  
-  )} else{
-    return(
-    <Button size="lg" variant="secondary" onClick={() => setSliceStart((page-1) * charPerPage)}>{page}</Button>
-  )}
-};
+;
 
 const MyAurorianList = ({options, user, setUser}) => {
   const [characterList, setCharacterList] = useState([]);  
   const [loading, setLoading] = useState(true);
-  const [sliceStart, setSliceStart] = useState(0);
-  const [pages, setPages] = useState(1);
-  const [sort, setSort] = useState(null);
-  const [charPerPage, setCharPerPage] = useState(20);
   const [filterByFav, setFilterByFav] = useState(false);
-  const [selectedAurorian, setSelectedAurorian] = useState(null)
-  let s_aurorian;
+  const [selectedAurorian, setSelectedAurorian] = useState(null);
+  const [ownEditing, setOwnEditing] = useState(false);
 
 // useEffect start
   useEffect(() => {
     const setData = (data) => {
-      setPages(Array((parseInt(data.length / 20) + 1))
-      .fill(1).map((x,y) => x + y ));
       setLoading(false);
     }
     axios.get(BackendUrl+"/api/characters/")
@@ -117,43 +104,18 @@ const MyAurorianList = ({options, user, setUser}) => {
     
     const setData = (data) => {
       setCharacterList(mixFilter(data));
-      setPages(Array((Math.ceil(mixFilter(data).length / charPerPage)))
-    .fill(1).map((x,y) => x + y ));
-      setSliceStart(0);
-      setSort(null);
     }
 
     axios.get(BackendUrl+"/api/characters/")
       .then(response => setData(response.data))
       .catch(error => console.log(error));
-    },[options, charPerPage, filterByFav]
+    },[options, filterByFav]
   );
 
   // useEffect end
 
 
   //sort start
-  const getSortOrder = (prop) => {
-    return function(a, b) {    
-      if (a[prop] > b[prop]) {    
-          return 1;    
-      } else if (a[prop] < b[prop]) {    
-          return -1;    
-      }    
-      return 0;    
-    }
-  }
-  const getSortOrderReverse = (prop) => {
-    return function(a, b) {    
-      if (a[prop] < b[prop]) {    
-          return 1;    
-      } else if (a[prop] > b[prop]) {    
-          return -1;    
-      }    
-      return 0;    
-    }
-  }
-
   const getSortOrderProp = (prop, inprop) => {
     return function(a, b) {    
       if (a[prop][inprop] > b[prop][inprop]) {    
@@ -165,188 +127,23 @@ const MyAurorianList = ({options, user, setUser}) => {
     }
   }
 
-  const getSortOrderPropReverse = (prop, inprop) => {
-    return function(a, b) {    
-      if (a[prop][inprop] < b[prop][inprop]) {    
-          return 1;    
-      } else if (a[prop][inprop] > b[prop][inprop]) {    
-          return -1;    
-      }    
-      return 0;    
-    }
-  }
-  
-  const Name = ({sort, setSort}) => {
-    const sortByName = () => {
-      setCharacterList(characterList.sort(getSortOrder("name")));
-      setSliceStart(0)
-      setSort("sort_by_name")
-    }
-    const sortByNameReverse = () => {
-      setCharacterList(characterList.sort(getSortOrderReverse("name")));
-      setSliceStart(0)
-      setSort("sort_by_name_reverse")
-    }
-    if(sort == "sort_by_name"){
-      return <span className="curser_to_point" onClick={()=>sortByNameReverse()}>이름▼</span>
-    }else if(sort == "sort_by_name_reverse"){
-      return <span className="curser_to_point" onClick={()=>sortByName()}>이름▲</span>
-    }else{
-      return <span className="curser_to_point" onClick={()=>sortByName()}>이름</span>
-    }
-  }
+  // const getSortOrderPropReverse = (prop, inprop) => {
+  //   return function(a, b) {    
+  //     if (a[prop][inprop] < b[prop][inprop]) {    
+  //         return 1;    
+  //     } else if (a[prop][inprop] > b[prop][inprop]) {    
+  //         return -1;    
+  //     }    
+  //     return 0;    
+  //   }
+  // }
 
-  const Rarity = ({sort, setSort}) => {
-    const sortByRarityReverse = () => {
-      setCharacterList(characterList.sort(getSortOrder("rarity")));
-      setSliceStart(0)
-      setSort("sort_by_rarity_reverse")
-    }
-    const sortByRarity = () => {
-      setCharacterList(characterList.sort(getSortOrderReverse("rarity")));
-      setSliceStart(0)
-      setSort("sort_by_rarity")
-    }
-    if(sort == "sort_by_rarity"){
-      return <span className="curser_to_point" onClick={()=>sortByRarityReverse()}>레어도▼</span>
-    }else if(sort == "sort_by_rarity_reverse"){
-      return <span className="curser_to_point" onClick={()=>sortByRarity()}>레어도▲</span>
-    }else{
-      return <span className="curser_to_point" onClick={()=>sortByRarity()}>레어도</span>
-    }
-  } 
-
-  const Mattr = ({sort, setSort}) => {
-    const sortByMattr = () => {
-      setCharacterList(characterList.sort(getSortOrderProp("main_attribute", "name")));
-      setSliceStart(0)
-      setSort("sort_by_main_attribute")
-    }
-    const sortByMattrReverse = () => {
-      setCharacterList(characterList.sort(getSortOrderPropReverse("main_attribute", "name")))
-      setSliceStart(0)
-      setSort("sort_by_main_attribute_reverse")
-    }
-    if(sort == "sort_by_main_attribute"){
-      return <span className="curser_to_point" onClick={()=>sortByMattrReverse()}>주속성▼</span>
-    }else if(sort == "sort_by_main_attribute_reverse"){
-      return <span className="curser_to_point" onClick={()=>sortByMattr()}>주속성▲</span>
-    }else{
-      return <span className="curser_to_point" onClick={()=>sortByMattr()}>주속성</span>
-    }
-  }
-
-  const Sattr = ({sort, setSort}) => {
-    const sortBySattr = () => {
-      setCharacterList(characterList.sort(getSortOrderProp("sub_attribute", "name")));
-      setSliceStart(0)
-      setSort("sort_by_sub_attribute")
-    }
-    const sortBySattrReverse = () => {
-      setCharacterList(characterList.sort(getSortOrderPropReverse("sub_attribute", "name")));
-      setSliceStart(0)
-      setSort("sort_by_sub_attribute_reverse")
-    }
-    if(sort == "sort_by_sub_attribute"){
-      return <span className="curser_to_point" onClick={()=>sortBySattrReverse()}>부속성▼</span>
-    }else if(sort == "sort_by_sub_attribute_reverse"){
-      return <span className="curser_to_point" onClick={()=>sortBySattr()}>부속성▲</span>
-    }else{
-      return <span className="curser_to_point" onClick={()=>sortBySattr()}>부속성</span>
-    }
-  }
-
-  const Class = ({sort, setSort}) => {
-    const sortByClass = () => {
-      setCharacterList(characterList.sort(getSortOrderProp("char_class", "name")));
-      setSliceStart(0)
-      setSort("sort_by_class")
-    }
-    const sortByClassReverse = () => {
-      setCharacterList(characterList.sort(getSortOrderPropReverse("char_class", "name")));
-      setSliceStart(0)
-      setSort("sort_by_class_reverse")
-
-    }
-    if(sort == "sort_by_class"){
-      return <span className="curser_to_point" onClick={()=>sortByClassReverse()}>클래스▼</span>
-    }else if(sort == "sort_by_class_reverse"){
-      return <span className="curser_to_point" onClick={()=>sortByClass()}>클래스▲</span>
-    }else{
-      return <span className="curser_to_point" onClick={()=>sortByClass()}>클래스</span>
-    }
-  } 
   //sort end
 
-  const CharTableHead = () => {
-    const FavBtn = () => {
-      if(filterByFav){
-        return(
-          <Button onClick={()=>setFilterByFav(!filterByFav)} size="sm" variant="dark">★</Button>
-        )
-      }else{
-        return(
-          <Button onClick={()=>setFilterByFav(!filterByFav)} size="sm" variant="dark">☆</Button>
-        )
-      }
-    }
-    if(!user || user.email == ""){
-      return(
-        <thead>
-          <tr className="character-table-td-index">
-            <th className="character-list-open-td">
-              <Button size="sm" variant="dark">ㅡ</Button></th>
-            <th className="character-table-td-millde-index">아이콘</th>
-            <th className="character-table-td-millde-index-name"><Name sort={sort} setSort={setSort}></Name></th>
-            <th className="character-table-td-millde-index"><Rarity sort={sort} setSort={setSort}></Rarity></th>
-            <th className="character-table-td-millde-index"><Mattr sort={sort} setSort={setSort}></Mattr></th>
-            <th className="character-table-td-millde-index"><Sattr sort={sort} setSort={setSort}></Sattr></th>
-            <th className="character-table-td-millde-index"><Class sort={sort} setSort={setSort}></Class></th>
-            <th className="character-table-td-millde-index">세력</th>
-            <th className="character-table-td-millde-index"><DropdownButton className="char-list-dropdown" variant="secondary" drop="left" title="PagePer">
-                  <Dropdown.Item onClick={() => setCharPerPage(10)}>10</Dropdown.Item>
-                  <Dropdown.Item onClick={() => setCharPerPage(20)}>20</Dropdown.Item>
-                  <Dropdown.Item onClick={() => setCharPerPage(30)}>30</Dropdown.Item>
-                  <Dropdown.Item onClick={() => setCharPerPage(50)}>50</Dropdown.Item>
-                </DropdownButton>
-            </th>
-          </tr>
-        </thead>
-      )
-    }else{
-      return(
-        <thead>
-          <tr className="character-table-td-index">
-            <th className="character-list-open-td"><FavBtn></FavBtn></th> 
-            <th className="character-list-open-td">
-              <Button size="sm" variant="dark">ㅡ</Button></th>
-            <th className="character-table-td-millde-index">아이콘</th>
-            <th className="character-table-td-millde-index-name"><Name sort={sort} setSort={setSort}></Name></th>
-            <th className="character-table-td-millde-index"><Rarity sort={sort} setSort={setSort}></Rarity></th>
-            <th className="character-table-td-millde-index"><Mattr sort={sort} setSort={setSort}></Mattr></th>
-            <th className="character-table-td-millde-index"><Sattr sort={sort} setSort={setSort}></Sattr></th>
-            <th className="character-table-td-millde-index"><Class sort={sort} setSort={setSort}></Class></th>
-            <th className="character-table-td-millde-index">세력</th>
-            <th className="character-table-td-millde-index"><DropdownButton className="char-list-dropdown" variant="secondary" drop="left" title="PagePer">
-                  <Dropdown.Item onClick={() => setCharPerPage(10)}>10</Dropdown.Item>
-                  <Dropdown.Item onClick={() => setCharPerPage(20)}>20</Dropdown.Item>
-                  <Dropdown.Item onClick={() => setCharPerPage(30)}>30</Dropdown.Item>
-                  <Dropdown.Item onClick={() => setCharPerPage(50)}>50</Dropdown.Item>
-                </DropdownButton>
-            </th>
-          </tr>
-        </thead>
-      )
-    }
-  }
 
   // const setSelect = () =>{
   //   setSelectedAurorian(s_aurorian)
   // }
-
-  const handleSelectChange = (aurorian) => {
-    setSelectedAurorian(aurorian.id)
-  }
 
 
   const rarity_6_Filter = (aurorian) => {
@@ -370,54 +167,89 @@ const MyAurorianList = ({options, user, setUser}) => {
     }}
       
 
-  const AurorianInfo = ({aurorian}) => {
-    if(!aurorian){
-      return null
-    }else{
-      return(
-        <Image width="80" height="80" unoptimized="true" src={aurorian.icon}></Image>
-      )
-    }
-  }
-
-  const MyAurorianIcon = ({aurorian}) => {
-    if(!aurorian){
-      console.log("null?")
-      return "agwegwgg"
-    }else if([1,3].includes(aurorian.id)){
-      return(
-        <Image width="80" height="80" unoptimized="true" src={aurorian.icon}></Image>
-      )
-    }else{
-      return(
-      <Image onClick={()=>handleSelectChange(aurorian)} className="myaurorian-icon" width="80" height="80" unoptimized="true" src={aurorian.icon}></Image>
-      )
-    }
-  }
-
   const AurorianList = () => {
+    
+    const rarity_6_Array = characterList.filter(rarity_6_Filter).sort(getSortOrderProp("main_attribute", "name"))
+    const rarity_5_Array = characterList.filter(rarity_5_Filter).sort(getSortOrderProp("main_attribute", "name"))
+    const rarity_4_Array = characterList.filter(rarity_4_Filter).sort(getSortOrderProp("main_attribute", "name"))
+    const rarity_3_Array = characterList.filter(rarity_3_Filter).sort(getSortOrderProp("main_attribute", "name"))
+
+    const MyAurorianIcon = ({aurorian}) => {
+      const SubmitAddOwned = () => {
+        const submitData = {
+          email: user.email,
+          access_token: user.access_token,
+          owned_char : user.owned_char.concat(aurorian.id)
+        }
+        axios.post(BackendUrl+'/accounts/owned_char_update/',
+          submitData)
+          .then(res => setUser({...user, "owned_char" : res.data.owned_char}))
+          .catch(err => console.log(err))
+        }
+      
+      const SubmitRemoveOwned = () => {
+        const submitData = {
+          email: user.email,
+          access_token: user.access_token,
+          owned_char : user.owned_char.filter(id => id !== aurorian.id)
+        }
+        axios.post(BackendUrl+'/accounts/owned_char_update/',
+          submitData) 
+          .then(res => setUser({...user, "owned_char" : res.data.owned_char}))
+        }
+      if(!aurorian){
+        return null
+      }else if(user.owned_char.includes(aurorian.id)){
+        if(ownEditing){
+          return(
+            <Image onClick={()=>SubmitRemoveOwned()} width="80" height="80" unoptimized="true" src={aurorian.icon}></Image>
+          )
+        }else{
+          return(
+            <Image onClick={()=>setSelectedAurorian(aurorian)} width="80" height="80" unoptimized="true" src={aurorian.icon}></Image>
+          )
+        }
+      }else{
+        if(ownEditing){
+          return(
+            <span className="myaurorian-icon-opacity">
+              <Image onClick={()=>SubmitAddOwned()} width="80" height="80" unoptimized="true" src={aurorian.icon}></Image>
+            </span>
+          )
+        }else{
+          return(
+            <span className="myaurorian-icon-opacity">
+              <Image onClick={()=>setSelectedAurorian(aurorian)} width="80" height="80" unoptimized="true" src={aurorian.icon}></Image>
+            </span>
+          )
+        }
+      }
+    }
+
     return(
-      <Col sm={6} lg={6}>
+      <Col xs={7} lg={6} className="myaurorian-list-col">
         <div className="font-white">
+
+          {/* <Button onClick={()=>console.log(user)}>user?</Button>
           <Button onClick={()=>console.log(s_aurorian)}>s_aurorian</Button>
           <Button onClick={()=>console.log(selectedAurorian)}>sel_aurorian</Button>
           <Button onClick={()=>console.log(characterList)}>characterList</Button>
-          <Button onClick={()=>console.log(characterList.filter(rarity_6_Filter)[0]['icon'])}>chListFilter</Button>
+          <Button onClick={()=>console.log(characterList.filter(rarity_6_Filter)[0]['icon'])}>chListFilter</Button> */}
           {/* <Image width="60" height="60" unoptimized="true" src={characterList.filter(rarity_6_Filter)[0]['icon']}></Image> */}
           <span className="font-white">6☆</span> <br></br>
-            {characterList.filter(rarity_6_Filter).sort(getSortOrderProp("main_attribute", "name")).map(aurorian =>
+          {rarity_6_Array.map(aurorian =>
               <MyAurorianIcon key={aurorian.id} aurorian={aurorian}></MyAurorianIcon>
-            )} <br></br>
+          )} <br></br>
           <span className="font-white">5☆</span> <br></br>
-            {characterList.filter(rarity_5_Filter).sort(getSortOrderProp("main_attribute", "name")).map(aurorian =>
+            {rarity_5_Array.map(aurorian =>
               <MyAurorianIcon key={aurorian.id} aurorian={aurorian}></MyAurorianIcon>
           )} <br></br>
           <span className="font-white">4☆</span> <br></br>
-            {characterList.filter(rarity_4_Filter).sort(getSortOrderProp("main_attribute", "name")).map(aurorian =>
+            {rarity_4_Array.map(aurorian =>
               <MyAurorianIcon key={aurorian.id} aurorian={aurorian}></MyAurorianIcon>
           )} <br></br>
           <span className="font-white">3☆</span> <br></br>
-            {characterList.filter(rarity_3_Filter).sort(getSortOrderProp("main_attribute", "name")).map(aurorian =>
+            {rarity_3_Array.map(aurorian =>
               <MyAurorianIcon key={aurorian.id} aurorian={aurorian}></MyAurorianIcon>
           )} <br></br>
         </div>
@@ -425,31 +257,46 @@ const MyAurorianList = ({options, user, setUser}) => {
     )
   }
 
+
+  const OwnEditingBtn = () => {
+    if(!ownEditing){
+      return(
+        <Button onClick={()=>setOwnEditing(!ownEditing)}>보유 오로리안 편집</Button>
+      )
+    }else{
+      return(
+        <Button onClick={()=>setOwnEditing(!ownEditing)}>보유 오로리안 편집 중</Button>
+      )
+    }
+  }
   // if (loading) {
   //   return "loading"
   // }else{
-    if(!characterList[0]){
-      return null
-    }else{
+    // if(!characterList[0]){
+    //   return null
+    // }else{
     return(
       <Container>
-        <Row><Button>보유 오로리안 편집</Button><Button>팀 편집</Button></Row>
         <Row>
-          <AurorianList/>
-          <Col sm={6} lg={6}>
-            <span className="font-white">팀 1 /</span>
+        <OwnEditingBtn></OwnEditingBtn>
+        {/* <Button>팀 편집</Button> */}
+        </Row>
+        <Row>
+          <AurorianList></AurorianList>
+          <Col xs={5} lg={6}  className="myaurorian-list-col">
+            {/* <span className="font-white">팀 1 /</span>
             <span className="font-white">팀 2 /</span> 
             <span className="font-white">팀 3 /</span> 
             <span className="font-white">팀 4 /</span>
             <div className="font-white">
               1번 2번 3번 4번 5번
-            </div>
-            {/* <AurorianInfo aurorian={selectedAurorian}></AurorianInfo> */}
+            </div> */}
+            <AurorianInfo aurorian={selectedAurorian}></AurorianInfo>
           </Col>
         </Row>  
       </Container>
     )
-  }
+  // }
 }
 
 export default MyAurorianList;

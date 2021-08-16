@@ -11,8 +11,6 @@ import { BackendUrl } from '../components/BackendUrl';
 
 
 const SearchAurorian = () => {
-
-  
   // useState
   const [ charName, setCharName ] = useState("")
   const [ options, setOptions ] = useState(

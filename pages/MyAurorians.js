@@ -31,14 +31,14 @@ const MyAurorians = () => {
         email: user_email,
         access_token: access_token
       }
-      axios.post(BackendUrl+'/accounts/fav_char/', submitData)
+      axios.post(BackendUrl+'/accounts/owned_char/', submitData)
         .then(res => setUser(
           {
             id: window.sessionStorage.getItem('id'),
             email: user_email,
             provider: window.sessionStorage.getItem('provider'),
             access_token: access_token,
-            fav_char: JSON.parse(res.data.fav_char)
+            owned_char: JSON.parse(res.data.owned_char)
           })) 
     }else{
       setUser({

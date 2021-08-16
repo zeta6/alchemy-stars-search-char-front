@@ -13,7 +13,8 @@ const Header = ({user, setUser}) => {
       email: loginResponse.profileObj.email,
       provider: "google",
       access_token: loginResponse.tokenObj.access_token,
-      fav_char: "[]"
+      fav_char: "[]",
+      owned_char: "[]"
     }
   
     const checkLogin = (reponse) => {
@@ -24,7 +25,8 @@ const Header = ({user, setUser}) => {
           email: userData.email,
           provider: userData.provider,
           access_token: userData.access_token,
-          fav_char : JSON.parse(userData.fav_char)
+          fav_char : JSON.parse(userData.fav_char),
+          owned_char : JSON.parse(userData.owned_char)
         }
         setUser(activeUser)
         window.sessionStorage.setItem('id', userData.id);
@@ -32,6 +34,7 @@ const Header = ({user, setUser}) => {
         window.sessionStorage.setItem('provider', userData.provider);
         window.sessionStorage.setItem('access_token', userData.access_token);
         window.sessionStorage.setItem('fav_char', userData.fav_char);
+        window.sessionStorage.setItem('owned_char', userData.owned_char);
       }else{
         return console.log("error")
       }
@@ -49,7 +52,8 @@ const Header = ({user, setUser}) => {
       email: "",
       provider: "",
       access_token:"",
-      fav_char: []
+      fav_char: [],
+      owned_char: []
       });
       window.sessionStorage.clear();
   }

@@ -1,7 +1,27 @@
+
+.myaurorian-list-col{
+    padding-left: 5px;
+
+}
+
 .myaurorian-icon-opacity{
-    opacity:0.5
+    opacity:0.4
 }
 
 .font-white{
     color: antiquewhite;
+}
+
+
+.vertical-align-center-auro-list{    
+    display: flex;
+    width:100%;
+    height:110px;
+    padding: 0;
+    margin:0;
+    font-size: 17px;
+}
+
+.auro-list-small-icon{
+    padding-left: 8px;
 }
