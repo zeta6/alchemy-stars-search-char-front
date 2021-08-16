@@ -27,7 +27,7 @@ const AurorianInfo = ({aurorian}) => {
       }else{
       const range = Array(parseInt(rarity)+1).fill(0).map((x,y) => x + y );
       return (
-        <ButtonGroup className="character-info-quick-view-breakthrough-col-button">
+        <ButtonGroup className="aurorian-info-breakthrough-buttongroup">
           {range.map((num) => (
             <BreakthroughButton key={num} number={num} buttonBrth={'br_'+num} 
             breakthrough={breakthrough} setBreakthrough={setBreakthrough}></BreakthroughButton>
@@ -35,25 +35,6 @@ const AurorianInfo = ({aurorian}) => {
         </ButtonGroup>
       )   
       }
-    }
-  
-    const BreakthrougtBody = ({rarity}) => {
-      if(!rarity){
-        return null
-      }else{
-      const range = Array(parseInt(rarity)).fill(1).map((x,y) => x + y );
-      return (
-        <tbody>
-          {range.map((brth)=> (
-            <React.Fragment key={brth}>
-              <tr>
-                <td className="character-info-breakthrough-table-count">{brth}</td>
-                <td className="character-info-berakthrough-talbe-text">{aurorian.breakthrough["count_"+brth]}</td>
-              </tr> 
-            </React.Fragment>
-          ))}
-        </tbody>
-      )}
     }
   
     const AscensionButton = ({number, buttonAscension}) => {
@@ -74,7 +55,7 @@ const AurorianInfo = ({aurorian}) => {
       }
       if(aurorian.rarity == 3){
         return(
-          <ButtonGroup className="character-info-quick-view-ascension-col-button">
+          <ButtonGroup className="aurorian-info-breakthrough-buttongroup">
             {['0', '1', '2'].map((num) =>
               <AscensionButton key={num} number={num} buttonAscension={"asc_"+num}></AscensionButton>
             )}
@@ -82,7 +63,7 @@ const AurorianInfo = ({aurorian}) => {
         )
       }else{
         return(
-          <ButtonGroup className="character-info-quick-view-ascension-col-button">
+          <ButtonGroup className="aurorian-info-breakthrough-buttongroup">
             {['0', '1', '2', '3'].map((num) =>
               <AscensionButton key={num} number={num} buttonAscension={"asc_"+num}></AscensionButton>
             )}
