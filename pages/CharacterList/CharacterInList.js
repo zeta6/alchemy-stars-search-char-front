@@ -144,7 +144,7 @@ const CharacterInList = ({cha, user, sortFav, setUser}) => {
                 query: { characterInfo: cha.id },
               }} passHref
             >
-              <Button className="charlist-moreinfo-btn-td">More Info</Button>
+              <Button className="charlist-moreinfo-btn-td">More<br></br>Info</Button>
             </Link>
           </td>
         </tr>
