@@ -26,29 +26,21 @@ const SearchAurorian = () => {
   const [ user, setUser ] = useState(null)
 
   // useEffect
-  useEffect(() => { 
-    const user_email = window.sessionStorage.getItem('email')
-    if(user_email){
-      const access_token = window.sessionStorage.getItem('access_token')
-      const submitData = {
-        email: user_email,
-        access_token: access_token
-      }
-      axios.post(BackendUrl+'/accounts/fav_char/', submitData)
+  useEffect(() => {
+    const token_id = window.sessionStorage.getItem('token_id')
+    if(token_id){
+      axios.get(BackendUrl+'/accounts/fav_char/',{
+        headers: {
+          'Authorization': token_id}
+        })
         .then(res => setUser(
           {
-            id: window.sessionStorage.getItem('id'),
-            email: user_email,
-            provider: window.sessionStorage.getItem('provider'),
-            access_token: access_token,
+            email: res.data.email,
             fav_char: JSON.parse(res.data.fav_char)
           })) 
     }else{
       setUser({
-          id: "", 
           email: "",
-          provider: "",
-          access_token:"",
           fav_char: []
         })
     }
