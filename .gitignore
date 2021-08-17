@@ -38,3 +38,4 @@ yarn-error.log*
 /unused
 /pages/temp.js
 pages/api/characters.js
+components/BackendUrl.js
