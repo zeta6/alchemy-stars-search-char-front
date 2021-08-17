@@ -24,25 +24,27 @@ const CharacterInList = ({cha, user, sortFav, setUser}) => {
 
   const FavBtn = () => {
     const SubmitAddFav = () => {
+      const token_id = window.sessionStorage.getItem('token_id')
       const submitData = {
-        email: user.email,
-        access_token: user.access_token,
         fav_char : user.fav_char.concat(cha.id)
       }
-      axios.post(BackendUrl+'/accounts/fav_char_update/',
-        submitData)
+      axios.post(BackendUrl+'/accounts/fav_char_update/',submitData, {
+        headers: {
+          'Authorization': token_id}
+        })
         .then(res => setUser({...user, "fav_char" : res.data.fav_char}))
         .catch(err => console.log(err))
       }
     
     const SubmitRemoveFav = () => {
+      const token_id = window.sessionStorage.getItem('token_id')
       const submitData = {
-        email: user.email,
-        access_token: user.access_token,
         fav_char : user.fav_char.filter(id => id !== cha.id)
       }
-      axios.post(BackendUrl+'/accounts/fav_char_update/',
-        submitData) 
+      axios.post(BackendUrl+'/accounts/fav_char_update/', submitData, {
+        headers: {
+          'Authorization': token_id}
+        })
         .then(res => setUser({...user, "fav_char" : res.data.fav_char}))
       }
 

@@ -52,25 +52,27 @@ const AurorianList = ({characterList, user, ownEditing, setSelectedAurorian, set
   // MyAurorianIcon component start
   const MyAurorianIcon = ({aurorian, user, setUser}) => {
     const SubmitAddOwned = () => {
+      const token_id = window.sessionStorage.getItem('token_id')
       const submitData = {
-        email: user.email,
-        access_token: user.access_token,
         owned_char : user.owned_char.concat(aurorian.id)
       }
-      axios.post(BackendUrl+'/accounts/owned_char_update/',
-        submitData)
+      axios.post(BackendUrl+'/accounts/owned_char_update/', submitData, {
+        headers: {
+          'Authorization': token_id}
+        })
         .then(res => setUser({...user, "owned_char" : res.data.owned_char}))
         .catch(err => console.log(err))
       }
     
     const SubmitRemoveOwned = () => {
+      const token_id = window.sessionStorage.getItem('token_id')
       const submitData = {
-        email: user.email,
-        access_token: user.access_token,
         owned_char : user.owned_char.filter(id => id !== aurorian.id)
       }
-      axios.post(BackendUrl+'/accounts/owned_char_update/',
-        submitData) 
+      axios.post(BackendUrl+'/accounts/owned_char_update/', submitData, {
+        headers: {
+          'Authorization': token_id}
+        })
         .then(res => setUser({...user, "owned_char" : res.data.owned_char}))
     }
 

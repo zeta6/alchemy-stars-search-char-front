@@ -1,57 +1,39 @@
 import { Container, Navbar, Button} from 'react-bootstrap';
 import GoogleLogin from 'react-google-login';
 import axios from 'axios';
-import { BackendUrl } from './BackendUrl'
+import { BackendUrl, googleClientID } from './BackendUrl'
 import Link from 'next/link';
 
 const Header = ({user, setUser}) => {
-  const googleClientID = '571135633127-mt9gkbshie9u75vg18thc0u4j3ktec5q.apps.googleusercontent.com';
-  
-  const handleGoogleLogin = (loginResponse) => {
-    const googleUser = {
-      id: loginResponse.profileObj.googleId,
-      email: loginResponse.profileObj.email,
-      provider: "google",
-      access_token: loginResponse.tokenObj.access_token,
-      fav_char: "[]",
-      owned_char: "[]"
-    }
-  
-    const checkLogin = (reponse) => {
-      if(reponse.data){
-        const userData = reponse.data;
+
+  const handleGoogleLogin = (google_res) => {
+    
+    const checkLogin = (response) => {
+      if(response.data){
+        const userData = response.data;
         const activeUser = {
-          id: userData.id,
           email: userData.email,
-          provider: userData.provider,
-          access_token: userData.access_token,
           fav_char : JSON.parse(userData.fav_char),
           owned_char : JSON.parse(userData.owned_char)
         }
         setUser(activeUser)
-        window.sessionStorage.setItem('id', userData.id);
-        window.sessionStorage.setItem('email', userData.email);
-        window.sessionStorage.setItem('provider', userData.provider);
-        window.sessionStorage.setItem('access_token', userData.access_token);
-        window.sessionStorage.setItem('fav_char', userData.fav_char);
-        window.sessionStorage.setItem('owned_char', userData.owned_char);
+        window.sessionStorage.setItem('token_id', google_res.tokenId);
       }else{
         return console.log("error")
       }
     }
   
-    axios.post(BackendUrl+'/accounts/google_login/',
-      googleUser) 
+    axios.get(BackendUrl+'/accounts/google_login/', {
+      headers: {
+        'Authorization': google_res.tokenId}
+      })
       .then(res => checkLogin(res))
       .catch(err => console.log(err))
   }
 
   const handleLogout = () => {
     setUser({
-      id: "", 
       email: "",
-      provider: "",
-      access_token:"",
       fav_char: [],
       owned_char: []
       });
@@ -69,12 +51,12 @@ const Header = ({user, setUser}) => {
           alert("인증과정에 문제가 있어 탈퇴되지 않았습니다.")
         }
       }
-      const submitData = {
-        email: user.email,
-        access_token: user.access_token
-      }
-      axios.post(BackendUrl+'/accounts/google_withdrawal/',
-      submitData) 
+      
+      const token_id = window.sessionStorage.getItem('token_id');
+      axios.get(BackendUrl+'/accounts/google_withdrawal/',{
+        headers: {
+          'Authorization': token_id}
+        })
       .then(res => checkDel(res))
       .catch(err => console.log(err))
     } 
