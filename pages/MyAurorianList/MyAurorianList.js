@@ -13,17 +13,6 @@ const MyAurorianList = ({options, user, setUser}) => {
   const [ownEditing, setOwnEditing] = useState(false);
   const [ownFiltering, setOwnFiltering] = useState(false);
 
-// useEffect start
-  useEffect(() => {
-    const setData = (data) => {
-      setLoading(false);
-    }
-    axios.get(BackendUrl+"/api/characters/")
-      .then(response => setData(response.data)) 
-      .catch(error => console.log(error));
-},[]
-  );
-
   useEffect(() => { 
     // filter start
     const characterFilter = (character) => {
@@ -103,6 +92,7 @@ const MyAurorianList = ({options, user, setUser}) => {
     
     const setData = (data) => {
       setCharacterList(mixFilter(data));
+      setLoading(false);
     }
 
     axios.get(BackendUrl+"/api/characters/")
@@ -183,12 +173,11 @@ const MyAurorianList = ({options, user, setUser}) => {
     }
   }
 
-  // if (loading) {
-  //   return "loading"
-  // }else{
-    // if(!characterList[0]){
-    //   return null
-    // }else{
+  if (loading) {
+    return (
+      <div className="loading-div">loading</div>
+    )
+  }else{
     return(
       <Container>
         <Row>
@@ -210,7 +199,7 @@ const MyAurorianList = ({options, user, setUser}) => {
         </Row>  
       </Container>
     )
-  // }
+  }
 }
 
 export default MyAurorianList;

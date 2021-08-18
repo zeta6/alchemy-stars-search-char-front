@@ -63,7 +63,7 @@ const AurorianList = ({characterList, user, ownEditing, setSelectedAurorian, set
         .then(res => setUser({...user, "owned_char" : res.data.owned_char}))
         .catch(err => console.log(err))
       }
-    
+
     const SubmitRemoveOwned = () => {
       const token_id = window.sessionStorage.getItem('token_id')
       const submitData = {
@@ -75,10 +75,7 @@ const AurorianList = ({characterList, user, ownEditing, setSelectedAurorian, set
         })
         .then(res => setUser({...user, "owned_char" : res.data.owned_char}))
     }
-
-    if(!aurorian || !user){
-      return null
-    }else if(user.owned_char.includes(aurorian.id)){
+    if(user.owned_char.includes(aurorian.id)){
       if(ownEditing){
         return(
           <Image onClick={()=>SubmitRemoveOwned()} width="80" height="80" unoptimized="true" src={aurorian.icon} alt="아이콘"></Image>
@@ -103,14 +100,13 @@ const AurorianList = ({characterList, user, ownEditing, setSelectedAurorian, set
         )
       }
     }
+    
   }
 
   // MyAurorianIcon component end
 
-  if(!rarity_6_Array){
-    return null
-  }else{
-    return(
+  
+  return(
     <Col xs={7} lg={6} className="myaurorian-list-col">
       <div className="font-white">
       {/* <Button onClick={()=>console.log(user)}>user?</Button>
@@ -138,7 +134,6 @@ const AurorianList = ({characterList, user, ownEditing, setSelectedAurorian, set
       </div>
     </Col>
     )
-    }
   }
 
   export default React.memo(AurorianList);
