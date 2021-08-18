@@ -175,7 +175,7 @@ const MyAurorianList = ({options, user, setUser}) => {
       return null
     }else{
       return(
-        <Row>
+        <Row className="myarorian-btn-row">
           <OwnFilteringBtn></OwnFilteringBtn>
           <OwnEditingBtn></OwnEditingBtn>
         </Row>
