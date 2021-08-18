@@ -85,7 +85,7 @@ const Header = ({user, setUser}) => {
           >SearchAurorian</span></Navbar.Brand>
           <Navbar.Brand>
             <Link href='/MyAurorians' passHref>
-              <Button className="myaurorians-btn">All aurorians</Button>
+              <Button className="myaurorians-btn">My aurorians</Button>
             </Link>
             <GoogleLogin  
               clientId={googleClientID}
