@@ -13,19 +13,6 @@ const CharacterList = ({options, user, setUser}) => {
   const [charPerPage, setCharPerPage] = useState(20);
   const [filterByFav, setFilterByFav] = useState(false);
 
-// useEffect start
-  useEffect(() => {
-    const setData = (data) => {
-      setPages(Array((parseInt(data.length / 20) + 1))
-      .fill(1).map((x,y) => x + y ));
-      setLoading(false);
-    }
-    axios.get(BackendUrl+"/api/characters/")
-      .then(response => setData(response.data)) 
-      .catch(error => console.log(error));
-},[]
-  );
-
   useEffect(() => { 
     // filter start
     const characterFilter = (character) => {
@@ -116,6 +103,19 @@ const CharacterList = ({options, user, setUser}) => {
       .then(response => setData(response.data))
       .catch(error => console.log(error));
     },[options, charPerPage, filterByFav]
+  );
+
+  // useEffect start
+  useEffect(() => {
+    const setData = (data) => {
+      setPages(Array((parseInt(data.length / 20) + 1))
+      .fill(1).map((x,y) => x + y ));
+      setLoading(false);
+    }
+    axios.get(BackendUrl+"/api/characters/")
+      .then(response => setData(response.data)) 
+      .catch(error => console.log(error));
+  },[]
   );
 
   // useEffect end
@@ -342,7 +342,9 @@ const CharacterList = ({options, user, setUser}) => {
 
 
   if (loading) {
-    return "loading"
+    return (
+      <div className="loading-div">loading</div>
+    )
   }else{
     return(
       <div>
