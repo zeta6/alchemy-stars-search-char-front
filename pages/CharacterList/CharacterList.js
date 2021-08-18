@@ -13,6 +13,7 @@ const CharacterList = ({options, user, setUser}) => {
   const [charPerPage, setCharPerPage] = useState(20);
   const [filterByFav, setFilterByFav] = useState(false);
 
+  // useEffect
   useEffect(() => { 
     // filter start
     const characterFilter = (character) => {
@@ -72,7 +73,6 @@ const CharacterList = ({options, user, setUser}) => {
       }
     }
     
-
     const mixFilter = (list) => {
       if (options.special_role.length == 0){
         if(filterByFav){
@@ -97,6 +97,7 @@ const CharacterList = ({options, user, setUser}) => {
     .fill(1).map((x,y) => x + y ));
       setSliceStart(0);
       setSort(null);
+      setLoading(false);
     }
 
     axios.get(BackendUrl+"/api/characters/")
@@ -105,21 +106,7 @@ const CharacterList = ({options, user, setUser}) => {
     },[options, charPerPage, filterByFav]
   );
 
-  // useEffect start
-  useEffect(() => {
-    const setData = (data) => {
-      setPages(Array((parseInt(data.length / 20) + 1))
-      .fill(1).map((x,y) => x + y ));
-      setLoading(false);
-    }
-    axios.get(BackendUrl+"/api/characters/")
-      .then(response => setData(response.data)) 
-      .catch(error => console.log(error));
-  },[]
-  );
-
   // useEffect end
-
 
   const PageButton = ({page, setSliceStart, currentPage, charPerPage}) => {
     if(page == currentPage){ 
