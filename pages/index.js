@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 const Index = () => {
   const router = useRouter()
   useEffect(() => {
-    router.push('/SearchAurorian')
+    router.push('/search-aurorian')
   }, [router])
 
   return(

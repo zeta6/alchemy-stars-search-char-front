@@ -84,7 +84,7 @@ const Header = ({user, setUser}) => {
           <Navbar.Brand href="/"><span className="navbar-title-span"
           >SearchAurorian</span></Navbar.Brand>
           <Navbar.Brand>
-            <Link href='/MyAurorians' passHref>
+            <Link href='/my-aurorians' passHref>
               <Button className="myaurorians-btn">My aurorians</Button>
             </Link>
             <GoogleLogin  
@@ -114,7 +114,7 @@ const Header = ({user, setUser}) => {
           <Navbar.Brand href="/"><span className="navbar-title-span"
           >SearchAurorian</span></Navbar.Brand>
           <Navbar.Brand>
-            <Link href='/MyAurorians' passHref>
+            <Link href='/my-aurorians' passHref>
               <Button className="myaurorians-btn">My Aurorians</Button>
             </Link>
             <Button className="logout-btn" onClick={()=>handleLogout()}>Log Out</Button>
