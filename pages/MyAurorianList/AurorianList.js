@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Col } from 'react-bootstrap';
+import { Col, Button, Table} from 'react-bootstrap';
 import axios from 'axios';
-import { BackendUrl } from '../../components/BackendUrl'
+import { BackendUrl } from '../../components/BackendUrl';
 import Image from "next/image";
+import AurorianTblModal from './AurorianTblModal';
 
 const AurorianList = ({characterList, user, ownEditing, setSelectedAurorian, setUser}) => {
-  const [ rarity_6_Array , setRarity_6_Array ] = useState([])
-  const [ rarity_5_Array , setRarity_5_Array ] = useState([])
-  const [ rarity_4_Array , setRarity_4_Array ] = useState([])
-  const [ rarity_3_Array , setRarity_3_Array ] = useState([])
+  const [ rarity_6_Array , setRarity_6_Array ] = useState([]);
+  const [ rarity_5_Array , setRarity_5_Array ] = useState([]);
+  const [ rarity_4_Array , setRarity_4_Array ] = useState([]);
+  const [ rarity_3_Array , setRarity_3_Array ] = useState([]);
+  const [ tblModalOpen, setTblModalOpen ] = useState(true);
 
   useEffect(() => {
     const rarity_6_Filter = (aurorian) => {
@@ -99,15 +101,13 @@ const AurorianList = ({characterList, user, ownEditing, setSelectedAurorian, set
           </span>
         )
       }
-    }
-    
+    }    
   }
 
-  // MyAurorianIcon component end
-
-  
+  // MyAurorianIcon component end  
   return(
     <Col xs={7} lg={6} className="myaurorian-list-col">
+      <AurorianTblModal tblModalOpen={tblModalOpen} setTblModalOpen={setTblModalOpen} rarity_6_Array={rarity_6_Array} rarity_5_Array={rarity_5_Array} user={user}></AurorianTblModal>
       <div className="font-white">
       {/* <Button onClick={()=>console.log(user)}>user?</Button>
       <Button onClick={()=>console.log(s_aurorian)}>s_aurorian</Button>
@@ -131,6 +131,9 @@ const AurorianList = ({characterList, user, ownEditing, setSelectedAurorian, set
           {rarity_3_Array.map(aurorian =>
           <MyAurorianIcon key={aurorian.id} aurorian={aurorian} user={user} setUser={setUser}></MyAurorianIcon>
       )} <br></br>
+      </div>
+      <div className="my-aurorian-list-viewbytable-wrap">
+        <Button onClick={()=>setTblModalOpen(!tblModalOpen)} className="my-aurorian-list-viewbytable-btn">5,6성 전체 테이블로 보기</Button>
       </div>
     </Col>
     )

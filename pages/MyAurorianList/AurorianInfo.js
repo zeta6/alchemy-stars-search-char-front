@@ -78,7 +78,7 @@ const AurorianInfo = ({aurorian}) => {
     }
     else{
       return(
-        <div className="font-white">
+        <div className="my-aurorian-info-layout">
           <div className="vertical-align-center-auro-list">
             <Image width="110" height="110" unoptimized="true" src={aurorian.icon} alt="아이콘"></Image>
             <span>이름: {aurorian.name} <br></br>

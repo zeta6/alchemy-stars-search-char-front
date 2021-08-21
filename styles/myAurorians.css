@@ -1,7 +1,16 @@
 
+.myaurorian-top-card{
+    /* padding-top: 11px; */
+    text-align: center;
+    /* width:75px; */
+    background-color: #0D6EFD;
+    color: white;
+    /* font-size: 13.5px; */
+    display:inline;
+  }
+
 .myaurorian-list-col{
     padding-left: 5px;
-
 }
 
 .myaurorian-icon-opacity{
@@ -42,4 +51,96 @@
 .myaurorian-moreinfo-btn{
     margin-top: 30px;
     margin-bottom: 20px;
+}
+
+.my-aurorian-info-layout{
+    padding-top: 6px;
+    color: antiquewhite;
+}
+
+
+.my-aurorian-list-viewbytable-wrap{
+    display: flex;
+}
+
+.my-aurorian-list-viewbytable-btn{
+    width:90%;
+    margin:auto;
+}
+
+.myaurorian-list-table-modal{
+    position:fixed;
+    left: 0;
+    top: 80px;
+    width: 100vw;
+    height: 100vh;
+    /* background-color: blue; */
+    z-index: 2;
+    /* display: flex; */
+}
+
+@media only screen and (max-width: 600px){
+    .myaurorian-list-table-modal{
+        width:580px;
+        height:1027px;
+    }
+}
+
+.myaurorian-modal-btn{
+    height:55px;
+    width: 100%;
+    max-width: 1140px;
+}
+
+.myaurorian-modal-container{
+    width: 100%;
+    max-width: 1140px;
+    margin: auto;
+    
+}
+
+.myaurorian-modal-table{
+    margin: auto;
+    padding:0;
+    min-width: 580px;
+    max-width: 1140px;
+    width:100%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.myaurorian-modal-table-td-div{
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    display: flex;
+}
+
+.myaurorian-modal-table-td-warp{
+    /* margin: auto; */
+    vertical-align: middle !important;
+}
+
+.myaurorian-modal-table-tr{
+    vertical-align: middle !important;
+}
+
+.myaurorian-modal-table-class-col{
+    padding: 0px !important;
+    width:7%;
+    min-width:30px;
+}
+
+.myaurorian-modal-table-element-col{
+    width:23%;
+    min-width:40px;
+}
+
+.myaurorian-modal-table-element-col-body{
+    padding: 0px !important;
+    line-height: 0;
+}
+
+.myaurorian-modal-btn-wrap{
+    padding-top: 10px
 }
