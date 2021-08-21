@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import { Button, Row, Container, Col } from 'react-bootstrap';
 import axios from 'axios';
-import { BackendUrl, googleClientID } from '../../components/BackendUrl'
+import { BackendUrl } from '../../components/BackendUrl'
 import AurorianInfo from "./AurorianInfo";
 import AurorianList from './AurorianList';
-import GoogleLogin from 'react-google-login';
+import LoginBtn from './LoginBtn';
+
 
 const MyAurorianList = ({options, user, setUser}) => {
   const [characterList, setCharacterList] = useState([]);  
@@ -160,54 +161,13 @@ const MyAurorianList = ({options, user, setUser}) => {
           <Button className="myaurorian-top-btn" onClick={()=>setOwnEditing(!ownEditing)}>보유 오로리안 편집 중</Button>
         )
       }
-    }
-    
-    const LoginBtn = () => { 
-      const handleGoogleLogin = (google_res) => {
-        const checkLogin = (response) => {
-          if(response.data){
-            const userData = response.data;
-            const activeUser = {
-              email: userData.email,
-              fav_char : JSON.parse(userData.fav_char),
-              owned_char : JSON.parse(userData.owned_char)
-            }
-            setUser(activeUser)
-            window.sessionStorage.setItem('token_id', google_res.tokenId);
-          }else{
-            return console.log("error")
-          }
-        }
+    }    
 
-        axios.get(BackendUrl+'/accounts/google_login/', {
-          headers: {
-            'Authorization': google_res.tokenId}
-          })
-          .then(res => checkLogin(res))
-          .catch(err => console.log(err))
-      }
-
-      return(
-        <GoogleLogin  
-          clientId={googleClientID}
-          render={renderProps => (
-            <Button className="myaurorian-top-card" onClick={renderProps.onClick} disabled={renderProps.disabled}>로그인 시 보유 오로리안을 저장할 수 있습니다.</Button>
-            )}
-          onSuccess={(res)=>{
-            handleGoogleLogin(res);
-          }}
-          onFailure={(err)=>{
-            console.log(err);
-          }}
-          >
-        </GoogleLogin>
-      )
-    }
 
     if(!user || user.email==""){
       return(
         <Row className="myarorian-btn-row">
-          <LoginBtn></LoginBtn>
+          <LoginBtn setUser={setUser}></LoginBtn>
         </Row>
       )
     }else{
