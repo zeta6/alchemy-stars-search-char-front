@@ -10,7 +10,7 @@ const AurorianList = ({characterList, user, ownEditing, setSelectedAurorian, set
   const [ rarity_5_Array , setRarity_5_Array ] = useState([]);
   const [ rarity_4_Array , setRarity_4_Array ] = useState([]);
   const [ rarity_3_Array , setRarity_3_Array ] = useState([]);
-  const [ tblModalOpen, setTblModalOpen ] = useState(true);
+  const [ tblModalOpen, setTblModalOpen ] = useState(false);
 
   useEffect(() => {
     const rarity_6_Filter = (aurorian) => {
