@@ -61,6 +61,7 @@
 
 .my-aurorian-list-viewbytable-wrap{
     display: flex;
+    padding-bottom: 15px;
 }
 
 .my-aurorian-list-viewbytable-btn{
