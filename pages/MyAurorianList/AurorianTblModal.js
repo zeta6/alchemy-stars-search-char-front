@@ -56,150 +56,150 @@ const AurorianTblModal = ({tblModalOpen, setTblModalOpen, rarity_6_Array, rarity
       <thead>
         <tr className="myaurorian-modal-table-tr">
           <td className="myaurorian-modal-table-class-col">속성/<br></br>클래스</td>
-          <td className="myaurorian-modal-table-element-col"><div className="myaurorian-modal-table-td-div"><Image width='50' height='50' src='/SearchChar/ButtonIcons/fire.png'></Image></div></td>
-          <td className="myaurorian-modal-table-element-col"><div className="myaurorian-modal-table-td-div"><Image width='50' height='50' src='/SearchChar/ButtonIcons/water.png'></Image></div></td>
-          <td className="myaurorian-modal-table-element-col"><div className="myaurorian-modal-table-td-div"><Image width='50' height='50' src='/SearchChar/ButtonIcons/forest.png'></Image></div></td>
-          <td className="myaurorian-modal-table-element-col"><div className="myaurorian-modal-table-td-div"><Image width='50' height='50' src='/SearchChar/ButtonIcons/thunder.png'></Image></div></td>
+          <td className="myaurorian-modal-table-element-col"><div className="myaurorian-modal-table-td-div"><Image width='50' height='50' src='/SearchChar/ButtonIcons/fire.png' alt="불"></Image></div></td>
+          <td className="myaurorian-modal-table-element-col"><div className="myaurorian-modal-table-td-div"><Image width='50' height='50' src='/SearchChar/ButtonIcons/water.png' alt="물"></Image></div></td>
+          <td className="myaurorian-modal-table-element-col"><div className="myaurorian-modal-table-td-div"><Image width='50' height='50' src='/SearchChar/ButtonIcons/forest.png' alt="숲"></Image></div></td>
+          <td className="myaurorian-modal-table-element-col"><div className="myaurorian-modal-table-td-div"><Image width='50' height='50' src='/SearchChar/ButtonIcons/thunder.png' alt="번개"></Image></div></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td className="myaurorian-modal-table-class-col"><div className="myaurorian-modal-table-td-div"><Image width='50' height='50' src='/SearchChar/ButtonIcons/burster.jpg'></Image></div></td>
+          <td className="myaurorian-modal-table-class-col"><div className="myaurorian-modal-table-td-div"><Image width='50' height='50' src='/SearchChar/ButtonIcons/burster.jpg' alt="버스터"></Image></div></td>
           <td className="myaurorian-modal-table-element-col-body">
             {rarity_6_Fire.filter(aurorian => aurorian.char_class.name =="burster").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
             {rarity_5_Fire.filter(aurorian => aurorian.char_class.name =="burster").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
           </td>
           <td className="myaurorian-modal-table-element-col-body">
             {rarity_6_Water.filter(aurorian => aurorian.char_class.name =="burster").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
             {rarity_5_Water.filter(aurorian => aurorian.char_class.name =="burster").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
           </td>
           <td className="myaurorian-modal-table-element-col-body">
             {rarity_6_Forest.filter(aurorian => aurorian.char_class.name =="burster").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
             {rarity_5_Forest.filter(aurorian => aurorian.char_class.name =="burster").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
           </td>
           <td className="myaurorian-modal-table-element-col-body">
             {rarity_6_Thunder.filter(aurorian => aurorian.char_class.name =="burster").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
             {rarity_5_Thunder.filter(aurorian => aurorian.char_class.name =="burster").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
           </td>
         </tr>
         <tr>
-          <td className="myaurorian-modal-table-class-col"><div className="myaurorian-modal-table-td-div"><Image width='50' height='50' src='/SearchChar/ButtonIcons/sniper.jpg'></Image></div></td>
+          <td className="myaurorian-modal-table-class-col"><div className="myaurorian-modal-table-td-div"><Image width='50' height='50' src='/SearchChar/ButtonIcons/sniper.jpg' alt="스나"></Image></div></td>
           <td className="myaurorian-modal-table-element-col-body">
             {rarity_6_Fire.filter(aurorian => aurorian.char_class.name =="sniper").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
             {rarity_5_Fire.filter(aurorian => aurorian.char_class.name =="sniper").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
           </td>
           <td className="myaurorian-modal-table-element-col-body">
             {rarity_6_Water.filter(aurorian => aurorian.char_class.name =="sniper").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
             {rarity_5_Water.filter(aurorian => aurorian.char_class.name =="sniper").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
           </td>
           <td className="myaurorian-modal-table-element-col-body">
             {rarity_6_Forest.filter(aurorian => aurorian.char_class.name =="sniper").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
             {rarity_5_Forest.filter(aurorian => aurorian.char_class.name =="sniper").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
           </td>
           <td className="myaurorian-modal-table-element-col-body">
             {rarity_6_Thunder.filter(aurorian => aurorian.char_class.name =="sniper").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
             {rarity_5_Thunder.filter(aurorian => aurorian.char_class.name =="sniper").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
           </td>
         </tr>
         <tr>
-          <td className="myaurorian-modal-table-class-col"><div className="myaurorian-modal-table-td-div"><Image width='50' height='50' src='/SearchChar/ButtonIcons/changer.jpg'></Image></div></td>
+          <td className="myaurorian-modal-table-class-col"><div className="myaurorian-modal-table-td-div"><Image width='50' height='50' src='/SearchChar/ButtonIcons/changer.jpg' alt="체인저"></Image></div></td>
           <td className="myaurorian-modal-table-element-col-body">
             {rarity_6_Fire.filter(aurorian => aurorian.char_class.name =="changer").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
             {rarity_5_Fire.filter(aurorian => aurorian.char_class.name =="changer").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
           </td>
           <td className="myaurorian-modal-table-element-col-body">
             {rarity_6_Water.filter(aurorian => aurorian.char_class.name =="changer").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
             {rarity_5_Water.filter(aurorian => aurorian.char_class.name =="changer").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
           </td>
           <td className="myaurorian-modal-table-element-col-body">
             {rarity_6_Forest.filter(aurorian => aurorian.char_class.name =="changer").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
             {rarity_5_Forest.filter(aurorian => aurorian.char_class.name =="changer").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
           </td>
           <td className="myaurorian-modal-table-element-col-body">
             {rarity_6_Thunder.filter(aurorian => aurorian.char_class.name =="changer").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
             {rarity_5_Thunder.filter(aurorian => aurorian.char_class.name =="changer").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
           </td>
         </tr>
         <tr>
-          <td className="myaurorian-modal-table-class-col"><div className="myaurorian-modal-table-td-div"><Image width='50' height='50' src='/SearchChar/ButtonIcons/supporter.jpg'></Image></div></td>
+          <td className="myaurorian-modal-table-class-col"><div className="myaurorian-modal-table-td-div"><Image width='50' height='50' src='/SearchChar/ButtonIcons/supporter.jpg' alt="서포터"></Image></div></td>
           <td className="myaurorian-modal-table-element-col-body">
             {rarity_6_Fire.filter(aurorian => aurorian.char_class.name =="supporter").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
             {rarity_5_Fire.filter(aurorian => aurorian.char_class.name =="supporter").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
           </td>
           <td className="myaurorian-modal-table-element-col-body">
             {rarity_6_Water.filter(aurorian => aurorian.char_class.name =="supporter").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
             {rarity_5_Water.filter(aurorian => aurorian.char_class.name =="supporter").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
           </td>
           <td className="myaurorian-modal-table-element-col-body">
             {rarity_6_Forest.filter(aurorian => aurorian.char_class.name =="supporter").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
             {rarity_5_Forest.filter(aurorian => aurorian.char_class.name =="supporter").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
           </td>
           <td className="myaurorian-modal-table-element-col-body">
             {rarity_6_Thunder.filter(aurorian => aurorian.char_class.name =="supporter").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
             {rarity_5_Thunder.filter(aurorian => aurorian.char_class.name =="supporter").map( aurorian =>
-            <TblModalAurorianIcon aurorian={aurorian} user={user}></TblModalAurorianIcon>
+            <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
             )}
           </td>
         </tr>
