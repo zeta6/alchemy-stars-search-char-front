@@ -71,15 +71,19 @@ const RecruitSimulator = () => {
   }
 
 
-  const getRecruitRarity_10 = (tempUnluckyStack) => {
+  const getRecruitRarity_10 = (tempUnluckyStack, tempRecruitCount, tempFirst_5) => {
     const result = Math.random()
     if(tempUnluckyStack <= 50){
-      if(first_5_Rarity == true && recruitCount === 9){
+      if(tempFirst_5 === true && tempRecruitCount === 9){
+        // console.log(tempRecruitCount);
+        // console.log("ret",tempFirst_5);
         setFirst_5_Rarity(false);
         return 5
       }else if(result < 0.05){
+        // console.log(tempRecruitCount);
         return 6
       }else if(result >= 0.05 && result < 0.145){
+        // console.log(tempRecruitCount);
         setFirst_5_Rarity(false);
         return 5
       }else if(result >= 0.145 && result < 0.475){
@@ -227,15 +231,17 @@ const RecruitSimulator = () => {
     }
   }
   
-  const getRecruiting_10 = (tempUnluckyStack) => {
-    const rarity = getRecruitRarity_10(tempUnluckyStack);
+  const getRecruiting_10 = (tempUnluckyStack, tempRecruitCount, tempFirst_5) => {
+    const rarity = getRecruitRarity_10(tempUnluckyStack, tempRecruitCount, tempFirst_5);
     let _tempUnluckyStack = tempUnluckyStack;
+    let _tempFirst_5 = tempFirst_5;
     if(rarity === 6) {
       _tempUnluckyStack = 0;
       return [getRarity_6_Result(), _tempUnluckyStack]
     }else if(rarity === 5) {
       _tempUnluckyStack += 1;
-      return [getRarity_5_Result(), _tempUnluckyStack]
+      _tempFirst_5 = false;
+      return [getRarity_5_Result(), _tempUnluckyStack, _tempFirst_5];
     }else if(rarity === 4){
       _tempUnluckyStack += 1;
       return [getRarity_4_Result(), _tempUnluckyStack]
@@ -251,11 +257,16 @@ const RecruitSimulator = () => {
     let tempArray = [];
     let tempRecruitCount = recruitCount;
     let tempUnluckyStack = unluckyStack;
+    let tempFirst_5 = first_5_Rarity;
+    // console.log("inif5", tempFirst_5);
     for(let i = 0; i < 10; i++){
-      const Array = getRecruiting_10(tempUnluckyStack);
+      const Array = getRecruiting_10(tempUnluckyStack, tempRecruitCount, tempFirst_5);
       tempArray.push(Array[0]);
       tempUnluckyStack = Array[1];
       tempRecruitCount += 1;
+      if(Array[2] === false){
+        tempFirst_5 = Array[2]
+      }
     }
     setResultArray(tempArray);
     setRecruitCount(tempRecruitCount);
@@ -265,13 +276,17 @@ const RecruitSimulator = () => {
   const doRecruiting_1 = () => {
     setResultArray([doRecruiting()]);
   }
-  // const recruitsArrayProp = {
-  //   id : "int",
-  //   name : "string",
-  //   char_id_not_include : "[int or ints]",
-  //   rarity_5_Array: "[int or ints]",
-  //   rarity_6_Array: "[int or ints]"
-  //  }
+  
+  const handleReset = () => {
+    setResultArray([]);
+    setUnluckyStack(0);
+    setRecruitCount(0);
+    setFirst_5_Rarity(true);
+    setRecord_6_Picked([]);
+    setRecord_6_NotPicked([]);
+    setOddsUp(0);
+  }
+
    // useEffect
   useEffect(() => { 
     const resAurorianArray = (data) => {
@@ -281,7 +296,6 @@ const RecruitSimulator = () => {
 
     const resRecruitsArray = (data) => {
       setRecruitsArray(data);
-      console.log(data[0]);
       // setActiveRecruit(data[0]);
     }
     axios.get(BackendUrl+"/api/recruits/")
@@ -452,7 +466,8 @@ const RecruitSimulator = () => {
             )}
             </Col>
           </Row>
-          <div className="recruit-picked-row">6성확률:{2 + oddsUp}% / 사용 루맘버:{300 * recruitCount} / 사용 KRW: {Math.round(300 * recruitCount * 8.8148)} / 소집 횟수: {recruitCount} </div>
+          <div className="recruit-picked-row">6성 확률: {2 + oddsUp}% / 루맘버: {300 * recruitCount} / KRW: {Math.round(300 * recruitCount * 8.8148)} / 소집 횟수: {recruitCount}
+            <Button className="recruit-result-reset-btn" onClick={()=>handleReset()}>리셋</Button> </div>
           <Row className="recruit-result-row">
             <Col xs={4} lg={4} className="recruit-result-row-record-col">
             {record_6_Picked.map((aurorian, index) =>
