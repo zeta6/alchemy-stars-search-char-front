@@ -56,15 +56,15 @@ const AurorianTblModal = ({tblModalOpen, setTblModalOpen, rarity_6_Array, rarity
       <thead>
         <tr className="myaurorian-modal-table-tr">
           <td className="myaurorian-modal-table-class-col">속성/<br></br>클래스</td>
-          <td className="myaurorian-modal-table-element-col"><div className="myaurorian-modal-table-td-div"><Image width='50' height='50' src='/SearchChar/ButtonIcons/fire.png' alt="불"></Image></div></td>
-          <td className="myaurorian-modal-table-element-col"><div className="myaurorian-modal-table-td-div"><Image width='50' height='50' src='/SearchChar/ButtonIcons/water.png' alt="물"></Image></div></td>
-          <td className="myaurorian-modal-table-element-col"><div className="myaurorian-modal-table-td-div"><Image width='50' height='50' src='/SearchChar/ButtonIcons/forest.png' alt="숲"></Image></div></td>
-          <td className="myaurorian-modal-table-element-col"><div className="myaurorian-modal-table-td-div"><Image width='50' height='50' src='/SearchChar/ButtonIcons/thunder.png' alt="번개"></Image></div></td>
+          <td className="myaurorian-modal-table-element-col"><div className="myaurorian-modal-table-td-div"><Image unoptimized="true" width='50' height='50' src='/SearchChar/ButtonIcons/fire.png' alt="불"></Image></div></td>
+          <td className="myaurorian-modal-table-element-col"><div className="myaurorian-modal-table-td-div"><Image unoptimized="true" width='50' height='50' src='/SearchChar/ButtonIcons/water.png' alt="물"></Image></div></td>
+          <td className="myaurorian-modal-table-element-col"><div className="myaurorian-modal-table-td-div"><Image unoptimized="true" width='50' height='50' src='/SearchChar/ButtonIcons/forest.png' alt="숲"></Image></div></td>
+          <td className="myaurorian-modal-table-element-col"><div className="myaurorian-modal-table-td-div"><Image unoptimized="true" width='50' height='50' src='/SearchChar/ButtonIcons/thunder.png' alt="번개"></Image></div></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td className="myaurorian-modal-table-class-col"><div className="myaurorian-modal-table-td-div"><Image width='50' height='50' src='/SearchChar/ButtonIcons/burster.jpg' alt="버스터"></Image></div></td>
+          <td className="myaurorian-modal-table-class-col"><div className="myaurorian-modal-table-td-div"><Image unoptimized="true" width='50' height='50' src='/SearchChar/ButtonIcons/burster.jpg' alt="버스터"></Image></div></td>
           <td className="myaurorian-modal-table-element-col-body">
             {rarity_6_Fire.filter(aurorian => aurorian.char_class.name =="burster").map( aurorian =>
             <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
@@ -99,7 +99,7 @@ const AurorianTblModal = ({tblModalOpen, setTblModalOpen, rarity_6_Array, rarity
           </td>
         </tr>
         <tr>
-          <td className="myaurorian-modal-table-class-col"><div className="myaurorian-modal-table-td-div"><Image width='50' height='50' src='/SearchChar/ButtonIcons/sniper.jpg' alt="스나"></Image></div></td>
+          <td className="myaurorian-modal-table-class-col"><div className="myaurorian-modal-table-td-div"><Image unoptimized="true" width='50' height='50' src='/SearchChar/ButtonIcons/sniper.jpg' alt="스나"></Image></div></td>
           <td className="myaurorian-modal-table-element-col-body">
             {rarity_6_Fire.filter(aurorian => aurorian.char_class.name =="sniper").map( aurorian =>
             <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
@@ -134,7 +134,7 @@ const AurorianTblModal = ({tblModalOpen, setTblModalOpen, rarity_6_Array, rarity
           </td>
         </tr>
         <tr>
-          <td className="myaurorian-modal-table-class-col"><div className="myaurorian-modal-table-td-div"><Image width='50' height='50' src='/SearchChar/ButtonIcons/changer.jpg' alt="체인저"></Image></div></td>
+          <td className="myaurorian-modal-table-class-col"><div className="myaurorian-modal-table-td-div"><Image unoptimized="true" width='50' height='50' src='/SearchChar/ButtonIcons/changer.jpg' alt="체인저"></Image></div></td>
           <td className="myaurorian-modal-table-element-col-body">
             {rarity_6_Fire.filter(aurorian => aurorian.char_class.name =="changer").map( aurorian =>
             <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>
@@ -169,7 +169,7 @@ const AurorianTblModal = ({tblModalOpen, setTblModalOpen, rarity_6_Array, rarity
           </td>
         </tr>
         <tr>
-          <td className="myaurorian-modal-table-class-col"><div className="myaurorian-modal-table-td-div"><Image width='50' height='50' src='/SearchChar/ButtonIcons/supporter.jpg' alt="서포터"></Image></div></td>
+          <td className="myaurorian-modal-table-class-col"><div className="myaurorian-modal-table-td-div"><Image unoptimized="true" width='50' height='50' src='/SearchChar/ButtonIcons/supporter.jpg' alt="서포터"></Image></div></td>
           <td className="myaurorian-modal-table-element-col-body">
             {rarity_6_Fire.filter(aurorian => aurorian.char_class.name =="supporter").map( aurorian =>
             <TblModalAurorianIcon key={aurorian.id} aurorian={aurorian} user={user}></TblModalAurorianIcon>

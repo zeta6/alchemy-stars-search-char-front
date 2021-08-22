@@ -84,13 +84,16 @@ const Header = ({user, setUser}) => {
           <Navbar.Brand href="/"><span className="navbar-title-span"
           >SearchAurorian</span></Navbar.Brand>
           <Navbar.Brand>
+            <Link href='/recruit-simulator' passHref>
+              <Button className="navbar-btn">Recruit<br></br>simul</Button>
+            </Link>
             <Link href='/my-aurorians' passHref>
-              <Button className="myaurorians-btn">My aurorians</Button>
+              <Button className="navbar-btn">Aurorian<br></br>checker</Button>
             </Link>
             <GoogleLogin  
               clientId={googleClientID}
               render={renderProps => (
-              <Button className="google-login-btn" onClick={renderProps.onClick} disabled={renderProps.disabled}>Google Login</Button>
+              <Button className="google-login-btn" onClick={renderProps.onClick} disabled={renderProps.disabled}>Google<br></br>login</Button>
               )}
               onSuccess={(res)=>{
                 handleGoogleLogin(res);
@@ -114,11 +117,14 @@ const Header = ({user, setUser}) => {
           <Navbar.Brand href="/"><span className="navbar-title-span"
           >SearchAurorian</span></Navbar.Brand>
           <Navbar.Brand>
+            <Link href='/recruit-simulator' passHref>
+              <Button className="navbar-btn">Recruit<br></br>simul</Button>
+            </Link>
             <Link href='/my-aurorians' passHref>
-              <Button className="myaurorians-btn">My Aurorians</Button>
+              <Button className="navbar-btn">Aurorian<br></br>checker</Button>
             </Link>
             <Button className="logout-btn" onClick={()=>handleLogout()}>Log Out</Button>
-            <Button className="google-login-btn" onClick={()=>handleWithdrawal()}>Withdrawal</Button>
+            <Button className="withdrawal" onClick={()=>handleWithdrawal()}>Membership<br></br>withdrawal</Button>
           </Navbar.Brand>
           </Container>
         </Navbar>

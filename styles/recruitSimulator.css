@@ -1,0 +1,82 @@
+.recruit-banner-container{
+    max-width: 1040px;
+    padding: 0;
+    padding-top: 6px;
+    margin: auto;
+}
+
+.recruit-banner-div{
+    max-width: 870px;
+    padding: 0;
+    margin: auto;
+}
+
+.recruit-picked-row{
+    width:580px;
+    padding: 0;
+    margin: auto;
+    color: aliceblue;
+    vertical-align: middle;
+}
+
+.recruit-result-row{
+    width:580px;
+    padding: 0;
+    margin: auto;
+}
+
+.recruit-result-row-col{
+    padding: 4px
+}
+
+.recruit-result-row-div-div{
+    color: aliceblue;
+    display: inline;
+}
+
+.recruit-recruiting-btn{
+    width:50%
+}
+
+.recruit-result-row-record{
+    margin: auto;
+    color: aliceblue;
+    font-size: 40px;
+    display: inline;
+}
+.recruit-result-row-record-bottom{
+    margin: auto;
+    color: aliceblue;
+    font-size: 24px;
+    display: inline;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    min-height: 70px;
+    width: 120px;
+}
+
+.recruit-result-row-record-bottom-span{
+    display: table-cell;
+    padding-left: 10px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.recruit-result-row-record-col{
+    padding: 4px 4px;
+}
+
+.recruit-result-row-record-left-span{
+    display: table-cell;
+    padding-left: 10px;
+    text-align: left;
+    vertical-align: middle;
+    font-size: 40px;
+}
+
+/* .recruit-banner-span{
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    vertical-align: middle;
+} */
