@@ -539,7 +539,7 @@ const RecruitSimulator = () => {
             )}
             </Col>
           </Row>
-          <div className="recruit-picked-row">6성 확률: {2 + oddsUp}% / 루맘버: {300 * recruitCount} / KRW: {Math.round(300 * recruitCount * 8.8148)} / 소집 횟수: {recruitCount}
+          <div className="recruit-picked-row">6성 확률: {2 + oddsUp}% / 루맘버: {300 * recruitCount} / KRW: {Math.round(300 * recruitCount * 8.8148)} / 소집: {recruitCount} / 스택: {unluckyStack}
             <Button className="recruit-result-reset-btn" onClick={()=>handleReset()}>리셋</Button> </div>
           <Row className="recruit-result-row">
             <Col xs={4} lg={4} className="recruit-result-row-record-col">
