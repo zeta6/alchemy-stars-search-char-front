@@ -357,7 +357,7 @@ const RecruitSimulator = () => {
         return(
           <React.Fragment>
           {picked_6_Aurorians.map(aurorian =>
-            <Image onClick={() => goAurorianPage(aurorian.id)} key={aurorian.id} unoptimized="true" width="70" height="70" src={aurorian.icon}></Image>
+            <Image onClick={() => goAurorianPage(aurorian.id)} key={aurorian.id} unoptimized="true" width="70" height="70" src={aurorian.icon} alt="아이콘"></Image>
             )}
           </React.Fragment>
         )
@@ -370,7 +370,7 @@ const RecruitSimulator = () => {
         return(
           <React.Fragment>
           {picked_5_Aurorians.map(aurorian =>
-            <Image onClick={() => goAurorianPage(aurorian.id)} key={aurorian.id} unoptimized="true" width="70" height="70" src={aurorian.icon}></Image>
+            <Image onClick={() => goAurorianPage(aurorian.id)} key={aurorian.id} unoptimized="true" width="70" height="70" src={aurorian.icon} alt="아이콘"></Image>
             )}
           </React.Fragment>
         )
@@ -382,10 +382,10 @@ const RecruitSimulator = () => {
       <div className="recruit-picked-row">
         확률 UP 오로리안 / 현재 데이터 부족으로 3, 4성은 풀이 한정 되어 있습니다.
         <br></br>
-        <Image unoptimized="true" width="45" height="70" src="/SearchChar/ButtonIcons/6star.png"></Image>
+        <Image unoptimized="true" width="45" height="70" src="/SearchChar/ButtonIcons/6star.png" alt="6성"></Image>
         <Rarity_6_Icon></Rarity_6_Icon>
         {" "}
-        <Image unoptimized="true" width="45" height="70" src="/SearchChar/ButtonIcons/5star.png"></Image>
+        <Image unoptimized="true" width="45" height="70" src="/SearchChar/ButtonIcons/5star.png" alt="5성"></Image>
         <Rarity_5_Icon></Rarity_5_Icon>
       </div>
     )
@@ -427,12 +427,12 @@ const RecruitSimulator = () => {
             {resultArray.slice(0,5).map((aurorian, index) =>
             <Row key={index}>
               <Col xs={4} lg={4} className="recruit-result-row-col">
-                <Image onClick={() => goAurorianPage(aurorian.id)} unoptimized="true" width="80" height="80" src={aurorian.icon}></Image>
+                <Image onClick={() => goAurorianPage(aurorian.id)} unoptimized="true" width="80" height="80" src={aurorian.icon} alt="아이콘"></Image>
               </Col>
               <Col xs={8} lg={8} className="recruit-result-row-col">
               <div className="recruit-result-row-div-div">레어도: {aurorian.rarity}☆<br></br>이름: {aurorian.name}<br></br>
-                속성: <Image unoptimized="true" width="20" height="20" src={aurorian.main_attribute.icon}></Image> {" "}
-                클래스: <Image unoptimized="true" width="20" height="20" src={aurorian.char_class.icon}></Image> </div>
+                속성: <Image unoptimized="true" width="20" height="20" src={aurorian.main_attribute.icon} alt="아이콘"></Image> {" "}
+                클래스: <Image unoptimized="true" width="20" height="20" src={aurorian.char_class.icon} alt="아이콘"></Image> </div>
               </Col>
             </Row>
             )}
@@ -441,12 +441,12 @@ const RecruitSimulator = () => {
             {resultArray.slice(5,10).map((aurorian, index) =>
             <Row key={index}>
               <Col xs={4} lg={4} className="recruit-result-row-col">
-                <Image onClick={() => goAurorianPage(aurorian.id)} unoptimized="true" width="80" height="80" src={aurorian.icon}></Image>
+                <Image onClick={() => goAurorianPage(aurorian.id)} unoptimized="true" width="80" height="80" src={aurorian.icon} alt="아이콘"></Image>
               </Col>
               <Col xs={8} lg={8} className="recruit-result-row-col">
               <div className="recruit-result-row-div-div">레어도: {aurorian.rarity}☆<br></br>이름: {aurorian.name}<br></br>
-                속성: <Image unoptimized="true" width="20" height="20" src={aurorian.main_attribute.icon}></Image> {" "}
-                클래스: <Image unoptimized="true" width="20" height="20" src={aurorian.char_class.icon}></Image> </div>
+                속성: <Image unoptimized="true" width="20" height="20" src={aurorian.main_attribute.icon} alt="아이콘"></Image> {" "}
+                클래스: <Image unoptimized="true" width="20" height="20" src={aurorian.char_class.icon} alt="아이콘"></Image> </div>
               </Col>
             </Row>
             )}
@@ -457,7 +457,7 @@ const RecruitSimulator = () => {
             <Col xs={4} lg={4} className="recruit-result-row-record-col">
             {record_6_Picked.map((aurorian, index) =>
               <div className="recruit-result-row-record-bottom" key={index}>
-              <Image onClick={() => goAurorianPage(aurorian.id)} unoptimized="true" width="90" height="90" src={aurorian.icon}></Image>
+              <Image onClick={() => goAurorianPage(aurorian.id)} unoptimized="true" width="90" height="90" src={aurorian.icon} alt="아이콘"></Image>
               <span className="recruit-result-row-record-left-span"> X {aurorian.count} </span>
               </div>
             )}
@@ -465,7 +465,7 @@ const RecruitSimulator = () => {
             <Col xs={8} lg={8} className="recruit-result-row-record-col">
             {record_6_NotPicked.map((aurorian, index) =>
             <div className="recruit-result-row-record-bottom" key={index}>
-                <Image onClick={() => goAurorianPage(aurorian.id)} unoptimized="true" width="70" height="70" src={aurorian.icon}></Image>
+                <Image onClick={() => goAurorianPage(aurorian.id)} unoptimized="true" width="70" height="70" src={aurorian.icon} alt="아이콘"></Image>
               <span className="recruit-result-row-record-bottom-span"> X {aurorian.count} </span>
             </div>
             )}
