@@ -45,12 +45,12 @@ const RecruitSimulator = () => {
       if(first_5_Rarity == true && recruitCount === 9){
         setFirst_5_Rarity(false);
         return 5
-      }else if(result < 0.05){
+      }else if(result < 0.02){
         return 6
-      }else if(result >= 0.05 && result < 0.145){
+      }else if(result >= 0.02 && result < 0.115){
         setFirst_5_Rarity(false);
         return 5
-      }else if(result >= 0.145 && result < 0.475){
+      }else if(result >= 0.115 && result < 0.445){
         return 4
       }else{
         return 3
@@ -58,11 +58,11 @@ const RecruitSimulator = () => {
     }else{
       const addOdds = 0.025 * (unluckyStack-50);
       const oneThird = addOdds / 3;
-      if(result < 0.05 + addOdds){
+      if(result < 0.02 + addOdds){
         return 6
-      }else if(result >= 0.05 + oneThird && result < 0.145 + oneThird){
+      }else if(result >= 0.02 + oneThird && result < 0.115 + oneThird){
         return 5
-      }else if(result >= 0.145 + oneThird && result < 0.475 + oneThird){
+      }else if(result >= 0.115 + oneThird && result < 0.445 + oneThird){
         return 4
       }else{
         return 3
@@ -79,14 +79,14 @@ const RecruitSimulator = () => {
         // console.log("ret",tempFirst_5);
         setFirst_5_Rarity(false);
         return 5
-      }else if(result < 0.05){
+      }else if(result < 0.02){
         // console.log(tempRecruitCount);
         return 6
-      }else if(result >= 0.05 && result < 0.145){
+      }else if(result >= 0.02 && result < 0.115){
         // console.log(tempRecruitCount);
         setFirst_5_Rarity(false);
         return 5
-      }else if(result >= 0.145 && result < 0.475){
+      }else if(result >= 0.115 && result < 0.445){
         return 4
       }else{
         return 3
@@ -94,11 +94,11 @@ const RecruitSimulator = () => {
     }else{
       const addOdds = 0.025 * (unluckyStack-50);
       const oneThird = addOdds / 3;
-      if(result < 0.05 + addOdds){
+      if(result < 0.02 + addOdds){
         return 6
-      }else if(result >= 0.05 + oneThird && result < 0.145 + oneThird){
+      }else if(result >= 0.02 + oneThird && result < 0.115 + oneThird){
         return 5
-      }else if(result >= 0.145 + oneThird && result < 0.475 + oneThird){
+      }else if(result >= 0.115 + oneThird && result < 0.445 + oneThird){
         return 4
       }else{
         return 3
