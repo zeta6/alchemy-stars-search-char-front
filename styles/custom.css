@@ -20,19 +20,38 @@ body {
   
 } */
 
+.navbar-btn{
+  width:70px;
+  margin-right: 4px;
+  font-size: 16px;
+  padding:1px 0;
+}
+
 .myaurorians-btn{
   width: 120px;
   margin-right: 6px;
 }
 
 .logout-btn{
-  width: 120px;
+  width: 70px;
+  padding: 13px 0;
   margin-right: 6px;
 }
 
+.withdrawal{
+  width: 70px;
+  padding: 7.4px 0;
+  margin-right: 6px;
+  font-size: 12px;
+}
+
+
 
 .google-login-btn{
-  width:120px;
+  width:70px;
+  margin-right: 4px;
+  font-size: 16px;
+  padding:1px 0;
 }
 
 /* 속성(기능)별 */
@@ -47,7 +66,7 @@ body {
 }
 
 .navbar-container{
-  max-width:1140px;
+  max-width:1040px;
 }
 
 .index-loading{
