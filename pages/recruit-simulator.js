@@ -137,12 +137,10 @@ const RecruitSimulator = () => {
 
       // console.log("카운터", Record_6_Counted);
       let _tempRecord_6_Picked = ([...tempPickedArray, counterRecordPicked])
-      console.log(_tempRecord_6_Picked);
+      // console.log(_tempRecord_6_Picked);
       return [picked_6_Aurorians[index], _tempRecord_6_Picked, tempRecord_6_NotPicked];
       // setResultArray([...resultArray, picked_6_Aurorians[index]])
 
-      // console.log("결과어레이",resultArray);
-      // console.log("결과픽업", record_6_Picked);
     }else{
       const notPickedR_6 = activeAurorianArray.filter(aurorian => aurorian.rarity === 6);
       const index = getRandomInt(0, notPickedR_6.length);
@@ -302,7 +300,6 @@ const RecruitSimulator = () => {
     if(rarity === 6) {
       _tempUnluckyStack = 0;
       const tempResultArray = getRarity_6_Result_10(tempRecord_6_Picked, tempRecord_6_NotPicked);
-      console.log("trm",tempResultArray)
       return [tempResultArray[0], _tempUnluckyStack, _tempFirst_5, tempResultArray[1], tempResultArray[2]]
     }else if(rarity === 5) {
       _tempUnluckyStack += 1;
@@ -329,7 +326,6 @@ const RecruitSimulator = () => {
     // console.log("inif5", tempFirst_5);
     for(let i = 0; i < 10; i++){
       const Array = getRecruiting_10(tempUnluckyStack, tempRecruitCount, tempFirst_5, tempRecord_6_Picked, tempRecord_6_NotPicked);
-      console.log("Array",Array);
       tempArray.push(Array[0]);
       tempUnluckyStack = Array[1];
       tempRecruitCount += 1;
@@ -337,11 +333,9 @@ const RecruitSimulator = () => {
         tempFirst_5 = Array[2]
       }
       if(typeof Array[3] !== 'undefined'){
-        console.log(Array[3])
         tempRecord_6_Picked = Array[3];
       }
       if(typeof Array[4] !== 'undefined'){
-        console.log(Array[4])
         tempRecord_6_NotPicked = Array[4];
       }
     }
