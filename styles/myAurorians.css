@@ -89,8 +89,9 @@
 
 .myaurorian-modal-btn{
     height:55px;
-    width: 100%;
+    width: 49%;
     max-width: 1140px;
+    margin: auto;
 }
 
 .myaurorian-modal-container{
@@ -108,14 +109,35 @@
     width:100%;
     text-align: center;
     vertical-align: middle;
+    display: table;
 }
 
 .myaurorian-modal-table-td-div{
-    margin: auto;
+    margin-left: 40%;
     width: 50px;
     height: 50px;
-    display: flex;
 }
+@media only screen and (max-width: 600px){
+    .myaurorian-modal-table-td-div{
+        margin-left: 28%;
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.myaurorian-modal-table-td-class-div{
+    margin-left: 20%;
+    width: 50px;
+    height: 50px;
+}
+@media only screen and (max-width: 600px){
+    .myaurorian-modal-table-td-class-div{
+        margin: 0;
+        width: 50px;
+        height: 50px;
+    }
+}
+
 
 .myaurorian-modal-table-td-warp{
     /* margin: auto; */
@@ -130,11 +152,14 @@
     padding: 0px !important;
     width:7%;
     min-width:30px;
+    text-align: center;
 }
 
 .myaurorian-modal-table-element-col{
     width:23%;
     min-width:40px;
+    /* margin: auto; */
+    text-align: center;
 }
 
 .myaurorian-modal-table-element-col-body{
@@ -143,5 +168,12 @@
 }
 
 .myaurorian-modal-btn-wrap{
+    width: 100%;
     padding-top: 6px;
+    margin: auto;
+    display: flex;
 }
+
+/* .myaurorian-table-container{
+    display: flex;
+} */
