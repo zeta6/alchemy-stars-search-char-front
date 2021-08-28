@@ -3,7 +3,7 @@ import { Col, Button, Table} from 'react-bootstrap';
 import axios from 'axios';
 import { BackendUrl } from '../../components/BackendUrl';
 import Image from "next/image";
-import { toPng } from 'html-to-image';
+import * as htmlToImage from 'html-to-image';
 
 const AurorianTblModal = ({tblModalOpen, setTblModalOpen, rarity_6_Array, rarity_5_Array, user}) => {
   const [ rarity_6_Fire, setRarity_6_Fire] = useState([]);
@@ -29,26 +29,53 @@ const AurorianTblModal = ({tblModalOpen, setTblModalOpen, rarity_6_Array, rarity
   }, [rarity_6_Array, rarity_5_Array])
   // useEffect end
 
-  const resultToPngRef = useRef(null)
-
-  const onButtonClick = useCallback(() => {
-    if (resultToPngRef.current === null) {
-      return
+  const saveAs = (blob, fileName) =>{
+    var elem = window.document.createElement('a');
+    elem.href = blob
+    elem.download = fileName;
+    elem.style = 'display:none;';
+    (document.body || document.documentElement).appendChild(elem);
+    if (typeof elem.click === 'function') {
+      elem.click();
+    } else {
+      elem.target = '_blank';
+      elem.dispatchEvent(new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true
+      }));
     }
+    URL.revokeObjectURL(elem.href);
+    elem.remove()
+  }
 
-    const style = {  }
+  const onCapture = (id) =>{
+    htmlToImage.toPng(document.getElementById(id))
+     .then(function (dataUrl) {
+       saveAs(dataUrl, 'my-node.png');
+     });
+   }
 
-    toPng(resultToPngRef.current)
-      .then((dataUrl) => {
-        const link = document.createElement('a')
-        link.download = 'aurorian-list.png'
-        link.href = dataUrl
-        link.click()
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, [resultToPngRef])
+  // const resultToPngRef = useRef(null)
+
+  // const onButtonClick = useCallback(() => {
+  //   if (resultToPngRef.current === null) {
+  //     return
+  //   }
+
+  //   const style = {  }
+
+  //   toPng(resultToPngRef.current)
+  //     .then((dataUrl) => {
+  //       const link = document.createElement('a')
+  //       link.download = 'aurorian-list.png'
+  //       link.href = dataUrl
+  //       link.click()
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //     })
+  // }, [resultToPngRef])
 
   // componets
   const TblModalAurorianIcon = ({aurorian, user}) => {
@@ -71,7 +98,9 @@ const AurorianTblModal = ({tblModalOpen, setTblModalOpen, rarity_6_Array, rarity
     return (
     <div className="myaurorian-list-table-modal">
     <div className="myaurorian-modal-container">
-    <div className="myaurorian-table-container" ref={resultToPngRef}>
+    <div className="myaurorian-table-container"
+    //  ref={resultToPngRef}>
+    id="aurorianTbl">
     <Table striped bordered hover variant="dark" className="myaurorian-modal-table">
       <thead>
         <tr className="myaurorian-modal-table-tr">
@@ -228,7 +257,7 @@ const AurorianTblModal = ({tblModalOpen, setTblModalOpen, rarity_6_Array, rarity
     </div>
     <div className="myaurorian-modal-btn-wrap">
     {/* <Button className="myaurorian-top-btn" onClick={()=>setTblModalOpen(!tblModalOpen)}>스크린샷내보내기</Button> */}
-    <Button className="myaurorian-modal-btn" onClick={onButtonClick}>테이블 다운로드</Button>
+    <Button className="myaurorian-modal-btn" onClick={()=>onCapture("aurorianTbl")}>테이블 다운로드</Button>
     <Button className="myaurorian-modal-btn" onClick={()=>setTblModalOpen(!tblModalOpen)}>닫기</Button>
     </div>
     </div>
