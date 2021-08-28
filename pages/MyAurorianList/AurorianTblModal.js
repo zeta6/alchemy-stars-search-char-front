@@ -4,6 +4,8 @@ import axios from 'axios';
 import { BackendUrl } from '../../components/BackendUrl';
 import Image from "next/image";
 import * as htmlToImage from 'html-to-image';
+import domtoimage from 'dom-to-image';
+import { saveAs } from 'file-saver';
 
 const AurorianTblModal = ({tblModalOpen, setTblModalOpen, rarity_6_Array, rarity_5_Array, user}) => {
   const [ rarity_6_Fire, setRarity_6_Fire] = useState([]);
@@ -29,32 +31,40 @@ const AurorianTblModal = ({tblModalOpen, setTblModalOpen, rarity_6_Array, rarity
   }, [rarity_6_Array, rarity_5_Array])
   // useEffect end
 
-  const saveAs = (blob, fileName) =>{
-    var elem = window.document.createElement('a');
-    elem.href = blob
-    elem.download = fileName;
-    elem.style = 'display:none;';
-    (document.body || document.documentElement).appendChild(elem);
-    if (typeof elem.click === 'function') {
-      elem.click();
-    } else {
-      elem.target = '_blank';
-      elem.dispatchEvent(new MouseEvent('click', {
-        view: window,
-        bubbles: true,
-        cancelable: true
-      }));
-    }
-    URL.revokeObjectURL(elem.href);
-    elem.remove()
+
+  const onCapture = () => {
+    domtoimage.toBlob(document.getElementById('aurorianTbl'))
+      .then(function (blob) {
+          window.saveAs(blob, 'aurorianTbl.png');
+      });
   }
 
-  const onCapture = (id) =>{
-    htmlToImage.toPng(document.getElementById(id))
-     .then(function (dataUrl) {
-       saveAs(dataUrl, 'my-node.png');
-     });
-   }
+  // const saveAs = (blob, fileName) =>{
+  //   var elem = window.document.createElement('a');
+  //   elem.href = blob
+  //   elem.download = fileName;
+  //   elem.style = 'display:none;';
+  //   (document.body || document.documentElement).appendChild(elem);
+  //   if (typeof elem.click === 'function') {
+  //     elem.click();
+  //   } else {
+  //     elem.target = '_blank';
+  //     elem.dispatchEvent(new MouseEvent('click', {
+  //       view: window,
+  //       bubbles: true,
+  //       cancelable: true
+  //     }));
+  //   }
+  //   URL.revokeObjectURL(elem.href);
+  //   elem.remove()
+  // }
+
+  // const onCapture = (id) =>{
+  //   htmlToImage.toPng(document.getElementById(id))
+  //    .then(function (dataUrl) {
+  //      saveAs(dataUrl, 'my-node.png');
+  //    });
+  //  }
 
   // const resultToPngRef = useRef(null)
 
@@ -257,7 +267,7 @@ const AurorianTblModal = ({tblModalOpen, setTblModalOpen, rarity_6_Array, rarity
     </div>
     <div className="myaurorian-modal-btn-wrap">
     {/* <Button className="myaurorian-top-btn" onClick={()=>setTblModalOpen(!tblModalOpen)}>스크린샷내보내기</Button> */}
-    <Button className="myaurorian-modal-btn" onClick={()=>onCapture("aurorianTbl")}>테이블 다운로드</Button>
+    <Button className="myaurorian-modal-btn" onClick={()=>onCapture()}>테이블 다운로드</Button>
     <Button className="myaurorian-modal-btn" onClick={()=>setTblModalOpen(!tblModalOpen)}>닫기</Button>
     </div>
     </div>
