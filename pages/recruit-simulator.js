@@ -1,6 +1,6 @@
 
 import { object } from 'prop-types';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import OptionButtons from './OptionButtons/OptionButtons';
 import CharacterList from './CharacterList/CharacterList';
 import { Container, Row, Col, InputGroup, FormControl, Button} from 'react-bootstrap';
@@ -10,7 +10,8 @@ import axios from 'axios';
 import { BackendUrl } from '../components/BackendUrl';
 import Image from 'next/image';
 import BannerGroup from './RecruitSumulator/BannerGroup';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+import { toPng } from 'html-to-image';
 
 
 const RecruitSimulator = () => {
@@ -32,6 +33,26 @@ const RecruitSimulator = () => {
   const [record_6_Picked, setRecord_6_Picked] = useState([]);
   const [record_6_NotPicked, setRecord_6_NotPicked] = useState([]);
   const [oddsUp, setOddsUp] = useState(0);
+
+  const resultToPngRef = useRef(null)
+
+  const onButtonClick = useCallback(() => {
+    if (resultToPngRef.current === null) {
+      return
+    }
+
+    const style = { backgroundColor: "black", textAlign: "center"}
+    toPng(resultToPngRef.current, { cacheBust: true, style: style})
+      .then((dataUrl) => {
+        const link = document.createElement('a')
+        link.download = 'recruit.png'
+        link.href = dataUrl
+        link.click()
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [resultToPngRef])
 
   const getRandomInt = (min, max) => {
     min = Math.ceil(min);
@@ -474,6 +495,7 @@ const RecruitSimulator = () => {
         {" "}
         <Image unoptimized="true" width="45" height="70" src="/SearchChar/ButtonIcons/5star.png" alt="5성"></Image>
         <Rarity_5_Icon></Rarity_5_Icon>
+        <Button onClick={onButtonClick} className="recruit-result-download-btn">결과<br></br>다운로드</Button>
       </div>
     )
   }
@@ -498,12 +520,7 @@ const RecruitSimulator = () => {
         <Header user={user} setUser={setUser}></Header>
         <Container className="recruit-banner-container">
           <BannerGroup recruitsArray={recruitsArray} setActiveRecruit={setActiveRecruit}></BannerGroup>
-          {/* <Button onClick={()=>console.log(activeRecruit)}>소집?</Button>
-          <Button onClick={()=>console.log(activeAurorianArray)}>소집??</Button>
-          <Button onClick={()=>console.log(picked_6_Aurorians)}>픽업??</Button>
-          <Button onClick={()=>getRecruitRarity()}>계산??</Button>
-          <Button onClick={()=>getRarity_6_Result()}>뽑기??</Button>
-          <Button onClick={()=>doRecruting()}>뽑기!!!</Button> */}
+          <div className="recruit-picked-row" ref={resultToPngRef}>
           <PickUpView></PickUpView>
           <div className="recruit-picked-row">
             <Button onClick={()=>doRecruiting_1()} className="recruit-recruiting-btn">1회 소집</Button>
@@ -559,9 +576,7 @@ const RecruitSimulator = () => {
             )}
             </Col>
           </Row>
-          {/* <div>
-            시뮬레이터
-          </div> */}        
+          </div>
         </Container>
       </div>
     )
