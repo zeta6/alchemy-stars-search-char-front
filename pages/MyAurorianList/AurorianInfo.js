@@ -81,7 +81,7 @@ const AurorianInfo = ({aurorian}) => {
         <div className="my-aurorian-info-layout">
           <div className="vertical-align-center-auro-list">
             <Image width="110" height="110" unoptimized="true" src={aurorian.icon} alt="아이콘"></Image>
-            <span>이름: {aurorian.name} <br></br>
+            <span>{aurorian.name} <br></br>
             <div className="vertical-align-center">
             주속성: <span className="auro-list-small-icon"><Image unoptimized="true" width="25" height="25" src={aurorian.main_attribute.icon} alt="주속성"></Image></span>
             </div>
