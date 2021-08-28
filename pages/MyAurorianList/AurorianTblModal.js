@@ -38,7 +38,7 @@ const AurorianTblModal = ({tblModalOpen, setTblModalOpen, rarity_6_Array, rarity
 
     const style = {  }
 
-    toPng(resultToPngRef.current, { cacheBust: true, })
+    toPng(resultToPngRef.current)
       .then((dataUrl) => {
         const link = document.createElement('a')
         link.download = 'aurorian-list.png'

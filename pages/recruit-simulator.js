@@ -42,7 +42,7 @@ const RecruitSimulator = () => {
     }
 
     const style = { backgroundColor: "black", textAlign: "center"}
-    toPng(resultToPngRef.current, { cacheBust: true, style: style})
+    toPng(resultToPngRef.current, {style: style})
       .then((dataUrl) => {
         const link = document.createElement('a')
         link.download = 'recruit.png'
