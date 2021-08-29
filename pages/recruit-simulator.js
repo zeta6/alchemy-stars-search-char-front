@@ -81,9 +81,9 @@ const RecruitSimulator = () => {
       const oneThird = addOdds / 3;
       if(result < 0.02 + addOdds){
         return 6
-      }else if(result >= 0.02 && result < 0.115 - oneThird){
+      }else if(result >= 0.02 + addOdds && result < 0.115 + addOdds - oneThird){
         return 5
-      }else if(result >= 0.115 && result < 0.445 - oneThird){
+      }else if(result >= 0.115 + addOdds && result < 0.445 + addOdds - oneThird){
         return 4
       }else{
         return 3
@@ -113,9 +113,9 @@ const RecruitSimulator = () => {
       const oneThird = addOdds / 3;
       if(result < 0.02 + addOdds){
         return 6
-      }else if(result >= 0.02 && result < 0.115 - oneThird){
+      }else if(result >= 0.02 + addOdds && result < 0.115 + addOdds - oneThird){
         return 5
-      }else if(result >= 0.115 && result < 0.445 - oneThird){
+      }else if(result >= 0.115 + addOdds && result < 0.445 + addOdds - oneThird){
         return 4
       }else{
         return 3
