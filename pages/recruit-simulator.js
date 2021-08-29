@@ -96,15 +96,11 @@ const RecruitSimulator = () => {
     const result = Math.random()
     if(tempUnluckyStack <= 50){
       if(tempFirst_5 === true && tempRecruitCount === 9){
-        // console.log(tempRecruitCount);
-        // console.log("ret",tempFirst_5);
         setFirst_5_Rarity(false);
         return 5
       }else if(result < 0.02){
-        // console.log(tempRecruitCount);
         return 6
       }else if(result >= 0.02 && result < 0.115){
-        // console.log(tempRecruitCount);
         setFirst_5_Rarity(false);
         return 5
       }else if(result >= 0.115 && result < 0.445){
@@ -113,7 +109,7 @@ const RecruitSimulator = () => {
         return 3
       }
     }else{
-      const addOdds = 0.025 * (unluckyStack-50);
+      const addOdds = 0.025 * (tempUnluckyStack-50);
       const oneThird = addOdds / 3;
       if(result < 0.02 + addOdds){
         return 6
@@ -129,9 +125,7 @@ const RecruitSimulator = () => {
 
   const getRarity_6_Result_10 = (tempRecord_6_Picked, tempRecord_6_NotPicked) => {
     const R_6_Length = picked_6_Aurorians.length;
-    // console.log(R_6_Length);
     const result = Math.random()
-    // console.log(result);
     let pickUpOdds = 0.5;
     if(R_6_Length === 1){
       pickUpOdds = 0.5;
@@ -152,7 +146,6 @@ const RecruitSimulator = () => {
           }
         }
       }
-      // console.log("count", count)
 
       const counterRecordPicked = {...picked_6_Aurorians[index], "count": count};
 
