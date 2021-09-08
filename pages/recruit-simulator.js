@@ -251,7 +251,7 @@ const RecruitSimulator = () => {
     const result = Math.random()
     let pickUpOdds = 0.5;
     if(R_5_Length === 1){
-      pickUpOdds = 0.5;
+      pickUpOdds = 0.25;
     }else if(R_5_Length === 2){
       pickUpOdds = 0.5;
     }else{
