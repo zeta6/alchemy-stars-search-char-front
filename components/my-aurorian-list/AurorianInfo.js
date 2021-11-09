@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import { ButtonGroup, Button, Col } from 'react-bootstrap';
 import Image from "next/image";
-import InfoChainSkillView from "../CharacterList/character-info/InfoChainSkillView";
-import InfoEquipSkillView from "../CharacterList/character-info/InfoEquipSkillView";
-import InfoActiveSkillView from "../CharacterList/character-info/InfoActiveSkillView";
+import InfoChainSkillView from "components/character-info/InfoChainSkillView";
+import InfoEquipSkillView from "components//character-info/InfoEquipSkillView";
+import InfoActiveSkillView from "components//character-info/InfoActiveSkillView";
 import Link from 'next/link';
 
 const AurorianInfo = ({aurorian}) => {
