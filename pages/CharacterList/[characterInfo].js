@@ -2,15 +2,14 @@ import React, {useState, useEffect} from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import CharacterState from "varibles/CharacterState"
-import Header from '../../components/Header';
 import { Container, Row, Col, Table, Button, ButtonGroup} from "react-bootstrap";
 import Head from "next/head";
-import CharacterImage from  "./character-info/CharacterImage";
-import InfoChainSkillView from "./character-info/InfoChainSkillView";
-import InfoEquipSkillView from "./character-info/InfoEquipSkillView";
-import InfoActiveSkillView from "./character-info/InfoActiveSkillView";
-import EquipmentView from "./character-info/EquipmentView";
-import CharFileView from "./character-info/CharFileView";
+import CharacterImage from  "components/character-info/CharacterImage";
+import InfoChainSkillView from "components/character-info/InfoChainSkillView";
+import InfoEquipSkillView from "components/character-info/InfoEquipSkillView";
+import InfoActiveSkillView from "components/character-info/InfoActiveSkillView";
+import EquipmentView from "components/character-info/EquipmentView";
+import CharFileView from "components/character-info/CharFileView";
 import Image from "next/image"
 import { BackendUrl } from 'assets/api/api'
 
@@ -156,7 +155,6 @@ export default function CharacterInfo(){
       <Head>
         <title>{character.name} - 백야극광 오로리안 검색기 </title>
        </Head>
-       <Header user={user} setUser={setUser}></Header>
       <Container className="character-info-container">
         <Row>
           <Col className="character-info-first-row-index-col">
