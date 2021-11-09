@@ -18,5 +18,4 @@ const BannerGroup = ({recruitsArray, setActiveRecruit}) => {
     }
 }
 
-
 export default BannerGroup;

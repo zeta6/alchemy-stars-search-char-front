@@ -1,12 +1,18 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/globals.css';
-import '../styles/custom.css';
-import '../styles/myAurorians.css';
-import '../styles/recruitSimulator.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'assets/css/globals.css'
+import 'assets/css/custom.css'
+import 'assets/css/myAurorians.css'
+import 'assets/css/recruitSimulator.css'
+import Layout from 'components/Layout'
+import { RecoilRoot } from 'recoil'
 
 function MyApp({ Component, pageProps }) {
   return(
-      <Component {...pageProps} />
+    <RecoilRoot>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </RecoilRoot>
   )
 }
 

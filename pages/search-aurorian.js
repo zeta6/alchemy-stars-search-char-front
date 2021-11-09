@@ -1,13 +1,13 @@
 
 import { object } from 'prop-types';
 import React, {useState, useEffect} from 'react';
-import OptionButtons from './OptionButtons/OptionButtons';
-import CharacterList from './CharacterList/CharacterList';
+import OptionButtons from 'components/option-buttons/OptionButtons';
+import CharacterList from 'components/character-list/CharacterList';
 import { Container, Row, InputGroup, FormControl, Button} from 'react-bootstrap';
-import Header from '../components/Header';
 import Head from 'next/head';
 import axios from 'axios';
-import { BackendUrl } from '../components/BackendUrl';
+import { BackendUrl } from 'assets/api/api';
+import { encrypt, decrypt } from 'assets/crypto/crypto';
 
 
 const SearchAurorian = () => {
@@ -68,7 +68,6 @@ return (
   <Head>
   <title>백야극광 오로리안 검색기</title>
   </Head>
-  <Header user={user} setUser={setUser}></Header>
   <Container className="bg-color-darknavy">
     <Row className="search-character-input-row">
       <InputGroup className="mb-3">

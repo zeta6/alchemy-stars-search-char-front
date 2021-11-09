@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { Table, ButtonGroup, Button, Row, ButtonToolbar, DropdownButton, Dropdown} from 'react-bootstrap';
 import CharacterInList from './CharacterInList';
 import axios from 'axios';
-import { BackendUrl } from '../../components/BackendUrl'
+import { BackendUrl } from 'assets/api/api'
 
 const CharacterList = ({options, user, setUser}) => {
   const [characterList, setCharacterList] = useState([]);  

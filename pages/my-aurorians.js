@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import OptionButtons from './OptionButtons/OptionButtons';
-import MyAurorianList from './MyAurorianList/MyAurorianList';
+import OptionButtons from 'components/option-buttons/OptionButtons';
+import MyAurorianList from 'components/my-aurorian-list/MyAurorianList';
 import { Container, Row, InputGroup, FormControl, Button} from 'react-bootstrap';
-import Header from '../components/Header';
 import Head from 'next/head';
 import axios from 'axios';
-import { BackendUrl } from '../components/BackendUrl';
+import { BackendUrl } from 'assets/api/api';
+import { useRecoilState } from 'recoil';
+import { userState } from 'atoms/atoms';
 
 const MyAurorians = () => {
   // useState
@@ -20,7 +21,7 @@ const MyAurorians = () => {
       special_role:[],
     }
   )
-  const [ user, setUser ] = useState(null)
+  const [user, setUser] = useRecoilState(userState);
 
   // useEffect
   useEffect(() => { 
@@ -66,7 +67,6 @@ const MyAurorians = () => {
       <Head>
       <title>백야극광 오로리안 검색기</title>
       </Head>
-      <Header user={user} setUser={setUser}></Header>
       <Container className="bg-color-darknavy">
         <Row className="search-character-input-row">
           <InputGroup className="mb-3">

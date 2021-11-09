@@ -1,24 +1,25 @@
 
 import { object } from 'prop-types';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import OptionButtons from './OptionButtons/OptionButtons';
-import CharacterList from './CharacterList/CharacterList';
+import OptionButtons from 'components/option-buttons/OptionButtons';
+import CharacterList from 'components/character-list/CharacterList';
 import { Container, Row, Col, InputGroup, FormControl, Button} from 'react-bootstrap';
-import Header from '../components/Header';
 import Head from 'next/head';
 import axios from 'axios';
-import { BackendUrl } from '../components/BackendUrl';
+import { BackendUrl } from 'assets/api/api';
 import Image from 'next/image';
-import BannerGroup from './RecruitSumulator/BannerGroup';
+import BannerGroup from 'components/recruit-simulator/BannerGroup';
 import { useRouter } from 'next/router';
 import { toPng } from 'html-to-image';
+import { userState } from 'atoms/atoms'
+import { useRecoilState } from 'recoil'
 
 
 const RecruitSimulator = () => {
 
   const router = useRouter()
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useRecoilState(userState);
   const [loading ,setLoading] = useState(true);
   const [recruitsArray, setRecruitsArray] = useState([]);
   const [activeRecruit, setActiveRecruit] = useState(null);
@@ -510,7 +511,6 @@ const RecruitSimulator = () => {
         <Head>
         <title>백야극광 오로리안 검색기</title>
         </Head>
-        <Header user={user} setUser={setUser}></Header>
         <Container className="recruit-banner-container">
           <BannerGroup recruitsArray={recruitsArray} setActiveRecruit={setActiveRecruit}></BannerGroup>
           <div className="recruit-picked-row" ref={resultToPngRef}>

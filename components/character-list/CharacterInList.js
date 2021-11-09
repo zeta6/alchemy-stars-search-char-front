@@ -1,12 +1,12 @@
 import React, { useState} from 'react';
 import { Button, Row, Col } from 'react-bootstrap';
 import Link from 'next/link';
-import ChainSkillView from "./character-info/ChainSkillView";
-import EquipSkillView from "./character-info/EquipSkillView";
-import ActiveSkillView from "./character-info/ActiveSkillView";
+import ChainSkillView from "components/character-info/ChainSkillView";
+import EquipSkillView from "components/character-info/EquipSkillView";
+import ActiveSkillView from "components/character-info/ActiveSkillView";
 import Image from "next/image";
 import axios from 'axios';
-import { BackendUrl } from '../../components/BackendUrl'
+import { BackendUrl } from 'assets/api/api'
 import { read } from '@nodelib/fs.stat/out/providers/async';
 
 

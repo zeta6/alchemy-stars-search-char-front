@@ -1,7 +1,7 @@
 
 import { Button, ButtonToolbar, ButtonGroup, Row } from 'react-bootstrap';
 import { useState } from 'react';
-import { attrOptions, classOptions, rarityOptions, specialRoleOptions } from '../../components/ButtonOptions'
+import { attrOptions, classOptions, rarityOptions, specialRoleOptions } from 'varibles/ButtonOptions'
 import Image from 'next/image';
 
 const OptionButton = ({object, options, setOptions, optionKey}) => {
