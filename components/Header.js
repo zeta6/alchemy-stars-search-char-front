@@ -1,10 +1,13 @@
 import { Container, Navbar, Button} from 'react-bootstrap';
 import GoogleLogin from 'react-google-login';
 import axios from 'axios';
-import { BackendUrl, googleClientID } from './BackendUrl'
+import { BackendUrl, googleClientID } from 'assets/api/api'
 import Link from 'next/link';
+import { userState } from 'atoms/atoms'
+import { useRecoilState } from 'recoil'
 
-const Header = ({user, setUser}) => {
+const Header = () => {
+  const [user, setUser] = useRecoilState(userState);
 
   const handleGoogleLogin = (google_res) => {
     
@@ -22,10 +25,12 @@ const Header = ({user, setUser}) => {
         return console.log("error")
       }
     }
+
+    const token = google_res.tokenId
   
     axios.get(BackendUrl+'/accounts/google_login/', {
       headers: {
-        'Authorization': google_res.tokenId}
+        'Authorization': token}
       })
       .then(res => checkLogin(res))
       .catch(err => console.log(err))
@@ -62,21 +67,22 @@ const Header = ({user, setUser}) => {
     } 
   }
 
-  if(user === null){
-    return(
-      <div className="navbar-top">
-        <Navbar variant="dark" className="bg-color-darkslateblue">
-          <Container className="navbar-container">
-          <Navbar.Brand href="/"><span className="navbar-title-span"
-          >SearchAurorian</span></Navbar.Brand>
-          </Container>
-          <Navbar.Brand>
-          </Navbar.Brand>
-        </Navbar>
-      </div>
-    )
-  }
-  else if(!user || user.email == ""){ 
+  // if(user === null){
+  //   return(
+  //     <div className="navbar-top">
+  //       <Navbar variant="dark" className="bg-color-darkslateblue">
+  //         <Container className="navbar-container">
+  //         <Navbar.Brand href="/"><span className="navbar-title-span"
+  //         >SearchAurorian</span></Navbar.Brand>
+  //         </Container>
+  //         <Navbar.Brand>
+  //         </Navbar.Brand>
+  //       </Navbar>
+  //     </div>
+  //   )
+  // }
+  // else 
+  if(!user || user.email == ""){ 
     return(
       <div className="navbar-top">
         <Navbar variant="dark" className="bg-color-darkslateblue">
@@ -132,4 +138,5 @@ const Header = ({user, setUser}) => {
     )
   }
 }
+
 export default Header

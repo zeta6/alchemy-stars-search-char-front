@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { Button, Row, Container, Col } from 'react-bootstrap';
 import axios from 'axios';
-import { BackendUrl } from '../../components/BackendUrl'
+import { BackendUrl } from 'assets/api/api'
 import AurorianInfo from "./AurorianInfo";
 import AurorianList from './AurorianList';
 import LoginBtn from './LoginBtn';

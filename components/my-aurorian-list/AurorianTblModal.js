@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Col, Button, Table} from 'react-bootstrap';
 import axios from 'axios';
-import { BackendUrl } from '../../components/BackendUrl';
+import { BackendUrl } from 'assets/api/api';
 import Image from "next/image";
 import { toPng } from 'html-to-image';
 

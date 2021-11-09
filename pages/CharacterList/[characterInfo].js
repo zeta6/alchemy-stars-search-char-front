@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
-import CharacterState from "../../components/CharacterState"
+import CharacterState from "varibles/CharacterState"
 import Header from '../../components/Header';
 import { Container, Row, Col, Table, Button, ButtonGroup} from "react-bootstrap";
 import Head from "next/head";
@@ -12,7 +12,7 @@ import InfoActiveSkillView from "./character-info/InfoActiveSkillView";
 import EquipmentView from "./character-info/EquipmentView";
 import CharFileView from "./character-info/CharFileView";
 import Image from "next/image"
-import { BackendUrl } from '../../components/BackendUrl'
+import { BackendUrl } from 'assets/api/api'
 
 export default function CharacterInfo(){
   const router = useRouter();
